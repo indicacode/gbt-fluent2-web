@@ -1,12 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-import {shadGbtPlugin} from "./lib/shadgbt";
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   prefix: "",
   theme: {
@@ -18,17 +17,7 @@ module.exports = {
       },
     },
     extend: {
-        colors:{
-          'brandColor' : {
-            'primary': '#009ec9',
-            'secondary': '#008bb1',
-            'light': '#33b3d6',
-            'dark': "#005f79",
-            'hover': '#008bb1',
-            'text': ''
 
-          },
-        },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -43,7 +32,10 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      // fontFamily: {
+      //   sans: ["var(--font-sans)", ...fontFamily.sans],
+      // },
     },
   },
-  plugins: [require("tailwindcss-animate"), shadGbtPlugin],
+  plugins: [require("tailwindcss-animate")],
 }
