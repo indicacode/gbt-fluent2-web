@@ -22,9 +22,9 @@ export default function RootLayout({ children }) {
   const pathname = usePathname()
   return (
     <html>
-      <body>
+      <body className={"dark:bg-red-500"}>
         <header>
-          <nav className="flex h-20 w-full bg-gray-900 shrink-0 items-center justify-between px-4 md:px-6">
+          <nav className="flex h-[10vh] w-full bg-gray-900 shrink-0 items-center justify-between px-4 md:px-6">
             <Link
               className="mr-6 text-white text-2xl font-[Times] flex items-center gap-2"
               href="/"
