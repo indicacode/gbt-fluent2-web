@@ -3,16 +3,15 @@
 import "./globals.css"
 
 import Link from "next/link"
-import { SearchIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/components/done/button"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu"
+} from "@/components/done/navigation-menu"
 
 // export const metadata = {
 //     title: 'MailPage',
@@ -20,21 +19,31 @@ import {
 // }
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname()
   return (
     <html>
       <body>
         <header>
           <nav className="flex h-20 w-full bg-gray-900 shrink-0 items-center justify-between px-4 md:px-6">
-            <Link className="mr-6 text-white flex items-center gap-2" href="#">
-              Home
+            <Link
+              className="mr-6 text-white text-2xl font-[Times] flex items-center gap-2"
+              href="/"
+            >
+              {pathname !== "/"
+                ? pathname.replace("/", "").toUpperCase()
+                : "HOME"}
             </Link>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <Button variant="outline">Willien</Button>
+                  <Link href="/willien">
+                    <Button variant="outline">Willien</Button>
+                  </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Button variant="outline">Bruno</Button>
+                  <Link href="/bruno">
+                    <Button variant="outline">Bruno</Button>
+                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
