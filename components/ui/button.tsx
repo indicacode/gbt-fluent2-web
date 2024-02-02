@@ -1,25 +1,26 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-300",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium text-lg transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none text-center disabled:opacity-50 dark:focus-visible:ring-slate-300",
   {
     variants: {
       variant: {
         default:
-          "bg-slate-900 text-slate-50 shadow hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90",
-        destructive:
-          "bg-red-500 text-slate-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
+          " text-whitesmoke  text-lg  bg-center px-4 py-2 bg-brandColor-primary hover:bg-brandColor-hover  active:bg-brandColor-dark active:border-brandColor-secondary active:gray-200 transition-colors ease-out duration-400 ",
+
         outline:
-          "border border-slate-200 bg-white shadow-sm hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+          " border-brandColor-primary border-2 text-lg px-4 py-2  active:bg-brandColor-secondary hover:bg-brandColor-secondary transition-colors duration-400 transition-colors ease-out duration-400  active:border-brandColor-secondary shadow-sm text-white  hover:bg-brandColor-default ",
         secondary:
-          "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
-        ghost: "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
-        link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
-      },
+          "px-4 py-2 text-lg bg-gray-200 hover:bg-gray-300 rounded-sm text-brandColor-primary transition-colors ease-out duration-400 active:bg-gray-400 ",
+        disabled: "bg-gray-600 text-lg px-4 py-2 text-gray-400",
+        link: "text-slate-50 text-lg px-4 py-2 transition-colors ease-out duration-400 underline-offset-4 hover:underline dark:text-slate-50",
+        transparent:" bg-none text-lg hover:text-slate-300 ",
+          subtle:" bg-none text-lg hover:bg-slate-400 active:bg-slate-500 hover:text-slate-100 "
+,      },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
@@ -34,24 +35,15 @@ const buttonVariants = cva(
   }
 )
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-}
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
+const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+  const Comp = asChild ? Slot : "button"
+  return (
+    (<Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref}
+      {...props} />)
+  );
+})
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
