@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Content, Header, Item, Root, Trigger } from "@radix-ui/react-accordion"
 import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
@@ -49,7 +50,9 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <Content
     ref={ref}
-    className="overflow-hidden bg-white dark:bg-gray-900 dark:text-white text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className={
+      "overflow-hidden bg-white dark:bg-gray-900 dark:text-white text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    }
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>

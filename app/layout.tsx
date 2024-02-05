@@ -6,7 +6,7 @@ import Link from "next/link"
 import {usePathname} from "next/navigation"
 
 import {Button} from "@/components/done/button"
-import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/done/navigation-menu"
+import {NavigationMenu, NavigationMenuItem, NavigationMenuList,} from "@/components/reviewing/navigation-menu"
 
 // export const metadata = {
 //     title: 'MailPage',

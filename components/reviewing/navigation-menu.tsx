@@ -1,9 +1,14 @@
 import * as React from "react"
 import {ChevronDownIcon} from "@radix-ui/react-icons"
 import {Content, Indicator, Item, Link, List, Root, Trigger, Viewport,} from "@radix-ui/react-navigation-menu"
-import {cva} from "class-variance-authority"
 
 import {cn} from "@/lib/utils"
+import {tv} from "tailwind-variants";
+
+const trigger = tv({
+    base:"group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:text-slate-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-slate-100/50 data-[state=open]:bg-slate-100/50 dark:bg-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:focus:bg-slate-800 dark:focus:text-slate-50 dark:data-[active]:bg-slate-800/50 dark:data-[state=open]:bg-slate-800/50"
+}
+)
 
 const NavigationMenu = React.forwardRef<
     React.ElementRef<typeof Root>,
@@ -40,9 +45,7 @@ NavigationMenuList.displayName = List.displayName
 
 const NavigationMenuItem = Item
 
-const navigationMenuTriggerStyle = cva(
-    "group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-100 hover:text-slate-900 focus:bg-slate-100 focus:text-slate-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-slate-100/50 data-[state=open]:bg-slate-100/50 dark:bg-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:focus:bg-slate-800 dark:focus:text-slate-50 dark:data-[active]:bg-slate-800/50 dark:data-[state=open]:bg-slate-800/50"
-)
+
 
 const NavigationMenuTrigger = React.forwardRef<
     React.ElementRef<typeof Trigger>,
@@ -50,11 +53,10 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({className, children, ...props}, ref) => (
     <Trigger
         ref={ref}
-        className={cn(navigationMenuTriggerStyle(), "group", className)}
+        className={cn(trigger(), "group", className)}
         {...props}
     >
         {children}
-        {""}
         <ChevronDownIcon
             className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
             aria-hidden="true"
@@ -115,7 +117,7 @@ const NavigationMenuIndicator = React.forwardRef<
 NavigationMenuIndicator.displayName = Indicator.displayName
 
 export {
-    navigationMenuTriggerStyle,
+   Trigger,
     NavigationMenu,
     NavigationMenuList,
     NavigationMenuItem,
