@@ -10,6 +10,7 @@ import {cn} from "@/lib/utils"
 //--------------------types--------------------//
 
 type AvatarProps = React.ComponentPropsWithoutRef<typeof Root> & VariantProps<typeof avatar>
+
 //--------------------------------------------//
 
 const avatar = tv(
@@ -22,9 +23,9 @@ const avatar = tv(
             },
             size: {
                 default: "h-10 w-10",
-                sm: "",
-                lg: "",
-                icon: "",
+                sm: "h-4 w-4",
+                lg: "h-14 w-14",
+                icon: "h-6 w-6",
             },
         },
         defaultVariants: {
@@ -33,6 +34,15 @@ const avatar = tv(
         },
     }
 )
+
+/** Root of the avatar component
+ *
+ * @remarks Inherits all properties from {@link HTMLSpanElement}.
+ *
+ * @param {string?} size - Sizes variants
+ * @param {string?} variant - Style variants
+ * @param {string} className - Additional user styles
+*/
 
 const Avatar = React.forwardRef<React.ElementRef<typeof Root>, AvatarProps>(
     ({className, variant, size, ...props}, ref) => (
@@ -45,6 +55,16 @@ const Avatar = React.forwardRef<React.ElementRef<typeof Root>, AvatarProps>(
 )
 Avatar.displayName = Root.displayName
 
+//--------------------------------------------//
+
+/**
+ * The image to be rendered inside the avatar.
+ * If the image fails to load, the {@link AvatarFallback} component will be displayed.
+ *
+ * @remarks Inherits all properties from {@link HTMLImageElement}.
+ * @param {string} className - Additional CSS classes provided by the user.
+ */
+
 const AvatarImage = React.forwardRef<
     React.ElementRef<typeof Image>,
     React.ComponentPropsWithoutRef<typeof Image>
@@ -56,6 +76,19 @@ const AvatarImage = React.forwardRef<
     />
 ))
 AvatarImage.displayName = Image.displayName
+
+//--------------------------------------------//
+
+
+/**
+ * Fallback component displayed when an image fails to load or isn't provided.
+ *
+ * Renders {@link CiUser} if no children are provided.
+ *
+ * @remarks Inherits all properties from {@link HTMLSpanElement}.
+ * @param {ReactNode} children - The fallback content.
+ * @param {string} className - Additional CSS classes provided by the user.
+ */
 
 const AvatarFallback = React.forwardRef<
     React.ElementRef<typeof Fallback>,
@@ -73,5 +106,7 @@ const AvatarFallback = React.forwardRef<
     </Fallback>
 ))
 AvatarFallback.displayName = Fallback.displayName
+
+//--------------------------------------------//
 
 export {Avatar, AvatarImage, AvatarFallback}
