@@ -3,9 +3,9 @@
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
 import {Cross2Icon} from "@radix-ui/react-icons"
-import {cva, type VariantProps} from "class-variance-authority"
 
 import {cn} from "@/lib/utils"
+import {tv, VariantProps} from "tailwind-variants";
 
 const Sheet = SheetPrimitive.Root
 
@@ -30,9 +30,9 @@ const SheetOverlay = React.forwardRef<
 ))
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
-const sheetVariants = cva(
-    "fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-slate-950",
+const sheetVariants = tv(
     {
+ base:"fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-slate-950",
         variants: {
             side: {
                 top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
