@@ -30,7 +30,7 @@ module.exports = {
   importOrderCombineTypeAndValueImports: true,
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
-    require("prettier-plugin-tailwindcss"),
+    "prettier-plugin-tailwindcss",
   ],
   tailwindFunctions: ["tv"],
 }

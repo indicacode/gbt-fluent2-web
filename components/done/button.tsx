@@ -1,7 +1,7 @@
 import * as React from "react"
 import {Slot} from "@radix-ui/react-slot"
 
-import {tv,VariantProps} from "tailwind-variants";
+import {tv, VariantProps} from "tailwind-variants";
 
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -11,7 +11,7 @@ export interface ButtonProps
 
 const buttonVariants = tv(
     {
-    base:"inline-flex items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium text-lg transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none text-center disabled:opacity-50 dark:focus-visible:ring-slate-300",
+        base: "inline-flex items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium text-lg transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none text-center disabled:opacity-50 dark:focus-visible:ring-slate-300",
         variants: {
             variant: {
                 default:
@@ -55,4 +55,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-export {Button,buttonVariants}
+export {Button, buttonVariants}
