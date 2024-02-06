@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import {tv} from "tailwind-variants";
+import {Root} from "@radix-ui/react-navigation-menu";
 
 const inputVariants = tv(
     {
@@ -18,7 +19,19 @@ const inputVariants = tv(
 )
 
 
-const Input = React.forwardRef(({subtextClasses, className,placeholderClasses, placeholderText,subtext, type,variant, ...props }, ref) => {
+export interface InputPropsType
+    extends React.InputHTMLAttributes<HTMLInputElement> {
+    variant?: "default"
+    subtext?: string
+    subtextClasses?: string
+    placeholderText?: string
+    placeholderClasses?: string
+}
+
+const Input = React.forwardRef<
+    HTMLInputElement,
+    InputPropsType
+>(({subtextClasses, className,placeholderClasses, placeholderText,subtext, type,variant, ...props }, ref) => {
     return (
         (
             <div className={"flex   flex-col"}>

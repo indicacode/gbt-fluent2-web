@@ -14,12 +14,12 @@ export default function Navbar() {
     const pathname = usePathname()
 
     return (
-        <nav className="flex h-[10vh] w-full bg-gray-900 shrink-0 items-center justify-between px-4 md:px-6">
+        <nav className="flex h-[10vh] w-full bg-gray-950 shrink-0 items-center justify-between px-4 md:px-6">
         <Link className="flex items-center gap-2 dark:text-white" href="/">
             <MountainIcon className="h-6 w-6"/>
             <span className="text-2xl font-bold">Fluent 2</span>
         </Link>
-        <NavigationMenu>
+        <NavigationMenu className="dark:text-white ">
             <NavigationMenuList>
                 <NavigationMenuLink asChild>
                     <Link
@@ -29,7 +29,7 @@ export default function Navbar() {
                         Dashboard
                     </Link>
                 </NavigationMenuLink>
-                <NavigationMenuItem>
+                <NavigationMenuItem >
                     <NavigationMenuTrigger>Components</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <div className="grid w-[400px] grid-cols-2 p-2">
@@ -123,7 +123,7 @@ export default function Navbar() {
     </nav>)
 }
 
-function MountainIcon(props) {
+function MountainIcon(props:any) {
     return (
         <svg
             {...props}

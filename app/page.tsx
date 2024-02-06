@@ -1,6 +1,4 @@
 "use client"
-import Link from "next/link"
-import { NavigationMenuLink, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenu } from "@/components/reviewing/navigation-menu"
 import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/not-done/card"
 import { Button } from "@/components/done/button"
 import { Input } from "@/components/reviewing/input"
@@ -11,7 +9,7 @@ import { Checkbox } from "@/components/not-done/checkbox"
 
 export default function Component() {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen dark:bg-gray-900">
             <main className="flex-1 p-6 md:p-12">
                 <div className="grid gap-4">
                     <Card>
