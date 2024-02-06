@@ -2,6 +2,7 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {Label} from "@/components/not-done/label";
 import {Input} from "@/components/reviewing/input";
 import {Button} from "@/components/done/button";
+import {Avatar} from "@/components/done/avatar";
 
 export default function Page() {
     return (
@@ -10,6 +11,7 @@ export default function Page() {
                 <div className="grid gap-4">
                     <Card>
                         <CardHeader>
+                            <Avatar/>
                             <CardTitle>Layouts</CardTitle>
                             <CardDescription>A collection of layouts. These are useful for structuring your
                                 page.</CardDescription>

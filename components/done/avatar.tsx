@@ -34,15 +34,16 @@ const avatar = tv(
         },
     }
 )
-
+type Props = { size: string }
 /** Root of the avatar component
  *
  * @remarks Inherits all properties from {@link HTMLSpanElement}.
  *
- * @param {string?} size - Sizes variants
- * @param {string?} variant - Style variants
- * @param {string} className - Additional user styles
-*/
+ * @param {Props} props
+ * @property {string} size - Size of the avatar
+ * @property {string?} variant - Style variants
+ * @property {string} className - Additional user styles
+ */
 
 const Avatar = React.forwardRef<React.ElementRef<typeof Root>, AvatarProps>(
     ({className, variant, size, ...props}, ref) => (

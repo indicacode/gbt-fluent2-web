@@ -1,12 +1,12 @@
 import * as React from "react"
-import {tv} from "tailwind-variants";
+import {tv, VariantProps} from "tailwind-variants";
 
 const inputVariants = tv(
     {
-        base: "flex w-full rounded-md bg-transparent px-4 py-2 text-sm shadow-sm transition-colors outline-black file:bg-transparent file:text-sm file:font-medium  disabled:cursor-not-allowed disabled:opacity-50  dark:placeholder:text-slate-400",
+        base: "flex w-full rounded-md bg-transparent px-4 py-2 text-sm shadow-sm outline-0",
         variants: {
             variant: {
-                default: "flex w-full active:border-t-black active:border-l-black active:border-r-black bg-transparent px-4 py-2 focus:border-r-2 border-l-2 border-r-2 border-t-2 border-b-2  rounded-br-none rounded-bl-none  active:border-b-blue-500  hover:border-b-blue-500 text-sm shadow-sm transition-colors "
+                default: "flex border-2 hover:border-b-blue-500 transition-colors"
             }
         },
         defaultVariants: {
@@ -15,9 +15,8 @@ const inputVariants = tv(
     }
 )
 
-
 export interface InputPropsType
-    extends React.InputHTMLAttributes<HTMLInputElement> {
+    extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
     variant?: "default"
     subtext?: string
     subtextClasses?: string
@@ -32,10 +31,14 @@ const Input = React.forwardRef<
     return (
         (
             <div className={"flex flex-col"}>
-                <h2 className={" text-black  py-1" + placeholderClasses}>{placeholderText}</h2>
+                <h2 className={"text-black  py-1" + placeholderClasses}>{placeholderText}</h2>
                 <input
+                    data-focus={false}
+                    onFocus={(e) =>
+                        e.target.dataset.focus = true
+                    }
                     type={type}
-                    className={inputVariants({variant, className})}
+                    className={inputVariants({variant, className}) + " data-[focus=true]:border-red-700"}
                     ref={ref}
                     {...props} />
                 <h2 className={"" + subtextClasses}>{subtext}</h2>
