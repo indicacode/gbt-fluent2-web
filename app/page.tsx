@@ -7,7 +7,7 @@ import { Label } from "@/components/not-done/label"
 import { Textarea } from "@/components/not-done/text-area"
 import { Checkbox } from "@/components/not-done/checkbox"
 
-export default function Component() {
+export default function Page() {
     return (
         <div className="flex flex-col min-h-screen dark:bg-gray-900">
             <main className="flex-1 p-6 md:p-12">
@@ -183,5 +183,3 @@ export default function Component() {
         </div>
     )
 }
-
-
