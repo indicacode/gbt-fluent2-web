@@ -25,7 +25,7 @@ const Input = React.forwardRef(({SubtextClasses, className,PlaceholderClasses, P
                 <h2 className={" text-black  py-1"+PlaceholderClasses}>{PlaceholderText}</h2>
                 <input
                     type={type}
-                    className={cn(inputVariants({ variant, className }))}
+                    className={inputVariants({ variant, className })}
                     ref={ref}
                     {...props} />
                 <h2 className={""+ SubtextClasses}>{Subtext}</h2>
