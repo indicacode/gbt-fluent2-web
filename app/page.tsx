@@ -1,5 +1,7 @@
 "use client"
 
+import { useState } from "react"
+
 import { Button } from "@/components/done/button"
 import {
   Card,
@@ -19,11 +21,11 @@ import { Label } from "@/components/not-done/label"
 import { Textarea } from "@/components/not-done/text-area"
 import { Input } from "@/components/reviewing/input"
 
-
-
-
-
 export default function Page() {
+  const [status, setStatus] = useState<
+    "neutral" | "success" | "fail" | "warning"
+  >("neutral")
+  const [iconOnly, setIconOnly] = useState(false)
   return (
     <div className="flex min-h-screen flex-col items-center justify-center dark:bg-[#09090B]">
       <main className="flex-1 p-6 md:p-12">
@@ -48,9 +50,51 @@ export default function Page() {
             </CardHeader>
             <CardContent className="space-y-2">
               <Input
-                label="Title here"
-                placeholder="Enter your text"
-                helperText="subtext"
+                state={status}
+                iconOnly={iconOnly}
+                label="Im a All in One Input"
+                placeholder="You read me right"
+                helperText="All in One Input"
+              />
+              {/*Do not ever do something like this. Its this way just to test the input*/}
+              <Button
+                onClick={() =>
+                  setStatus((prev) =>
+                    prev === "neutral"
+                      ? "success"
+                      : prev === "success"
+                        ? "fail"
+                        : prev === "fail"
+                          ? "warning"
+                          : prev === "warning"
+                            ? "neutral"
+                            : "neutral"
+                  )
+                }
+              >
+                Status Toggle
+              </Button>{" "}
+              {/*Do not ever do something like this. Its this way just to test the input*/}
+              <Button onClick={() => setIconOnly(!iconOnly)}>
+                Only Icon Toggle
+              </Button>
+              <Input
+                state="success"
+                label="Example of"
+                placeholder="A Input"
+                helperText="With Success"
+              />
+              <Input
+                state="fail"
+                label="Example of "
+                placeholder="A Input"
+                helperText="With Fail"
+              />
+              <Input
+                state="warning"
+                label="Warning of"
+                placeholder="A Input"
+                helperText="With Warning"
               />
             </CardContent>
           </Card>
@@ -138,11 +182,16 @@ export default function Page() {
               <div className="grid gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Enter your name" />
+                  <Input
+                    state="neutral"
+                    id="name"
+                    placeholder="Enter your name"
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
+                    state="neutral"
                     id="email"
                     placeholder="Enter your email"
                     type="email"
@@ -151,6 +200,7 @@ export default function Page() {
                 <div className="space-y-2">
                   <Label htmlFor="password">Password</Label>
                   <Input
+                    state="neutral"
                     id="password"
                     placeholder="Enter your password"
                     type="password"

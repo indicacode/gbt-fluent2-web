@@ -1,20 +1,40 @@
 import * as React from "react"
-import { useCallback, useState } from "react"
+import { HTMLAttributes, ReactElement, useCallback, useState } from "react"
+import { VscError, VscPassFilled, VscWarning } from "react-icons/vsc"
 import { tv, VariantProps } from "tailwind-variants"
 
-
-
-
+const icons = {
+  neutral: "",
+  success: <VscPassFilled className="inline text-green-600" />, // Checkmark character
+  fail: <VscError className="inline text-red-600" />, // Crossmark character
+  warning: <VscWarning className="inline text-yellow-600" />, // Optional warning icon
+  // Add more states and icons as needed
+}
 
 const inputVariants = tv({
-  base: "flex w-full rounded-md bg-transparent px-4 py-2 text-sm shadow-sm outline-0",
-  variants: {
-    variant: {
-      default: "flex border-2 transition-colors",
-    },
+  slots: {
+    base: "flex w-full rounded-md border-2 bg-transparent px-4 py-2 text-sm shadow-sm outline-0",
   },
-  defaultVariants: {
-    variant: "default",
+  variants: {
+    state: {
+      neutral: {
+        base: "border-white/80",
+      },
+      success: {
+        base: "border-green-500/80",
+      },
+      fail: {
+        base: "border-red-500/80",
+      },
+      warning: {
+        base: "border-yellow-500/80",
+      },
+    },
+    iconOnly: {
+      true: {
+        base: "border-black/80 dark:border-white/80",
+      },
+    },
   },
 })
 
@@ -24,12 +44,26 @@ export interface InputPropsType
   variant?: "default"
   helperText?: string
   label: string
+  state?: keyof typeof icons
+  iconOnly?: boolean
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
   (props, ref) => {
-    const { className, label, helperText, type, variant, ...rest } = props
+    const {
+      className,
+      label,
+      helperText,
+      type,
+      variant,
+      state = "neutral",
+      iconOnly = false,
+      ...rest
+    } = props
     const [focus, setFocus] = useState(false)
+
+    console.log("state", state)
+    console.log("iconOnly:", iconOnly)
 
     const handleFocus = useCallback(() => {
       setFocus(true)
@@ -38,10 +72,11 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     const handleBlur = useCallback(() => {
       setFocus(false)
     }, [])
-
+    const { base } = inputVariants({ state })
     return (
       <div className={"flex flex-col "}>
         <div
+          data-state={state}
           className={`
             relative
             z-10
@@ -49,7 +84,9 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
             overflow-hidden
             rounded-md
             transition-all
-            before:absolute
+            ${
+              (iconOnly || state === "neutral") &&
+              `before:absolute
             before:bottom-0
             before:left-[50%]
             before:h-full
@@ -65,26 +102,83 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
             hover:before:max-h-[3px]
             hover:before:max-w-full
             hover:before:scale-y-[1.0]
-            ${focus && "before:max-h-[3px] before:max-w-full before:scale-y-[1.0]"}
+            ${focus && "before:max-h-[3px] before:max-w-full before:scale-y-[1.0]"}`
+            }
             `}
         >
           <label className={"py-1 text-black dark:text-white"}>
             {label}
             <input
+              data-state={state}
               onFocus={handleFocus}
               onBlur={handleBlur}
               type={type}
-              className={`${inputVariants({ className, variant })}`}
+              className={base({ className, iconOnly: iconOnly })}
               ref={ref}
               {...rest}
             />
           </label>
         </div>
-        <span className={"text-gray-600"}>{helperText}</span>
+        <IconComponent
+          iconOnly={iconOnly}
+          state={state}
+          className={"my-auto  mr-0.5"}
+        >
+          {helperText}
+        </IconComponent>
       </div>
     )
   }
 )
 Input.displayName = "Input"
 
-export { Input, inputVariants }
+const iconComponent = tv({
+  slots: {
+    base: "flex items-center gap-1",
+  },
+  variants: {
+    state: {
+      neutral: {
+        base: "",
+      },
+      success: {
+        base: "text-green-500/80",
+      },
+      fail: {
+        base: "text-red-500/80",
+      },
+      warning: {
+        base: "text-yellow-500/80",
+      },
+    },
+    iconOnly: {
+      true: {
+        base: "flex items-center text-black/80 dark:text-white/80",
+      },
+    },
+  },
+})
+
+type props = HTMLAttributes<HTMLSpanElement> & {
+  state: keyof typeof icons
+  iconOnly: boolean
+}
+
+function IconComponent({
+  state,
+  className,
+  iconOnly,
+  children,
+  ...rest
+}: props): ReactElement {
+  const { base } = iconComponent({ state })
+
+  return (
+    <span {...rest} className={base({ className, iconOnly: iconOnly })}>
+      {icons[state]}
+      <span>{children}</span>
+    </span>
+  )
+}
+
+export { IconComponent, Input, inputVariants }
