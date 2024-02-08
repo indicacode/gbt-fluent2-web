@@ -20,6 +20,9 @@ import {
 import { Label } from "@/components/not-done/label"
 import { Textarea } from "@/components/not-done/text-area"
 import { Input } from "@/components/reviewing/input"
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/done/tabs";
+import {Table} from "@/components/not-done/table";
+import {motion} from "framer-motion";
 
 export default function Page() {
   const [status, setStatus] = useState<
@@ -108,7 +111,7 @@ export default function Page() {
             <CardContent className="space-y-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline">Open menu</Button>
+                  <Button hasIcon={true} variant="default">Open menu</Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <div>
@@ -222,6 +225,49 @@ export default function Page() {
                 </div>
                 <Button>Submit</Button>
               </div>
+            </CardContent>
+          </Card>
+          <Card className={"pb-10"}>
+            <CardHeader>
+              <CardTitle>
+                Tabs
+              </CardTitle>
+              <CardDescription>
+                A Component to manage displayed content through tabs
+              </CardDescription>
+            </CardHeader>
+            <CardContent className={"flex"}>
+              <Tabs>
+                <TabsList className={"flex justify-start"}>
+                    <TabsTrigger value={"management"}>Management</TabsTrigger>
+                  <TabsTrigger value={"supply"}>Supply</TabsTrigger>
+                  <TabsTrigger value={"orders"}>Orders</TabsTrigger>
+                </TabsList>
+                <TabsContent className={"gap-4 flex-col items-center justify-center flex"} value={"management"}>
+                  <div className={"flex-row gap-3 flex"}>
+                    <Button variant={"default"}>Analytics</Button>
+                    <Button variant={"default"}>Terminal</Button>
+                    <Button variant={"default"}>Database</Button>
+                  </div>
+                  <div className={"flex-row flex "}>
+                  <motion.div
+                      className={" transition-colors mt-12 duration-200 "}
+                      initial={{scale: 1, rotate: 0, backgroundColor: 'blue'}}
+                      animate={{scale: 1.6, rotate: 360, backgroundColor: ["#33b3d6", "#009ec9"]}}
+                      transition={{duration: 2, repeat: Infinity, repeatType: "reverse", ease: 'easeInOut'}}
+                      style={{
+                        width: '100px',
+                        height: '100px',
+                        borderRadius: '46%',
+
+                      }}
+                  >
+                  </motion.div>
+
+                  </div>
+                </TabsContent>
+              </Tabs>
+
             </CardContent>
           </Card>
         </div>
