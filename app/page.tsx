@@ -298,7 +298,15 @@ export default function Page() {
           {/*          ></motion.div>*/}
           {/*        </div>*/}
           {/*      </TabsContent>*/}
-          {/*    </Tabs>*/}
+            {/*    <TabsContent className={"flex justify-center items-center "} value={"supply"}>
+                  <motion.div animate={{opacity:[0,1] }} transition={{duration:0.4}} className={"  items-center justify-center gap-4  flex"}  >
+                  <Button>BUY CUPS</Button>
+                    <Button>BUY MORE PLATES</Button>
+
+
+                  </motion.div>
+                </TabsContent>
+              </Tabs>*/}
           {/*  </CardContent>*/}
           {/*</Card>*/}
         </div>

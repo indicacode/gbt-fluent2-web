@@ -9,10 +9,10 @@ export const metadata = {
   description: "Fluent 2 to tailwind for GRBTech",
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html>
-      <body>
+export default function RootLayout({children}: { children: ReactNode }) {
+    return (
+        <html>
+        <body className={"overflow-x-hidden"}>
         <header>
           <Navbar />
         </header>
