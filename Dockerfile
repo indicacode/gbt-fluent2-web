@@ -6,21 +6,19 @@ FROM base AS deps
 
 WORKDIR /app
 
-RUN yarn set version berry
-
-RUN yarn install
 
 # Copy all files for local dependencies
 # ⚠️ IGNORE_CACHE
-COPY yarn*.lock package*.json pnpm-lock*.yaml ./
+COPY yarn*.lock package*.json pnpm-lock*.yaml .yarnrc*.yml ./
+
+RUN yarn set version berry
 
 RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  if [ -f yarn.lock ]; then yarn --immutable; \
   elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
+  elif [ -f pnpm-lock.yaml ]; then yarn dlx add pnpm && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
-
 
 # Rebuild the source code only when needed
 FROM base AS builder
