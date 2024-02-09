@@ -1,17 +1,30 @@
 import * as React from "react"
 import {Slot} from "@radix-ui/react-slot"
-
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuTrigger
+} from "@/components/not-done/dropdown-menu";
 import {tv, VariantProps} from "tailwind-variants";
+import {ChevronDown} from "lucide-react";
+import {ReactNode} from "react";
 
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,
         VariantProps<typeof buttonVariants> {
+    Icon?: undefined
+    hasIcon?: boolean
     asChild?: boolean
+    buttonType?: string
+    dropdownContent?: ReactNode
+    dropdownclassName?: string
 }
 
 const buttonVariants = tv(
     {
-        base: "inline-flex items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium text-lg transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none text-center disabled:opacity-50 dark:focus-visible:ring-slate-300",
+        base: "inline-flex items-center select-none justify-center cursor-pointer whitespace-nowrap rounded-sm text-sm font-medium text-lg transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none text-center disabled:opacity-50 dark:focus-visible:ring-slate-300",
         variants: {
             variant: {
                 default:
@@ -42,18 +55,45 @@ const buttonVariants = tv(
 )
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({className,hasIcon,Icon, variant, size, asChild = false, ...props}, ref) => {
-        const Comp = asChild ? Slot : "button"
-        return (
-            <>
-                <i>{ hasIcon?  Icon :  ""}</i>
-            <Comp
-                className={buttonVariants({variant, size, className})}
-                ref={ref}
-                {...props}
-            />
-            </>
-        )
+    ({className, variant,Icon,buttonType,dropdownclassName,dropdownContent,hasIcon, size, asChild = false, ...props}, href) => {
+         switch (buttonType) {
+             case "default":
+             return (
+                 <>
+
+                     <i>{hasIcon ? Icon : ""}</i>
+                     <a
+                         className={buttonVariants({variant, size, className})}
+                         href={href}
+                         {...props}
+                     />
+                 </>
+                )
+             case "split":
+                 return (
+
+                     <div className={"flex-row flex"}>
+                         <i>{hasIcon ? Icon : ""}</i>
+                         <a
+                             className={""+ buttonVariants({variant, size, className})}
+                             href={href}
+                             {...props}
+                             />
+                         <div className={"ml-1 flex px-1 py-0 "+ buttonVariants({variant, size,className})}>
+                         <DropdownMenu>
+
+                             <DropdownMenuTrigger className={"select-none focus:outline-0"}><ChevronDown size={18}/></DropdownMenuTrigger>
+                             <DropdownMenuContent className={ `${dropdownclassName}`}>
+                                 <DropdownMenuGroup>
+                                 {dropdownContent}
+                                 </DropdownMenuGroup>
+                             </DropdownMenuContent>
+                         </DropdownMenu>
+                         </div>
+                     </div>
+                 )
+        }
+
     }
 )
 Button.displayName = "Button"
