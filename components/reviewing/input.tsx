@@ -13,9 +13,16 @@ const icons = {
 
 const inputVariants = tv({
   slots: {
-    base: "flex w-full rounded-md border-2 bg-transparent px-4 py-2 text-sm shadow-sm outline-0",
+    base: "flex w-full rounded-md border-[1px] bg-white px-4 py-2 text-sm shadow-sm outline-0",
+    decoration: "relative z-10 h-fit overflow-hidden rounded-md transition-all",
   },
   variants: {
+    variant: {
+      focus: "a",
+      outline: "bg-transparent",
+      filledDark: "dark:bg-dark/90",
+      filledLight: "dark:bg-white/80",
+    },
     state: {
       neutral: {
         base: "border-white/80",
@@ -36,12 +43,16 @@ const inputVariants = tv({
       },
     },
   },
+
+  defaultVariants: {
+    variant: "outline",
+    size: "md",
+  },
 })
 
 export interface InputPropsType
   extends React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {
-  variant?: "default"
   helperText?: string
   label: string
   state?: keyof typeof icons
@@ -74,16 +85,11 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     }, [])
     const { base } = inputVariants({ state })
     return (
-      <div className={"flex flex-col "}>
+      <div className={"flex  flex-col"}>
         <div
           data-state={state}
           className={`
-            relative
-            z-10
-            h-fit
-            overflow-hidden
-            rounded-md
-            transition-all
+        
             ${
               (iconOnly || state === "neutral") &&
               `before:absolute
@@ -113,7 +119,11 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
               onFocus={handleFocus}
               onBlur={handleBlur}
               type={type}
-              className={base({ className, iconOnly: iconOnly })}
+              className={base({
+                className,
+                iconOnly: iconOnly,
+                variant,
+              })}
               ref={ref}
               {...rest}
             />
