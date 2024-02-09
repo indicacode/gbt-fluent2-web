@@ -15,7 +15,6 @@ export default function Page() {
             dropdownclassName=""
             dropdownContent=""
           >
-            {" "}
             SPLIT BUTTON
           </Button>
         </AnimatePresence>

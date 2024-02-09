@@ -3,7 +3,12 @@ FROM node:20-alpine AS base
 # Install dependencies only when needed
 FROM base AS deps
 
+
 WORKDIR /app
+
+RUN yarn set version berry
+
+RUN yarn install
 
 # Copy all files for local dependencies
 # ⚠️ IGNORE_CACHE
