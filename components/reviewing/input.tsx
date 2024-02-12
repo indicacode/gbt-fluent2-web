@@ -1,4 +1,5 @@
 "use client"
+
 import * as React from "react"
 import { HTMLAttributes, ReactElement, useCallback, useState } from "react"
 import { VscError, VscPassFilled, VscWarning } from "react-icons/vsc"
@@ -15,14 +16,13 @@ const icons = {
 const inputVariants = tv({
   slots: {
     base: "flex w-full rounded-md border-[1px] bg-white px-4 py-2 text-sm shadow-sm outline-0",
-    decoration: "relative z-10 h-fit overflow-hidden rounded-md transition-all",
   },
   variants: {
     variant: {
       focus: "a",
       outline: "bg-transparent",
       filledDark: "dark:bg-dark/90",
-      filledLight: "dark:bg-white/80",
+      filledLight: "dark:bg-white/90",
     },
     state: {
       neutral: {
@@ -84,16 +84,21 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     const handleBlur = useCallback(() => {
       setFocus(false)
     }, [])
-    const { base } = inputVariants({ state })
+    const { base } = inputVariants({
+      state,
+    })
     return (
-      <div className={"flex  flex-col"}>
+      <div className={"flex flex-col"}>
         <div
           data-state={state}
           className={`
-        
-            ${
-              (iconOnly || state === "neutral") &&
-              `before:absolute
+            relative
+            z-10
+            h-fit
+            overflow-hidden
+            rounded-md
+            transition-all
+            before:absolute
             before:bottom-0
             before:left-[50%]
             before:h-full
@@ -109,8 +114,7 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
             hover:before:max-h-[3px]
             hover:before:max-w-full
             hover:before:scale-y-[1.0]
-            ${focus && "before:max-h-[3px] before:max-w-full before:scale-y-[1.0]"}`
-            }
+            ${focus && "before:max-h-[3px] before:max-w-full before:scale-y-[1.0]"}
             `}
         >
           <label className={"py-1 text-black dark:text-white"}>

@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 
-import { Button } from "@/components/reviewing/button"
 import {
   Card,
   CardContent,
@@ -10,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/not-done/card"
+import { Button } from "@/components/reviewing/button"
 import { Input } from "@/components/reviewing/input"
 
 export default function Page() {
@@ -52,6 +52,7 @@ export default function Page() {
                   />
                   {/*Do not ever do something like this. Its this way just to test the input*/}
                   <Button
+                    buttonType="secondary"
                     onClick={() =>
                       setStatus((prev) =>
                         prev === "neutral"
@@ -69,7 +70,10 @@ export default function Page() {
                     Status Toggle
                   </Button>
                   {/*Do not ever do something like this. Its this way just to test the input*/}
-                  <Button onClick={() => setIconOnly(!iconOnly)}>
+                  <Button
+                    onClick={() => setIconOnly(!iconOnly)}
+                    buttonType="default"
+                  >
                     Only Icon Toggle
                   </Button>
                 </div>
@@ -79,47 +83,52 @@ export default function Page() {
                   <h1 className="self-center font-[Poppins] text-3xl font-semibold">
                     Variants
                   </h1>
-                  <Input
-                    label="Example of"
-                    placeholder="A Outline Input"
-                    helperText=""
-                  />
-                  <Input
-                    variant="filledDark"
-                    label="Example of "
-                    placeholder="A FilledDark Input"
-                    helperText=""
-                  />
-                  <Input
-                    variant="filledLight"
-                    label="Warning of"
-                    placeholder="A FilledLight Input"
-                    helperText=""
-                  />
+                  <div className="flex flex-col gap-4">
+                    <Input
+                      label="Example of"
+                      placeholder="A Outline Input"
+                      helperText="Helper text"
+                    />
+                    <Input
+                      variant="filledDark"
+                      label="Example of "
+                      iconOnly
+                      placeholder="A FilledDark Input"
+                      helperText="Helper text"
+                    />
+                    <Input
+                      variant="filledLight"
+                      label="Warning of"
+                      placeholder="A FilledLight Input"
+                      helperText="Helper text"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex h-full w-full flex-col">
                   <h1 className="self-center font-[Poppins] text-3xl font-semibold">
                     States
                   </h1>
-                  <Input
-                    state="neutral"
-                    label="Example of"
-                    placeholder="A Input"
-                    helperText="With Success"
-                  />
-                  <Input
-                    state="warning"
-                    label="Example of "
-                    placeholder="A Input"
-                    helperText="With Fail"
-                  />
-                  <Input
-                    state="fail"
-                    label="Example of"
-                    placeholder="A Input"
-                    helperText="With Warning"
-                  />
+                  <div className="flex flex-col gap-4">
+                    <Input
+                      state="neutral"
+                      label="Example of"
+                      placeholder="A Input"
+                      helperText="With Success"
+                    />
+                    <Input
+                      state="warning"
+                      label="Example of "
+                      placeholder="A Input"
+                      helperText="With Fail"
+                    />
+                    <Input
+                      state="fail"
+                      label="Example of"
+                      placeholder="A Input"
+                      helperText="With Warning"
+                    />
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -298,7 +307,7 @@ export default function Page() {
           {/*          ></motion.div>*/}
           {/*        </div>*/}
           {/*      </TabsContent>*/}
-            {/*    <TabsContent className={"flex justify-center items-center "} value={"supply"}>
+          {/*    <TabsContent className={"flex justify-center items-center "} value={"supply"}>
                   <motion.div animate={{opacity:[0,1] }} transition={{duration:0.4}} className={"  items-center justify-center gap-4  flex"}  >
                   <Button>BUY CUPS</Button>
                     <Button>BUY MORE PLATES</Button>
