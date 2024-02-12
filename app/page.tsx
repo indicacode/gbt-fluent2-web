@@ -46,7 +46,7 @@ export default function Page() {
                     state={status}
                     iconOnly={iconOnly}
                     className="min-w-full"
-                    label="Im a All in One Input"
+                    labelText="Im a All in One Input"
                     placeholder="You read me right"
                     helperText="All in One Input"
                   />
