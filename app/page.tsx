@@ -52,7 +52,6 @@ export default function Page() {
                   />
                   {/*Do not ever do something like this. Its this way just to test the input*/}
                   <Button
-                    buttonType="secondary"
                     onClick={() =>
                       setStatus((prev) =>
                         prev === "neutral"
@@ -70,10 +69,7 @@ export default function Page() {
                     Status Toggle
                   </Button>
                   {/*Do not ever do something like this. Its this way just to test the input*/}
-                  <Button
-                    onClick={() => setIconOnly(!iconOnly)}
-                    buttonType="default"
-                  >
+                  <Button onClick={() => setIconOnly(!iconOnly)}>
                     Only Icon Toggle
                   </Button>
                 </div>
@@ -85,20 +81,25 @@ export default function Page() {
                   </h1>
                   <div className="flex flex-col gap-4">
                     <Input
-                      label="Example of"
+                      labelText="Example of"
+                      placeholder="A Outline Input"
+                      helperText="Helper text"
+                    />
+                    <Input
+                      variant="focus"
+                      labelText="Example of"
                       placeholder="A Outline Input"
                       helperText="Helper text"
                     />
                     <Input
                       variant="filledDark"
-                      label="Example of "
-                      iconOnly
+                      labelText="Example of "
                       placeholder="A FilledDark Input"
                       helperText="Helper text"
                     />
                     <Input
                       variant="filledLight"
-                      label="Warning of"
+                      labelText="Warning of"
                       placeholder="A FilledLight Input"
                       helperText="Helper text"
                     />
@@ -112,19 +113,25 @@ export default function Page() {
                   <div className="flex flex-col gap-4">
                     <Input
                       state="neutral"
-                      label="Example of"
+                      labelText="Example of"
+                      placeholder="A Neutral"
+                      helperText="Input"
+                    />
+                    <Input
+                      state="success"
+                      labelText="Example of"
                       placeholder="A Input"
                       helperText="With Success"
                     />
                     <Input
                       state="warning"
-                      label="Example of "
+                      labelText="Example of "
                       placeholder="A Input"
                       helperText="With Fail"
                     />
                     <Input
                       state="fail"
-                      label="Example of"
+                      labelText="Example of"
                       placeholder="A Input"
                       helperText="With Warning"
                     />
