@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-import { Button } from "@/components/done/button"
+import { Button } from "@/components/reviewing/button"
 import {
   Card,
   CardContent,

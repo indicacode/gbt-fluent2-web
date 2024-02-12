@@ -1,7 +1,7 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/not-done/card";
 import {Label} from "@/components/not-done/label";
 import {Input} from "@/components/reviewing/input";
-import {Button} from "@/components/done/button";
+import {Button} from "@/components/reviewing/button";
 import {Avatar} from "@/components/done/avatar";
 
 export default function Page() {

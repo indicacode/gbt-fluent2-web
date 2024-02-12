@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react"
 import { HTMLAttributes, ReactElement, useCallback, useState } from "react"
 import { VscError, VscPassFilled, VscWarning } from "react-icons/vsc"

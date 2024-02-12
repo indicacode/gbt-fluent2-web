@@ -1,6 +1,6 @@
 "use client"
 import {AnimatePresence, motion} from "framer-motion";
-import {Button} from "@/components/done/button";
+import {Toggle} from "@/components/not-done/toggle";
 
 
 export default function Page() {
@@ -8,7 +8,8 @@ export default function Page() {
             <div className={"bg-gray-900 overflow-x-hidden flex  w-screen h-screen"}>
                 <AnimatePresence >
 
-                    <Button variant={"default"} buttonType={"split"} dropdownclassName={} dropdownContent={} > SPLIT BUTTON</Button>
+
+                    <Toggle></Toggle>
 
                 </AnimatePresence>
 
