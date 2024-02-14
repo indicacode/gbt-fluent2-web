@@ -20,13 +20,11 @@ const config = withTV({
     },
     extend: {
       colors: {
-        brandColor: {
-          primary: "#009ec9",
+        brand: {
+          primary: "#0F6CBD",
           secondary: "#008bb1",
           light: "#33b3d6",
           dark: "#005f79",
-          hover: "#008bb1",
-          text: "",
         },
       },
       keyframes: {

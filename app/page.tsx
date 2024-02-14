@@ -23,18 +23,58 @@ export default function Page() {
         <div className="grid gap-4">
           <Card>
             <CardHeader>
-              <CardTitle>Button</CardTitle>
+              <CardTitle className="font-[Poppins] text-3xl">Buttons</CardTitle>
               <CardDescription>
                 A button component. Clicking the button triggers an action.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-2">
-              <Button>Click me</Button>
+            <CardContent className="flex gap-2">
+              <>
+                <div className="flex flex-col gap-5">
+                  <h1 className="font-[Poppins] text-3xl">Default</h1>
+                  <Button>Click me</Button>
+                  <h1 className="font-[Poppins] text-3xl">Secondary</h1>
+                  <Button variant="secondary">Click me</Button>
+                  <h1 className="font-[Poppins] text-3xl">Outline</h1>
+                  <Button variant="outline">Click me</Button>
+                </div>
+                <div className="flex flex-col gap-5">
+                  <h1 className="font-[Poppins] text-3xl">Disabled</h1>
+                  <Button variant="disabled">Click me</Button>
+                  <h1 className="font-[Poppins] text-3xl">Transparent</h1>
+                  <Button variant="transparent">Click me</Button>
+                  <h1 className="font-[Poppins] text-3xl">Subtle</h1>
+                  <Button variant="subtle">Click me</Button>
+                </div>
+              </>
+              <>
+                <div className="flex flex-col gap-5">
+                  <h1 className="font-[Poppins] text-3xl">Default</h1>
+                  <Button toggle />
+                  <h1 className="font-[Poppins] text-3xl">Secondary</h1>
+                  <Button toggle variant="secondary">
+                    Click me
+                  </Button>
+                  <h1 className="font-[Poppins] text-3xl">Outline</h1>
+                  <Button toggle variant="outline" />
+                </div>
+                <div className="flex flex-col gap-5">
+                  <h1 className="font-[Poppins] text-3xl">Disabled</h1>
+                  <Button toggle variant="disabled" />
+                  <h1 className="font-[Poppins] text-3xl">Transparent</h1>
+                  <Button toggle variant="transparent">
+                    a
+                  </Button>
+
+                  <h1 className="font-[Poppins] text-3xl">Subtle</h1>
+                  <Button toggle children={"aaaa"} variant="subtle" />
+                </div>
+              </>
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle className="font-[Poppins] text-3xl">Input</CardTitle>
+              <CardTitle className="font-[Poppins] text-3xl">Inputs</CardTitle>
               {/*<CardDescription>*/}
               {/*  An input component. Enter text into the input.*/}
               {/*</CardDescription>*/}

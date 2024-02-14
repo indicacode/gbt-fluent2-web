@@ -2247,7 +2247,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
+"@types/prop-types@npm:*, @types/prop-types@npm:^15":
   version: 15.7.11
   resolution: "@types/prop-types@npm:15.7.11"
   checksum: 10c0/e53423cf9d510515ef8b47ff42f4f1b65a7b7b37c8704e2dbfcb9a60defe0c0e1f3cb1acfdeb466bad44ca938d7c79bffdd51b48ffb659df2432169d0b27a132
@@ -3743,6 +3743,7 @@ __metadata:
     "@radix-ui/react-toggle-group": "npm:^1.0.4"
     "@radix-ui/react-tooltip": "npm:^1.0.7"
     "@types/node": "npm:^20.11.16"
+    "@types/prop-types": "npm:^15"
     "@types/react": "npm:^18.2.51"
     "@types/react-dom": "npm:^18.2.18"
     "@typescript-eslint/parser": "npm:^6.21.0"
@@ -3764,6 +3765,7 @@ __metadata:
     postcss: "npm:^8.4.35"
     prettier: "npm:^3.2.5"
     prettier-plugin-tailwindcss: "npm:^0.5.11"
+    prop-types: "npm:^15.8.1"
     react: "npm:^18"
     react-day-picker: "npm:^8.10.0"
     react-dom: "npm:^18.2.0"
