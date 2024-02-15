@@ -9,22 +9,22 @@ export interface ButtonProps
 }
 
 const buttonVariants = tv({
-  base: "flex cursor-pointer items-center justify-center rounded-sm px-4 py-2 text-lg font-medium before:rounded-full focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-slate-300",
+  base: "flex cursor-pointer items-center justify-center rounded-[4px] px-4 py-2 text-lg font-medium disabled:pointer-events-none disabled:opacity-50",
   variants: {
     variant: {
       default:
-        "text-whitesmoke active:gray-200 duration-400 bg-brand-primary hover:bg-[#115EA3] active:border-brandColor-secondary active:bg-[#0C3B5E]",
-      outline:
-        "duration-400 duration-400 hover:bg-brand-default border-brand-primary hover:bg-brand-secondary active:border-brand-secondary active:bg-brand-secondary border-2 text-white shadow-sm  checked:bg-[#0F548C]",
+        "dark:text-whitesmoke active:gray-200 duration-400 bg-brand-primary text-white hover:bg-[#115EA3] active:border-brandColor-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white",
       secondary:
-        "duration-400 bg-gray-200 text-black hover:bg-gray-300 active:bg-gray-400",
-      disabled: "bg-gray-600 text-gray-400",
-      transparent: "bg-none hover:text-slate-300",
+        "duration-400 bg-gray-200 text-black before:border-black hover:bg-gray-300 active:bg-gray-400 disabled:bg-[#F0F0F0] data-[selected=true]:before:bg-black",
+      outline:
+        "duration-400 duration-400 hover:bg-brand-default border-brand-primary border-2 border-slate-300 shadow-sm before:border-black checked:bg-[#0F548C] hover:bg-[#F5F5F5] active:bg-[#E0E0E0] data-[selected=true]:bg-[#EBEBEB] data-[selected=true]:before:bg-black dark:text-white",
+      transparent:
+        "data-[selected=true]:before:bg-brand-primary active:before:bg-brand-primary hover:before:bg-brand-primary hover:text-brand-primary data-[selected=true]:text-brand-primary bg-transparent hover:before:border-0",
       subtle:
-        "bg-none hover:bg-slate-400 hover:text-slate-100 active:bg-slate-500",
+        "data-[selected=true]:before:bg-brand-primary active:before:bg-brand-primary hover:before:bg-brand-primary bg-transparent before:border-black hover:bg-[#F5F5F5] hover:before:border-0 data-[selected=true]:before:border-slate-300 dark:before:border-slate-300",
     },
     toggle: {
-      true: "before:border-2 before:p-2 before:content-[''] data-[selected=true]:before:bg-red-400",
+      true: "aspect-square w-fit before:rounded-full before:border-2 before:p-2 before:content-['']",
     },
     size: {
       default: "h-9 py-2",
@@ -58,17 +58,16 @@ function actualButton(
   return (
     <button
       data-selected={"false"}
-      data-type={toggle}
-      onClick={({ currentTarget: target }) => {
-        target.dataset.type === "true" &&
-          (target.dataset.selected =
-            target.dataset.selected === "false" ? "true" : "false"),
-          console.log(target.dataset.selected)
-      }}
+      data-toggle={toggle}
+      onClick={({ currentTarget: target }) =>
+        target.dataset.toggle === "true" &&
+        (target.dataset.selected =
+          target.dataset.selected === "false" ? "true" : "false")
+      }
       className={buttonVariants({
         variant,
-        size,
         toggle,
+        size,
       })}
       {...props}
     >
