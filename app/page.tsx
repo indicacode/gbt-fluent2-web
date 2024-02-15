@@ -16,12 +16,14 @@ export default function Page() {
   const [status, setStatus] = useState<
     "neutral" | "success" | "fail" | "warning"
   >("neutral")
+  const states = ["neutral", "success", "fail", "warning"]
+
   const [iconOnly, setIconOnly] = useState(false)
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center dark:bg-[#09090B]">
-      <main className="w-2/3 flex-1 p-6 md:p-12">
+    <div className="flex min-h-screen min-w-full flex-col items-center justify-center bg-slate-100 dark:bg-stone-950">
+      <main className="min-h-full w-2/3 flex-1 p-6 md:p-12">
         <div className="grid gap-4">
-          <Card>
+          <Card className="bg-stone-50 dark:bg-blue-900">
             <CardHeader>
               <CardTitle className="flex w-full justify-between font-[Poppins] text-3xl">
                 Buttons
@@ -39,8 +41,8 @@ export default function Page() {
                   <Button>Primary</Button>
                   <Button variant="secondary">Secondary</Button>
                   <Button variant="outline">Outline</Button>
-                  <Button variant="transparent">Transparent</Button>
                   <Button variant="subtle">Subtle</Button>
+                  <Button variant="transparent">Transparent</Button>
                 </div>
               </div>
               <div className="flex w-fit flex-col gap-1">
@@ -51,8 +53,8 @@ export default function Page() {
                   <Button toggle />
                   <Button toggle variant="secondary" />
                   <Button toggle variant="outline" />
-                  <Button toggle variant="transparent" />
                   <Button toggle variant="subtle" />
+                  <Button toggle variant="transparent" />
                 </div>
               </div>
 
@@ -68,17 +70,17 @@ export default function Page() {
                   <Button disabled variant="outline">
                     Outline
                   </Button>
-                  <Button disabled variant="transparent">
-                    Transparent
-                  </Button>
                   <Button disabled variant="subtle">
                     Subtle
+                  </Button>
+                  <Button disabled variant="transparent">
+                    Transparent
                   </Button>
                 </div>
               </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-stone-50 dark:bg-blue-900">
             <CardHeader>
               <CardTitle className="font-[Poppins] text-3xl">Inputs</CardTitle>
               {/*<CardDescription>*/}
@@ -98,19 +100,13 @@ export default function Page() {
                   />
                   {/*Do not ever do something like this. Its this way just to test the input*/}
                   <Button
-                    onClick={() =>
-                      setStatus((prev) =>
-                        prev === "neutral"
-                          ? "success"
-                          : prev === "success"
-                            ? "fail"
-                            : prev === "fail"
-                              ? "warning"
-                              : prev === "warning"
-                                ? "neutral"
-                                : "neutral"
-                      )
-                    }
+                    onClick={() => {
+                      setStatus((prev) => {
+                        const currentIndex = states.indexOf(prev)
+                        const nextIndex = (currentIndex + 1) % states.length
+                        return states[nextIndex]
+                      })
+                    }}
                   >
                     Status Toggle
                   </Button>
@@ -186,7 +182,7 @@ export default function Page() {
               </div>
             </CardContent>
           </Card>
-          {/*<Card>*/}
+          {/*<Card className="dark:bg-blue-900">*/}
           {/*  <CardHeader>*/}
           {/*    <CardTitle>Dropdown</CardTitle>*/}
           {/*    <CardDescription>*/}
