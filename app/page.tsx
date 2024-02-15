@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 
+import { Slider } from "@/components/done/slider"
 import {
   Card,
   CardContent,
@@ -180,6 +181,22 @@ export default function Page() {
                   </div>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+          <Card className="bg-stone-50 dark:bg-blue-900">
+            <CardHeader>
+              <h1>TEST PLACE</h1>
+            </CardHeader>
+            <CardContent>
+              {/*<Switch>Switch</Switch>*/}
+              {/*<Tabs>Tabs</Tabs>*/}
+              <Slider size="md" step={1} max={1000} />
+              {/*<Accordion type="multiple">acordion</Accordion>*/}
+              {/*<Avatar>Avatar</Avatar>*/}
+              {/*<Textarea>Textarea</Textarea>*/}
+              {/*<TooltipProvider>*/}
+              {/*  <Tooltip>Tooltip</Tooltip>*/}
+              {/*</TooltipProvider>*/}
             </CardContent>
           </Card>
           {/*<Card className="dark:bg-blue-900">*/}

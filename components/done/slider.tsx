@@ -13,13 +13,13 @@ const sliderVariants = tv({
     track:
       "relative w-full grow overflow-hidden rounded-full dark:bg-slate-50/20",
     thumb:
-      "block rounded-full border-4 border-brandColor-dark border-slate-900/50 bg-brandColor-primary shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:border-brandColor-secondary dark:bg-brandColor-light dark:focus-visible:ring-slate-100",
+      "before:bg-brand-primary relative block rounded-full border-2 border-brandColor-dark border-slate-900/50 bg-brandColor-primary bg-white shadow transition-colors before:absolute before:left-1/2 before:top-1/2 before:aspect-square before:w-2 before:rounded-full before:content-[''] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:border-brandColor-secondary dark:bg-brandColor-light dark:focus-visible:ring-slate-100",
   },
   variants: {
     size: {
-      sm: { root: "", track: "h-1", rangel: "", thumb: "h-4 w-4" },
+      sm: { root: "", track: "h-1", range: "", thumb: "h-4 w-4" },
 
-      md: { root: "", track: "h-2", rangel: "", thumb: "h-5 w-5" },
+      md: { root: "", track: "h-2", range: "", thumb: "h-5 w-5" },
     },
   },
 })

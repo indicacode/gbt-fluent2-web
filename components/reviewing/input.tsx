@@ -74,6 +74,9 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
       iconOnly = false,
       ...rest
     } = props
+
+    const { base, root, label } = inputVariants()
+
     const [focus, setFocus] = useState(false)
     const [active, setActive] = useState(false)
     const bottomBar = iconOnly || state === "neutral"
@@ -97,7 +100,6 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     }, [])
     //-------------------------------------------------------------//
 
-    const { base, root, label } = inputVariants()
     return (
       <div className={root()}>
         <div

@@ -39,7 +39,7 @@ const buttonVariants = tv({
   },
 })
 
-function actualButton(
+function Button(
   {
     toggle = false,
     icon = false,
@@ -57,6 +57,7 @@ function actualButton(
   )
   return (
     <button
+      ref={ref}
       data-selected={"false"}
       data-toggle={toggle}
       onClick={({ currentTarget: target }) =>
@@ -77,8 +78,8 @@ function actualButton(
   )
 }
 
-actualButton.displayName = "Button"
+Button.displayName = "Button"
 
-const Button = React.forwardRef(actualButton)
+const ForwardedButton = React.forwardRef(Button)
 
-export { Button }
+export { ForwardedButton as Button }
