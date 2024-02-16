@@ -8,18 +8,17 @@ import { tv } from "tailwind-variants"
 const sliderVariants = tv({
   slots: {
     root: "relative flex w-full touch-none select-none items-center",
-    range:
-      "absolute h-full bg-brandColor-secondary dark:bg-brandColor-secondary",
+    range: "absolute h-full bg-brand-primary dark:bg-brand-primary",
     track:
       "relative w-full grow overflow-hidden rounded-full dark:bg-slate-50/20",
     thumb:
-      "before:bg-brand-primary relative block rounded-full border-2 border-brandColor-dark border-slate-900/50 bg-brandColor-primary bg-white shadow transition-colors before:absolute before:left-1/2 before:top-1/2 before:aspect-square before:w-2 before:rounded-full before:content-[''] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:border-brandColor-secondary dark:bg-brandColor-light dark:focus-visible:ring-slate-100",
+      "relative block rounded-full border-2 border-[1.5px] border-slate-900/50 bg-white shadow transition-colors before:absolute before:left-1/2 before:top-1/2 before:aspect-square before:translate-x-[-50%] before:translate-y-[-50%] before:rounded-full before:bg-brand-primary before:content-[''] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:border-slate-400 dark:bg-white dark:focus-visible:ring-transparent",
   },
   variants: {
     size: {
-      sm: { root: "", track: "h-1", range: "", thumb: "h-4 w-4" },
+      sm: { root: "", track: "h-1", range: "", thumb: "h-4 w-4 before:w-2.5" },
 
-      md: { root: "", track: "h-2", range: "", thumb: "h-5 w-5" },
+      md: { root: "", track: "h-2", range: "", thumb: "h-5 w-5 before:w-3" },
     },
   },
 })
