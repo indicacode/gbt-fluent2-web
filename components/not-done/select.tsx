@@ -19,14 +19,14 @@ const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger
         ref={ref}
         className={cn(
-            "flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-white placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 dark:focus:ring-slate-300",
+            "flex h-9 w-full items-center justify-between active:border-b-2 hover:border-b-2 dark:text-white hover:border-b-brand-primary focus:border-b-brand-primary  rounded-md border select-none border-slate-200 bg-transparent px-3 py-2 text-sm shadow-sm  placeholder:text-slate-500   disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-slate-800 dark:ring-offset-slate-950 dark:placeholder:text-slate-400 ",
             className
         )}
         {...props}
     >
         {children}
         <SelectPrimitive.Icon asChild>
-            <CaretSortIcon className="h-4 w-4 opacity-50"/>
+            <ChevronDownIcon className="h-4 w-4 opacity-50"/>
         </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
 ))
@@ -118,17 +118,17 @@ const SelectItem = React.forwardRef<
     <SelectPrimitive.Item
         ref={ref}
         className={cn(
-            "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
+            "relative flex w-full cursor-default  select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
             className
         )}
         {...props}
     >
-    <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute -left-1 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <CheckIcon className="h-4 w-4"/>
+        <CheckIcon className="h-4  w-4"/>
       </SelectPrimitive.ItemIndicator>
     </span>
-        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+        <SelectPrimitive.ItemText className={"pl-4"}>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
 ))
 SelectItem.displayName = SelectPrimitive.Item.displayName

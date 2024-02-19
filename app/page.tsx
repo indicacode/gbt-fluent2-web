@@ -12,6 +12,12 @@ import {
 } from "@/components/not-done/card"
 import { Button } from "@/components/reviewing/button"
 import { Input } from "@/components/reviewing/input"
+import { Avatar } from "@/components/done/avatar"
+import { Textarea } from "@/components/done/textarea"
+import {Tooltip, TooltipProvider } from "@/components/done/tooltip"
+import { Accordion } from "@/components/done/accordion"
+import { Tabs } from "@/components/done/tabs"
+import {Switch} from "@radix-ui/react-switch";
 
 export default function Page() {
   const [status, setStatus] = useState<
@@ -188,15 +194,15 @@ export default function Page() {
               <h1>TEST PLACE</h1>
             </CardHeader>
             <CardContent>
-              {/*<Switch>Switch</Switch>*/}
-              {/*<Tabs>Tabs</Tabs>*/}
+              <Switch>Switch</Switch>
+              <Tabs>Tabs</Tabs>
               <Slider size="md" step={1} max={1000} />
-              {/*<Accordion type="multiple">acordion</Accordion>*/}
-              {/*<Avatar>Avatar</Avatar>*/}
-              {/*<Textarea>Textarea</Textarea>*/}
-              {/*<TooltipProvider>*/}
-              {/*  <Tooltip>Tooltip</Tooltip>*/}
-              {/*</TooltipProvider>*/}
+              <Accordion type="multiple">acordion</Accordion>
+              <Avatar>Avatar</Avatar>
+              <Textarea>Textarea</Textarea>
+              <TooltipProvider>
+                <Tooltip>Tooltip</Tooltip>
+              </TooltipProvider>
             </CardContent>
           </Card>
           {/*<Card className="dark:bg-blue-900">*/}

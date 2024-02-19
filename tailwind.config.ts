@@ -18,6 +18,7 @@ const config = withTV({
           secondary: "#008bb1",
           light: "#33b3d6",
           dark: "#005f79",
+          disabled: "#a3a3a3",
         },
       },
       keyframes: {
