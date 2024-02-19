@@ -149,7 +149,7 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
           />
         </div>
         <IconComponent iconOnly={iconOnly} state={state}>
-          {helperText}
+          {helperText ?? <span className="select-none">‎</span>}
         </IconComponent>
       </div>
     )

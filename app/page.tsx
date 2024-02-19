@@ -2,15 +2,8 @@
 
 import React, { useState } from "react"
 
-import { Accordion } from "@/components/done/accordion"
-import { Avatar } from "@/components/done/avatar"
 import { Button } from "@/components/done/button"
 import { Input } from "@/components/done/input"
-import { Slider } from "@/components/done/slider"
-import { Switch } from "@/components/done/switch"
-import { Tabs } from "@/components/done/tabs"
-import { Textarea } from "@/components/done/textarea"
-import { Tooltip, TooltipProvider } from "@/components/done/tooltip"
 import {
   Card,
   CardContent,
@@ -18,6 +11,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/not-done/card"
+import Combobox from "@/components/not-done/Combobox"
+
+const frameworks = [
+  {
+    value: "next.js",
+    label: "Next.js",
+  },
+  {
+    value: "sveltekit",
+    label: "SvelteKit",
+  },
+  {
+    value: "nuxt.js",
+    label: "Nuxt.js",
+  },
+  {
+    value: "remix",
+    label: "Remix",
+  },
+  {
+    value: "astro",
+    label: "Astro",
+  },
+]
 
 export default function Page() {
   const [status, setStatus] = useState<
@@ -28,8 +45,8 @@ export default function Page() {
   const [iconOnly, setIconOnly] = useState(false)
   return (
     <div className="flex min-h-screen min-w-full flex-col items-center justify-center bg-slate-100 dark:bg-stone-950">
-      <main className="min-h-full w-2/3 flex-1 p-6 md:p-12">
-        <div className="grid gap-4">
+      <main className="min-h-full flex-1 p-6 md:p-12">
+        <div className="flex w-full flex-col gap-4">
           <Card className="bg-stone-50 dark:bg-blue-900">
             <CardHeader>
               <CardTitle className="flex w-full justify-between font-[Poppins] text-3xl">
@@ -39,7 +56,7 @@ export default function Page() {
                 A button component. Clicking the button triggers an action.
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex gap-12">
+            <CardContent className="flex flex-col items-center justify-center gap-12 lg:flex-row">
               <div className="flex w-full flex-col justify-around gap-1">
                 <h1 className="self-center font-[Poppins] text-3xl font-semibold">
                   Variants
@@ -90,40 +107,37 @@ export default function Page() {
           <Card className="bg-stone-50 dark:bg-blue-900">
             <CardHeader>
               <CardTitle className="font-[Poppins] text-3xl">Inputs</CardTitle>
-              {/*<CardDescription>*/}
-              {/*  An input component. Enter text into the input.*/}
-              {/*</CardDescription>*/}
+              <CardDescription>
+                An input component. Enter text into the input.
+              </CardDescription>
             </CardHeader>
-            <CardContent className="flex h-full w-full flex-col space-y-2">
-              <div className=" flex h-fit w-full flex-col">
-                <div className="flex items-center gap-2">
-                  <Input
-                    state={status}
-                    iconOnly={iconOnly}
-                    className="min-w-full"
-                    labelText="Im a All in One Input"
-                    placeholder="You read me right"
-                    helperText="All in One Input"
-                  />
-                  {/*Do not ever do something like this. Its this way just to test the input*/}
-                  <Button
-                    onClick={() => {
-                      setStatus((prev) => {
-                        const currentIndex = states.indexOf(prev)
-                        const nextIndex = (currentIndex + 1) % states.length
-                        return states[nextIndex]
-                      })
-                    }}
-                  >
-                    Status Toggle
-                  </Button>
-                  {/*Do not ever do something like this. Its this way just to test the input*/}
-                  <Button onClick={() => setIconOnly(!iconOnly)}>
-                    Only Icon Toggle
-                  </Button>
-                </div>
+            <CardContent className="flex h-full w-full flex-col gap-8">
+              <div className="flex h-fit flex-col items-center justify-center gap-2 lg:flex-row">
+                <Input
+                  state={status}
+                  iconOnly={iconOnly}
+                  className="min-w-full"
+                  labelText="Im a All in One Input"
+                  placeholder="Just toggle the states"
+                />
+                {/*Do not ever do something like this. Its this way just to test the input*/}
+                <Button
+                  onClick={() => {
+                    setStatus((prev) => {
+                      const currentIndex = states.indexOf(prev)
+                      const nextIndex = (currentIndex + 1) % states.length
+                      return states[nextIndex]
+                    })
+                  }}
+                >
+                  Status Toggle
+                </Button>
+                {/*Do not ever do something like this. Its this way just to test the input*/}
+                <Button onClick={() => setIconOnly(!iconOnly)}>
+                  Only Icon Toggle
+                </Button>
               </div>
-              <div className="flex h-full w-full gap-10">
+              <div className="flex h-full w-full flex-col gap-10 lg:flex-row">
                 <div className="flex h-full w-full flex-col">
                   <h1 className="self-center font-[Poppins] text-3xl font-semibold">
                     Variants
@@ -194,15 +208,14 @@ export default function Page() {
               <h1>TEST PLACE</h1>
             </CardHeader>
             <CardContent>
-              <Switch>aaaaaaaa</Switch>
-              <Tabs>Tabs</Tabs>
-              <Slider size="sm" step={1} max={1000} />
-              <Accordion type="multiple">acordion</Accordion>
-              <Avatar>Avatar</Avatar>
-              <Textarea>Textarea</Textarea>
-              <TooltipProvider>
-                <Tooltip>Tooltip</Tooltip>
-              </TooltipProvider>
+              {/*<Switch>aaaaaaaa</Switch>*/}
+              {/*<Tabs>Tabs</Tabs>*/}
+              {/*<Accordion type="multiple">acordion</Accordion>*/}
+              {/*<Avatar>Avatar</Avatar>*/}
+              {/*<TooltipProvider>*/}
+              {/*  <Tooltip>Tooltip</Tooltip>*/}
+              {/*</TooltipProvider>*/}
+              <Combobox input={frameworks} />
             </CardContent>
           </Card>
           {/*<Card className="dark:bg-blue-900">*/}
