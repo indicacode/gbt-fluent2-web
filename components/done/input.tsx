@@ -16,8 +16,10 @@ const icons = {
 const inputVariants = tv({
   slots: {
     root: "flex flex-col",
+    decoration: "aki",
     label: "py-1 text-black dark:text-white",
-    base: "flex w-full rounded-md bg-white px-4 py-2 text-sm shadow-sm outline-0",
+    input:
+      "flex w-full rounded-md bg-white px-4 py-2 text-sm shadow-sm outline-0",
   },
   variants: {
     variant: {
@@ -28,21 +30,39 @@ const inputVariants = tv({
     },
     state: {
       neutral: {
-        base: "",
+        input: "",
       },
       success: {
-        base: "border-green-500/80",
+        input: "border-green-500/80",
       },
       fail: {
-        base: "border-red-500/80",
+        input: "border-red-500/80",
       },
       warning: {
-        base: "border-yellow-500/80",
+        input: "border-yellow-500/80",
       },
     },
     iconOnly: {
       true: {
-        base: "border-black/80 dark:border-white/80",
+        input: "border-black/80 dark:border-white/80",
+      },
+    },
+    bottomBar: {
+      false: "",
+      true: {
+        decoration:
+          "relative z-10 h-fit overflow-hidden rounded-md transition-all before:absolute before:bottom-0 before:left-[50%] before:h-full before:max-h-[0px] before:w-full before:max-w-[0px] before:translate-x-[-50%] before:scale-y-[1] before:bg-[#106CBD] before:text-white before:transition-all before:content-['']",
+      },
+    },
+    focus: {
+      true: {
+        decoration: "before:max-h-[3px] before:max-w-full before:scale-y-[1.0]",
+      },
+    },
+    active: {
+      true: {
+        decoration:
+          "before:max-h-[3px] before:max-w-full before:scale-y-[1.0] before:bg-gray-500",
       },
     },
   },
@@ -75,7 +95,7 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
       ...rest
     } = props
 
-    const { base, root, label } = inputVariants()
+    const { input, root, decoration, label } = inputVariants()
 
     const [focus, setFocus] = useState(false)
     const [active, setActive] = useState(false)
@@ -100,22 +120,25 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     }, [])
     //-------------------------------------------------------------//
 
+    const uid =
+      "inputUID:" +
+      Date.now().toString(36) +
+      Math.random().toString(36).substr(2)
+
     return (
       <div className={root()}>
-        <div
-          className={`
-          ${bottomBar && "pressed relative z-10 h-fit overflow-hidden rounded-md transition-all before:absolute before:bottom-0 before:left-[50%] before:h-full before:max-h-[0px] before:w-full before:max-w-[0px] before:translate-x-[-50%] before:scale-y-[1] before:bg-[#106CBD] before:text-white before:transition-all before:content-['']"}
-          ${focus && "before:max-h-[3px] before:max-w-full before:scale-y-[1.0]"}
-          ${active && "before:max-h-[3px] before:max-w-full before:scale-y-[1.0] before:bg-gray-500"}`}
-        >
-          <label className={label()}>{labelText}</label>
+        <div className={decoration({ bottomBar, focus, active })}>
+          <label htmlFor={uid} className={label()}>
+            {labelText}
+          </label>
           <input
+            id={uid}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             type={type}
-            className={base({
+            className={input({
               className,
               iconOnly: iconOnly,
               state,
@@ -126,7 +149,7 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
           />
         </div>
         <IconComponent iconOnly={iconOnly} state={state}>
-          {helperText}
+          {helperText ?? <span className="select-none">‎</span>}
         </IconComponent>
       </div>
     )
