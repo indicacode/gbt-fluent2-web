@@ -12,6 +12,15 @@ import {
   CardTitle,
 } from "@/components/not-done/card"
 import Combobox from "@/components/not-done/Combobox"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue
+} from "@/components/not-done/select";
 
 const frameworks = [
   {
@@ -403,6 +412,30 @@ export default function Page() {
               </Tabs>*/}
           {/*  </CardContent>*/}
           {/*</Card>*/}
+          <Card>
+            <CardHeader>
+              <CardTitle>Select Component</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Select >
+                <SelectTrigger className={"w-40"}>
+                  <SelectValue placeholder={"Select something"}></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup className={""}>
+                    <SelectLabel>
+                      Fruits
+                    </SelectLabel>
+                    <SelectItem className={"pl-4"} value={"apple"} >Apple</SelectItem>
+                    <SelectItem value={"banana"} >Banana</SelectItem>
+                    <SelectItem value={"blueberry"} >Blueberry</SelectItem>
+                    <SelectItem value={"grapes"} >Grapes</SelectItem>
+
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </CardContent>
+          </Card>
         </div>
       </main>
     </div>
