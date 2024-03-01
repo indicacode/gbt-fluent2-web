@@ -21,6 +21,17 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/reviewing/select";
+import {Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DrawerTrigger} from "@/components/reviewing/drawer";
+import {motion} from "framer-motion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from "@/app/test-place/bruno/dialog";
+import {DialogBody} from "next/dist/client/components/react-dev-overlay/internal/components/Dialog";
 
 const frameworks = [
   {
@@ -412,11 +423,12 @@ export default function Page() {
               </Tabs>*/}
           {/*  </CardContent>*/}
           {/*</Card>*/}
-          <Card>
+          <Card className={"dark:bg-blue-900"}>
             <CardHeader>
-              <CardTitle>Select Component</CardTitle>
+              <CardTitle>Selection (Select)</CardTitle>
+              <CardDescription>A component for a small list to select something or some state!</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className={""}>
               <Select >
                 <SelectTrigger className={"w-40"}>
                   <SelectValue placeholder={"Select something"}></SelectValue>
@@ -426,7 +438,7 @@ export default function Page() {
                     <SelectLabel>
                       Fruits
                     </SelectLabel>
-                    <SelectItem className={"pl-4"} value={"apple"} >Apple</SelectItem>
+                    <SelectItem className={""} value={"apple"} >Apple</SelectItem>
                     <SelectItem value={"banana"} >Banana</SelectItem>
                     <SelectItem value={"blueberry"} >Blueberry</SelectItem>
                     <SelectItem value={"grapes"} >Grapes</SelectItem>
@@ -434,6 +446,80 @@ export default function Page() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
+            </CardContent>
+          </Card>
+          <Card className={" dark:bg-blue-900  "}>
+            <CardHeader>
+              <CardTitle>Drawer</CardTitle>
+              <CardDescription>A component for a drawer to pop out of the bottom of the screen for content to be displayed</CardDescription>
+            </CardHeader>
+            <CardContent className={""}>
+              <Drawer>
+                <DrawerTrigger>
+                  <Button>Open drawer</Button>
+                </DrawerTrigger>
+
+                <DrawerContent>
+                  <div className={"w-screen flex flex-col items-center h-[50vh]"}>
+
+
+                    <DrawerHeader className={"flex flex-col items-center "}>
+
+                        Welcome to GBT-PMS!
+                    </DrawerHeader>
+                      <DrawerDescription className={"text-gray-200"}>Grbtec`s Property Management System, is soon to
+                        come! for now, try and track this little ball for as long as you can!</DrawerDescription>
+
+                    <div>
+                      <motion.div animate={{rotate: 360}}
+                                  transition={{duration: 1, repeat: Infinity,repeatType:"reverse", repeatDelay: 0.7}}
+                                  className={"h-20 rounded-[49%] items-center bg-gray-300 w-20"}>
+                        <motion.div animate={{rotate: 360}}
+                                    transition={{duration: 1.6, repeat: Infinity,repeatType:"reverse", repeatDelay: 0.2}}
+                                    className={"h-10 mr-6 rounded-[47%] items-center bg-green-600 w-10"}>
+                          <motion.div animate={{rotate: 360}}
+                                      transition={{duration: 1.6, repeat: Infinity,repeatType:"reverse", repeatDelay: 0.4}}
+                                      className={"h-20  hover:bg-red-400 rounded-[46%] items-center bg-gray-400 w-20"}>
+
+                          </motion.div>
+                        </motion.div>
+                      </motion.div>
+                    </div>
+
+
+                  </div>
+                </DrawerContent>
+              </Drawer>
+            </CardContent>
+          </Card>
+          <Card className={"dark:bg-blue-900"}>
+            <CardHeader>
+              <CardTitle>Dialog</CardTitle>
+              <CardDescription>A dialog is a supplemental surface that can provide helpful interactions or require someone to take an action before they can continue their task, like confirming a deletion.</CardDescription>
+            </CardHeader>
+            <CardContent>
+            <Dialog>
+              <DialogTrigger>
+                <Button variant={"default"} >Open Dialog</Button>
+              </DialogTrigger>
+              <DialogBody>
+
+                <DialogContent className={""}>
+                  <DialogHeader>
+                    <DialogTitle>This is a dialog.</DialogTitle>
+                    <DialogDescription>
+                      This is a dialog component, made to convey a message that is important to users!
+                    </DialogDescription>
+                  </DialogHeader>
+                  <h2>Dialogs are often interruptions, so use them for important actions. If you need to give someone an update on an action they just took but that they don't need to act on, try a toast.</h2>
+                  <div className={"flex justify-end flex-row"}>
+                    <Button className={"mr-2"}   size={"default"} variant={"secondary"}>Deny</Button>
+                    <Button className={""} variant={"default"}>Agree</Button>
+                  </div>
+
+                </DialogContent>
+              </DialogBody>
+            </Dialog>
             </CardContent>
           </Card>
         </div>

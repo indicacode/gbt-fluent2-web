@@ -17,7 +17,7 @@ const buttonVariants = tv({
       secondary:
         "bg-gray-200 text-black before:border-black hover:bg-gray-300 active:bg-gray-400 disabled:bg-[#F0F0F0] data-[selected=true]:before:bg-black",
       outline:
-        "border-2 border-brand-primary border-slate-300 shadow-sm before:border-black hover:bg-[#F5F5F5] active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black dark:text-white dark:before:border-white dark:hover:bg-white/10",
+        "border-2 border-brand-primary  shadow-sm before:border-black hover:bg-[#F5F5F5] active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black dark:text-white dark:before:border-white dark:hover:bg-white/10",
       transparent:
         "bg-transparent hover:text-brand-primary hover:before:border-0 hover:before:bg-brand-primary active:before:bg-brand-primary data-[selected=true]:text-brand-primary data-[selected=true]:before:bg-brand-primary dark:data-[selected=true]:before:border-0",
       subtle:
@@ -66,6 +66,7 @@ function Button(
           target.dataset.selected === "false" ? "true" : "false")
       }
       className={buttonVariants({
+          className,
         variant,
         toggle,
         size,
