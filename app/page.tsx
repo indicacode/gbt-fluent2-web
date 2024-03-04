@@ -64,70 +64,74 @@ export default function Page() {
 
   const [iconOnly, setIconOnly] = useState(false)
   return (
-    <div className="flex min-h-screen min-w-full flex-col items-center justify-center bg-slate-100 dark:bg-stone-950">
-      <main className="min-h-full flex-1 p-6 md:p-12">
+      <div className={"flex overflow-x-hidden flex-row"}>
+        <div className={"min-w-[16vw] min-h-screen bg-red-200"}>
+
+        </div>
+    <div className="flex min-h-screen min-w-full flex-col  bg-slate-100 dark:bg-stone-950">
+      <main className="min-h-full flex-1 p-6 ">
         <div className="flex w-full flex-col gap-4">
-          <Card className="bg-stone-50 dark:bg-blue-900">
+          <Card id={"buttons"} className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
-              <CardTitle className="flex w-full justify-between font-[Poppins] text-3xl">
+              <CardTitle className="flex w-full justify-between font-[Poppins] text-4xl">
                 Buttons
               </CardTitle>
-              <CardDescription className="flex w-full justify-between">
+              <CardDescription className="flex w-full text-xl justify-between">
                 A button component. Clicking the button triggers an action.
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col items-center justify-center gap-12 lg:flex-row">
-              <div className="flex w-full flex-col justify-around gap-1">
-                <h1 className="self-center font-[Poppins] text-3xl font-semibold">
+            <CardContent className="flex w-full flex-col items-center  justify-between  lg:flex-row">
+              <div className="flex w-[40%] flex-col justify-around gap-5">
+                <h1 className=" font-[Poppins] text-2xl font-semibold">
                   Variants
                 </h1>
-                <div className="flex flex-col gap-5">
-                  <Button>Primary</Button>
-                  <Button variant="secondary">Secondary</Button>
-                  <Button variant="outline">Outline</Button>
-                  <Button variant="subtle">Subtle</Button>
-                  <Button variant="transparent">Transparent</Button>
+                <div id={"buttons"} className="flex flex-col gap-5">
+                  <Button className={"w-fit"}>Primary</Button>
+                  <Button className={"w-fit"} variant="secondary">Secondary</Button>
+                  <Button className={"w-fit"} variant="outline">Outline</Button>
+                  <Button className={"w-fit"} variant="subtle">Subtle</Button>
+                  <Button className={"w-fit"} variant="transparent">Transparent</Button>
                 </div>
               </div>
-              <div className="flex w-fit flex-col gap-1">
-                <h1 className="self-center font-[Poppins] text-3xl font-semibold">
+              <div className="flex w-full gap-5 flex-col ">
+                <h1 className="self-center font-[Poppins] text-2xl font-semibold">
                   Toggle
                 </h1>
                 <div className="flex flex-col items-center gap-5">
-                  <Button toggle />
-                  <Button toggle variant="secondary" />
-                  <Button toggle variant="outline" />
-                  <Button toggle variant="subtle" />
-                  <Button toggle variant="transparent" />
+                  <Button  className={"w-fit"} toggle />
+                  <Button className={"w-fit"} toggle variant="secondary" />
+                  <Button className={"w-fit"} toggle variant="outline" />
+                  <Button className={"w-fit"} toggle variant="subtle" />
+                  <Button className={"w-fit"} toggle variant="transparent" />
                 </div>
               </div>
 
-              <div className="flex w-full flex-col justify-around gap-1">
-                <h1 className="self-center font-[Poppins] text-3xl font-semibold">
+              <div className="flex  w-full flex-col justify-center gap-5">
+                <h1 className=" font-[Montserrat] text-2xl font-semibold">
                   Disabled
                 </h1>
                 <div className="flex flex-col gap-5">
-                  <Button disabled>Primary</Button>
-                  <Button disabled variant="secondary">
+                  <Button className={"w-fit"} disabled>Primary</Button>
+                  <Button className={"w-fit"} disabled variant="secondary">
                     Secondary
                   </Button>
-                  <Button disabled variant="outline">
+                  <Button className={"w-fit"} disabled variant="outline">
                     Outline
                   </Button>
-                  <Button disabled variant="subtle">
+                  <Button className={"w-fit"} disabled variant="subtle">
                     Subtle
                   </Button>
-                  <Button disabled variant="transparent">
+                  <Button className={"w-fit"} disabled variant="transparent">
                     Transparent
                   </Button>
                 </div>
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-stone-50 dark:bg-blue-900">
+          <Card id={"inputs"} className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
-              <CardTitle className="font-[Poppins] text-3xl">Inputs</CardTitle>
-              <CardDescription>
+              <CardTitle className="font-[Poppins] text-4xl">Inputs</CardTitle>
+              <CardDescription className={"text-xl"}>
                 An input component. Enter text into the input.
               </CardDescription>
             </CardHeader>
@@ -223,7 +227,7 @@ export default function Page() {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-stone-50 dark:bg-blue-900">
+          <Card className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <h1>TEST PLACE</h1>
             </CardHeader>
@@ -423,7 +427,7 @@ export default function Page() {
               </Tabs>*/}
           {/*  </CardContent>*/}
           {/*</Card>*/}
-          <Card className={"dark:bg-blue-900"}>
+          <Card id={"select"} className={" lg:w-[80vw] dark:bg-gray-800"}>
             <CardHeader>
               <CardTitle>Selection (Select)</CardTitle>
               <CardDescription>A component for a small list to select something or some state!</CardDescription>
@@ -448,7 +452,7 @@ export default function Page() {
               </Select>
             </CardContent>
           </Card>
-          <Card className={" dark:bg-blue-900  "}>
+          <Card id={"drawer"} className={" lg:w-[80vw] dark:bg-gray-800  "}>
             <CardHeader>
               <CardTitle>Drawer</CardTitle>
               <CardDescription>A component for a drawer to pop out of the bottom of the screen for content to be displayed</CardDescription>
@@ -456,7 +460,7 @@ export default function Page() {
             <CardContent className={""}>
               <Drawer>
                 <DrawerTrigger>
-                  <Button>Open drawer</Button>
+                  Open drawer
                 </DrawerTrigger>
 
                 <DrawerContent>
@@ -467,10 +471,10 @@ export default function Page() {
 
                         Welcome to GBT-PMS!
                     </DrawerHeader>
-                      <DrawerDescription className={"text-gray-200"}>Grbtec`s Property Management System, is soon to
+                      <DrawerDescription className={" text-slate-50"}>Grbtec`s Property Management System, is soon to
                         come! for now, try and track this little ball for as long as you can!</DrawerDescription>
 
-                    <div>
+                    <div className={"mt-4"}>
                       <motion.div animate={{rotate: 360}}
                                   transition={{duration: 1, repeat: Infinity,repeatType:"reverse", repeatDelay: 0.7}}
                                   className={"h-20 rounded-[49%] items-center bg-gray-300 w-20"}>
@@ -492,19 +496,19 @@ export default function Page() {
               </Drawer>
             </CardContent>
           </Card>
-          <Card className={"dark:bg-blue-900"}>
+          <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
             <CardHeader>
               <CardTitle>Dialog</CardTitle>
               <CardDescription>A dialog is a supplemental surface that can provide helpful interactions or require someone to take an action before they can continue their task, like confirming a deletion.</CardDescription>
             </CardHeader>
             <CardContent>
-            <Dialog>
+            <Dialog >
               <DialogTrigger>
-                <Button variant={"default"} >Open Dialog</Button>
+                 Dialog
               </DialogTrigger>
               <DialogBody>
 
-                <DialogContent className={""}>
+                <DialogContent className={"dark:bg-gray-800"}>
                   <DialogHeader>
                     <DialogTitle>This is a dialog.</DialogTitle>
                     <DialogDescription>
@@ -525,5 +529,6 @@ export default function Page() {
         </div>
       </main>
     </div>
+      </div>
   )
 }
