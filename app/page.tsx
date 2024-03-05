@@ -32,6 +32,22 @@ import {
   DialogTrigger
 } from "@/app/test-place/bruno/dialog";
 import {DialogBody} from "next/dist/client/components/react-dev-overlay/internal/components/Dialog";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/done/tabs";
+import {AiOutlineApple} from "react-icons/ai";
+import {
+  GiBanana,
+  GiCarrot,
+  GiChickenLeg,
+  GiGarlic,
+  GiMeat,
+  GiOrange,
+  GiPumpkin,
+  GiRoastChicken,
+  GiShinyApple
+} from "react-icons/gi";
+import {SiCucumber} from "react-icons/si";
+import {TbBrandCucumber} from "react-icons/tb";
+import {Salsa} from "next/dist/compiled/@next/font/dist/google";
 
 const frameworks = [
   {
@@ -64,8 +80,8 @@ export default function Page() {
 
   const [iconOnly, setIconOnly] = useState(false)
   return (
-      <div className={"flex overflow-x-hidden flex-row"}>
-        <div className={"min-w-[16vw] min-h-screen bg-red-200"}>
+      <div className={"flex overflow-x-hidden   flex-row"}>
+        <div className={"lg:min-w-[16vw] lg:min-h-screen bg-red-200"}>
 
         </div>
     <div className="flex min-h-screen min-w-full flex-col  bg-slate-100 dark:bg-stone-950">
@@ -73,16 +89,16 @@ export default function Page() {
         <div className="flex w-full flex-col gap-4">
           <Card id={"buttons"} className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
-              <CardTitle className="flex w-full justify-between font-[Poppins] text-4xl">
+              <CardTitle className="flex w-full justify-between  text-4xl">
                 Buttons
               </CardTitle>
               <CardDescription className="flex w-full text-xl justify-between">
                 A button component. Clicking the button triggers an action.
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex w-full flex-col items-center  justify-between  lg:flex-row">
+            <CardContent className="flex w-full flex-col items-center mt-8 lg:mt-0  justify-between  lg:flex-row">
               <div className="flex w-[40%] flex-col justify-around gap-5">
-                <h1 className=" font-[Poppins] text-2xl font-semibold">
+                <h1 className="  text-2xl font-semibold">
                   Variants
                 </h1>
                 <div id={"buttons"} className="flex flex-col gap-5">
@@ -93,8 +109,8 @@ export default function Page() {
                   <Button className={"w-fit"} variant="transparent">Transparent</Button>
                 </div>
               </div>
-              <div className="flex w-full gap-5 flex-col ">
-                <h1 className="self-center font-[Poppins] text-2xl font-semibold">
+              <div className="flex w-full gap-5 mt-8 lg:mt-0 flex-col ">
+                <h1 className="self-center  text-2xl font-semibold">
                   Toggle
                 </h1>
                 <div className="flex flex-col items-center gap-5">
@@ -106,7 +122,7 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="flex  w-full flex-col justify-center gap-5">
+              <div className="flex  w-full flex-col mt-8 lg:mt-0 items-center justify-center gap-5">
                 <h1 className=" font-[Montserrat] text-2xl font-semibold">
                   Disabled
                 </h1>
@@ -130,7 +146,7 @@ export default function Page() {
           </Card>
           <Card id={"inputs"} className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
-              <CardTitle className="font-[Poppins] text-4xl">Inputs</CardTitle>
+              <CardTitle className=" text-4xl">Inputs</CardTitle>
               <CardDescription className={"text-xl"}>
                 An input component. Enter text into the input.
               </CardDescription>
@@ -163,7 +179,7 @@ export default function Page() {
               </div>
               <div className="flex h-full w-full flex-col gap-10 lg:flex-row">
                 <div className="flex h-full w-full flex-col">
-                  <h1 className="self-center font-[Poppins] text-3xl font-semibold">
+                  <h1 className="self-center  text-3xl font-semibold">
                     Variants
                   </h1>
                   <div className="flex flex-col gap-4">
@@ -194,7 +210,7 @@ export default function Page() {
                 </div>
 
                 <div className="flex h-full w-full flex-col">
-                  <h1 className="self-center font-[Poppins] text-3xl font-semibold">
+                  <h1 className="self-center  text-3xl font-semibold">
                     States
                   </h1>
                   <div className="flex flex-col gap-4">
@@ -229,7 +245,12 @@ export default function Page() {
           </Card>
           <Card className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
-              <h1>TEST PLACE</h1>
+              <CardTitle>
+                Search List
+              </CardTitle>
+              <CardDescription>
+                  A Search List component is used by users to search for an item inside of a list!
+              </CardDescription>
             </CardHeader>
             <CardContent>
               {/*<Switch>aaaaaaaa</Switch>*/}
@@ -429,7 +450,7 @@ export default function Page() {
           {/*</Card>*/}
           <Card id={"select"} className={" lg:w-[80vw] dark:bg-gray-800"}>
             <CardHeader>
-              <CardTitle>Selection (Select)</CardTitle>
+              <CardTitle>Select</CardTitle>
               <CardDescription>A component for a small list to select something or some state!</CardDescription>
             </CardHeader>
             <CardContent className={""}>
@@ -459,7 +480,7 @@ export default function Page() {
             </CardHeader>
             <CardContent className={""}>
               <Drawer>
-                <DrawerTrigger>
+                <DrawerTrigger className={"dark:text-whitesmoke py-1 px-4 active:gray-200 rounded-md duration-400 bg-brand-primary text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white"}>
                   Open drawer
                 </DrawerTrigger>
 
@@ -503,19 +524,17 @@ export default function Page() {
             </CardHeader>
             <CardContent>
             <Dialog >
-              <DialogTrigger>
+              <DialogTrigger className={"dark:text-whitesmoke py-1 px-4 active:gray-200 rounded-md duration-400 bg-brand-primary text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white"}>
                  Dialog
               </DialogTrigger>
               <DialogBody>
 
                 <DialogContent className={"dark:bg-gray-800"}>
                   <DialogHeader>
-                    <DialogTitle>This is a dialog.</DialogTitle>
-                    <DialogDescription>
-                      This is a dialog component, made to convey a message that is important to users!
-                    </DialogDescription>
+                    <DialogTitle className={"text-2xl font-bold "}>This is a dialog.</DialogTitle>
+
                   </DialogHeader>
-                  <h2>Dialogs are often interruptions, so use them for important actions. If you need to give someone an update on an action they just took but that they don't need to act on, try a toast.</h2>
+                  <h2 className={"text-lg"}>Dialogs are often interruptions, so use them for important actions. If you need to give someone an update on an action they just took but that they don't need to act on, try a toast.</h2>
                   <div className={"flex justify-end flex-row"}>
                     <Button className={"mr-2"}   size={"default"} variant={"secondary"}>Deny</Button>
                     <Button className={""} variant={"default"}>Agree</Button>
@@ -524,6 +543,51 @@ export default function Page() {
                 </DialogContent>
               </DialogBody>
             </Dialog>
+            </CardContent>
+          </Card>
+          <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Tablist (Tabs)</CardTitle>
+              <CardDescription>Tablists are ideal for dividing content-heavy pages into distinct but related categories that are easier to process and require less scrolling. Don’t break up a page with a tablist if people might need to compare information from multiple categories at once.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Tabs defaultValue={"fruits"} className={"  w-[full]"}>
+                  <TabsList className={"w-full"}>
+                    <TabsTrigger value={"fruits"}>Fruits</TabsTrigger>
+                    <TabsTrigger value={"vegetables"}>Vegetables</TabsTrigger>
+                    <TabsTrigger value={"meat"}>Meat</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value={"fruits"}>
+                    <div className={"flex w-[20%] justify-between flex-row "}>
+                      <GiShinyApple size={40}/>
+                      <GiOrange size={40}/>
+                      <GiBanana size={40}/>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value={"vegetables"}>
+                    <div className={"flex w-[20%] justify-between flex-row "}>
+                      <GiGarlic size={40}/>
+                      <GiPumpkin size={40}/>
+                      <GiCarrot size={40}/>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value={"meat"}>
+                    <div className={"flex w-[20%] justify-between flex-row "}>
+                      <GiMeat size={40}/>
+                      <GiChickenLeg size={40}/>
+                      <GiRoastChicken size={40}/>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+            </CardContent>
+          </Card>
+          <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Dialog</CardTitle>
+              <CardDescription>A dialog is a supplemental surface that can provide helpful interactions or require someone to take an action before they can continue their task, like confirming a deletion.</CardDescription>
+            </CardHeader>
+            <CardContent>
+
             </CardContent>
           </Card>
         </div>

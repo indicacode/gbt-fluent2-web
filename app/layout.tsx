@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
 
-    <body className={"  min-h-full"}>
+    <body className={" font-montserrat  min-h-full"}>
     <header>
       <Navbar/>
     </header>
