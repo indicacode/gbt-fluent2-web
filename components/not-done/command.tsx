@@ -6,7 +6,6 @@ import { Command as CommandPrimitive } from "cmdk"
 
 import { cn } from "@/lib/utils"
 
-
 type CommandProps = ComponentPropsWithoutRef<typeof CommandPrimitive> & {}
 
 function Command(
@@ -104,6 +103,7 @@ function CommandEmpty(props: CommandEmptyProps, ref: Ref<HTMLDivElement>) {
     />
   )
 }
+
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 const ForwardedCommandEmpty = forwardRef(CommandEmpty)
 

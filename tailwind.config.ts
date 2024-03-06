@@ -1,6 +1,5 @@
 import { withTV } from "tailwind-variants/transformer"
 import type { Config } from "tailwindcss"
-import {Montserrat} from "next/dist/compiled/@next/font/dist/google";
 
 const config = withTV({
   darkMode: "media",
@@ -13,8 +12,9 @@ const config = withTV({
   prefix: "",
   theme: {
     extend: {
-      fontFamily:{
-        'montserrat':["Montserrat"]
+      fontFamily: {
+        montserrat: ["Montserrat"],
+        Segoe: ["Segoe", "sans-serif"],
       },
       colors: {
         brand: {

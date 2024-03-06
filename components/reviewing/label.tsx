@@ -2,26 +2,25 @@
 
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
-import {tv, VariantProps} from "tailwind-variants"
+import { tv, VariantProps } from "tailwind-variants"
 
-import {cn} from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 const label = tv({
-        base: "text-sm font-medium flex flex-wrap leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-    }
-)
+  base: "flex flex-wrap text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+})
 
 const Label = React.forwardRef<
-    React.ElementRef<typeof LabelPrimitive.Root>,
-    React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
+  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
     VariantProps<typeof label>
->(({className, ...props}, ref) => (
-    <LabelPrimitive.Root
-        ref={ref}
-        className={cn(label(), className)}
-        {...props}
-    />
+>(({ className, ...props }, ref) => (
+  <LabelPrimitive.Root
+    ref={ref}
+    className={cn(label(), className)}
+    {...props}
+  />
 ))
 Label.displayName = LabelPrimitive.Root.displayName
 
-export {Label}
+export { Label }

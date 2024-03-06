@@ -52,9 +52,10 @@ function Button(
   ref: React.Ref<HTMLButtonElement>
 ) {
   console.assert(
-    toggle && children !== undefined,
-    "You cannot pass children to a toggle button"
+    !toggle && !(children === undefined),
+    "You cannot pass children to a toggle button. Children:" + children
   )
+
   return (
     <button
       ref={ref}
@@ -66,7 +67,7 @@ function Button(
           target.dataset.selected === "false" ? "true" : "false")
       }
       className={buttonVariants({
-          className,
+        className,
         variant,
         toggle,
         size,
