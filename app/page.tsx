@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { DialogBody } from "next/dist/client/components/react-dev-overlay/internal/components/Dialog"
-import { motion } from "framer-motion"
+import {AnimatePresence, motion} from "framer-motion"
 import {
   GiBanana,
   GiCarrot,
@@ -54,6 +54,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/app/test-place/bruno/dialog"
+import {Collapsible} from "@radix-ui/react-collapsible";
+import {CollapsibleTrigger} from "@/components/not-done/collapsible";
+import {ChevronDownIcon} from "@radix-ui/react-icons";
+import {Dropdown} from "react-day-picker";
+import {DropdownMenuTrigger} from "@/components/not-done/dropdown-menu";
+import Link from "next/link";
+import {MountainIcon} from "lucide-react";
 
 const frameworks = [
   {
@@ -83,12 +90,27 @@ export default function Page() {
     "neutral" | "success" | "fail" | "warning"
   >("neutral")
   const states = ["neutral", "success", "fail", "warning"]
-
+  const [isOpen, setIsOpen] = useState(true)
   const [iconOnly, setIconOnly] = useState(false)
   return (
-    <div className={"flex flex-row   overflow-x-hidden"}>
-      <div className={"bg-red-200 lg:min-h-screen lg:min-w-[16vw]"}></div>
-      <div className="flex min-h-screen min-w-full flex-col  bg-slate-100 dark:bg-stone-950">
+    <div className={"flex flex-row  overflow-y-auto overflow-x-hidden"}>
+
+
+      <div className={" bg-gray-950 overflow-y-scroll lg:h-screen scroll-smooth flex   flex-col lg:min-w-[16vw]"}>
+        <div className={" flex w-full h-full flex-col pt-4"}>
+        <a href={"#buttons"}
+           className={"py-1  dark:bg-gray-800 items-center select-none dark:hover:bg-gray-700 transition-colors duration-100 dark:active:bg-brand-primary text-md text-center dark:text-white w-full"}>Buttons</a>
+        <a href={"#inputs"}
+           className={"py-1 dark:bg-gray-800 items-center select-none dark:hover:bg-gray-700 transition-colors duration-100 dark:active:bg-brand-primary text-md text-center dark:text-white w-full"}>Inputs</a>
+        <a href={"#search"}
+           className={"py-1 dark:bg-gray-800 items-center select-none dark:hover:bg-gray-700 transition-colors duration-100 dark:active:bg-brand-primary text-md text-center dark:text-white w-full"}>Search List</a>
+        <a href={"#select"}
+           className={"py-1 dark:bg-gray-800 items-center select-none dark:hover:bg-gray-700 transition-colors duration-100 dark:active:bg-brand-primary text-md text-center dark:text-white w-full"}>Select</a>
+        <a href={"#drawer"}
+           className={"py-1 dark:bg-gray-800 items-center select-none dark:hover:bg-gray-700 transition-colors duration-100 dark:active:bg-brand-primary text-md text-center dark:text-white w-full"}>Drawer</a>
+      </div>
+      </div>
+      <div className="flex h-screen min-w-full flex-col overflow-y-scroll  bg-slate-100 dark:bg-stone-950">
         <main className="min-h-full flex-1 p-6 ">
           <div className="flex w-full flex-col gap-4">
             <Card
@@ -261,7 +283,7 @@ export default function Page() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
+            <Card id={"search"} className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
               <CardHeader>
                 <CardTitle>Search List</CardTitle>
                 <CardDescription>

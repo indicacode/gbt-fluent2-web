@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
-      <body className={"min-h-full  font-Segoe"}>
+      <body className={"min-h-full scroll-smooth overflow-y-hidden  font-Segoe"}>
         <header>
           <Navbar />
         </header>
