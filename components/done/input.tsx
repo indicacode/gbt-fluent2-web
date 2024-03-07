@@ -19,23 +19,24 @@ const inputVariants = tv({
     decoration: "aki",
     label: "py-1 text-black dark:text-white",
     input:
-      "flex w-full rounded-md bg-white px-4 py-2 text-sm shadow-sm outline-0",
+      "flex w-full rounded-md bg-transparent px-4 py-2 text-sm shadow-sm outline-0",
   },
   variants: {
     variant: {
-      focus: "border-b-2 border-gray-500",
-      outline: "border-[1px] bg-transparent",
-      filledDark: "dark:bg-dark/90",
-      filledLight: "dark:bg-white/90",
+      focus: { input: "border-b-2 border-gray-500" },
+      outline: { input: "border-[1px]" },
+      filledDark: { input: "dark:bg-dark/90" },
+      filledLight: { input: "dark:bg-white/90" },
     },
     state: {
       neutral: {
         input: "",
       },
       success: {
-        input: "border-green-500/80",
+        input: "border-green-500",
       },
       fail: {
+        label: "text-red-500 dark:text-red-500",
         input: "border-red-500/80",
       },
       warning: {
@@ -51,7 +52,7 @@ const inputVariants = tv({
       false: "",
       true: {
         decoration:
-          "relative z-10 h-fit overflow-hidden rounded-md transition-all before:absolute before:bottom-0 before:left-[50%] before:h-full before:max-h-[0px] before:w-full before:max-w-[0px] before:translate-x-[-50%] before:scale-y-[1] before:bg-[#106CBD] before:text-white before:transition-all before:content-['']",
+          "relative  h-fit overflow-hidden rounded-md transition-all before:absolute before:bottom-0 before:left-[50%] before:h-full before:max-h-[0px] before:w-full before:max-w-[0px] before:translate-x-[-50%] before:scale-y-[1] before:bg-[#106CBD] before:text-white before:transition-all before:content-['']",
       },
     },
     focus: {
@@ -68,7 +69,7 @@ const inputVariants = tv({
   },
 
   defaultVariants: {
-    variant: "outline",
+    variant: "filledLight",
     size: "md",
   },
 })
@@ -77,7 +78,7 @@ export interface InputPropsType
   extends React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {
   helperText?: string
-  labelText: string
+  labelText?: string
   state?: keyof typeof icons
   iconOnly?: boolean
 }
@@ -88,7 +89,6 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
       className,
       labelText,
       helperText,
-      type,
       variant = "outline",
       state = "neutral",
       iconOnly = false,
@@ -128,16 +128,17 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     return (
       <div className={root()}>
         <div className={decoration({ bottomBar, focus, active })}>
-          <label htmlFor={uid} className={label()}>
-            {labelText}
-          </label>
+          {labelText && (
+            <label htmlFor={uid} className={label({ state })}>
+              {labelText}
+            </label>
+          )}
           <input
             id={uid}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
-            type={type}
             className={input({
               className,
               iconOnly: iconOnly,
@@ -148,9 +149,11 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
             {...rest}
           />
         </div>
-        <IconComponent iconOnly={iconOnly} state={state}>
-          {helperText ?? <span className="select-none">‎</span>}
-        </IconComponent>
+        {helperText && (
+          <IconComponent iconOnly={iconOnly} state={state}>
+            {helperText}
+          </IconComponent>
+        )}
       </div>
     )
   }
