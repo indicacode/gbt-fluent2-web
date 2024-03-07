@@ -1,41 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped
-with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fluent Design - Web
 
-## Getting Started
+Implementação do design system em React + NextJS com TailWind CSS, Radix primitives, Tailwind Variants, com alguns componentes importados do ShadCN.
 
-First, run the development server:
+![image](https://github.com/grbtec/gbt-fluent2-web/assets/1107735/ce17ba93-95ae-4eb6-9384-3a76a37f46b3)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 🚀 Roadmap
+
+### Accordion
+O accordion se subdivide em alguns sub-componentes, e usa a estratégia de composição, como pode ser visto na   
+[implementação oficial em React](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/components-accordion--default).
+
+👀 código exemplo:  
+```xml
+import * as React from "react";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+} from "@fluentui/react-components";
+
+export const Default = () => (
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionHeader>Accordion Header 1</AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 1</div>
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem value="2">
+      <AccordionHeader>Accordion Header 2</AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 2</div>
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem value="3">
+      <AccordionHeader>Accordion Header 3</AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 3</div>
+      </AccordionPanel>
+    </AccordionItem>
+  </Accordion>
+);
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ tarefas:  
+- [ ] AccordionItem
+  - [ ] disabled: disables opening/closing of panel. Concluído em dd/mm/aaaa por @brunnogrb.
+- [ ] AccordionHeader
+  - [ ] button: the component to be used as button in heading.
+  - [ ] expandIcon: expand icon slot rendered before (or after) children content in heading.
+  - [ ] icon: expand icon slot rendered before (or after) children content in heading.
+  - [ ] as: "div" "h1" "h2" "h3" "h4" "h5" "h6".
+  - [ ] expandIconPosition: the position of the expand icon slot in heading.
+  - [ ] inline: indicates if the AccordionHeader should be rendered inline.
+  - [ ] size: size of spacing in the heading. "small" "medium" "large" "extra-large".
+- [ ] AccordionPanel
+  - [ ] as: "div"
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and
-load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions
-are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use
-the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
