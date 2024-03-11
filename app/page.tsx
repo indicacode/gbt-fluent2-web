@@ -79,11 +79,12 @@ const frameworks = [
 ]
 
 const components = [
-  { name: "Button", href: "#buttons" },
-  { name: "Inputs", href: "#inputs" },
-  { name: "Search", href: "#search" },
-  { name: "Select", href: "#search" },
-  { name: "Drawer", href: "#search" },
+  { name: "Button",},
+  { name: "Inputs",},
+  { name: "Search",},
+  { name: "Select"},
+  { name: "Drawer"},
+  { name: "Tabs"},
 ]
 
 export default function Page() {
@@ -96,7 +97,7 @@ export default function Page() {
 
   return (
     <div className="flex h-full min-h-screen">
-      <div className="flex h-full min-h-screen w-full flex-col justify-center gap-4 border-r-2 border-zinc-700 bg-zinc-900 px-10 pt-4 lg:min-w-[16vw]">
+      <div className="flex h-fu ll min-h-screen w-full flex-col justify-center gap-4 border-r-2 border-zinc-700 bg-zinc-900 px-10 pt-4 lg:min-w-[16vw]">
         {components.map(({ href, name }) => (
           <Button onClick={() => setCurrentDocs(name.toLowerCase())}>
             {name}
@@ -455,7 +456,8 @@ export default function Page() {
                 </Dialog>
               </CardContent>
             </Card>
-            <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+            {currentDocs === "Tabs" && (
+            <Card id={"tabs"} className={" lg:w-[80vw] dark:bg-gray-800"}>
               <CardHeader>
                 <CardTitle>Tablist (Tabs)</CardTitle>
                 <CardDescription>
@@ -496,7 +498,7 @@ export default function Page() {
                   </TabsContent>
                 </Tabs>
               </CardContent>
-            </Card>
+            </Card>)}
             <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
               <CardHeader>
                 <CardTitle>Dialog</CardTitle>
