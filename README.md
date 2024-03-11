@@ -1,6 +1,6 @@
 # Fluent Design - Web
 
-Implementation of Microsoft's Fluent Design System with [React](https://react.dev) + [NextJS](https://nextjs.org) com [TailWind CSS](https://tailwindcss.com), [Radix](https://www.radix-ui.com) primitives, [Tailwind Variants](https://www.tailwind-variants.org), and some other components inspired from [ShadCN](https://ui.shadcn.com/docs/components/accordion).
+Implementation of Microsoft's [Fluent2 Design System](https://fluent2.microsoft.design/get-started/whatisnew) with [React](https://react.dev) + [NextJS](https://nextjs.org) com [TailWind CSS](https://tailwindcss.com), [Radix](https://www.radix-ui.com) primitives, [Tailwind Variants](https://www.tailwind-variants.org), and some other components inspired from [ShadCN](https://ui.shadcn.com/docs/components/accordion).
 
 ![image](https://github.com/grbtec/gbt-fluent2-web/assets/1107735/ce17ba93-95ae-4eb6-9384-3a76a37f46b3)
 
