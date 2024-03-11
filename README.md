@@ -58,3 +58,19 @@ export const Default = () => (
 - [ ] AccordionPanel
   - [ ] as: "div"
 
+--- 
+**Referências:**  
+[FluentUI React - Github](https://github.com/microsoft/fluentui)  
+implementação oficial para react. renderização lenta, e com grande número de issues abertas.
+
+[FluentUI React - Demos](https://master--628d031b55e942004ac95df1.chromatic.com/?path=/docs/demos--demos)  
+Demo da implementação oficial no storybook.
+Ajuda a entender alguns comportamentos dos componentes inspirados no design system.
+
+[FluentUI Web - Figma](https://www.figma.com/community/file/836828295772957889)  
+Design no figma.
+
+
+
+
+
