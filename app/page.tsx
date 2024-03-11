@@ -79,33 +79,35 @@ const frameworks = [
 ]
 
 const components = [
-  { name: "Button",},
-  { name: "Inputs",},
-  { name: "Search",},
-  { name: "Select"},
-  { name: "Drawer"},
-  { name: "Tabs"},
-]
+  "Button",
+  "Inputs",
+  "Search",
+  "Select",
+  "Drawer",
+  "Dialog",
+  "Tabs",
+] as const
+type ComponentType = (typeof components)[number]
 
 export default function Page() {
   const [status, setStatus] = useState<
     "neutral" | "success" | "fail" | "warning"
   >("neutral")
   const states = ["neutral", "success", "fail", "warning"]
-  const [currentDocs, setCurrentDocs] = useState("button")
+  const [currentDocs, setCurrentDocs] = useState<ComponentType>("Button")
   const [iconOnly, setIconOnly] = useState(false)
 
   return (
     <div className="flex h-full min-h-screen">
-      <div className="flex h-fu ll min-h-screen w-full flex-col justify-center gap-4 border-r-2 border-zinc-700 bg-zinc-900 px-10 pt-4 lg:min-w-[16vw]">
-        {components.map(({ href, name }) => (
-          <Button onClick={() => setCurrentDocs(name.toLowerCase())}>
-            {name}
+      <div className="h-fu ll flex min-h-screen w-full flex-col justify-center gap-4 border-r-2 border-zinc-700 bg-zinc-900 px-10 pt-4 lg:min-w-[16vw]">
+        {components.map((component, idx) => (
+          <Button key={idx} onClick={() => setCurrentDocs(component)}>
+            {component}
           </Button>
         ))}
       </div>
       <main className="flex h-full min-h-screen w-full flex-col items-center justify-center bg-slate-100 px-6 dark:bg-zinc-900">
-        {currentDocs === "button" && (
+        {currentDocs === "Button" && (
           <Card
             id={"buttons"}
             className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800"
@@ -120,7 +122,7 @@ export default function Page() {
             </CardHeader>
             <CardContent className="mt-8 flex w-full flex-col items-center justify-between  lg:mt-0  lg:flex-row">
               <div className="flex w-[40%] flex-col justify-around gap-5">
-                <h1 className="  text-2xl font-semibold">Variants</h1>
+                <h1 className="text-2xl font-semibold">Variants</h1>
                 <div id={"buttons"} className="flex flex-col gap-5">
                   <Button className={"w-fit"}>Primary</Button>
                   <Button className={"w-fit"} variant="secondary">
@@ -171,7 +173,7 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
-        {currentDocs === "inputs" && (
+        {currentDocs === "Inputs" && (
           <Card
             id={"inputs"}
             className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800"
@@ -276,7 +278,7 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
-        {currentDocs === "search" && (
+        {currentDocs === "Search" && (
           <Card
             id={"search"}
             className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800"
@@ -300,7 +302,7 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
-        {currentDocs === "select" && (
+        {currentDocs === "Select" && (
           <Card id={"select"} className={" lg:w-[80vw] dark:bg-gray-800"}>
             <CardHeader>
               <CardTitle>Select</CardTitle>
@@ -328,7 +330,7 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
-        {currentDocs === "drawer" && (
+        {currentDocs === "Drawer" && (
           <Card id={"drawer"} className={" lg:w-[80vw] dark:bg-gray-800  "}>
             <CardHeader>
               <CardTitle>Drawer</CardTitle>
@@ -406,7 +408,7 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
-        {currentDocs === "dialog" && (
+        {currentDocs === "Dialog" && (
           <>
             <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
               <CardHeader>
@@ -456,49 +458,7 @@ export default function Page() {
                 </Dialog>
               </CardContent>
             </Card>
-            {currentDocs === "Tabs" && (
-            <Card id={"tabs"} className={" lg:w-[80vw] dark:bg-gray-800"}>
-              <CardHeader>
-                <CardTitle>Tablist (Tabs)</CardTitle>
-                <CardDescription>
-                  Tablists are ideal for dividing content-heavy pages into
-                  distinct but related categories that are easier to process and
-                  require less scrolling. Don’t break up a page with a tablist
-                  if people might need to compare information from multiple
-                  categories at once.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Tabs defaultValue={"fruits"} className={"  w-[full]"}>
-                  <TabsList className={"w-full"}>
-                    <TabsTrigger value={"fruits"}>Fruits</TabsTrigger>
-                    <TabsTrigger value={"vegetables"}>Vegetables</TabsTrigger>
-                    <TabsTrigger value={"meat"}>Meat</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value={"fruits"}>
-                    <div className={"flex w-[20%] flex-row justify-between "}>
-                      <GiShinyApple size={40} />
-                      <GiOrange size={40} />
-                      <GiBanana size={40} />
-                    </div>
-                  </TabsContent>
-                  <TabsContent value={"vegetables"}>
-                    <div className={"flex w-[20%] flex-row justify-between "}>
-                      <GiGarlic size={40} />
-                      <GiPumpkin size={40} />
-                      <GiCarrot size={40} />
-                    </div>
-                  </TabsContent>
-                  <TabsContent value={"meat"}>
-                    <div className={"flex w-[20%] flex-row justify-between "}>
-                      <GiMeat size={40} />
-                      <GiChickenLeg size={40} />
-                      <GiRoastChicken size={40} />
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </CardContent>
-            </Card>)}
+
             <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
               <CardHeader>
                 <CardTitle>Dialog</CardTitle>
@@ -511,6 +471,50 @@ export default function Page() {
               <CardContent></CardContent>
             </Card>
           </>
+        )}
+        {currentDocs === "Tabs" && (
+          <Card id={"tabs"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Tablist (Tabs)</CardTitle>
+              <CardDescription>
+                Tablists are ideal for dividing content-heavy pages into
+                distinct but related categories that are easier to process and
+                require less scrolling. Don’t break up a page with a tablist if
+                people might need to compare information from multiple
+                categories at once.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Tabs defaultValue={"fruits"} className={"  w-[full]"}>
+                <TabsList className={"w-full"}>
+                  <TabsTrigger value={"fruits"}>Fruits</TabsTrigger>
+                  <TabsTrigger value={"vegetables"}>Vegetables</TabsTrigger>
+                  <TabsTrigger value={"meat"}>Meat</TabsTrigger>
+                </TabsList>
+                <TabsContent value={"fruits"}>
+                  <div className={"flex w-[20%] flex-row justify-between "}>
+                    <GiShinyApple size={40} />
+                    <GiOrange size={40} />
+                    <GiBanana size={40} />
+                  </div>
+                </TabsContent>
+                <TabsContent value={"vegetables"}>
+                  <div className={"flex w-[20%] flex-row justify-between "}>
+                    <GiGarlic size={40} />
+                    <GiPumpkin size={40} />
+                    <GiCarrot size={40} />
+                  </div>
+                </TabsContent>
+                <TabsContent value={"meat"}>
+                  <div className={"flex w-[20%] flex-row justify-between "}>
+                    <GiMeat size={40} />
+                    <GiChickenLeg size={40} />
+                    <GiRoastChicken size={40} />
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
         )}
       </main>
     </div>
