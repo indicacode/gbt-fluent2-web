@@ -13,40 +13,17 @@ import {
   DialogTrigger,
 } from "@/app/test-place/bruno/dialog"
 
+import DataTable from "@/components/reviewing/data-table";
+
 export default function Page() {
   return (
     <>
-      <div className={"flex h-screen w-screen  overflow-x-hidden bg-gray-50"}>
+      <div className={"flex h-screen w-screen  overflow-x-hidden dark:bg-gray-900 bg-gray-50"}>
         <AnimatePresence>
-          <Dialog>
-            <DialogTrigger>
-              <Button variant={"default"}>Open Dialog</Button>
-            </DialogTrigger>
-            <DialogBody>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>This is a dialog.</DialogTitle>
-                  <DialogDescription>
-                    This is a dialog component, made to convey a message that is
-                    important to users!
-                  </DialogDescription>
-                </DialogHeader>
-                <h2>Put your message in here!</h2>
-                <div className={"flex flex-row justify-end"}>
-                  <Button
-                    className={"mr-2"}
-                    size={"default"}
-                    variant={"secondary"}
-                  >
-                    Deny
-                  </Button>
-                  <Button className={""} variant={"default"}>
-                    Agree
-                  </Button>
-                </div>
-              </DialogContent>
-            </DialogBody>
-          </Dialog>
+         <div>
+
+            <DataTable></DataTable>
+         </div>
         </AnimatePresence>
       </div>
     </>

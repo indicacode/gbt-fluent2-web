@@ -515,6 +515,21 @@ export default function Page() {
               </Tabs>
             </CardContent>
           </Card>
+
+        )}
+        {currentDocs === "DataTable" && (
+            <Card id={"datatable"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+              <CardHeader>
+                <CardTitle>Data Table</CardTitle>
+                <CardDescription>
+                  Data tables are used for keeping track of data on a list, to update state variables like price and more!
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+
+              </CardContent>
+            </Card>
+
         )}
       </main>
     </div>
