@@ -49,7 +49,7 @@ function TableBody(
   return (
     <tbody
       ref={ref}
-      className={cn("[&_tr:last-child]:border-0", className)}
+      className={cn(" py-1 [&_tr:last-child]:border-0", className)}
       {...props}
     />
   )
@@ -69,7 +69,7 @@ function TableFooter(
     <tfoot
       ref={ref}
       className={cn(
-        "border-t bg-slate-100/50 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
+        "border-t py-1 bg-slate-100/50 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
         className
       )}
       {...props}
