@@ -361,47 +361,6 @@ export default function Page() {
                       now, try and track this little ball for as long as you
                       can!
                     </DrawerDescription>
-
-                    <div className={"mt-4"}>
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          repeatType: "reverse",
-                          repeatDelay: 0.7,
-                        }}
-                        className={
-                          "h-20 w-20 items-center rounded-[49%] bg-gray-300"
-                        }
-                      >
-                        <motion.div
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 1.6,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            repeatDelay: 0.2,
-                          }}
-                          className={
-                            "mr-6 h-10 w-10 items-center rounded-[47%] bg-green-600"
-                          }
-                        >
-                          <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{
-                              duration: 1.6,
-                              repeat: Infinity,
-                              repeatType: "reverse",
-                              repeatDelay: 0.4,
-                            }}
-                            className={
-                              "h-20  w-20 items-center rounded-[46%] bg-gray-400 hover:bg-red-400"
-                            }
-                          ></motion.div>
-                        </motion.div>
-                      </motion.div>
-                    </div>
                   </div>
                 </DrawerContent>
               </Drawer>
