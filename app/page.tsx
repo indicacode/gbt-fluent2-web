@@ -31,6 +31,7 @@ import {
   CardTitle,
 } from "@/components/not-done/card"
 import Combobox from "@/components/not-done/Combobox"
+import DataTable from "@/components/reviewing/data-table"
 import {
   Drawer,
   DrawerContent,
@@ -86,6 +87,7 @@ const components = [
   "Drawer",
   "Dialog",
   "Tabs",
+  "DataTable",
 ] as const
 type ComponentType = (typeof components)[number]
 
@@ -474,21 +476,20 @@ export default function Page() {
               </Tabs>
             </CardContent>
           </Card>
-
         )}
         {currentDocs === "DataTable" && (
-            <Card id={"datatable"} className={" lg:w-[80vw] dark:bg-gray-800"}>
-              <CardHeader>
-                <CardTitle>Data Table</CardTitle>
-                <CardDescription>
-                  Data tables are used for keeping track of data on a list, to update state variables like price and more!
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-
-              </CardContent>
-            </Card>
-
+          <Card id={"datatable"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Data Table</CardTitle>
+              <CardDescription>
+                Data tables are used for keeping track of data on a list, to
+                update state variables like price and more!
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <DataTable />
+            </CardContent>
+          </Card>
         )}
       </main>
     </div>
