@@ -5,13 +5,12 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: Segoe;
-    src: url(../public/fonts/Segoe_UI.ttf);
-  }
+    @font-face {
+        font-family: Segoe;
+        src: url(../public/fonts/Segoe_UI.ttf);
+    }
 }
 
-
-body{
-  scroll-behavior:smooth;
+body {
+    scroll-behavior: smooth;
 }

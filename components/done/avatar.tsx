@@ -38,6 +38,7 @@ const avatar = tv({
     size: "default",
   },
 })
+
 /** Root of the avatar component
  *
  * @remarks Inherits all properties from {@link HTMLSpanElement}.
@@ -119,6 +120,7 @@ function AvatarFallback(
     </Fallback>
   )
 }
+
 const ForwardedAvatarFallback = forwardRef(AvatarFallback)
 ForwardedAvatarFallback.displayName = Fallback.displayName
 

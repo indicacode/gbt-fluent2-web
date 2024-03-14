@@ -5,7 +5,6 @@
 // By Adding to the data-table demo or editing the demo
 // You can do this by feeding the data to it, then creating a
 // <TableRow>
-
 import * as React from "react"
 import {
   CaretSortIcon,

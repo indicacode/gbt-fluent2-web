@@ -18,7 +18,8 @@ import {
   AvatarFallback,
   AvatarImage,
   Button,
-  Input, Slider,
+  Input,
+  Slider,
 } from "@/components/done"
 import {
   Card,
@@ -64,7 +65,7 @@ import {
   TableRow,
 } from "@/components/reviewing/table"
 
-import {components, frameworks, items, rowItems} from "./page.inputs"
+import { components, frameworks, rowItems } from "./page.inputs"
 
 type ComponentType = (typeof components)[number]
 
@@ -532,21 +533,20 @@ export default function Page() {
               </Table>
               <StatusBadge status="away" />
             </CardContent>
-          </Card>)}
+          </Card>
+        )}
         {currentDocs === "Slider" && (
-            <Card  className={" lg:w-[80vw] dark:bg-gray-800"}>
-              <CardHeader>
-                <CardTitle>Slider</CardTitle>
-                <CardDescription>
-                  Sliders are used to set dynamic values to things.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Slider
-                  size={"sm"} step={1}
-                />
-              </CardContent>
-            </Card>
+          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Slider</CardTitle>
+              <CardDescription>
+                Sliders are used to set dynamic values to things.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Slider size={"sm"} step={1} />
+            </CardContent>
+          </Card>
         )}
       </main>
     </div>

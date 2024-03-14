@@ -1,6 +1,6 @@
 import * as React from "react"
 import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
-import { tv } from "tailwind-variants"
+import { tv } from "tailwind-variants" //--------------------------------styles------------------------------------//
 
 //--------------------------------styles------------------------------------//
 const tableSlots = tv({
@@ -54,6 +54,7 @@ function Table(
     </div>
   )
 }
+
 const ForwardedTable = forwardRef(Table)
 ForwardedTable.displayName = "Table"
 
@@ -67,6 +68,7 @@ function TableHeader(
 ) {
   return <thead ref={ref} className={tableHeader({ className })} {...props} />
 }
+
 const ForwardedTableHeader = forwardRef(TableHeader)
 ForwardedTableHeader.displayName = "TableHeader"
 
@@ -80,6 +82,7 @@ function TableBody(
 ) {
   return <tbody ref={ref} className={tableBody({ className })} {...props} />
 }
+
 const ForwardedTableBody = forwardRef(TableBody)
 ForwardedTableBody.displayName = "TableBody"
 
@@ -101,6 +104,7 @@ function TableFooter(
     />
   )
 }
+
 const ForwardedTableFooter = forwardRef(TableFooter)
 ForwardedTableFooter.displayName = "TableFooter"
 
@@ -122,6 +126,7 @@ function TableRow(
     />
   )
 }
+
 const ForwardedTableRow = forwardRef(TableRow)
 ForwardedTableRow.displayName = "TableRow"
 
@@ -143,6 +148,7 @@ function TableHead(
     />
   )
 }
+
 const ForwardedTableHead = forwardRef(TableHead)
 ForwardedTableHead.displayName = "TableHead"
 
@@ -164,6 +170,7 @@ function TableCell(
     />
   )
 }
+
 const ForwardedTableCell = forwardRef(TableCell)
 ForwardedTableCell.displayName = "TableCell"
 
@@ -179,6 +186,7 @@ function TableCaption(
     <caption ref={ref} className={tableCaption({ className })} {...props} />
   )
 }
+
 const ForwardedTableCaption = forwardRef(TableCaption)
 ForwardedTableCaption.displayName = "TableCaption"
 

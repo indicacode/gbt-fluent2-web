@@ -110,5 +110,5 @@ export const components = [
   "Tabs",
   "Table",
   "DataTable",
-    "Slider",
+  "Slider",
 ] as const

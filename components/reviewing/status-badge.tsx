@@ -48,6 +48,7 @@ const statusBadge = tv({
     size: "default",
   },
 })
+
 export function StatusBadge({
   status = "online",
   appearance = "filled",
