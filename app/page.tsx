@@ -48,7 +48,6 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-  StatusBadge,
   Table,
   Tabs,
   TabsContent,
@@ -484,7 +483,7 @@ export default function Page() {
                     <TableHead className="w-[100px]">Invoice</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Method</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
+                    <TableHead>Amount</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -492,8 +491,10 @@ export default function Page() {
                     ({ file, author, lastUpdated, lastUpdate }, idx) => (
                       <TableRow key={idx}>
                         <TableCell className="font-medium">
-                          <>{file.icon}</>
-                          <>{file.label}</>
+                          <span className="flex items-center gap-2">
+                            <>{file.icon}</>
+                            <>{file.label}</>
+                          </span>
                         </TableCell>
                         <TableCell>
                           <span className="flex items-center gap-2">
@@ -513,12 +514,13 @@ export default function Page() {
                           </span>
                         </TableCell>
                         <TableCell>
-                          <>{lastUpdated.timestamp}</>
                           <>{lastUpdated.label}</>
                         </TableCell>
                         <TableCell>
-                          <>{lastUpdate.icon}</>
-                          <>{lastUpdate.label}</>
+                          <span className="flex items-center gap-2">
+                            <>{lastUpdate.icon}</>
+                            <>{lastUpdate.label}</>
+                          </span>
                         </TableCell>
                       </TableRow>
                     )
@@ -531,7 +533,6 @@ export default function Page() {
                   </TableRow>
                 </TableFooter>
               </Table>
-              <StatusBadge status="away" />
             </CardContent>
           </Card>
         )}

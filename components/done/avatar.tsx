@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 
 import { StatusBadge } from "../reviewing"
 
+
 //--------------------types--------------------//
 
 type AvatarProps = React.ComponentPropsWithoutRef<typeof Root> &
@@ -43,7 +44,7 @@ const avatar = tv({
  *
  * @remarks Inherits all properties from {@link HTMLSpanElement}.
  *
- * @param {Props} props
+ * @param {AvatarProps} props
  * @property {string} size - Size of the avatar
  * @property {string?} variant - Style variants
  * @property {string} className - Additional user styles
@@ -99,12 +100,19 @@ AvatarImage.displayName = Image.displayName
  * @param {string} className - Additional CSS classes provided by the user.
  */
 
-type AvatarFallbackProps = ComponentPropsWithoutRef<typeof Fallback>
+type AvatarFallbackProps = ComponentPropsWithoutRef<typeof Fallback> & {
+  children: string
+}
+type AvatarFallbackTypes = Ref<HTMLSpanElement> & Ref<typeof Fallback>
 
 function AvatarFallback(
   { className, children, ...props }: AvatarFallbackProps,
-  ref: Ref<HTMLSpanElement, typeof Fallback>
+  ref: AvatarFallbackTypes
 ) {
+  let initials = ""
+  children.split(" ").forEach((item) => (initials += item.slice(0, 1)))
+  console.log(initials)
+
   return (
     <Fallback
       ref={ref}
@@ -114,7 +122,7 @@ function AvatarFallback(
       )}
       {...props}
     >
-      {children ?? (
+      {initials ?? (
         <CiUser className="text-2xl text-gray-800 dark:text-white" />
       )}
     </Fallback>
@@ -126,4 +134,4 @@ ForwardedAvatarFallback.displayName = Fallback.displayName
 
 //--------------------------------------------//
 
-export { Avatar, AvatarImage, AvatarFallback }
+export { Avatar, AvatarImage, ForwardedAvatarFallback as AvatarFallback }
