@@ -1,5 +1,5 @@
 import * as React from "react"
-import { forwardRef, HTMLAttributes, Ref } from "react"
+import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -69,7 +69,7 @@ function TableFooter(
     <tfoot
       ref={ref}
       className={cn(
-        "border-t py-1 bg-slate-100/50 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
+        "border-t bg-slate-100/50 py-1 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
         className
       )}
       {...props}
@@ -126,7 +126,7 @@ ForwardedTableHead.displayName = "TableHead"
 
 //-------------------------------------------------------------------------//
 
-interface TableCellProps extends HTMLAttributes<HTMLTableCellElement> {}
+interface TableCellProps extends TdHTMLAttributes<HTMLTableCellElement> {}
 
 function TableCell(
   { className, ...props }: TableCellProps,

@@ -1,8 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
-import { DialogBody } from "next/dist/client/components/react-dev-overlay/internal/components/Dialog"
-import { motion } from "framer-motion"
+import { useState } from "react"
 import {
   GiBanana,
   GiCarrot,
@@ -15,14 +13,13 @@ import {
   GiShinyApple,
 } from "react-icons/gi"
 
-import { Button } from "@/components/done/button"
-import { Input } from "@/components/done/input"
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/done/tabs"
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
+  Input,
+} from "@/components/done"
 import {
   Card,
   CardContent,
@@ -32,13 +29,17 @@ import {
 } from "@/components/not-done/card"
 import Combobox from "@/components/not-done/Combobox"
 import {
+  DataTable,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
   Drawer,
   DrawerContent,
   DrawerDescription,
   DrawerHeader,
   DrawerTrigger,
-} from "@/components/reviewing/drawer"
-import {
   Select,
   SelectContent,
   SelectGroup,
@@ -46,49 +47,25 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/reviewing/select"
+  StatusBadge,
+  Table,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/reviewing/"
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/app/test-place/bruno/dialog"
-import DataTable from "@/components/reviewing/data-table";
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/reviewing/table"
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
+import { components, frameworks, items } from "./page.inputs"
 
-const components = [
-  "Button",
-  "Inputs",
-  "Search",
-  "Select",
-  "Drawer",
-  "Dialog",
-  "Tabs",
-    "DataTable",
-] as const
 type ComponentType = (typeof components)[number]
 
 export default function Page() {
@@ -389,33 +366,31 @@ export default function Page() {
                   >
                     Dialog
                   </DialogTrigger>
-                  <DialogBody>
-                    <DialogContent className={"dark:bg-gray-800"}>
-                      <DialogHeader>
-                        <DialogTitle className={"text-2xl font-bold "}>
-                          This is a dialog.
-                        </DialogTitle>
-                      </DialogHeader>
-                      <h2 className={"text-lg"}>
-                        Dialogs are often interruptions, so use them for
-                        important actions. If you need to give someone an update
-                        on an action they just took but that they don't need to
-                        act on, try a toast.
-                      </h2>
-                      <div className={"flex flex-row justify-end"}>
-                        <Button
-                          className={"mr-2"}
-                          size={"default"}
-                          variant={"secondary"}
-                        >
-                          Deny
-                        </Button>
-                        <Button className={""} variant={"default"}>
-                          Agree
-                        </Button>
-                      </div>
-                    </DialogContent>
-                  </DialogBody>
+                  <DialogContent className={"dark:bg-gray-800"}>
+                    <DialogHeader>
+                      <DialogTitle className={"text-2xl font-bold "}>
+                        This is a dialog.
+                      </DialogTitle>
+                    </DialogHeader>
+                    <h2 className={"text-lg"}>
+                      Dialogs are often interruptions, so use them for important
+                      actions. If you need to give someone an update on an
+                      action they just took but that they don't need to act on,
+                      try a toast.
+                    </h2>
+                    <div className={"flex flex-row justify-end"}>
+                      <Button
+                        className={"mr-2"}
+                        size={"default"}
+                        variant={"secondary"}
+                      >
+                        Deny
+                      </Button>
+                      <Button className={""} variant={"default"}>
+                        Agree
+                      </Button>
+                    </div>
+                  </DialogContent>
                 </Dialog>
               </CardContent>
             </Card>
@@ -476,21 +451,88 @@ export default function Page() {
               </Tabs>
             </CardContent>
           </Card>
-
         )}
         {currentDocs === "DataTable" && (
-            <Card id={"datatable"} className={" lg:w-[80vw] dark:bg-gray-800"}>
-              <CardHeader>
-                <CardTitle>Data Table</CardTitle>
-                <CardDescription>
-                  Data tables are used for keeping track of data on a list, to update state variables like price and more!
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                  <DataTable></DataTable>
-              </CardContent>
-            </Card>
+          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Data Table</CardTitle>
+              <CardDescription>
+                Data tables are used for keeping track of data on a list, to
+                update state variables like price and more!
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <DataTable />
+            </CardContent>
+          </Card>
+        )}
+        {currentDocs === "Table" && (
+          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Table</CardTitle>
+              <CardDescription>
+                Data tables are used for keeping track of data on a list, to
+                update state variables like price and more!
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableCaption>A list of your recent invoices.</TableCaption>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[100px]">Invoice</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Method</TableHead>
+                    <TableHead className="text-right">Amount</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {items.map(
+                    ({ file, author, lastUpdated, lastUpdate }, idx) => (
+                      <TableRow key={idx}>
+                        <TableCell className="font-medium">
+                          <>{file.icon}</>
+                          <>{file.label}</>
+                        </TableCell>
+                        <TableCell>
+                          <span className="flex items-center gap-2">
+                            <Avatar
+                              aria-label={author.label}
+                              status={author.status}
+                              // name={author.label}
+                            >
+                              <AvatarImage
+                                src="https://github.com/shadcn.png"
+                                alt="@shadcn"
+                              />
+                              <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
 
+                            <>{author.label}</>
+                          </span>
+                        </TableCell>
+                        <TableCell>
+                          <>{lastUpdated.timestamp}</>
+                          <>{lastUpdated.label}</>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <>{lastUpdate.icon}</>
+                          <>{lastUpdate.label}</>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  )}
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <TableCell colSpan={3}>Total</TableCell>
+                    <TableCell className="text-right">$2,500.00</TableCell>
+                  </TableRow>
+                </TableFooter>
+              </Table>
+              <StatusBadge status="away" />
+            </CardContent>
+          </Card>
         )}
       </main>
     </div>

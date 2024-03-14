@@ -7,10 +7,14 @@ import { tv, VariantProps } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
 
+import { StatusBadge } from "../reviewing"
+
 //--------------------types--------------------//
 
 type AvatarProps = React.ComponentPropsWithoutRef<typeof Root> &
-  VariantProps<typeof avatar>
+  VariantProps<typeof avatar> & {
+    status: "online" | "offline" | "away" | "busy" | "do-not-disturb"
+  }
 
 //--------------------------------------------//
 
@@ -33,7 +37,6 @@ const avatar = tv({
     size: "default",
   },
 })
-type Props = { size: string }
 /** Root of the avatar component
  *
  * @remarks Inherits all properties from {@link HTMLSpanElement}.
@@ -45,12 +48,17 @@ type Props = { size: string }
  */
 
 const Avatar = React.forwardRef<React.ElementRef<typeof Root>, AvatarProps>(
-  ({ className, variant, size, ...props }, ref) => (
-    <Root
-      className={avatar({ variant, size, className })}
-      ref={ref}
-      {...props}
-    />
+  ({ className, variant, size, status, children, ...props }, ref) => (
+    <div className="relative-wrapper relative max-h-fit max-w-fit rounded-full">
+      <Root
+        className={avatar({ variant, size, className })}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </Root>
+      <StatusBadge status={status} />
+    </div>
   )
 )
 Avatar.displayName = Root.displayName
