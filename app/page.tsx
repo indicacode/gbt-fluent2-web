@@ -502,10 +502,10 @@ export default function Page() {
                               // name={author.label}
                             >
                               <AvatarImage
-                                src="https://github.com/shadcn.png"
+                                src="https://github.com/shadcn.pn"
                                 alt="@shadcn"
                               />
-                              <AvatarFallback>CN</AvatarFallback>
+                              <AvatarFallback>{author.label}</AvatarFallback>
                             </Avatar>
 
                             <>{author.label}</>
@@ -514,7 +514,7 @@ export default function Page() {
                         <TableCell>
                           <>{lastUpdated.label}</>
                         </TableCell>
-                        <TableCell className="text-right">
+                        <TableCell>
                           <>{lastUpdate.icon}</>
                           <>{lastUpdate.label}</>
                         </TableCell>
@@ -524,8 +524,8 @@ export default function Page() {
                 </TableBody>
                 <TableFooter>
                   <TableRow>
-                    <TableCell colSpan={3}>Total</TableCell>
-                    <TableCell className="text-right">$2,500.00</TableCell>
+                    <TableCell colSpan={3}>Total Edits</TableCell>
+                    <TableCell>1</TableCell>
                   </TableRow>
                 </TableFooter>
               </Table>

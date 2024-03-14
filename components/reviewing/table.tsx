@@ -18,7 +18,7 @@ const tableSlots = tv({
       "border-t-[2px] border-zinc-600 bg-slate-100/50 py-1 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
 
     tableRow:
-      "border-b-[2px] border-zinc-600 transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-slate-800/50 dark:data-[state=selected]:bg-slate-800",
+      "border-b-[2px] border-zinc-600 transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-white/10 dark:data-[state=selected]:bg-slate-800",
 
     tableHead:
       "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-400 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
@@ -42,7 +42,7 @@ const {
 } = tableSlots()
 //--------------------------------styles------------------------------------//
 
-interface TableProps extends HTMLAttributes<HTMLTableElement> {}
+type TableProps = HTMLAttributes<HTMLTableElement>
 
 function Table(
   { className, ...props }: TableProps,
@@ -54,13 +54,12 @@ function Table(
     </div>
   )
 }
-
 const ForwardedTable = forwardRef(Table)
 ForwardedTable.displayName = "Table"
 
 //-------------------------------------------------------------------------//
 
-interface TableHeaderProps extends HTMLAttributes<HTMLTableSectionElement> {}
+type TableHeaderProps = HTMLAttributes<HTMLTableSectionElement>
 
 function TableHeader(
   { className, ...props }: TableHeaderProps,
@@ -73,7 +72,7 @@ ForwardedTableHeader.displayName = "TableHeader"
 
 //-------------------------------------------------------------------------//
 
-interface TableBodyProps extends HTMLAttributes<HTMLTableSectionElement> {}
+type TableBodyProps = HTMLAttributes<HTMLTableSectionElement>
 
 function TableBody(
   { className, ...props }: TableBodyProps,
@@ -86,7 +85,7 @@ ForwardedTableBody.displayName = "TableBody"
 
 //-------------------------------------------------------------------------//
 
-interface TableFooterProps extends HTMLAttributes<HTMLTableSectionElement> {}
+type TableFooterProps = HTMLAttributes<HTMLTableSectionElement>
 
 function TableFooter(
   { className, ...props }: TableFooterProps,
@@ -107,7 +106,7 @@ ForwardedTableFooter.displayName = "TableFooter"
 
 //-------------------------------------------------------------------------//
 
-interface TableRowProps extends HTMLAttributes<HTMLTableRowElement> {}
+type TableRowProps = HTMLAttributes<HTMLTableRowElement>
 
 function TableRow(
   { className, ...props }: TableRowProps,
@@ -128,7 +127,7 @@ ForwardedTableRow.displayName = "TableRow"
 
 //-------------------------------------------------------------------------//
 
-interface TableHeadProps extends HTMLAttributes<HTMLTableCellElement> {}
+type TableHeadProps = HTMLAttributes<HTMLTableCellElement>
 
 function TableHead(
   { className, ...props }: TableHeadProps,
@@ -144,13 +143,12 @@ function TableHead(
     />
   )
 }
-
 const ForwardedTableHead = forwardRef(TableHead)
 ForwardedTableHead.displayName = "TableHead"
 
 //-------------------------------------------------------------------------//
 
-interface TableCellProps extends TdHTMLAttributes<HTMLTableCellElement> {}
+type TableCellProps = TdHTMLAttributes<HTMLTableCellElement>
 
 function TableCell(
   { className, ...props }: TableCellProps,
@@ -166,13 +164,12 @@ function TableCell(
     />
   )
 }
-
 const ForwardedTableCell = forwardRef(TableCell)
 ForwardedTableCell.displayName = "TableCell"
 
 //-------------------------------------------------------------------------//
 
-interface TableCaptionProps extends HTMLAttributes<HTMLTableCaptionElement> {}
+type TableCaptionProps = HTMLAttributes<HTMLTableCaptionElement>
 
 function TableCaption(
   { className, ...props }: TableCaptionProps,
@@ -182,7 +179,6 @@ function TableCaption(
     <caption ref={ref} className={tableCaption({ className })} {...props} />
   )
 }
-
 const ForwardedTableCaption = forwardRef(TableCaption)
 ForwardedTableCaption.displayName = "TableCaption"
 

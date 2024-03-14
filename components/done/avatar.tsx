@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ComponentPropsWithoutRef, forwardRef, Ref } from "react"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "react-icons/ci"
 import { tv, VariantProps } from "tailwind-variants"
@@ -93,26 +94,33 @@ AvatarImage.displayName = Image.displayName
  * Renders {@link CiUser} if no children are provided.
  *
  * @remarks Inherits all properties from {@link HTMLSpanElement}.
- * @param {ReactNode} children - The fallback content.
+ * @param {string} children - The fallback content.
  * @param {string} className - Additional CSS classes provided by the user.
  */
 
-const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof Fallback>,
-  React.ComponentPropsWithoutRef<typeof Fallback>
->(({ className, children, ...props }, ref) => (
-  <Fallback
-    ref={ref}
-    className={cn(
-      "flex h-full w-full items-center justify-center rounded-full",
-      className
-    )}
-    {...props}
-  >
-    {children ?? <CiUser className="text-2xl text-gray-800 dark:text-white" />}
-  </Fallback>
-))
-AvatarFallback.displayName = Fallback.displayName
+type AvatarFallbackProps = ComponentPropsWithoutRef<typeof Fallback>
+
+function AvatarFallback(
+  { className, children, ...props }: AvatarFallbackProps,
+  ref: Ref<HTMLSpanElement, typeof Fallback>
+) {
+  return (
+    <Fallback
+      ref={ref}
+      className={cn(
+        "flex h-full w-full items-center justify-center rounded-full",
+        className
+      )}
+      {...props}
+    >
+      {children ?? (
+        <CiUser className="text-2xl text-gray-800 dark:text-white" />
+      )}
+    </Fallback>
+  )
+}
+const ForwardedAvatarFallback = forwardRef(AvatarFallback)
+ForwardedAvatarFallback.displayName = Fallback.displayName
 
 //--------------------------------------------//
 
