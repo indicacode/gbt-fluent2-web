@@ -1,5 +1,11 @@
 "use client"
 
+// WARNING!!
+// When using this component, it is recommended to edit it internally
+// By Adding to the data-table demo or editing the demo
+// You can do this by feeding the data to it, then creating a
+// <TableRow>
+
 import * as React from "react"
 import {
   CaretSortIcon,
@@ -115,7 +121,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="primary"
+          variant="default"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Email
@@ -149,7 +155,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="primary" className="h-8 w-8 p-0">
+            <Button variant="default" className="h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
               <DotsHorizontalIcon className="h-4 w-4" />
             </Button>
@@ -212,7 +218,7 @@ export function DataTable() {
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="primary" className="ml-auto">
+            <Button variant="default" className="ml-auto">
               Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -294,7 +300,7 @@ export function DataTable() {
         </div>
         <div className="flex flex-row space-x-2">
           <Button
-            variant="primary"
+            variant="default"
             size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
@@ -302,7 +308,7 @@ export function DataTable() {
             Previous
           </Button>
           <Button
-            variant="primary"
+            variant="default"
             size="sm"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}

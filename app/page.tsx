@@ -18,7 +18,7 @@ import {
   AvatarFallback,
   AvatarImage,
   Button,
-  Input,
+  Input, Slider,
 } from "@/components/done"
 import {
   Card,
@@ -47,6 +47,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
+  StatusBadge,
   Table,
   Tabs,
   TabsContent,
@@ -63,7 +64,7 @@ import {
   TableRow,
 } from "@/components/reviewing/table"
 
-import { columnItems, components, frameworks, rowItems } from "./page.inputs"
+import {components, frameworks, items, rowItems} from "./page.inputs"
 
 type ComponentType = (typeof components)[number]
 
@@ -479,9 +480,10 @@ export default function Page() {
                 <TableCaption>A list of your recent invoices.</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    {columnItems.map(({ columnKey, label }, idx) => (
-                      <TableHead>{label}</TableHead>
-                    ))}
+                    <TableHead className="w-[100px]">Invoice</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Method</TableHead>
+                    <TableHead className="text-right">Amount</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -489,10 +491,8 @@ export default function Page() {
                     ({ file, author, lastUpdated, lastUpdate }, idx) => (
                       <TableRow key={idx}>
                         <TableCell className="font-medium">
-                          <div className="flex items-center gap-2 text-center">
-                            {file.icon}
-                            <>{file.label}</>
-                          </div>
+                          <>{file.icon}</>
+                          <>{file.label}</>
                         </TableCell>
                         <TableCell>
                           <span className="flex items-center gap-2">
@@ -512,6 +512,7 @@ export default function Page() {
                           </span>
                         </TableCell>
                         <TableCell>
+                          <>{lastUpdated.timestamp}</>
                           <>{lastUpdated.label}</>
                         </TableCell>
                         <TableCell>
@@ -529,8 +530,23 @@ export default function Page() {
                   </TableRow>
                 </TableFooter>
               </Table>
+              <StatusBadge status="away" />
             </CardContent>
-          </Card>
+          </Card>)}
+        {currentDocs === "Slider" && (
+            <Card  className={" lg:w-[80vw] dark:bg-gray-800"}>
+              <CardHeader>
+                <CardTitle>Slider</CardTitle>
+                <CardDescription>
+                  Sliders are used to set dynamic values to things.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Slider
+                  size={"sm"} step={1}
+                />
+              </CardContent>
+            </Card>
         )}
       </main>
     </div>

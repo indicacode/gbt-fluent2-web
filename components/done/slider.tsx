@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react"
 import { Range, Root, Thumb, Track } from "@radix-ui/react-slider"
-import { tv } from "tailwind-variants"
+import {tv, VariantProps} from "tailwind-variants"
 
 const sliderVariants = tv({
   slots: {
@@ -23,8 +23,7 @@ const sliderVariants = tv({
   },
 })
 
-interface SliderProps extends ComponentPropsWithoutRef<typeof Root> {
-  size: "sm" | "md"
+interface SliderProps extends ComponentPropsWithoutRef<typeof Root>, VariantProps<typeof sliderVariants>  {
 }
 
 function Slider(
