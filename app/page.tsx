@@ -47,7 +47,6 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-  StatusBadge,
   Table,
   Tabs,
   TabsContent,
@@ -64,7 +63,7 @@ import {
   TableRow,
 } from "@/components/reviewing/table"
 
-import { components, frameworks, items } from "./page.inputs"
+import { columnItems, components, frameworks, rowItems } from "./page.inputs"
 
 type ComponentType = (typeof components)[number]
 
@@ -480,19 +479,20 @@ export default function Page() {
                 <TableCaption>A list of your recent invoices.</TableCaption>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[100px]">Invoice</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Method</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
+                    {columnItems.map(({ columnKey, label }, idx) => (
+                      <TableHead>{label}</TableHead>
+                    ))}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {items.map(
+                  {rowItems.map(
                     ({ file, author, lastUpdated, lastUpdate }, idx) => (
                       <TableRow key={idx}>
                         <TableCell className="font-medium">
-                          <>{file.icon}</>
-                          <>{file.label}</>
+                          <div className="flex items-center gap-2 text-center">
+                            {file.icon}
+                            <>{file.label}</>
+                          </div>
                         </TableCell>
                         <TableCell>
                           <span className="flex items-center gap-2">
@@ -512,7 +512,6 @@ export default function Page() {
                           </span>
                         </TableCell>
                         <TableCell>
-                          <>{lastUpdated.timestamp}</>
                           <>{lastUpdated.label}</>
                         </TableCell>
                         <TableCell className="text-right">
@@ -530,7 +529,6 @@ export default function Page() {
                   </TableRow>
                 </TableFooter>
               </Table>
-              <StatusBadge status="away" />
             </CardContent>
           </Card>
         )}

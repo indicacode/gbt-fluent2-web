@@ -1,7 +1,46 @@
 import * as React from "react"
 import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
+import { tv } from "tailwind-variants"
 
-import { cn } from "@/lib/utils"
+//--------------------------------styles------------------------------------//
+const tableSlots = tv({
+  slots: {
+    // ---group--- //
+    table: "w-full caption-bottom rounded text-sm",
+    tableRoot: "relative w-full overflow-auto",
+    // ---group--- //
+
+    tableHeader: "[&_tr]:border-b-[2px]",
+
+    tableBody: "py-1 [&_tr:last-child]:border-0",
+
+    tableFoot:
+      "border-t-[2px] border-zinc-600 bg-slate-100/50 py-1 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
+
+    tableRow:
+      "border-b-[2px] border-zinc-600 transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-slate-800/50 dark:data-[state=selected]:bg-slate-800",
+
+    tableHead:
+      "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-400 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+
+    tableCell:
+      "min-w-fit whitespace-nowrap p-2 align-middle  [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+
+    tableCaption: "mt-4 text-sm text-slate-500 dark:text-slate-400",
+  },
+})
+const {
+  table,
+  tableHeader,
+  tableBody,
+  tableFoot,
+  tableRow,
+  tableHead,
+  tableCell,
+  tableCaption,
+  tableRoot,
+} = tableSlots()
+//--------------------------------styles------------------------------------//
 
 interface TableProps extends HTMLAttributes<HTMLTableElement> {}
 
@@ -10,12 +49,8 @@ function Table(
   ref: Ref<HTMLTableElement>
 ) {
   return (
-    <div className="relative w-full overflow-auto">
-      <table
-        ref={ref}
-        className={cn("w-full caption-bottom text-sm", className)}
-        {...props}
-      />
+    <div className={tableRoot()}>
+      <table ref={ref} className={table({ className })} {...props} />
     </div>
   )
 }
@@ -31,9 +66,7 @@ function TableHeader(
   { className, ...props }: TableHeaderProps,
   ref: Ref<HTMLTableSectionElement>
 ) {
-  return (
-    <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
-  )
+  return <thead ref={ref} className={tableHeader({ className })} {...props} />
 }
 const ForwardedTableHeader = forwardRef(TableHeader)
 ForwardedTableHeader.displayName = "TableHeader"
@@ -46,13 +79,7 @@ function TableBody(
   { className, ...props }: TableBodyProps,
   ref: Ref<HTMLTableSectionElement>
 ) {
-  return (
-    <tbody
-      ref={ref}
-      className={cn(" py-1 [&_tr:last-child]:border-0", className)}
-      {...props}
-    />
-  )
+  return <tbody ref={ref} className={tableBody({ className })} {...props} />
 }
 const ForwardedTableBody = forwardRef(TableBody)
 ForwardedTableBody.displayName = "TableBody"
@@ -68,10 +95,9 @@ function TableFooter(
   return (
     <tfoot
       ref={ref}
-      className={cn(
-        "border-t bg-slate-100/50 py-1 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
-        className
-      )}
+      className={tableFoot({
+        className,
+      })}
       {...props}
     />
   )
@@ -90,10 +116,9 @@ function TableRow(
   return (
     <tr
       ref={ref}
-      className={cn(
-        "border-b transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-slate-800/50 dark:data-[state=selected]:bg-slate-800",
-        className
-      )}
+      className={tableRow({
+        className,
+      })}
       {...props}
     />
   )
@@ -112,10 +137,9 @@ function TableHead(
   return (
     <th
       ref={ref}
-      className={cn(
-        "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-400 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-        className
-      )}
+      className={tableHead({
+        className,
+      })}
       {...props}
     />
   )
@@ -135,10 +159,9 @@ function TableCell(
   return (
     <td
       ref={ref}
-      className={cn(
-        "p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
-        className
-      )}
+      className={tableCell({
+        className,
+      })}
       {...props}
     />
   )
@@ -156,14 +179,7 @@ function TableCaption(
   ref: Ref<HTMLTableCaptionElement>
 ) {
   return (
-    <caption
-      ref={ref}
-      className={cn(
-        "mt-4 text-sm text-slate-500 dark:text-slate-400",
-        className
-      )}
-      {...props}
-    />
+    <caption ref={ref} className={tableCaption({ className })} {...props} />
   )
 }
 
