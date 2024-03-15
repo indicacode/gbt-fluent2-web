@@ -14,12 +14,13 @@ import {
 } from "react-icons/gi"
 
 import {
+  Accordion, AccordionContent, AccordionItem,
+  AccordionTrigger,
   Avatar,
   AvatarFallback,
   AvatarImage,
   Button,
-  Input,
-  Slider,
+  Input, Slider,
 } from "@/components/done"
 import {
   Card,
@@ -48,6 +49,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
+  StatusBadge,
+  Table,
   Tabs,
   TabsContent,
   TabsList,
@@ -60,11 +63,11 @@ import {
   TableFooter,
   TableHead,
   TableHeader,
-  TableRoot,
   TableRow,
 } from "@/components/reviewing/table"
 
-import { components, frameworks, rowItems } from "./page.inputs"
+import {components, frameworks, items, rowItems} from "./page.inputs"
+import {MountainIcon} from "lucide-react";
 
 type ComponentType = (typeof components)[number]
 
@@ -78,9 +81,10 @@ export default function Page() {
 
   return (
     <div className="flex h-full min-h-screen">
-      <div className="h-fu ll flex min-h-screen w-full flex-col justify-center gap-4 border-r-2 border-zinc-700 bg-zinc-900 px-10 pt-4 lg:min-w-[16vw]">
+      <div className=" flex min-h-screen overflow-y-scroll  w-full flex-col justify-center gap-4 border-r-2 border-zinc-700 bg-zinc-900 px-2   pt-4 lg:min-w-[16vw]">
+        <div className={"flex dark:text-white text-black items-center flex-col"}><MountainIcon className={"w-full h-[20vh]"} /> <h2 className={"font-extrabold text-xl"}>Fluent2</h2></div>
         {components.map((component, idx) => (
-          <Button key={idx} onClick={() => setCurrentDocs(component)}>
+          <Button key={idx} className={" py-0 "} onClick={() => setCurrentDocs(component)}>
             {component}
           </Button>
         ))}
@@ -476,14 +480,14 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <TableRoot>
+              <Table>
                 <TableCaption>A list of your recent invoices.</TableCaption>
                 <TableHeader>
                   <TableRow>
                     <TableHead className="w-[100px]">Invoice</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Method</TableHead>
-                    <TableHead>Amount</TableHead>
+                    <TableHead className="text-right">Amount</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -491,10 +495,8 @@ export default function Page() {
                     ({ file, author, lastUpdated, lastUpdate }, idx) => (
                       <TableRow key={idx}>
                         <TableCell className="font-medium">
-                          <span className="flex items-center gap-2">
-                            <>{file.icon}</>
-                            <>{file.label}</>
-                          </span>
+                          <>{file.icon}</>
+                          <>{file.label}</>
                         </TableCell>
                         <TableCell>
                           <span className="flex items-center gap-2">
@@ -514,13 +516,12 @@ export default function Page() {
                           </span>
                         </TableCell>
                         <TableCell>
+                          <>{lastUpdated.timestamp}</>
                           <>{lastUpdated.label}</>
                         </TableCell>
                         <TableCell>
-                          <span className="flex items-center gap-2">
-                            <>{lastUpdate.icon}</>
-                            <>{lastUpdate.label}</>
-                          </span>
+                          <>{lastUpdate.icon}</>
+                          <>{lastUpdate.label}</>
                         </TableCell>
                       </TableRow>
                     )
@@ -532,23 +533,57 @@ export default function Page() {
                     <TableCell>1</TableCell>
                   </TableRow>
                 </TableFooter>
-              </TableRoot>
+              </Table>
+              <StatusBadge status="away" />
             </CardContent>
-          </Card>
-        )}
+          </Card>)}
         {currentDocs === "Slider" && (
-          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
-            <CardHeader>
-              <CardTitle>Slider</CardTitle>
-              <CardDescription>
-                Sliders are used to set dynamic values to things.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Slider size={"sm"} step={1} />
-            </CardContent>
-          </Card>
+            <Card  className={" lg:w-[80vw] dark:bg-gray-800"}>
+              <CardHeader>
+                <CardTitle>Slider</CardTitle>
+                <CardDescription>
+                  Sliders are used to set dynamic values to things.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Slider
+                  size={"sm"} step={1}
+                />
+              </CardContent>
+            </Card>
         )}
+        {currentDocs === "Accordion" && (
+            <Card  className={" lg:w-[80vw] dark:bg-gray-800"}>
+              <CardHeader>
+                <CardTitle>Accordion</CardTitle>
+                <CardDescription>
+                  Accordions decrease cognitive load by letting people choose which sections of content they see, like questions in an FAQ. Never put information that's required for the current task inside an accordion. Consider a treatment that gives it more prominence.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. Try it for yourself, with a few lines of code you get beautiful UI!
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>Is it styled?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It comes with default styles that matches the Fluent2 Aesthetic!
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>Is it animated?</AccordionTrigger>
+                    <AccordionContent>
+                      Yes. It's animated by default with a smooth expanding motion, you can disable animations.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </CardContent>
+            </Card>
+        )}v
       </main>
     </div>
   )

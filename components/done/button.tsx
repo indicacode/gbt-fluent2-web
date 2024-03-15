@@ -9,11 +9,11 @@ export interface ButtonProps
 }
 
 const buttonVariants = tv({
-  base: "flex cursor-pointer items-center justify-center rounded-[4px] px-3 py-1 text-lg font-medium disabled:pointer-events-none disabled:opacity-50",
+  base: "flex cursor-pointer items-center justify-center rounded-[2px] px-3 py-1 text-md font-medium disabled:pointer-events-none disabled:opacity-50",
   variants: {
     variant: {
       default:
-        "dark:text-whitesmoke active:gray-200 duration-400 bg-brand-primary text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white",
+        "dark:text-whitesmoke active:gray-200  duration-400 bg-brand-primary text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white",
       secondary:
         "bg-gray-200 text-black before:border-black hover:bg-gray-300 active:bg-gray-400 disabled:bg-[#F0F0F0] data-[selected=true]:before:bg-black",
       outline:
