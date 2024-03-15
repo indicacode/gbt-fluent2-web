@@ -2,6 +2,10 @@ import * as React from "react"
 import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
 import { tv } from "tailwind-variants" //--------------------------------styles------------------------------------//
 
+
+
+
+
 //--------------------------------styles------------------------------------//
 const tableSlots = tv({
   slots: {
@@ -44,7 +48,7 @@ const {
 
 type TableProps = HTMLAttributes<HTMLTableElement>
 
-function Table(
+function TableRoot(
   { className, ...props }: TableProps,
   ref: Ref<HTMLTableElement>
 ) {
@@ -55,7 +59,7 @@ function Table(
   )
 }
 
-const ForwardedTable = forwardRef(Table)
+const ForwardedTable = forwardRef(TableRoot)
 ForwardedTable.displayName = "Table"
 
 //-------------------------------------------------------------------------//
@@ -191,7 +195,7 @@ const ForwardedTableCaption = forwardRef(TableCaption)
 ForwardedTableCaption.displayName = "TableCaption"
 
 export {
-  ForwardedTable as Table,
+  ForwardedTable as TableRoot,
   ForwardedTableHeader as TableHeader,
   ForwardedTableBody as TableBody,
   ForwardedTableFooter as TableFooter,

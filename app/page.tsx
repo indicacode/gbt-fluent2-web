@@ -48,7 +48,6 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-  Table,
   Tabs,
   TabsContent,
   TabsList,
@@ -61,6 +60,7 @@ import {
   TableFooter,
   TableHead,
   TableHeader,
+  TableRoot,
   TableRow,
 } from "@/components/reviewing/table"
 
@@ -476,7 +476,7 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
+              <TableRoot>
                 <TableCaption>A list of your recent invoices.</TableCaption>
                 <TableHeader>
                   <TableRow>
@@ -532,7 +532,7 @@ export default function Page() {
                     <TableCell>1</TableCell>
                   </TableRow>
                 </TableFooter>
-              </Table>
+              </TableRoot>
             </CardContent>
           </Card>
         )}
