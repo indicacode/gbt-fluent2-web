@@ -117,6 +117,5 @@ export const sideBar = {
     "Accordion",
     "Avatar",
     "Switch",
-    "Test",
   ],
 } as const
