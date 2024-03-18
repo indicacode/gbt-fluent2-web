@@ -2,6 +2,10 @@ import * as React from "react"
 import { ReactNode } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
+
+
+
+
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -9,7 +13,7 @@ export interface ButtonProps
 }
 
 const buttonVariants = tv({
-  base: "flex cursor-pointer items-center justify-center rounded-[2px] px-3 py-1 text-md font-medium disabled:pointer-events-none disabled:opacity-50",
+  base: "text-md flex cursor-pointer items-center justify-center rounded-[2px] px-3 py-1 font-medium disabled:pointer-events-none disabled:opacity-50",
   variants: {
     variant: {
       default:
@@ -21,7 +25,7 @@ const buttonVariants = tv({
       transparent:
         "bg-transparent hover:text-brand-primary hover:before:border-0 hover:before:bg-brand-primary active:before:bg-brand-primary data-[selected=true]:text-brand-primary data-[selected=true]:before:bg-brand-primary dark:data-[selected=true]:before:border-0",
       subtle:
-        "bg-transparent before:border-black hover:bg-[#F5F5F5] hover:before:border-0 hover:before:bg-brand-primary active:bg-[#E0E0E0] active:before:bg-brand-primary data-[selected=true]:bg-[#EBEBEB] data-[selected=true]:before:border-0 data-[selected=true]:before:bg-brand-primary dark:before:border-slate-300  dark:hover:bg-white/10 dark:active:bg-white/20 dark:data-[selected=true]:bg-[#f0f0f011] dark:data-[selected=true]:hover:bg-white/10 dark:data-[selected=true]:active:bg-white/20",
+        "bg-transparent before:border-black hover:bg-[#F5F5F5] hover:before:border-0 hover:before:bg-brand-primary active:bg-[#E0E0E0] active:before:bg-brand-primary data-[selected=true]:bg-[#EBEBEB] data-[selected=true]:before:border-0 data-[selected=true]:before:bg-brand-primary dark:text-white  dark:before:border-slate-300 dark:hover:bg-white/10 dark:active:bg-white/20 dark:data-[selected=true]:bg-[#f0f0f011] dark:data-[selected=true]:hover:bg-white/10 dark:data-[selected=true]:active:bg-white/20",
     },
     toggle: {
       true: "aspect-square w-fit before:rounded-full before:border-2 before:p-2 before:content-['']",

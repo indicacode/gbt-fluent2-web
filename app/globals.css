@@ -7,7 +7,7 @@
 @layer base {
     @font-face {
         font-family: Segoe;
-        src: url(../public/fonts/Segoe_UI.ttf);
+        src: url(/fonts/Segoe_UI.ttf);
     }
 }
 

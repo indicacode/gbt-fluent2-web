@@ -53,13 +53,6 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-  Table,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/reviewing/"
-import {
   TableBody,
   TableCaption,
   TableCell,
@@ -68,39 +61,67 @@ import {
   TableHeader,
   TableRoot,
   TableRow,
-} from "@/components/reviewing/table"
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/reviewing/"
 import FunctionalChildrens from "@/app/function-childrens"
 
-import { components, frameworks, rowItems } from "./page.inputs"
+import { frameworks, rowItems, sideBar } from "./page.inputs"
 
-type ComponentType = (typeof components)[number]
+type SideBarType = keyof typeof sideBar
+
+type ItemsType = {
+  [Key in SideBarType]: (typeof sideBar)[Key][number]
+}[SideBarType]
 
 export default function Page() {
   const [status, setStatus] = useState<
     "neutral" | "success" | "fail" | "warning"
   >("neutral")
   const states = ["neutral", "success", "fail", "warning"]
-  const [currentDocs, setCurrentDocs] = useState<ComponentType>("Button")
+  const [currentDocs, setCurrentDocs] = useState<ItemsType>("Button")
   const [iconOnly, setIconOnly] = useState(false)
-
+  const sideBarKeys = Object.keys(sideBar)
   return (
-    <div className="flex h-full min-h-screen">
-      <div className=" flex min-h-screen w-full  flex-col justify-center gap-4 overflow-y-scroll border-r-2 border-zinc-700 bg-zinc-900 px-2   pt-4 lg:min-w-[16vw]">
-        <div
-          className={"flex flex-col items-center text-black dark:text-white"}
-        >
-          <MountainIcon className={"h-[20vh] w-full"} />{" "}
-          <h2 className={"text-xl font-extrabold"}>Fluent2</h2>
+    <div className="flex h-full min-h-screen w-full">
+      <div className="flex min-h-screen w-full max-w-44 flex-col justify-between border-r-2 border-zinc-700 bg-zinc-900 pt-4">
+        <div className="flex justify-start gap-2 pl-1 text-black dark:text-white">
+          <MountainIcon className="text-2xl" />
+          <h2 className="text-xl font-bold">Fluent2</h2>
         </div>
-        {components.map((component, idx) => (
-          <Button
-            key={idx}
-            className={" py-0 "}
-            onClick={() => setCurrentDocs(component)}
-          >
-            {component}
-          </Button>
-        ))}
+        <Accordion
+          type="multiple"
+          className="flex min-h-full w-full flex-col bg-transparent pt-4"
+        >
+          {sideBarKeys.map((key, idx) => (
+            <AccordionItem
+              key={idx}
+              className="bg-transparent font-bold"
+              value={"item" + idx}
+            >
+              <AccordionTrigger>
+                <span className="pb-1 text-[1.2em]">{key}</span>
+              </AccordionTrigger>
+              <AccordionContent>
+                {sideBar[key as SideBarType].map(
+                  (component: ItemsType, itemIdx: number) => (
+                    <Button
+                      key={itemIdx}
+                      className="h-auto w-full justify-start rounded-none p-0"
+                      variant="subtle"
+                      onClick={() => setCurrentDocs(component)}
+                      aria-labelledby={`${key}-${itemIdx}`}
+                    >
+                      {component}
+                    </Button>
+                  )
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
       <main className="flex h-full min-h-screen w-full flex-col items-center justify-center bg-slate-100 px-6 dark:bg-zinc-900">
         {currentDocs === "Button" && (

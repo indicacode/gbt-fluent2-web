@@ -100,19 +100,23 @@ export const frameworks = [
   },
 ]
 
-export const components = [
-  "Button",
-  "Inputs",
-  "Search",
-  "Select",
-  "Drawer",
-  "Dialog",
-  "Tabs",
-  "Table",
-  "DataTable",
-  "Slider",
-  "Accordion",
-  "Avatar",
-  "Switch",
-  "Test",
-] as const
+export const sideBar = {
+  Concepts: ["2", "1"],
+  Theme: ["1", "2"],
+  Components: [
+    "Button",
+    "Inputs",
+    "Search",
+    "Select",
+    "Drawer",
+    "Dialog",
+    "Tabs",
+    "Table",
+    "DataTable",
+    "Slider",
+    "Accordion",
+    "Avatar",
+    "Switch",
+    "Test",
+  ],
+} as const
