@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
-      <body className="min-h-full scroll-smooth  font-Segoe">
+      <body className="min-h-full overflow-x-hidden  scroll-smooth  font-Segoe">
         <div>{children}</div>
       </body>
     </html>

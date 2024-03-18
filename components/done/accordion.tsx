@@ -50,7 +50,7 @@ const AccordionContent = React.forwardRef<
   <Content
     ref={ref}
     className={
-      "overflow-hidden bg-white text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down dark:bg-gray-900 dark:text-white"
+      "overflow-hidden bg-white  px-7 text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down dark:bg-gray-900 dark:text-white"
     }
     {...props}
   >
