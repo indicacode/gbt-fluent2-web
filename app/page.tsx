@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { ReactNode, SetStateAction, useState } from "react"
 import {
   GiBanana,
   GiCarrot,
@@ -63,6 +63,7 @@ import {
   TableRoot,
   TableRow,
 } from "@/components/reviewing/table"
+import FunctionalChildrens from "@/app/function-childrens"
 
 import { components, frameworks, rowItems } from "./page.inputs"
 
@@ -546,6 +547,43 @@ export default function Page() {
             </CardHeader>
             <CardContent>
               <Slider size={"sm"} step={1} />
+            </CardContent>
+          </Card>
+        )}{" "}
+        {currentDocs === "Test" && (
+          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Function Children</CardTitle>
+              <CardDescription>
+                Children is passed as a function
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <FunctionalChildrens>
+                {(
+                  test: "Papyrus" | "Sans",
+                  setTest: (
+                    newState: (prevState: string) => string
+                  ) => SetStateAction<string>,
+                  sansLaught: () => ReactNode
+                ) => (
+                  <div>
+                    <span>
+                      {test} {sansLaught()}
+                    </span>
+                    <Button
+                      variant={"subtle"}
+                      onClick={() =>
+                        setTest((prevState: string) =>
+                          prevState === "Sans" ? "Papyrus" : "Sans"
+                        )
+                      }
+                    >
+                      Toggle between "Sans" and "Papyrus"
+                    </Button>
+                  </div>
+                )}
+              </FunctionalChildrens>
             </CardContent>
           </Card>
         )}
