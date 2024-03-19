@@ -625,18 +625,38 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
-        {currentDocs === "Slider" && (
+        {currentDocs === "Avatar" && (
           <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
             <CardHeader>
-              <CardTitle>Slider</CardTitle>
+              <CardTitle>Avatar</CardTitle>
               <CardDescription>
-                Sliders are used to set dynamic values to things.
+                An avatar shows an image or text to represent a person or group as well as give additional information like their status and activity.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Slider size={"sm"} step={1} />
+
+              <Avatar  className={"text-center w-32 h-32 items-center flex"} status={"online"}> <img src={"https://images.pexels.com/photos/20147042/pexels-photo-20147042/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}/> </Avatar>
+
+
             </CardContent>
           </Card>
+        )}
+        {currentDocs === "Switch" && (
+            <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+              <CardHeader>
+                <CardTitle>Switch</CardTitle>
+                <CardDescription>
+                  A switch lets someone choose between two mutually exclusive options, like on or off. Activating a switch triggers an immediate change.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className={"flex flex-row"}>
+                  <switch>
+
+                  </switch>
+
+
+              </CardContent>
+            </Card>
         )}
       </main>
     </div>
