@@ -24,7 +24,7 @@ import {
   AvatarImage,
   Button,
   Input,
-  Slider,
+  Slider, Switch,
 } from "@/components/done"
 import {
   Card,
@@ -650,9 +650,9 @@ export default function Page() {
                 </CardDescription>
               </CardHeader>
               <CardContent className={"flex flex-row"}>
-                  <switch>
+                  <Switch  >
 
-                  </switch>
+                  </Switch>
 
 
               </CardContent>
