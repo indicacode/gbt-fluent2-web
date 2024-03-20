@@ -2,6 +2,10 @@ import * as React from "react"
 import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
 import { tv } from "tailwind-variants"
 
+
+
+
+
 //--------------------------------styles------------------------------------//
 const tableSlots = tv({
   slots: {
@@ -15,16 +19,16 @@ const tableSlots = tv({
     tableBody: "py-1 [&_tr:last-child]:border-0",
 
     tableFoot:
-      "border-t-[2px] border-zinc-600 bg-slate-100/50 py-1 font-medium dark:bg-slate-800/50 [&>tr]:last:border-b-0",
+      "border-t-[2px] border-zinc-600 py-1 font-medium hover:bg-slate-100/50 dark:hover:bg-white/10 [&>tr]:last:border-b-0",
 
     tableRow:
       "border-b-[2px] border-zinc-600 transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-white/10 dark:data-[state=selected]:bg-slate-800",
 
     tableHead:
-      "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-400 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-200 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCell:
-      "min-w-fit whitespace-nowrap p-2 align-middle  [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "min-w-fit whitespace-nowrap p-2 py-1.5 align-middle  [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCaption: "mt-4 text-sm text-slate-500 dark:text-slate-400",
   },

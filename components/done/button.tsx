@@ -13,7 +13,7 @@ export interface ButtonProps
 }
 
 const buttonVariants = tv({
-  base: "text-md flex cursor-pointer items-center justify-center rounded-[2px] px-3 py-1 font-medium disabled:pointer-events-none disabled:opacity-50",
+  base: "text-md flex cursor-pointer items-center justify-center rounded-[4px] px-3 py-1 font-medium disabled:pointer-events-none disabled:opacity-50",
   variants: {
     variant: {
       default:

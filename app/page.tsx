@@ -19,12 +19,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
   Button,
   Input,
-  Slider, Switch,
+  Slider,
+  Switch,
 } from "@/components/done"
 import {
   Card,
@@ -35,6 +33,9 @@ import {
 } from "@/components/not-done/card"
 import Combobox from "@/components/not-done/Combobox"
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   DataTable,
   Dialog,
   DialogContent,
@@ -79,6 +80,7 @@ export default function Page() {
   const [status, setStatus] = useState<
     "neutral" | "success" | "fail" | "warning"
   >("neutral")
+  const [input, setInput] = useState<string>("")
   const states = ["neutral", "success", "fail", "warning"]
   const [currentDocs, setCurrentDocs] = useState<ItemsType>("Button")
   const [iconOnly, setIconOnly] = useState(false)
@@ -208,7 +210,9 @@ export default function Page() {
                   className="min-w-full"
                   labelText="Im a All in One Input"
                   placeholder="Just toggle the states"
+                  onChange={(e) => setInput(e.currentTarget.value)}
                 />
+                {`${input}`}
                 {/*Do not ever do something like this. Its this way just to test the input*/}
                 <Button
                   onClick={() => {
@@ -499,7 +503,9 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <DataTable />
+              <div className="rounded-2xl border border-zinc-700 bg-zinc-900 p-10">
+                <DataTable />
+              </div>
             </CardContent>
           </Card>
         )}
@@ -513,63 +519,65 @@ export default function Page() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <TableRoot>
-                <TableCaption>A list of your recent invoices.</TableCaption>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-[100px]">Invoice</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Method</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {rowItems.map(
-                    ({ file, author, lastUpdated, lastUpdate }, idx) => (
-                      <TableRow key={idx}>
-                        <TableCell className="font-medium">
-                          <span className="flex items-center gap-2">
-                            <>{file.icon}</>
-                            <>{file.label}</>
-                          </span>
-                        </TableCell>
-                        <TableCell>
-                          <span className="flex items-center gap-2">
-                            <Avatar
-                              aria-label={author.label}
-                              status={author.status}
-                              // name={author.label}
-                            >
-                              <AvatarImage
-                                src="https://github.com/shadcn.pn"
-                                alt="@shadcn"
-                              />
-                              <AvatarFallback>{author.label}</AvatarFallback>
-                            </Avatar>
+              <div className="rounded-2xl border border-zinc-700 bg-zinc-900 p-10">
+                <TableRoot>
+                  <TableCaption>A list of your recent invoices.</TableCaption>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-[100px]">Invoice</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Method</TableHead>
+                      <TableHead className="">Amount</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rowItems.map(
+                      ({ file, author, lastUpdated, lastUpdate }, idx) => (
+                        <TableRow key={idx}>
+                          <TableCell className="font-medium">
+                            <span className="flex items-center gap-2">
+                              <>{file.icon}</>
+                              <>{file.label}</>
+                            </span>
+                          </TableCell>
+                          <TableCell>
+                            <span className="flex items-center gap-2">
+                              <Avatar
+                                aria-label={author.label}
+                                status={author.status}
+                                // name={author.label}
+                              >
+                                <AvatarImage
+                                  src="https://github.com/shadcn.pn"
+                                  alt="@shadcn"
+                                />
+                                <AvatarFallback>{author.label}</AvatarFallback>
+                              </Avatar>
 
-                            <>{author.label}</>
-                          </span>
-                        </TableCell>
-                        <TableCell>
-                          <>{lastUpdated.label}</>
-                        </TableCell>
-                        <TableCell>
-                          <span className="flex items-center gap-2">
-                            <>{lastUpdate.icon}</>
-                            <>{lastUpdate.label}</>
-                          </span>
-                        </TableCell>
-                      </TableRow>
-                    )
-                  )}
-                </TableBody>
-                <TableFooter>
-                  <TableRow>
-                    <TableCell colSpan={3}>Total Edits</TableCell>
-                    <TableCell>1</TableCell>
-                  </TableRow>
-                </TableFooter>
-              </TableRoot>
+                              <>{author.label}</>
+                            </span>
+                          </TableCell>
+                          <TableCell>
+                            <>{lastUpdated.label}</>
+                          </TableCell>
+                          <TableCell>
+                            <span className="flex items-center gap-2">
+                              <>{lastUpdate.icon}</>
+                              <>{lastUpdate.label}</>
+                            </span>
+                          </TableCell>
+                        </TableRow>
+                      )
+                    )}
+                  </TableBody>
+                  <TableFooter>
+                    <TableRow>
+                      <TableCell colSpan={3}>Total Edits</TableCell>
+                      <TableCell>1</TableCell>
+                    </TableRow>
+                  </TableFooter>
+                </TableRoot>
+              </div>
             </CardContent>
           </Card>
         )}
@@ -630,33 +638,40 @@ export default function Page() {
             <CardHeader>
               <CardTitle>Avatar</CardTitle>
               <CardDescription>
-                An avatar shows an image or text to represent a person or group as well as give additional information like their status and activity.
+                An avatar shows an image or text to represent a person or group
+                as well as give additional information like their status and
+                activity.
               </CardDescription>
             </CardHeader>
             <CardContent>
-
-              <Avatar  className={"text-center w-32 h-32 items-center flex"} status={"online"}> <img src={"https://images.pexels.com/photos/20147042/pexels-photo-20147042/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"}/> </Avatar>
-
-
+              <Avatar
+                className={"flex h-32 w-32 items-center text-center"}
+                status={"online"}
+              >
+                {" "}
+                <img
+                  src={
+                    "https://images.pexels.com/photos/20147042/pexels-photo-20147042/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  }
+                />{" "}
+              </Avatar>
             </CardContent>
           </Card>
         )}
         {currentDocs === "Switch" && (
-            <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
-              <CardHeader>
-                <CardTitle>Switch</CardTitle>
-                <CardDescription>
-                  A switch lets someone choose between two mutually exclusive options, like on or off. Activating a switch triggers an immediate change.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className={"flex flex-row"}>
-                  <Switch  >
-
-                  </Switch>
-
-
-              </CardContent>
-            </Card>
+          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+            <CardHeader>
+              <CardTitle>Switch</CardTitle>
+              <CardDescription>
+                A switch lets someone choose between two mutually exclusive
+                options, like on or off. Activating a switch triggers an
+                immediate change.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className={"flex flex-row"}>
+              <Switch></Switch>
+            </CardContent>
+          </Card>
         )}
       </main>
     </div>

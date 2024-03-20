@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { ComponentPropsWithoutRef, forwardRef, Ref } from "react"
+import { Person20Regular } from "@fluentui/react-icons"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "react-icons/ci"
 import { tv, VariantProps } from "tailwind-variants"
@@ -28,7 +29,7 @@ const avatar = tv({
       group: "rounded-[5px]",
     },
     size: {
-      default: "h-10 w-10",
+      default: "h-8 w-8",
       sm: "h-4 w-4",
       lg: "h-14 w-14",
       icon: "h-6 w-6",
@@ -122,9 +123,12 @@ function AvatarFallback(
       )}
       {...props}
     >
-      {initials ?? (
-        <CiUser className="text-2xl text-gray-800 dark:text-white" />
-      )}
+      {
+        <>
+          <Person20Regular />
+          {/*<CiUser className="text-2xl text-gray-800 dark:text-white" />*/}
+        </>
+      }
     </Fallback>
   )
 }
