@@ -51,6 +51,7 @@ export function DataTable() {
       const data = await fetchUsers(pagination.pageSize, pagination.pageIndex)
       setData(data)
     }
+
     fetchData().then((r) => r)
   }, [pagination])
 

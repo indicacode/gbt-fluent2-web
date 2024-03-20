@@ -9,5 +9,6 @@ export default function FunctionalChildrens({ children }: any) {
     }
     return <>says: {"spaghetti".toUpperCase()}</>
   }
+
   return <div> {children(test, setTest, sansLaught)} </div>
 }
