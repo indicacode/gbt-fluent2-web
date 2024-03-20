@@ -1,10 +1,6 @@
 import React from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
-
-
-
-
 //--------------------types--------------------//
 
 type StatusBadgeProps = VariantProps<typeof statusBadge>

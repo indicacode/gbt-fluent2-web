@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils"
 
 import { StatusBadge } from "../reviewing"
 
-
 //--------------------types--------------------//
 
 type AvatarProps = React.ComponentPropsWithoutRef<typeof Root> &

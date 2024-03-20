@@ -2,10 +2,6 @@ import * as React from "react"
 import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
 import { tv } from "tailwind-variants"
 
-
-
-
-
 //--------------------------------styles------------------------------------//
 const tableSlots = tv({
   slots: {
