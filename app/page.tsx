@@ -67,6 +67,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/reviewing/"
+import { columns } from "@/components/reviewing/data-table.components"
 
 import { frameworks, rowItems, sideBar } from "./page.inputs"
 
@@ -76,14 +77,16 @@ type ItemsType = {
   [Key in SideBarType]: (typeof sideBar)[Key][number]
 }[SideBarType]
 
+type StatusType = "neutral" | "success" | "fail" | "warning"
+
 export default function Page() {
-  const [status, setStatus] = useState<
-    "neutral" | "success" | "fail" | "warning"
-  >("neutral")
-  const [input, setInput] = useState<string>("")
-  const states = ["neutral", "success", "fail", "warning"]
   const [currentDocs, setCurrentDocs] = useState<ItemsType>("Button")
+  const [status, setStatus] = useState<StatusType>("neutral")
   const [iconOnly, setIconOnly] = useState(false)
+  const [input, setInput] = useState<string>("")
+
+  const states = ["neutral", "success", "fail", "warning"]
+
   const sideBarKeys = Object.keys(sideBar)
   return (
     <div className="flex h-full min-h-screen w-full">
@@ -504,7 +507,7 @@ export default function Page() {
             </CardHeader>
             <CardContent>
               <div className="rounded-2xl border border-zinc-700 bg-zinc-900 p-10">
-                <DataTable />
+                <DataTable data={data} columns={columns} />
               </div>
             </CardContent>
           </Card>

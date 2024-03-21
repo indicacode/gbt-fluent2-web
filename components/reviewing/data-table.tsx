@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import React, { useMemo, useRef, useState } from "react"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import {
   ColumnFiltersState,
@@ -32,32 +32,33 @@ import {
   TableRow,
 } from "@/components/reviewing/"
 
-import { fetchUsers, User } from "./data-table.input"
-import { columns } from "./table-data.components"
+import { columns } from "./data-table.components"
 
-export function DataTable() {
+type DataTableProps = {
+  data: any
+  columns: any
+  pagination: {
+    pageIndex: number
+    pageSize: number
+    rowCount: number
+    pageCount?: number
+    manualPagination: boolean
+  }
+}
+
+export function DataTable({ data, columns, pagination }: DataTableProps) {
   const [rowSelection, setRowSelection] = useState({})
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
-  const [data, setData] = useState<Array<User>>([])
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 10,
+  const [paginationState, setPaginationState] = useState({
+    pageIndex: pagination.pageIndex,
+    pageSize: pagination.pageSize,
   })
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchUsers(pagination.pageSize, pagination.pageIndex)
-      setData(data)
-    }
-
-    fetchData().then((r) => r)
-  }, [pagination])
 
   const memoizedColumns = useMemo(() => columns, [])
 
-  const table: TableType<User> = useReactTable({
+  const table: TableType<typeof data> = useReactTable({
     data,
     columns: memoizedColumns,
     onSortingChange: setSorting,
@@ -67,15 +68,16 @@ export function DataTable() {
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
-    onPaginationChange: setPagination,
-    manualPagination: true,
-    rowCount: 100,
+    onPaginationChange: setPaginationState,
+    manualPagination: pagination.manualPagination,
+    rowCount: pagination.rowCount,
+    pageCount: pagination.pageCount,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
       rowSelection,
-      pagination,
+      pagination: paginationState,
     },
   })
 
@@ -88,7 +90,7 @@ export function DataTable() {
   )
 }
 
-function FilterButton({ table }: { table: TableType<User> }) {
+function FilterButton({ table }: { table: TableType<unknown> }) {
   return (
     <div className="flex items-center py-4">
       <Input
@@ -127,7 +129,7 @@ function FilterButton({ table }: { table: TableType<User> }) {
   )
 }
 
-function Table({ table }: { table: TableType<User> }) {
+function Table({ table }: { table: TableType<unknown> }) {
   const { rows } = table.getRowModel()
 
   const tableContainerRef = useRef<HTMLDivElement>(null)
@@ -209,7 +211,7 @@ function Table({ table }: { table: TableType<User> }) {
   )
 }
 
-function Pagination({ table }: { table: TableType<User> }) {
+function Pagination({ table }: { table: TableType<unknown> }) {
   return (
     <div className="flex w-full flex-row items-center justify-end space-x-2 py-4">
       <div className="text-muted-foreground flex-1 text-sm">
