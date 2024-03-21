@@ -68,6 +68,7 @@ import {
   TabsTrigger,
 } from "@/components/reviewing/"
 import { columns } from "@/components/reviewing/data-table.components"
+import { fetchUsers } from "@/components/reviewing/data-table.input"
 
 import { frameworks, rowItems, sideBar } from "./page.inputs"
 
@@ -507,7 +508,17 @@ export default function Page() {
             </CardHeader>
             <CardContent>
               <div className="rounded-2xl border border-zinc-700 bg-zinc-900 p-10">
-                <DataTable data={data} columns={columns} />
+                <DataTable
+                  columns={columns}
+                  fetchUsers={fetchUsers}
+                  pagination={{
+                    manualPagination: true,
+                    pageIndex: 0,
+                    pageCount: 10,
+                    pageSize: 10,
+                    rowCount: 100,
+                  }}
+                />
               </div>
             </CardContent>
           </Card>

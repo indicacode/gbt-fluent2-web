@@ -1,12 +1,11 @@
-"use client"
-
-import React, { useMemo, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import {
   ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   SortingState,
   useReactTable,
@@ -35,7 +34,7 @@ import {
 import { columns } from "./data-table.components"
 
 type DataTableProps = {
-  data: any
+  fetchUsers: (pageSize: number, pageIndex: number) => Promise<UserInput>
   columns: any
   pagination: {
     pageIndex: number
@@ -46,7 +45,9 @@ type DataTableProps = {
   }
 }
 
-export function DataTable({ data, columns, pagination }: DataTableProps) {
+type UserInput = Array<Record<string, unknown>>
+
+export function DataTable({ columns, pagination, fetchUsers }: DataTableProps) {
   const [rowSelection, setRowSelection] = useState({})
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -55,15 +56,28 @@ export function DataTable({ data, columns, pagination }: DataTableProps) {
     pageIndex: pagination.pageIndex,
     pageSize: pagination.pageSize,
   })
+  const [data, setData] = useState<UserInput>([])
 
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetchUsers(
+        paginationState.pageSize,
+        paginationState.pageIndex
+      )
+      setData(data)
+    }
+
+    fetchData().then((r) => r)
+  }, [paginationState])
   const memoizedColumns = useMemo(() => columns, [])
 
-  const table: TableType<typeof data> = useReactTable({
+  const table: TableType<UserInput[0]> = useReactTable({
     data,
     columns: memoizedColumns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
@@ -90,7 +104,7 @@ export function DataTable({ data, columns, pagination }: DataTableProps) {
   )
 }
 
-function FilterButton({ table }: { table: TableType<unknown> }) {
+function FilterButton({ table }: { table: TableType<UserInput[0]> }) {
   return (
     <div className="flex items-center py-4">
       <Input
@@ -129,7 +143,7 @@ function FilterButton({ table }: { table: TableType<unknown> }) {
   )
 }
 
-function Table({ table }: { table: TableType<unknown> }) {
+function Table({ table }: { table: TableType<UserInput[0]> }) {
   const { rows } = table.getRowModel()
 
   const tableContainerRef = useRef<HTMLDivElement>(null)
@@ -211,7 +225,7 @@ function Table({ table }: { table: TableType<unknown> }) {
   )
 }
 
-function Pagination({ table }: { table: TableType<unknown> }) {
+function Pagination({ table }: { table: TableType<UserInput[0]> }) {
   return (
     <div className="flex w-full flex-row items-center justify-end space-x-2 py-4">
       <div className="text-muted-foreground flex-1 text-sm">
