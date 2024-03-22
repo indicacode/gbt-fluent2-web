@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
+import React, { useMemo, useRef, useState } from "react"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import {
+  ColumnDef,
   ColumnFiltersState,
   flexRender,
   getCoreRowModel,
@@ -13,6 +14,7 @@ import {
 } from "@tanstack/react-table"
 import { Table as TableType } from "@tanstack/table-core"
 import { useVirtual } from "react-virtual"
+import useSWR from "swr"
 
 import { Button } from "@/components/done/button"
 import { Input } from "@/components/done/input"
@@ -34,8 +36,14 @@ import {
 import { columns } from "./data-table.components"
 
 type DataTableProps = {
-  fetchUsers: (pageSize: number, pageIndex: number) => Promise<UserInput>
-  columns: any
+  fetchUsers: ({
+    pageIndex,
+    pageSize,
+  }: {
+    pageIndex: any
+    pageSize: any
+  }) => Promise<any>
+  columns: Array<ColumnDef<any>>
   pagination: {
     pageIndex: number
     pageSize: number
@@ -47,7 +55,17 @@ type DataTableProps = {
 
 type UserInput = Array<Record<string, unknown>>
 
-export function DataTable({ columns, pagination, fetchUsers }: DataTableProps) {
+/**
+ * @param {UserInput} columns - An array that defines the structure of the table. Each item in the array represents a column in the table.
+ * @param {(pageSize: number, pageIndex: number) => Promise<UserInput>} fetchUsers - A function that fetches the data for the table. It should return a promise that resolves with an array of data.
+ * @param {Object} pagination - An object that controls the pagination behavior of the table.
+ * @param {number} pagination.pageIndex - The current page index.
+ * @param {number} pagination.pageSize - The number of rows per page.
+ * @param {number} pagination.rowCount - The total number of rows in the table.
+ * @param {number} [pagination.pageCount] - The total number of pages.
+ * @param {boolean} pagination.manualPagination - A boolean that indicates whether the pagination is controlled manually or automatically.
+ */
+export function DataTable({ columns, fetchUsers, pagination }: DataTableProps) {
   const [rowSelection, setRowSelection] = useState({})
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -56,19 +74,16 @@ export function DataTable({ columns, pagination, fetchUsers }: DataTableProps) {
     pageIndex: pagination.pageIndex,
     pageSize: pagination.pageSize,
   })
-  const [data, setData] = useState<UserInput>([])
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchUsers(
-        paginationState.pageSize,
-        paginationState.pageIndex
-      )
-      setData(data)
-    }
+  const { data, error, isLoading } = useSWR(
+    {
+      pageSize: paginationState["pageSize"],
+      pageIndex: paginationState["pageIndex"],
+    },
+    fetchUsers,
+    { suspense: true }
+  )
 
-    fetchData().then((r) => r)
-  }, [paginationState])
   const memoizedColumns = useMemo(() => columns, [])
 
   const table: TableType<UserInput[0]> = useReactTable({

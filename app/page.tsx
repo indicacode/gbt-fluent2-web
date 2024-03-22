@@ -90,7 +90,7 @@ export default function Page() {
 
   const sideBarKeys = Object.keys(sideBar)
   return (
-    <div className="flex h-full min-h-screen w-full">
+    <div className="flex h-full min-h-screen w-full lg:flex-row">
       <div className="flex min-h-screen w-full max-w-44 flex-col justify-between border-r-2 border-zinc-700 bg-zinc-900 pt-4">
         <div className="flex justify-start gap-2 pl-1 text-black dark:text-white">
           <MountainIcon className="text-2xl" />
@@ -130,10 +130,7 @@ export default function Page() {
       </div>
       <main className="flex h-full min-h-screen w-full flex-col items-center justify-center bg-slate-100 px-6 dark:bg-zinc-900">
         {currentDocs === "Button" && (
-          <Card
-            id={"buttons"}
-            className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800"
-          >
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle className="flex w-full justify-between  text-4xl">
                 Buttons
@@ -196,10 +193,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Inputs" && (
-          <Card
-            id={"inputs"}
-            className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800"
-          >
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle className=" text-4xl">Inputs</CardTitle>
               <CardDescription className={"text-xl"}>
@@ -303,10 +297,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Search" && (
-          <Card
-            id={"search"}
-            className="bg-stone-50 lg:w-[80vw] dark:bg-gray-800"
-          >
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Search List</CardTitle>
               <CardDescription>
@@ -327,7 +318,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Select" && (
-          <Card id={"select"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Select</CardTitle>
               <CardDescription>
@@ -355,7 +346,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Drawer" && (
-          <Card id={"drawer"} className={" lg:w-[80vw] dark:bg-gray-800  "}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Drawer</CardTitle>
               <CardDescription>
@@ -377,7 +368,7 @@ export default function Page() {
                   <div
                     className={"flex h-[50vh] w-screen flex-col items-center"}
                   >
-                    <DrawerHeader className={"flex flex-col items-center "}>
+                    <DrawerHeader className="flex flex-col items-center">
                       Welcome to GBT-PMS!
                     </DrawerHeader>
                     <DrawerDescription className={" text-slate-50"}>
@@ -392,69 +383,55 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Dialog" && (
-          <>
-            <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
-              <CardHeader>
-                <CardTitle>Dialog</CardTitle>
-                <CardDescription>
-                  A dialog is a supplemental surface that can provide helpful
-                  interactions or require someone to take an action before they
-                  can continue their task, like confirming a deletion.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Dialog>
-                  <DialogTrigger
-                    className={
-                      "dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white"
-                    }
-                  >
-                    Dialog
-                  </DialogTrigger>
-                  <DialogContent className={"dark:bg-gray-800"}>
-                    <DialogHeader>
-                      <DialogTitle className={"text-2xl font-bold "}>
-                        This is a dialog.
-                      </DialogTitle>
-                    </DialogHeader>
-                    <h2 className={"text-lg"}>
-                      Dialogs are often interruptions, so use them for important
-                      actions. If you need to give someone an update on an
-                      action they just took but that they don't need to act on,
-                      try a toast.
-                    </h2>
-                    <div className={"flex flex-row justify-end"}>
-                      <Button
-                        className={"mr-2"}
-                        size={"default"}
-                        variant={"secondary"}
-                      >
-                        Deny
-                      </Button>
-                      <Button className={""} variant={"default"}>
-                        Agree
-                      </Button>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </CardContent>
-            </Card>
-
-            <Card id={"dialog"} className={" lg:w-[80vw] dark:bg-gray-800"}>
-              <CardHeader>
-                <CardTitle>Dialog</CardTitle>
-                <CardDescription>
-                  A dialog is a supplemental surface that can provide helpful
-                  interactions or require someone to take an action before they
-                  can continue their task, like confirming a deletion.
-                </CardDescription>
-              </CardHeader>
-              <CardContent></CardContent>
-            </Card>
-          </>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
+            <CardHeader>
+              <CardTitle>Dialog</CardTitle>
+              <CardDescription>
+                A dialog is a supplemental surface that can provide helpful
+                interactions or require someone to take an action before they
+                can continue their task, like confirming a deletion.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Dialog>
+                <DialogTrigger
+                  className={
+                    "dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white"
+                  }
+                >
+                  Dialog
+                </DialogTrigger>
+                <DialogContent className={"dark:bg-gray-800"}>
+                  <DialogHeader>
+                    <DialogTitle className={"text-2xl font-bold "}>
+                      This is a dialog.
+                    </DialogTitle>
+                  </DialogHeader>
+                  <h2 className={"text-lg"}>
+                    Dialogs are often interruptions, so use them for important
+                    actions. If you need to give someone an update on an action
+                    they just took but that they don't need to act on, try a
+                    toast.
+                  </h2>
+                  <div className={"flex flex-row justify-end"}>
+                    <Button
+                      className={"mr-2"}
+                      size={"default"}
+                      variant={"secondary"}
+                    >
+                      Deny
+                    </Button>
+                    <Button className={""} variant={"default"}>
+                      Agree
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </CardContent>
+          </Card>
         )}
         {currentDocs === "Tabs" && (
-          <Card id={"tabs"} className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Tablist (Tabs)</CardTitle>
               <CardDescription>
@@ -498,7 +475,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "DataTable" && (
-          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Data Table</CardTitle>
               <CardDescription>
@@ -524,7 +501,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Table" && (
-          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Table</CardTitle>
               <CardDescription>
@@ -596,7 +573,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Slider" && (
-          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Slider</CardTitle>
               <CardDescription>
@@ -609,7 +586,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Accordion" && (
-          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Accordion</CardTitle>
               <CardDescription>
@@ -648,7 +625,7 @@ export default function Page() {
           </Card>
         )}
         {currentDocs === "Avatar" && (
-          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Avatar</CardTitle>
               <CardDescription>
@@ -662,18 +639,17 @@ export default function Page() {
                 className={"flex h-32 w-32 items-center text-center"}
                 status={"online"}
               >
-                {" "}
                 <img
                   src={
                     "https://images.pexels.com/photos/20147042/pexels-photo-20147042/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   }
-                />{" "}
+                />
               </Avatar>
             </CardContent>
           </Card>
         )}
         {currentDocs === "Switch" && (
-          <Card className={" lg:w-[80vw] dark:bg-gray-800"}>
+          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
             <CardHeader>
               <CardTitle>Switch</CardTitle>
               <CardDescription>

@@ -88,6 +88,7 @@ export const columns: Array<ColumnDef<User>> = [
       )
     },
     cell: ({ row }) => renderCell("email", row),
+    maxSize: 300,
   },
   {
     accessorKey: "age",

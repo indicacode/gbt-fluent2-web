@@ -12,15 +12,10 @@ type UserResponse = {
   users: User[]
 }
 
-export async function fetchUsers(
-  itemsByRequest: number,
-  itemsBehind: number
-): Promise<Array<User>> {
-  itemsBehind *= 10
+export const fetchUsers = async ({ pageIndex, pageSize }) => {
+  pageIndex *= 10
   const response = await fetch(
-    `https://dummyjson.com/users?limit=${itemsByRequest}&skip=${itemsBehind}`
-  )
-
-  const userResponse = (await response.json()) as UserResponse
-  return userResponse.users
+    `https://dummyjson.com/users?limit=${pageSize}&skip=${pageIndex}`
+  ).then((r) => r.json())
+  return response.users
 }
