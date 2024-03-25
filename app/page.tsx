@@ -22,7 +22,7 @@ import {
   Button,
   Input,
   Slider,
-  Switch,
+  Switch, Textarea,
 } from "@/components/done"
 import {
   Card,
@@ -71,6 +71,7 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 
 import { frameworks, rowItems, sideBar } from "./page.inputs"
+import {Calendar12Filled, Calendar3Day16Filled} from "@fluentui/react-icons";
 
 type SideBarType = keyof typeof sideBar
 
@@ -161,11 +162,11 @@ export default function Page() {
               <div className="mt-8 flex w-full flex-col gap-5 lg:mt-0 ">
                 <h1 className="self-center  text-2xl font-semibold">Toggle</h1>
                 <div className="flex flex-col items-center gap-5">
-                  <Button className={"w-fit"} toggle />
-                  <Button className={"w-fit"} toggle variant="secondary" />
-                  <Button className={"w-fit"} toggle variant="outline" />
-                  <Button className={"w-fit"} toggle variant="subtle" />
-                  <Button className={"w-fit"} toggle variant="transparent" />
+                  <Button className={"w-fit"} toggle/>
+                  <Button className={"w-fit"} toggle variant="secondary"/>
+                  <Button className={"w-fit"} toggle variant="outline"/>
+                  <Button className={"w-fit"} toggle variant="subtle"/>
+                  <Button className={"w-fit"} toggle variant="transparent"/>
                 </div>
               </div>
 
@@ -189,27 +190,48 @@ export default function Page() {
                   </Button>
                 </div>
               </div>
+              <div className="mt-8  flex w-full flex-col items-center justify-center gap-5 lg:mt-0">
+                <h1 className=" font-Segoe text-2xl font-semibold">Icon</h1>
+                <div className="flex flex-col gap-5">
+                  <Button icon={<Calendar3Day16Filled className={"text-2xl"}/>} className={"w-fit "} >
+                    Primary
+                  </Button>
+                  <Button className={"w-fit"}  variant="secondary">
+                    Secondary
+                  </Button>
+                  <Button className={"w-fit"} variant="outline">
+                    Outline
+                  </Button>
+                  <Button className={"w-fit"}  variant="subtle">
+                    Subtle
+                  </Button>
+                  <Button className={"w-fit"}  variant="transparent">
+                    Transparent
+                  </Button>
+                </div>
+              </div>
+
             </CardContent>
           </Card>
         )}
         {currentDocs === "Inputs" && (
-          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
-            <CardHeader>
-              <CardTitle className=" text-4xl">Inputs</CardTitle>
-              <CardDescription className={"text-xl"}>
-                An input component. Enter text into the input.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex h-full w-full flex-col gap-8">
-              <div className="flex h-fit flex-col items-center justify-center gap-2 lg:flex-row">
-                <Input
-                  state={status}
-                  iconOnly={iconOnly}
-                  className="min-w-full"
-                  labelText="Im a All in One Input"
-                  placeholder="Just toggle the states"
-                  onChange={(e) => setInput(e.currentTarget.value)}
-                />
+            <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
+              <CardHeader>
+                <CardTitle className=" text-4xl">Inputs</CardTitle>
+                <CardDescription className={"text-xl"}>
+                  An input component. Enter text into the input.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex h-full w-full flex-col gap-8">
+                <div className="flex h-fit flex-col items-center justify-center gap-2 lg:flex-row">
+                  <Input
+                      state={status}
+                      iconOnly={iconOnly}
+                      className="min-w-full"
+                      labelText="Im a All in One Input"
+                      placeholder="Just toggle the states"
+                      onChange={(e) => setInput(e.currentTarget.value)}
+                  />
                 {`${input}`}
                 {/*Do not ever do something like this. Its this way just to test the input*/}
                 <Button
@@ -639,7 +661,7 @@ export default function Page() {
                 className={"flex h-32 w-32 items-center text-center"}
                 status={"online"}
               >
-                <img
+                <img alt={"avatar image"}
                   src={
                     "https://images.pexels.com/photos/20147042/pexels-photo-20147042/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   }
@@ -663,6 +685,20 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
+        { currentDocs === "TextArea" &&  (
+            <Card className={"w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800"}>
+              <CardHeader>
+                <CardTitle className={"text-2xl font-extrabold text-center"}>Textarea component</CardTitle>
+              </CardHeader>
+              <CardContent className={"w-full h-full object-contain "}>
+              <Textarea classNam={"font-bold dark:text-white text-black "} labelText={"TextArea"} ></Textarea>
+              </CardContent>
+            </Card>
+        )
+
+
+
+        }
       </main>
     </div>
   )
