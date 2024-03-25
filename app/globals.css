@@ -8,9 +8,42 @@
   @font-face {
     font-family: Segoe;
     src: url(/fonts/Segoe_UI.ttf);
+    font-weight: normal;
+  }
+  @font-face {
+    font-family: Segoe;
+    src: url(/fonts/Segoe_UI_Bold.ttf);
+    font-weight: bold;
+  }
+  @font-face {
+    font-family: Segoe;
+    src: url(/fonts/Segoe_UI_Bold_Italic.ttf);
+    font-weight: bold;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: Segoe;
+    src: url(/fonts/Segoe_UI_Italic.ttf);
+    font-style: italic;
   }
 }
 
-body {
-  scroll-behavior: smooth;
+strong {
+  font-weight: bolder;
+  color: #fff;
+}
+code {
+  font-style: italic;
+    font-size: 0.8em;
+    background: #fff1;
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    margin-right: 0.2em;
+}
+blockquote{
+  font-style: italic;
+  font-size: .95em;
+  border-left: 5px solid #333;
+  padding-left: .8em;
+  margin: 1em 0;
 }
