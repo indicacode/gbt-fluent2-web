@@ -6,8 +6,8 @@ import { tv } from "tailwind-variants"
 const tableSlots = tv({
   slots: {
     // ---group--- //
+    tableRoot: "relative w-auto overflow-auto",
     table: "w-full caption-bottom rounded text-sm",
-    tableRoot: "relative w-full overflow-auto",
     // ---group--- //
 
     tableHeader: "[&_tr]:border-b-[2px]",
@@ -21,10 +21,10 @@ const tableSlots = tv({
       "border-b-[2px] border-zinc-600 transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-white/10 dark:data-[state=selected]:bg-slate-800",
 
     tableHead:
-      "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-200 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "h-10 max-w-fit px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-200 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCell:
-      "min-w-fit whitespace-nowrap p-2 py-1.5 align-middle  [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "max-w-fit whitespace-nowrap p-2 py-1.5  [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCaption: "mt-4 text-sm text-slate-500 dark:text-slate-400",
   },

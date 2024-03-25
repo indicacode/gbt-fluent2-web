@@ -12,7 +12,13 @@ type UserResponse = {
   users: User[]
 }
 
-export const fetchUsers = async ({ pageIndex, pageSize }) => {
+export const fetchUsers = async ({
+  pageIndex,
+  pageSize,
+}: {
+  pageIndex: number
+  pageSize: number
+}) => {
   pageIndex *= 10
   const response = await fetch(
     `https://dummyjson.com/users?limit=${pageSize}&skip=${pageIndex}`

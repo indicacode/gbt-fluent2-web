@@ -90,15 +90,15 @@ export default function Page() {
 
   const sideBarKeys = Object.keys(sideBar)
   return (
-    <div className="flex h-full min-h-screen w-full lg:flex-row">
-      <div className="flex min-h-screen w-full max-w-44 flex-col justify-between border-r-2 border-zinc-700 bg-zinc-900 pt-4">
+    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-col bg-blue-500 lg:flex-row">
+      <div className="flex min-h-full w-full max-w-44 flex-col justify-between border-r-2 border-zinc-700 bg-zinc-900 pt-4 dark:bg-slate-950">
         <div className="flex justify-start gap-2 pl-1 text-black dark:text-white">
           <MountainIcon className="text-2xl" />
           <h2 className="text-xl font-bold">Fluent2</h2>
         </div>
         <Accordion
           type="multiple"
-          className="flex min-h-full w-full flex-col bg-transparent pt-4"
+          className="flex h-full w-full flex-col bg-transparent pt-4"
         >
           {sideBarKeys.map((key, idx) => (
             <AccordionItem
@@ -128,21 +128,22 @@ export default function Page() {
           ))}
         </Accordion>
       </div>
-      <main className="flex h-full min-h-screen w-full flex-col items-center justify-center bg-slate-100 px-6 dark:bg-zinc-900">
+      <main className="flex  min-h-full w-full items-center justify-center bg-slate-100 dark:bg-gradient-to-r dark:from-slate-950 dark:to-zinc-950">
         {currentDocs === "Button" && (
-          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
-            <CardHeader>
-              <CardTitle className="flex w-full justify-between  text-4xl">
-                Buttons
-              </CardTitle>
-              <CardDescription className="flex w-full justify-between text-xl">
-                A button component. Clicking the button triggers an action.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="mt-8 flex w-full flex-col items-center justify-between  lg:mt-0  lg:flex-row">
-              <div className="flex w-[40%] flex-col justify-around gap-5">
-                <h1 className="text-2xl font-semibold">Variants</h1>
-                <div id={"buttons"} className="flex flex-col gap-5">
+          <div className="flex w-[60%] flex-col gap-12 dark:text-white">
+            <h1 className="text-3xl font-semibold dark:text-white">Buttons</h1>A
+            button triggers an action or event when activated.
+            <div className="flex flex-col justify-around gap-5">
+              <h2 className="text-2xl font-semibold dark:text-white">
+                Variants
+              </h2>
+              (undefined): the button appears with the default style primary:
+              emphasizes the button as a primary action. outline: removes
+              background styling. subtle: minimizes emphasis to blend into the
+              background until hovered or focused transparent: removes
+              background and border styling.
+              <Card>
+                <CardContent className="flex gap-4">
                   <Button className={"w-fit"}>Primary</Button>
                   <Button className={"w-fit"} variant="secondary">
                     Secondary
@@ -156,22 +157,35 @@ export default function Page() {
                   <Button className={"w-fit"} variant="transparent">
                     Transparent
                   </Button>
-                </div>
-              </div>
-              <div className="mt-8 flex w-full flex-col gap-5 lg:mt-0 ">
-                <h1 className="self-center  text-2xl font-semibold">Toggle</h1>
-                <div className="flex flex-col items-center gap-5">
+                </CardContent>
+              </Card>
+            </div>
+            <div className="flex flex-col justify-around gap-5">
+              <h2 className="text-2xl font-semibold dark:text-white">Toggle</h2>
+              Button has an icon slot that, if specified, renders an icon either
+              before or after the children, as specified by the iconPosition
+              prop.
+              <Card>
+                <CardContent className="flex gap-4">
                   <Button className={"w-fit"} toggle />
                   <Button className={"w-fit"} toggle variant="secondary" />
                   <Button className={"w-fit"} toggle variant="outline" />
                   <Button className={"w-fit"} toggle variant="subtle" />
                   <Button className={"w-fit"} toggle variant="transparent" />
-                </div>
-              </div>
-
-              <div className="mt-8  flex w-full flex-col items-center justify-center gap-5 lg:mt-0">
-                <h1 className=" font-Segoe text-2xl font-semibold">Disabled</h1>
-                <div className="flex flex-col gap-5">
+                </CardContent>
+              </Card>
+            </div>
+            <div className="flex flex-col justify-around gap-5">
+              <h2 className="text-2xl font-semibold dark:text-white">
+                Disabled
+              </h2>
+              A button can be disabled or disabledFocusable. disabledFocusable
+              is used in scenarios where it is important to keep a consistent
+              tab order for screen reader and keyboard users. The primary
+              example of this pattern is when the disabled button is in a menu
+              or a commandbar and is seldom used for standalone buttons.
+              <Card>
+                <CardContent className="flex gap-4">
                   <Button className={"w-fit"} disabled>
                     Primary
                   </Button>
@@ -187,10 +201,10 @@ export default function Page() {
                   <Button className={"w-fit"} disabled variant="transparent">
                     Transparent
                   </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         )}
         {currentDocs === "Inputs" && (
           <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">

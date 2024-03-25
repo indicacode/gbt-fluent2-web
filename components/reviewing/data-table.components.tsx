@@ -68,11 +68,17 @@ export const columns: Array<ColumnDef<User>> = [
     ),
     enableSorting: false,
     enableHiding: false,
+    maxSize: 10,
+    minSize: 10,
+    size: 10,
   },
   {
     accessorKey: "firstName",
     header: () => renderCell("First Name"),
     cell: ({ row }) => renderCell("firstName", row),
+    maxSize: 100,
+    minSize: 100,
+    size: 100,
   },
   {
     accessorKey: "email",
@@ -89,15 +95,19 @@ export const columns: Array<ColumnDef<User>> = [
     },
     cell: ({ row }) => renderCell("email", row),
     maxSize: 300,
+    minSize: 300,
+    size: 300,
   },
   {
     accessorKey: "age",
     header: () => renderCell("Age"),
     cell: ({ row }) => renderCell("age", row),
+    size: 10,
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => renderActions(row),
+    maxSize: 10,
   },
 ]

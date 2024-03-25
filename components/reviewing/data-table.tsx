@@ -176,24 +176,29 @@ function Table({ table }: { table: TableType<UserInput[0]> }) {
   return (
     <div
       ref={tableContainerRef}
-      className="max-h-[600px] w-full overflow-auto rounded-md"
+      className="max-h-[600px] overflow-auto rounded-md"
     >
       <TableRoot>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow className={"rounded-sm"} key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead className="py-1" key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                )
-              })}
+            <TableRow className="rounded-sm" key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <TableHead
+                  key={header.id}
+                  style={{
+                    width: header.column.getSize(),
+                    maxWidth: header.column.getSize(),
+                    minWidth: header.column.getSize(),
+                  }}
+                >
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </TableHead>
+              ))}
             </TableRow>
           ))}
         </TableHeader>
