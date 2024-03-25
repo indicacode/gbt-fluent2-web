@@ -22,7 +22,7 @@ import {
   Button,
   Input,
   Slider,
-  Switch,
+  Switch, Textarea,
 } from "@/components/done"
 import {
   Card,
@@ -71,6 +71,7 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 
 import { frameworks, rowItems, sideBar } from "./page.inputs"
+import {Calendar12Filled, Calendar3Day16Filled} from "@fluentui/react-icons";
 
 type SideBarType = keyof typeof sideBar
 
@@ -207,23 +208,23 @@ export default function Page() {
           </div>
         )}
         {currentDocs === "Inputs" && (
-          <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
-            <CardHeader>
-              <CardTitle className=" text-4xl">Inputs</CardTitle>
-              <CardDescription className={"text-xl"}>
-                An input component. Enter text into the input.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex h-full w-full flex-col gap-8">
-              <div className="flex h-fit flex-col items-center justify-center gap-2 lg:flex-row">
-                <Input
-                  state={status}
-                  iconOnly={iconOnly}
-                  className="min-w-full"
-                  labelText="Im a All in One Input"
-                  placeholder="Just toggle the states"
-                  onChange={(e) => setInput(e.currentTarget.value)}
-                />
+            <Card className="w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800">
+              <CardHeader>
+                <CardTitle className=" text-4xl">Inputs</CardTitle>
+                <CardDescription className={"text-xl"}>
+                  An input component. Enter text into the input.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex h-full w-full flex-col gap-8">
+                <div className="flex h-fit flex-col items-center justify-center gap-2 lg:flex-row">
+                  <Input
+                      state={status}
+                      iconOnly={iconOnly}
+                      className="min-w-full"
+                      labelText="Im a All in One Input"
+                      placeholder="Just toggle the states"
+                      onChange={(e) => setInput(e.currentTarget.value)}
+                  />
                 {`${input}`}
                 {/*Do not ever do something like this. Its this way just to test the input*/}
                 <Button
@@ -653,7 +654,7 @@ export default function Page() {
                 className={"flex h-32 w-32 items-center text-center"}
                 status={"online"}
               >
-                <img
+                <img alt={"avatar image"}
                   src={
                     "https://images.pexels.com/photos/20147042/pexels-photo-20147042/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   }
@@ -677,6 +678,20 @@ export default function Page() {
             </CardContent>
           </Card>
         )}
+        { currentDocs === "TextArea" &&  (
+            <Card className={"w-full bg-stone-50 lg:w-[80vw] dark:bg-gray-800"}>
+              <CardHeader>
+                <CardTitle className={"text-2xl font-extrabold text-center"}>Textarea component</CardTitle>
+              </CardHeader>
+              <CardContent className={"w-full h-full object-contain "}>
+              <Textarea classNam={"font-bold dark:text-white text-black "} labelText={"TextArea"} ></Textarea>
+              </CardContent>
+            </Card>
+        )
+
+
+
+        }
       </main>
     </div>
   )

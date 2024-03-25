@@ -117,5 +117,7 @@ export const sideBar = {
     "Accordion",
     "Avatar",
     "Switch",
+      "Tooltip",
+      "TextArea",
   ],
 } as const
