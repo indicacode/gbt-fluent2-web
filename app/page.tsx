@@ -25,8 +25,8 @@ export default function Page() {
   const sideBarKeys = Object.keys(sideBar)
   return (
     <div className="flex h-[100%] min-h-screen w-full flex-grow flex-col bg-blue-500 lg:flex-row">
-      <div className="flex min-h-full w-full max-w-44 flex-col justify-between border-r-2 border-zinc-700 bg-zinc-900 pt-4 dark:bg-slate-950">
-        <div className="flex justify-start gap-2 pl-1 text-black dark:text-white">
+      <div className="flex min-h-full w-full max-w-44 flex-col gap-10 border-r-2 border-zinc-700 bg-zinc-900 pt-4 dark:bg-slate-950">
+        <div className="flex gap-2 pl-1 text-black dark:text-white">
           <h2 className="text-2xl font-bold">Fluent2</h2>
         </div>
         <Accordion

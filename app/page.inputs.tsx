@@ -182,6 +182,7 @@ export const sideBar = {
     "Textarea",
   ].sort(),
 } as const
+
 export const components = [
   {
     header: "Button",
@@ -669,7 +670,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" size="md" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
