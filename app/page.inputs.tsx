@@ -69,6 +69,8 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
+import {RadioGroup, RadioGroupItem} from "@/components/done/radio-group";
+import {Label} from "@/components/reviewing/label";
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -180,6 +182,7 @@ export const sideBar = {
     "Switch",
     "Tooltip",
     "Textarea",
+      "RadioGroup",
   ].sort(),
 } as const
 
@@ -755,4 +758,25 @@ export const components = [
       },
     ],
   },
+    {
+        header: "RadioGroup",
+        subText: (" A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time."
+        ),
+        cards: [{ cardHeader: "", cardSubtext: "", cardComponent:
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+        }],
+    },
 ] as const
