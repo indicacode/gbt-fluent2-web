@@ -12,6 +12,9 @@ export function useMediaQuery(
   query: string[],
   options: UseMediaQueryOptions
 ): boolean[] {
+  if (typeof window === "undefined") {
+    return options.fallback ?? []
+  }
   const { fallback: _fallback, ssr = true, getWindow } = options
   const getWin = useCallbackRef(getWindow)
 

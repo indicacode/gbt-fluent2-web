@@ -1,6 +1,8 @@
 "use client"
 
 import React, { Fragment, useState } from "react"
+import { useMediaQuery } from "@/utils/use-media-query"
+import { HamburgerMenuIcon } from "@radix-ui/react-icons"
 
 import {
   Accordion,
@@ -21,22 +23,43 @@ type ItemsType = {
 
 export default function Page() {
   const [currentDocs, setCurrentDocs] = useState<ItemsType>("Button")
+  const [isCollapsed, setIsCollapsed] = useState(true)
+
+  const isMobile = useMediaQuery(["(max-width: 640px)"], {
+    ssr: true,
+    fallback: [false],
+  })[0]
 
   const sideBarKeys = Object.keys(sideBar)
+
+  console.log(isMobile && !isCollapsed)
   return (
-    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-col bg-blue-500 lg:flex-row">
-      <div className="flex min-h-full w-full max-w-44 flex-col gap-10 border-r-2 border-zinc-700 bg-zinc-900 pt-4 dark:bg-slate-950">
-        <div className="flex gap-2 pl-1 text-black dark:text-white">
-          <h2 className="text-2xl font-bold">Fluent2</h2>
+    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row ">
+      <div
+        className={`flex min-h-full w-full flex-col gap-10 border-r-2 border-zinc-400 bg-slate-200 pt-4 transition-all  dark:border-zinc-700 dark:bg-slate-950 ${
+          isMobile && isCollapsed ? " max-w-14" : "max-w-44"
+        }`}
+      >
+        <div className="flex h-[1.5rem] min-w-fit items-center justify-center gap-2 overflow-hidden pl-1 text-black dark:text-white">
+          <HamburgerMenuIcon
+            onClick={() => setIsCollapsed((p) => !p)}
+            className={`font-2xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : " hidden"}`}
+          />
+          <h2
+            className={`whitespace-nowrap text-2xl font-bold ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+          >
+            Fluent2
+          </h2>
         </div>
+
         <Accordion
+          className="flex h-full w-full flex-col bg-transparent  pt-4"
           type="multiple"
-          className="flex h-full w-full flex-col bg-transparent pt-4"
         >
           {sideBarKeys.map((key, idx) => (
             <AccordionItem
               key={idx}
-              className="bg-transparent font-bold"
+              className={`bg-transparent font-bold  transition-all ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
               value={"item" + idx}
             >
               <AccordionTrigger>
@@ -61,7 +84,7 @@ export default function Page() {
           ))}
         </Accordion>
       </div>
-      <main className="flex  min-h-full w-full items-center justify-center bg-slate-100 dark:bg-gradient-to-r dark:from-slate-950 dark:to-zinc-950">
+      <main className="flex  min-h-full w-full items-center justify-center bg-gradient-to-r from-slate-200 to-zinc-300  dark:from-slate-950 dark:to-zinc-950">
         {components.map(({ header, subText, cards }, idx) => {
           return (
             currentDocs === header && (
@@ -88,7 +111,7 @@ export default function Page() {
                           </>
                         )}
                         <Card>
-                          <CardContent className="flex gap-4">
+                          <CardContent className="flex flex-col items-center justify-center gap-4 lg:flex-row">
                             {cardComponent}
                           </CardContent>
                         </Card>
