@@ -7,12 +7,13 @@ Implementation of Microsoft's [Fluent2 Design System](https://fluent2.microsoft.
 # 🚀 Roadmap
 
 ### Accordion
-An accordion allows users to toggle the display of content by expanding or collapsing sections.   
+
+An accordion allows users to toggle the display of content by expanding or collapsing sections.  
 ![image](https://github.com/grbtec/gbt-fluent2-web/assets/1107735/99597c7a-b001-45f2-8112-d49b24bd59dd)
 
-
 **Sample code:**
-```xml
+
+```typescript jsx
 import * as React from "react";
 import {
   Accordion,
@@ -46,28 +47,28 @@ export const Default = () => (
 ```
 
 **Tasks:**
+
 - [ ] AccordionItem
-    - [ ] disabled: disables opening/closing of panel. Concluído em dd/mm/aaaa por @brunnogrb.
+  - [ ] disabled: disables opening/closing of panel. Concluído em dd/mm/aaaa por @brunnogrb.
 - [ ] AccordionHeader
-    - [ ] button: the component to be used as button in heading.
-    - [ ] expandIcon: expand icon slot rendered before (or after) children content in heading.
-    - [ ] icon: expand icon slot rendered before (or after) children content in heading.
-    - [ ] as: "div" "h1" "h2" "h3" "h4" "h5" "h6".
-    - [ ] expandIconPosition: the position of the expand icon slot in heading.
-    - [ ] inline: indicates if the AccordionHeader should be rendered inline.
-    - [ ] size: size of spacing in the heading. "small" "medium" "large" "extra-large".
+  - [ ] button: the component to be used as button in heading.
+  - [ ] expandIcon: expand icon slot rendered before (or after) children content in heading.
+  - [ ] icon: expand icon slot rendered before (or after) children content in heading.
+  - [ ] as: "div" "h1" "h2" "h3" "h4" "h5" "h6".
+  - [ ] expandIconPosition: the position of the expand icon slot in heading.
+  - [ ] inline: indicates if the AccordionHeader should be rendered inline.
+  - [ ] size: size of spacing in the heading. "small" "medium" "large" "extra-large".
 - [ ] AccordionPanel
-    - [ ] as: "div"
+  - [ ] as: "div"
 
 ### Avatar
+
 An Avatar is a graphical representation of a user, team, or entity.
 
 Avatar can display an image, icon, or initials, and supports various sizes and shapes.  
 ![image](https://github.com/grbtec/gbt-fluent2-web/assets/1107735/6b9b9040-7bc9-46b2-8559-747ebc08b068)
 
-
-
-```xml
+```typescript jsx
 export const Default = (props: Partial<AvatarProps>) => (
   <Avatar aria-label="Guest" {...props} />
 );
@@ -99,11 +100,12 @@ const argTypes: ArgTypes = {
 ```
 
 ### AvatarGroup
+
 An AvatarGroup is a graphical representation of multiple people associated with a given entity. AvatarGroup leverages the Avatar component, with each Avatar representing a person and containing their image, initials, or an icon. An AvatarGroup can be represented in a spread, stack, or pie layout.  
 ![image](https://github.com/grbtec/gbt-fluent2-web/assets/1107735/3f02a03b-b73a-472f-b6f9-7e9f123969fc)
 
-
 ### Badge
+
 A badge is a visual decoration for UI elements.
 Different badges can display different content.
 
@@ -116,9 +118,8 @@ Different badges can display different content.
 `PresenceBadge` displays status  
 ![image](https://github.com/grbtec/gbt-fluent2-web/assets/1107735/c2ceef0f-9f12-4cd9-9cbc-639ff4d855be)
 
+---
 
-
---- 
 **Referências:**  
 [FluentUI React - Github](https://github.com/microsoft/fluentui)  
 implementação oficial para react. renderização lenta, e com grande número de issues abertas.
@@ -129,8 +130,3 @@ Ajuda a entender alguns comportamentos dos componentes inspirados no design syst
 
 [FluentUI Web - Figma](https://www.figma.com/community/file/836828295772957889)  
 Design no figma.
-
-
-
-
-
