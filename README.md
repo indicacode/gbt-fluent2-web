@@ -58,16 +58,16 @@ from [ShadCN](https://ui.shadcn.com/docs/components/accordion).
 | Scroll Shadow     | ❌        |         |            |          |
 | Separator         | ✅        | Brunno  | 15/02      |  15/02   |
 | Slider            | ✅        | Willien | 14/02      |  14/02   |
-| Spinner           | ❌        | Brunno  | 15/02      | Delayed  |
-| Sonner            | ❌        | Brunno  | 18/03      |          |
+| Spinner           | ✅        | Brunno  | 15/02      | Delayed  |
+| Sonner            | ✅        | Brunno  | 18/03      |          |
 | Switch            | ✅        | Brunno  | 14/02      |  15/02   |
-| Table             | ❌        | Willien | 11/03      |  14/03   |
+| Table             | ✅        | Willien | 11/03      |  14/03   |
 | Tabs              | ✅        | Brunno  | 05/02      |  05/02   |
 | Textarea          | ✅        | Brunno  | 06/02      |  06/02   |
 | Tooltip           | ✅        | Brunno  | 05/02      |  05/02   |
 | Persona           | ❌        |         |            |          |
 | Hover Card        | ❌        |         |            |          |
-| TOTAL:            | 9        |         |            |          |
+| TOTAL:            | 18 / 56  |         |            |          |
 
 --- 
 **Referências:**  
