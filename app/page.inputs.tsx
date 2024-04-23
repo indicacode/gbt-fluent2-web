@@ -31,6 +31,7 @@ import {
   Switch,
   Textarea,
 } from "@/components/done"
+import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
 import Combobox from "@/components/not-done/Combobox"
 import {
   Avatar,
@@ -69,8 +70,7 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
-import {RadioGroup, RadioGroupItem} from "@/components/done/radio-group";
-import {Label} from "@/components/reviewing/label";
+import { Label } from "@/components/reviewing/label"
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -182,7 +182,7 @@ export const sideBar = {
     "Switch",
     "Tooltip",
     "Textarea",
-      "RadioGroup",
+    "RadioGroup",
   ].sort(),
 } as const
 
@@ -715,16 +715,9 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Avatar
-            className={"flex h-32 w-32 items-center text-center"}
-            status={"online"}
-          >
-            <img
-              alt={"avatar image"}
-              src={
-                "https://images.pexels.com/photos/20147042/pexels-photo-20147042/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              }
-            />
+          <Avatar status="online" size="sm">
+            {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
+            <AvatarFallback>Josh Well</AvatarFallback>
           </Avatar>
         ),
       },
@@ -758,25 +751,31 @@ export const components = [
       },
     ],
   },
-    {
-        header: "RadioGroup",
-        subText: (" A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time."
+  {
+    header: "RadioGroup",
+    subText:
+      " A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <RadioGroup defaultValue="1">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="1" id="r1" />
+              <Label htmlFor="r1">Example 1</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="2" id="r2" />
+              <Label htmlFor="r2">Example 2</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="3" id="r3" />
+              <Label htmlFor="r3">Example 3</Label>
+            </div>
+          </RadioGroup>
         ),
-        cards: [{ cardHeader: "", cardSubtext: "", cardComponent:
-                <RadioGroup defaultValue="1">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
-                    </div>
-                </RadioGroup>
-        }],
-    },
+      },
+    ],
+  },
 ] as const
