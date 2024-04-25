@@ -1,6 +1,9 @@
 "use client"
 
 import React, { Fragment, useState } from "react"
+import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import ThemeSwitch from "@/utils/themeSwitch"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { HamburgerMenuIcon } from "@radix-ui/react-icons"
 
@@ -9,9 +12,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Button,
 } from "@/components/done"
-import { Card, CardContent } from "@/components/not-done/card"
+import { Card, CardContent } from "@/components/reviewing/card"
 
 import { components, sideBar } from "./page.inputs"
 
@@ -22,7 +24,6 @@ type ItemsType = {
 }[SideBarType]
 
 export default function Page() {
-  const [currentDocs, setCurrentDocs] = useState<ItemsType>("Button")
   const [isCollapsed, setIsCollapsed] = useState(true)
 
   const isMobile = useMediaQuery(["(max-width: 640px)"], {
@@ -30,13 +31,14 @@ export default function Page() {
     fallback: [false],
   })[0]
 
+  const searchParams = useSearchParams()
   const sideBarKeys = Object.keys(sideBar)
-
-  console.log(isMobile && !isCollapsed)
+  const currentDocs = searchParams.get("section")
+  console.log(currentDocs)
   return (
     <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row ">
       <div
-        className={`flex min-h-full w-full flex-col gap-10 border-r-2 border-zinc-400 bg-slate-200 pt-4 transition-all  dark:border-zinc-700 dark:bg-slate-950 ${
+        className={`flex min-h-full w-full flex-col gap-10 border-r-2 border-zinc-400 bg-slate-200 p-3 pt-4 transition-all  dark:border-zinc-700 dark:bg-slate-950 ${
           isMobile && isCollapsed ? " max-w-14" : "max-w-44"
         }`}
       >
@@ -68,21 +70,23 @@ export default function Page() {
               <AccordionContent>
                 {sideBar[key as SideBarType].map(
                   (component: ItemsType, itemIdx: number) => (
-                    <Button
+                    <Link
                       key={itemIdx}
-                      className="h-auto w-full justify-start rounded-none p-0"
-                      variant="subtle"
-                      onClick={() => setCurrentDocs(component)}
+                      className="flex font-normal"
+                      href={`?${new URLSearchParams({
+                        section: component,
+                      })}`}
                       aria-labelledby={`${key}-${itemIdx}`}
                     >
                       {component}
-                    </Button>
+                    </Link>
                   )
                 )}
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
+        <ThemeSwitch />
       </div>
       <main className="flex  min-h-full w-full items-center justify-center bg-gradient-to-r from-slate-200 to-zinc-300  dark:from-slate-950 dark:to-zinc-950">
         {components.map(({ header, subText, cards }, idx) => {
@@ -110,7 +114,10 @@ export default function Page() {
                             {cardSubtext}
                           </>
                         )}
-                        <Card>
+                        <Card
+                          variant="_unstiled"
+                          className="relative min-w-fit rounded-xl border border-zinc-400 bg-zinc-50 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
+                        >
                           <CardContent className="flex flex-col items-center justify-center gap-4 lg:flex-row">
                             {cardComponent}
                           </CardContent>

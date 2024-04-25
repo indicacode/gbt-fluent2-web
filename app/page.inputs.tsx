@@ -37,6 +37,12 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
   DataTable,
   Dialog,
   DialogContent,
@@ -163,29 +169,6 @@ export const frameworks = [
   },
 ]
 
-export const sideBar = {
-  Concepts: ["2", "1"].sort(),
-  Theme: ["1", "2"].sort(),
-  Components: [
-    "Button",
-    "Input",
-    "Combobox",
-    "Select",
-    "Drawer",
-    "Dialog",
-    "Tablist",
-    "Table",
-    "DataGrid",
-    "Slider",
-    "Accordion",
-    "Avatar",
-    "Switch",
-    "Tooltip",
-    "Textarea",
-    "RadioGroup",
-  ].sort(),
-} as const
-
 export const components = [
   {
     header: "Button",
@@ -210,19 +193,13 @@ export const components = [
         ),
         cardComponent: (
           <>
-            <Button className={"w-fit"}>Primary</Button>
-            <Button className={"w-fit"} variant="secondary">
-              Secondary
-            </Button>
-            <Button className={"w-fit"} variant="outline">
+            <Button shape="square">Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button shape="circular" variant="outline">
               Outline
             </Button>
-            <Button className={"w-fit"} variant="subtle">
-              Subtle
-            </Button>
-            <Button className={"w-fit"} variant="transparent">
-              Transparent
-            </Button>
+            <Button variant="subtle">Subtle</Button>
+            <Button variant="transparent">Transparent</Button>
           </>
         ),
       },
@@ -232,11 +209,11 @@ export const components = [
           "Button has an icon slot that, if specified, renders an icon either before or after the children, as specified by the iconPosition prop.",
         cardComponent: (
           <>
-            <Button className={"w-fit"} toggle />
-            <Button className={"w-fit"} toggle variant="secondary" />
-            <Button className={"w-fit"} toggle variant="outline" />
-            <Button className={"w-fit"} toggle variant="subtle" />
-            <Button className={"w-fit"} toggle variant="transparent" />
+            <Button toggle />
+            <Button toggle variant="secondary" />
+            <Button toggle variant="outline" />
+            <Button toggle variant="subtle" />
+            <Button toggle variant="transparent" />
           </>
         ),
       },
@@ -254,19 +231,17 @@ export const components = [
         ),
         cardComponent: (
           <>
-            <Button className={"w-fit"} disabled>
-              Primary
-            </Button>
-            <Button className={"w-fit"} disabled variant="secondary">
+            <Button isDisabled>Primary</Button>
+            <Button isDisabled variant="secondary">
               Secondary
             </Button>
-            <Button className={"w-fit"} disabled variant="outline">
+            <Button isDisabled variant="outline">
               Outline
             </Button>
-            <Button className={"w-fit"} disabled variant="subtle">
+            <Button isDisabled variant="subtle">
               Subtle
             </Button>
-            <Button className={"w-fit"} disabled variant="transparent">
+            <Button isDisabled variant="transparent">
               Transparent
             </Button>
           </>
@@ -673,7 +648,13 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion type="single" size="md" collapsible className="w-full">
+          <Accordion
+            defaultValue="item-2"
+            type="multiple"
+            size="md"
+            collapsible={true}
+            className="w-full"
+          >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -778,4 +759,56 @@ export const components = [
       },
     ],
   },
+  {
+    header: "Card",
+    subText: "Take from storybook", //TODO
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-10">
+            <Card>
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>Card Content</CardContent>
+              <CardFooter>Card Footer</CardFooter>
+            </Card>
+            <Card variant="filled-alt">
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>Card Content</CardContent>
+              <CardFooter>Card Footer</CardFooter>
+            </Card>
+            <Card variant="outline">
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>Card Content</CardContent>
+              <CardFooter>Card Footer</CardFooter>
+            </Card>
+            <Card variant="subtle">
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>Card Content</CardContent>
+              <CardFooter>Card Footer</CardFooter>
+            </Card>
+          </div>
+        ),
+      },
+    ],
+  },
 ] as const
+
+export const sideBar = {
+  Concepts: ["2", "1"].sort(),
+  Theme: ["1", "2"].sort(),
+  Components: components.map((component) => component.header).sort(),
+} as const
