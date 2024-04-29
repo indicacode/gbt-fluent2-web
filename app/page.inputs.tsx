@@ -8,6 +8,7 @@ import {
   PeopleRegular,
   VideoRegular,
 } from "@fluentui/react-icons"
+import { BsThreeDots } from "react-icons/bs"
 import {
   GiBanana,
   GiCarrot,
@@ -54,6 +55,7 @@ import {
   DrawerDescription,
   DrawerHeader,
   DrawerTrigger,
+  FloatingAction,
   Select,
   SelectContent,
   SelectGroup,
@@ -767,30 +769,45 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <div className="flex gap-10">
-            <Card>
-              <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
+          <div className="flex flex-col items-center justify-center gap-10">
+            <Card
+              className="w-[540px]"
+              cardPreview="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.EAf0oMwvFLL7MMZOIEJKLwHaC9%26pid%3DApi&f=1&ipt=a11aa5dcda31eee8bdc446511e1ce983681641249334e18726f3b67e7e6bba8c&ipo=images"
+            >
+              <CardHeader image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cDhXXBPPmXB0TeWGmhYA-AHaE8%26pid%3DApi&f=1&ipt=cd7797c8ef5c996d9ca56b20a8c65b8df7bb69d45d9afe2e963243aa4e8c43cc&ipo=images">
+                <CardTitle>App Name </CardTitle>
+                <CardDescription>Developer</CardDescription>
               </CardHeader>
-              <CardContent>Card Content</CardContent>
-              <CardFooter>Card Footer</CardFooter>
+              <CardContent>
+                Donut chocolate bar oat cake. Dragée tiramisu lolli pop bear
+                claw. Marshmallow pastry jujubes toffee sugar plum.
+              </CardContent>
+              <CardFooter>
+                <Button>Button 1</Button>
+                <Button variant="secondary">Button 2</Button>
+              </CardFooter>
             </Card>
-            <Card variant="filled-alt">
-              <CardHeader>
+            <Card orientation="horizontal" variant="filled-alt">
+              <CardHeader image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cDhXXBPPmXB0TeWGmhYA-AHaE8%26pid%3DApi&f=1&ipt=cd7797c8ef5c996d9ca56b20a8c65b8df7bb69d45d9afe2e963243aa4e8c43cc&ipo=images">
                 <CardTitle>Card Title</CardTitle>
                 <CardDescription>Card Description</CardDescription>
               </CardHeader>
-              <CardContent>Card Content</CardContent>
-              <CardFooter>Card Footer</CardFooter>
+              <FloatingAction>
+                <BsThreeDots />
+              </FloatingAction>
             </Card>
             <Card variant="outline">
               <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
+                <CardTitle>Breakfast in Paris</CardTitle>
+                <CardDescription>
+                  Start your day off right with a delicious and authentic
+                  Parisian breakfast.
+                </CardDescription>
               </CardHeader>
-              <CardContent>Card Content</CardContent>
-              <CardFooter>Card Footer</CardFooter>
+              <CardContent>
+                <div> A fresh croissant</div>
+                <div> A cup of coffee</div>
+              </CardContent>
             </Card>
             <Card variant="subtle">
               <CardHeader>

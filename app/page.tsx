@@ -13,7 +13,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/done"
-import { Card, CardContent } from "@/components/reviewing/card"
 
 import { components, sideBar } from "./page.inputs"
 
@@ -102,30 +101,26 @@ export default function Page() {
                   </h1>
                   {subText}
                 </div>
-                <div className="flex flex-col justify-around gap-5">
-                  {cards.map(
-                    ({ cardHeader, cardSubtext, cardComponent }, idx) => (
-                      <Fragment key={idx}>
-                        {cardHeader && (
-                          <>
-                            <h2 className="text-2xl font-semibold dark:text-white">
-                              {cardHeader}
-                            </h2>
-                            {cardSubtext}
-                          </>
-                        )}
-                        <Card
-                          variant="_unstiled"
-                          className="relative min-w-fit rounded-xl border border-zinc-400 bg-zinc-50 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
-                        >
-                          <CardContent className="flex flex-col items-center justify-center gap-4 lg:flex-row">
-                            {cardComponent}
-                          </CardContent>
-                        </Card>
-                      </Fragment>
-                    )
-                  )}
-                </div>
+                {cards.map(
+                  ({ cardHeader, cardSubtext, cardComponent }, idx) => (
+                    <Fragment key={idx}>
+                      {cardHeader && (
+                        <>
+                          <h2 className="text-2xl font-semibold dark:text-white">
+                            {cardHeader}
+                          </h2>
+                          {cardSubtext}
+                        </>
+                      )}
+                      <div
+                        className="relative flex min-w-fit
+                       overflow-hidden rounded  border border-zinc-400 bg-zinc-50 p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
+                      >
+                        {cardComponent}
+                      </div>
+                    </Fragment>
+                  )
+                )}
               </div>
             )
           )
