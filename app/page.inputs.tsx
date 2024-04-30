@@ -44,6 +44,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Checkbox,
   DataTable,
   Dialog,
   DialogContent,
@@ -817,6 +818,25 @@ export const components = [
               <CardContent>Card Content</CardContent>
               <CardFooter>Card Footer</CardFooter>
             </Card>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    header: "Checkbox",
+    subText: <></>,
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Checkbox
+              size="large"
+              onChange={(checked) => console.log(checked)}
+            />
+            <Checkbox checked="indeterminate" />
           </div>
         ),
       },

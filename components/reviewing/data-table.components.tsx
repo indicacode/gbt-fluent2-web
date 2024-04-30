@@ -2,7 +2,6 @@ import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { ColumnDef, Row } from "@tanstack/react-table"
 
 import { Button } from "@/components/done"
-import { Checkbox } from "@/components/not-done/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/not-done/dropdown-menu"
+import { Checkbox } from "@/components/reviewing/checkbox"
 import { User } from "@/components/reviewing/data-table.input"
 
 function renderCell(key: string, row?: Row<User>) {

@@ -33,7 +33,8 @@ export default function Page() {
   const searchParams = useSearchParams()
   const sideBarKeys = Object.keys(sideBar)
   const currentDocs = searchParams.get("section")
-  console.log(currentDocs)
+  const [a, setA] = useState(1)
+
   return (
     <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row ">
       <div
