@@ -1,7 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { HTMLAttributes, ReactElement, useCallback, useState } from "react"
+import {
+  HTMLAttributes,
+  ReactElement,
+  useCallback,
+  useId,
+  useState,
+} from "react"
 import { VscError, VscPassFilled, VscWarning } from "react-icons/vsc"
 import { tv, VariantProps } from "tailwind-variants"
 
@@ -16,7 +22,7 @@ const icons = {
 const inputVariants = tv({
   slots: {
     root: "flex flex-col",
-    decoration: "aki",
+    decoration: "",
     label: "py-1 text-black dark:text-white",
     input:
       "flex w-full rounded-md bg-transparent px-4 py-2 text-sm shadow-sm outline-0",
@@ -100,7 +106,7 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     const [focus, setFocus] = useState(false)
     const [active, setActive] = useState(false)
     const bottomBar = iconOnly || state === "neutral"
-
+    const inputId = useId()
     // By using useCallback the function doesn't get recreated on a new
     // memory reference every time the component re-renders.
     const handleFocus = useCallback(() => {
@@ -120,21 +126,16 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
     }, [])
     //-------------------------------------------------------------//
 
-    const uid =
-      "inputUID:" +
-      Date.now().toString(36) +
-      Math.random().toString(36).substr(2)
-
     return (
       <div className={root()}>
         <div className={decoration({ bottomBar, focus, active })}>
           {labelText && (
-            <label htmlFor={uid} className={label({ state })}>
+            <label htmlFor={"input_id" + inputId} className={label({ state })}>
               {labelText}
             </label>
           )}
           <input
-            id={uid}
+            id={"input_id" + inputId}
             onFocus={handleFocus}
             onBlur={handleBlur}
             onMouseDown={handleMouseDown}
