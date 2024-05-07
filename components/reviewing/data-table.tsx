@@ -17,7 +17,6 @@ import { useVirtual } from "react-virtual"
 import useSWR from "swr"
 
 import { Button } from "@/components/done/button"
-import { Input } from "@/components/done/input"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -32,6 +31,7 @@ import {
   TableRoot,
   TableRow,
 } from "@/components/reviewing/"
+import { Input } from "@/components/reviewing/input"
 
 import { columns } from "./data-table.components"
 

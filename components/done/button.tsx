@@ -18,12 +18,12 @@ const buttonVariants = tv({
   base: "text-md flex cursor-pointer items-center justify-center px-3 py-1 font-medium data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50",
   variants: {
     variant: {
-      default:
-        "dark:text-whitesmoke active:gray-200  duration-400 bg-brand-primary text-white active:border-brand-secondary active:bg-[#0C3B5E] data-[disabled=true]:bg-[#F0F0F0] data-[disabled=true]:text-black data-[selected=true]:before:bg-white data-[disabled=false]:hover:bg-[#115EA3]",
+      primary:
+        "dark:text-whitesmoke active:gray-200 duration-400 bg-brand-primary text-white active:border-brand-secondary active:bg-[#0C3B5E] data-[disabled=true]:bg-[#F0F0F0] data-[disabled=true]:text-black data-[selected=true]:before:bg-white data-[disabled=false]:hover:bg-[#115EA3]",
       secondary:
         "bg-gray-200 text-black before:border-black active:bg-gray-400 data-[disabled=true]:bg-[#F0F0F0] data-[selected=true]:before:bg-black data-[disabled=false]:hover:bg-gray-300",
       outline:
-        "border-2 border-brand-primary  shadow-sm before:border-black active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black data-[disabled=false]:hover:bg-[#F5F5F5] dark:text-white dark:before:border-white data-[disabled=false]:dark:hover:bg-white/10",
+        "border-2 border-brand-primary shadow-sm before:border-black active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black data-[disabled=false]:hover:bg-[#F5F5F5] dark:text-white dark:before:border-white data-[disabled=false]:dark:hover:bg-white/10",
       transparent:
         "bg-transparent active:before:bg-brand-primary data-[selected=true]:text-brand-primary data-[selected=true]:before:bg-brand-primary data-[disabled=false]:hover:text-brand-primary data-[disabled=false]:hover:before:border-0 data-[disabled=false]:hover:before:bg-brand-primary dark:data-[selected=true]:before:border-0",
       subtle:
@@ -46,7 +46,7 @@ const buttonVariants = tv({
   },
   defaultVariants: {
     shape: "rounded",
-    variant: "default",
+    variant: "primary",
     size: "default",
   },
 })
@@ -92,14 +92,15 @@ function Button(
         onClick(event)
       }}
       className={buttonVariants({
-        className,
         variant,
         shape,
         toggle,
+        className,
       })}
       {...props}
     >
-      {!toggle && icon !== false && <span>{icon}</span>}
+      {/* changin from icon !== false to !!icon if break somethin change it back and add documentation about it */}
+      {!toggle && !!icon && <span>{icon}</span>}
       {!toggle && children}
     </button>
   )

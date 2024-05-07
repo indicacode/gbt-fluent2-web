@@ -65,6 +65,7 @@
     "tailwind-merge": "^2.2.1",
     "tailwind-variants": "^0.1.20",
     "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-radix": "^3.0.3",
     "vaul": "^0.8.9",
     "zod": "^3.22.4"
   },

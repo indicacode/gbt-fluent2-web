@@ -3993,6 +3993,7 @@ __metadata:
     tailwind-variants: "npm:^0.1.20"
     tailwindcss: "npm:^3.4.1"
     tailwindcss-animate: "npm:^1.0.7"
+    tailwindcss-radix: "npm:^3.0.3"
     typescript: "npm:^5.3.3"
     vaul: "npm:^0.8.9"
     zod: "npm:^3.22.4"
@@ -6587,6 +6588,13 @@ __metadata:
   peerDependencies:
     tailwindcss: "*"
   checksum: 10c0/ec7dbd1631076b97d66a1fbaaa06e0725fccfa63119221e8d87a997b02dcede98ad88bb1ef6665b968f5d260fcefb10592e0299ca70208d365b37761edf5e19a
+  languageName: node
+  linkType: hard
+
+"tailwindcss-radix@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "tailwindcss-radix@npm:3.0.3"
+  checksum: 10c0/a7ebb53bdb4302361459a4a3be3f2fda9bafd4fc95738349920d585a9d2b4a675a0831a7f82733695246c361d6d71d276cf9c9684394da73e9a1c2bd202b12a1
   languageName: node
   linkType: hard
 

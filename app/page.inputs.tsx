@@ -32,8 +32,8 @@ import {
   Switch,
   Textarea,
 } from "@/components/done"
+import Combobox from "@/components/done/combobox"
 import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
-import Combobox from "@/components/not-done/Combobox"
 import {
   Avatar,
   AvatarFallback,
@@ -330,7 +330,20 @@ export const components = [
       {
         cardHeader: "",
         cardSubtext: "",
-        cardComponent: <Combobox input={frameworks} />,
+        cardComponent: (
+          <Combobox
+            emptyIndicator="uo"
+            selectedOptions={[
+              { value: "next.js", label: "Next.js" },
+              { value: "remix", label: "Remix" },
+            ]}
+            tags
+            multiselect
+            creatable
+            placeholder="Select you favorite frameworks"
+            options={frameworks}
+          />
+        ),
       },
     ],
   },
