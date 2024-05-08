@@ -28,6 +28,8 @@ import {
   AccordionTrigger,
   Button,
   Input,
+  InputLeftAddon,
+  InputRightAddon,
   Slider,
   Switch,
   Textarea,
@@ -261,63 +263,41 @@ export const components = [
         cardSubtext:
           "  An input can have different appearances. The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements.",
         cardComponent: (
-          <>
+          <div className="flex gap-4">
             <Input
+              labelText="Example of"
+              placeholder="1000"
+              helperText="Helper text"
+              type="number"
+            >
+              <InputLeftAddon>$</InputLeftAddon>
+              <InputRightAddon>.00</InputRightAddon>
+            </Input>
+            <Input
+              variant="underline"
               labelText="Example of"
               placeholder="A Outline Input"
               helperText="Helper text"
-            />
-            <Input
-              variant="focus"
-              labelText="Example of"
-              placeholder="A Outline Input"
-              helperText="Helper text"
-            />
+            >
+              <InputLeftAddon>icon</InputLeftAddon>
+            </Input>
             <Input
               variant="filledDark"
               labelText="Example of "
               placeholder="A FilledDark Input"
               helperText="Helper text"
-            />
+            >
+              <InputLeftAddon>icon</InputLeftAddon>
+            </Input>
             <Input
               variant="filledLight"
               labelText="Warning of"
               placeholder="A FilledLight Input"
               helperText="Helper text"
-            />
-          </>
-        ),
-      },
-      {
-        cardHeader: "States",
-        cardSubtext: "",
-        cardComponent: (
-          <>
-            <Input
-              state="neutral"
-              labelText="Example of"
-              placeholder="A Neutral"
-              helperText="Input"
-            />
-            <Input
-              state="success"
-              labelText="Example of"
-              placeholder="A Input"
-              helperText="With Success"
-            />
-            <Input
-              state="warning"
-              labelText="Example of "
-              placeholder="A Input"
-              helperText="With Fail"
-            />
-            <Input
-              state="fail"
-              labelText="Example of"
-              placeholder="A Input"
-              helperText="With Warning"
-            />
-          </>
+            >
+              <InputLeftAddon>icon</InputLeftAddon>
+            </Input>
+          </div>
         ),
       },
     ],
