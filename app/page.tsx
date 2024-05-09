@@ -114,7 +114,7 @@ export default function Page() {
                       )}
                       <div
                         className="relative flex min-w-fit
-                       overflow-hidden rounded  border border-zinc-400 bg-amber-50/50 p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
+                       overflow-hidden rounded  border border-zinc-400 bg-white p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
                       >
                         {cardComponent}
                       </div>

@@ -29,23 +29,26 @@ const inputVariants = tv({
     root: "flex flex-col",
     label: "py-1 text-black dark:text-white",
     inputContainer:
-      "relative flex w-full select-none items-center gap-1 overflow-hidden rounded-[4px] px-2  text-[#707070] shadow-sm outline-0 transition-all ",
+      "relative flex w-full select-none items-center gap-1 overflow-hidden rounded-[4px] px-2  text-[#707070] shadow-sm outline-0 transition-all dark:text-[#909090] ",
     inputDecoration:
-      "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-[1] bg-[#106CBD] text-white transition-all", // This is the line that appears under the input
+      "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-[1] bg-[#106CBD] text-[#909090] text-white transition-all", // This is the line that appears under the input
     input:
-      "h-full w-full select-text border-none bg-transparent placeholder-[#707070] outline-none dark:text-white dark:placeholder-white",
+      "h-full w-full select-text border-none bg-transparent placeholder-[#707070] outline-none dark:text-white dark:placeholder-[#909090]",
   },
   variants: {
     variant: {
-      outline: { inputContainer: "border-[1px] bg-white" },
+      outline: {
+        inputContainer:
+          "border-[1px] bg-white dark:border-stone-400 dark:bg-stone-800",
+      },
       underline: {
         inputContainer: "border-b border-gray-500 bg-transparent",
       },
       filledLight: {
-        inputContainer: " bg-white dark:bg-white/90",
+        inputContainer: "bg-white dark:bg-stone-800",
       },
       filledDark: {
-        inputContainer: "dark:bg-dark/90 bg-neutral-100",
+        inputContainer: "bg-neutral-100 dark:bg-neutral-900",
       },
     },
     size: {

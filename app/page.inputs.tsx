@@ -27,6 +27,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   Button,
+  Divider,
   Input,
   InputLeftAddon,
   InputRightAddon,
@@ -323,6 +324,34 @@ export const components = [
             placeholder="Select you favorite frameworks"
             options={frameworks}
           />
+        ),
+      },
+    ],
+  },
+  {
+    header: "Divider",
+    subText:
+      "A Select allows one option to be selected from multiple options. The Select component is a wrapper around the native <select> element.",
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex h-fit w-full flex-col gap-10">
+            <Divider orientation="horizontal" align="center">
+              1
+            </Divider>
+
+            <Divider variant="subtle" orientation="horizontal" align="start">
+              2
+            </Divider>
+            <Divider variant="brand" orientation="horizontal" align="center">
+              3
+            </Divider>
+            <Divider variant="strong" orientation="horizontal" align="end">
+              4
+            </Divider>
+          </div>
         ),
       },
     ],
