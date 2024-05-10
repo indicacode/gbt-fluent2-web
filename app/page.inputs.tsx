@@ -57,6 +57,7 @@ import {
   Drawer,
   DrawerContent,
   DrawerDescription,
+  DrawerFooter,
   DrawerHeader,
   DrawerTrigger,
   FloatingAction,
@@ -301,30 +302,48 @@ export const components = [
           </div>
         ),
       },
-        {cardComponent: (
-            <div>
+      {
+        cardComponent: (
+          <div>
             <h2 className={"font-extrabold"}>Content before/after</h2>
-                <h2>An input can have elements such as an icon or a button before or after the entered text. These elements are displayed inside the input border.</h2>
-            </div>
-            )},
-        {cardComponent: (
-                <div>
-                    <h2 className={"font-extrabold"}>Inline
-                    </h2>
-                    <h2>An input can be rendered inline with text.</h2>
-                    <h2 className={"flex gap-2 flex-row"}> this   <Input className={" "} placeholder={"inline input"} aria-label={"input"}></Input> is rendered inline </h2>
-                </div>
-            )},
-        {cardComponent: (
-                <div>
-                    <h2 className={"font-extrabold"}>Placeholder
-                    </h2>
-                    <h2>An input can have placeholder text. If using the placeholder as a label (which is not recommended for usability), be sure to provide an aria-label for screen reader users.
-
-                    </h2>
-                </div>
-            )}
-
+            <h2>
+              An input can have elements such as an icon or a button before or
+              after the entered text. These elements are displayed inside the
+              input border.
+            </h2>
+          </div>
+        ),
+      },
+      {
+        cardComponent: (
+          <div>
+            <h2 className={"font-extrabold"}>Inline</h2>
+            <h2>An input can be rendered inline with text.</h2>
+            <h2 className={"flex flex-row gap-2"}>
+              {" "}
+              this{" "}
+              <Input
+                className={" "}
+                placeholder={"inline input"}
+                aria-label={"input"}
+              ></Input>{" "}
+              is rendered inline{" "}
+            </h2>
+          </div>
+        ),
+      },
+      {
+        cardComponent: (
+          <div>
+            <h2 className={"font-extrabold"}>Placeholder</h2>
+            <h2>
+              An input can have placeholder text. If using the placeholder as a
+              label (which is not recommended for usability), be sure to provide
+              an aria-label for screen reader users.
+            </h2>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -443,20 +462,19 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Drawer>
+          <Drawer position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
 
             <DrawerContent>
-              <div className={"flex h-[50vh] w-screen flex-col items-center"}>
-                <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
-                </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
-                  And i the content
-                </DrawerDescription>
-              </div>
+              <DrawerHeader className="flex flex-col items-center">
+                Im the header!
+              </DrawerHeader>
+              <DrawerDescription className={" text-slate-50"}>
+                And i the content
+              </DrawerDescription>
+              <DrawerFooter>aaaaaaa</DrawerFooter>
             </DrawerContent>
           </Drawer>
         ),
@@ -708,7 +726,6 @@ export const components = [
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
                 Yes. Try it for yourself, with a few lines of code you get
-
                 beautiful UI!
               </AccordionContent>
             </AccordionItem>
