@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { forwardRef } from "react"
+import { ComponentPropsWithoutRef, Ref } from "react"
 import { Root } from "@radix-ui/react-separator"
 import { tv } from "tailwind-variants"
 
@@ -102,56 +102,58 @@ const dividerSlots = tv({
 
 const { root, before, after } = dividerSlots()
 
-const Divider = forwardRef<
-  React.ElementRef<typeof Root>,
-  React.ComponentPropsWithoutRef<typeof Root>
->(
-  (
-    {
-      className,
-      orientation = "vertical",
-      variant = "primary",
-      align = "center",
-      decorative = true,
-      dashed = false,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    console.log(alignOrientation(align, orientation))
-    return (
-      <Root
-        ref={ref}
-        className={root({
+interface DividerProps extends ComponentPropsWithoutRef<typeof Root> {
+  variant?: "primary" | "subtle" | "brand" | "strong"
+  orientation?: "horizontal" | "vertical"
+  align?: "center" | "start" | "end"
+  dashed?: boolean
+}
+
+function Divider(
+  {
+    orientation = "vertical",
+    variant = "primary",
+    decorative = true,
+    align = "center",
+    dashed = false,
+    className,
+    children,
+    ...props
+  }: DividerProps,
+  ref: Ref<HTMLDivElement>
+) {
+  console.log(alignOrientation(align, orientation))
+  return (
+    <Root
+      ref={ref}
+      className={root({
+        align: alignOrientation(align, orientation),
+        orientation,
+        variant,
+        className,
+      })}
+      {...props}
+    >
+      <span
+        className={before({
           align: alignOrientation(align, orientation),
           orientation,
+          dashed,
           variant,
-          className,
         })}
-        {...props}
-      >
-        <span
-          className={before({
-            align: alignOrientation(align, orientation),
-            orientation,
-            dashed,
-            variant,
-          })}
-        />
-        <div className="flex shrink-0">{children}</div>
-        <span
-          className={after({
-            align: alignOrientation(align, orientation),
-            orientation,
-            dashed,
-            variant,
-          })}
-        />
-      </Root>
-    )
-  }
-)
+      />
+      <div className="flex shrink-0">{children}</div>
+      <span
+        className={after({
+          align: alignOrientation(align, orientation),
+          orientation,
+          dashed,
+          variant,
+        })}
+      />
+    </Root>
+  )
+}
 Divider.displayName = "Divider"
 
 export { Divider }
