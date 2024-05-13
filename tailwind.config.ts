@@ -23,6 +23,7 @@ const config = withTV({
           light: "#33b3d6",
           dark: "#005f79",
           disabled: "#a3a3a3",
+          subtle:"#0e63ad"
         },
       },
       keyframes: {

@@ -34,7 +34,7 @@ const cardSlots = tv({
         card: "border border-gray-300 shadow-none dark:border-zinc-200",
       },
       subtle: {
-        card: "border-none shadow-none hover:cursor-pointer hover:bg-zinc-100",
+        card: "border-none dark:text-gray-400 text-black shadow-none hover:cursor-pointer hover:bg-zinc-100",
       },
       _unstiled: { card: "", cardContent: "" },
     },

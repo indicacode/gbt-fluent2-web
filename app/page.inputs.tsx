@@ -311,6 +311,23 @@ export const components = [
               after the entered text. These elements are displayed inside the
               input border.
             </h2>
+              <h2>heres an input with a left addon</h2>
+              <Input
+              variant={"filledLight"}
+              labelText={"Left Addon"}
+              placeholder={"The Addon is on the left! this addon is a dollar sign , for a money ammount input"}
+
+              >
+                    <InputLeftAddon>$</InputLeftAddon>
+              </Input>
+              <Input
+                  variant={"filledLight"}
+                  labelText={"Right Addon"}
+                  placeholder={"The Addon is on the right! this addon is a percent sign , for a percentage input"}
+
+              >
+                  <InputRightAddon>%</InputRightAddon>
+              </Input>
           </div>
         ),
       },
@@ -765,7 +782,7 @@ export const components = [
         cardComponent: (
           <Avatar status="online" size="sm">
             {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
-            <AvatarFallback>Josh Well</AvatarFallback>
+            <AvatarFallback size={""}>Josh Well</AvatarFallback>
           </Avatar>
         ),
       },
@@ -828,7 +845,8 @@ export const components = [
   },
   {
     header: "Card",
-    subText: "Take from storybook", //TODO
+    subText: "A card is a container that holds information and actions related to a single concept or object, like a document or a contact Cards can give information prominence and create predictable patterns. While they're very flexible, it's important to use them consistently for particular use cases across experiences"
+        ,
     cards: [
       {
         cardHeader: "",
@@ -844,7 +862,7 @@ export const components = [
                 <CardDescription>Developer</CardDescription>
               </CardHeader>
               <CardContent>
-                Donut chocolate bar oat cake. Dragée tiramisu lolli pop bear
+                Donut chocolate bar oat cake. Dragée tiramisu lollipop bear
                 claw. Marshmallow pastry jujubes toffee sugar plum.
               </CardContent>
               <CardFooter>
