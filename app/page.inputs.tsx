@@ -321,23 +321,25 @@ export const components = [
               after the entered text. These elements are displayed inside the
               input border.
             </h2>
-              <h2>heres an input with a left addon</h2>
-              <Input
+            <h2>heres an input with a left addon</h2>
+            <Input
               variant={"filledLight"}
               labelText={"Left Addon"}
-              placeholder={"The Addon is on the left! this addon is a dollar sign , for a money ammount input"}
-
-              >
-                    <InputLeftAddon>$</InputLeftAddon>
-              </Input>
-              <Input
-                  variant={"filledLight"}
-                  labelText={"Right Addon"}
-                  placeholder={"The Addon is on the right! this addon is a percent sign , for a percentage input"}
-
-              >
-                  <InputRightAddon>%</InputRightAddon>
-              </Input>
+              placeholder={
+                "The Addon is on the left! this addon is a dollar sign , for a money ammount input"
+              }
+            >
+              <InputLeftAddon>$</InputLeftAddon>
+            </Input>
+            <Input
+              variant={"filledLight"}
+              labelText={"Right Addon"}
+              placeholder={
+                "The Addon is on the right! this addon is a percent sign , for a percentage input"
+              }
+            >
+              <InputRightAddon>%</InputRightAddon>
+            </Input>
           </div>
         ),
       },
@@ -855,8 +857,8 @@ export const components = [
   },
   {
     header: "Card",
-    subText: "A card is a container that holds information and actions related to a single concept or object, like a document or a contact Cards can give information prominence and create predictable patterns. While they're very flexible, it's important to use them consistently for particular use cases across experiences"
-        ,
+    subText:
+      "A card is a container that holds information and actions related to a single concept or object, like a document or a contact Cards can give information prominence and create predictable patterns. While they're very flexible, it's important to use them consistently for particular use cases across experiences",
     cards: [
       {
         cardHeader: "",
@@ -958,8 +960,8 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
-            <Menubar>
-              <MenubarMenu>
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
                 <MenubarTrigger>File</MenubarTrigger>
                 <MenubarContent>
                   <MenubarItem>

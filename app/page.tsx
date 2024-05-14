@@ -24,6 +24,7 @@ type ItemsType = {
 
 export default function Page() {
   const [isCollapsed, setIsCollapsed] = useState(true)
+  const [value, setValue] = useState("true")
 
   const isMobile = useMediaQuery(["(max-width: 640px)"], {
     ssr: true,
