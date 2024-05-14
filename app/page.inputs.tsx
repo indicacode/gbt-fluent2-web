@@ -776,6 +776,14 @@ export const components = [
           </Accordion>
         ),
       },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Image</h2>
+                    <h2>An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, multiple will also be collapsed by default on the first render
+                    </h2>
+                </div>
+            )}
     ],
   },
   {
@@ -799,6 +807,14 @@ export const components = [
           </Avatar>
         ),
       },
+        {
+        cardComponent: (
+            <div>
+                <h2 className={"font-extrabold"}>Image</h2>
+                <h2>An avatar can display an image.
+                    It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.</h2>
+            </div>
+        )}
     ],
   },
   {
@@ -854,6 +870,13 @@ export const components = [
           </RadioGroup>
         ),
       },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Layout</h2>
+                    <h2>This component has layout options, you can either have it as a horizontal radio group, or as a vertical radio group, you can take advantage of this to </h2>
+                </div>
+            )}
     ],
   },
   {
@@ -867,6 +890,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col items-center justify-center gap-10">
             <Card
+
               className="w-[540px]"
               cardPreview="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.EAf0oMwvFLL7MMZOIEJKLwHaC9%26pid%3DApi&f=1&ipt=a11aa5dcda31eee8bdc446511e1ce983681641249334e18726f3b67e7e6bba8c&ipo=images"
             >
