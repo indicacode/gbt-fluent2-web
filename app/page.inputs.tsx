@@ -38,6 +38,15 @@ import {
 import Combobox from "@/components/done/combobox"
 import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
 import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/not-done/menubar"
+import {
   Avatar,
   AvatarFallback,
   AvatarImage,
@@ -83,6 +92,7 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
+import InfoLabel from "@/components/reviewing/infoLabel"
 import { Label } from "@/components/reviewing/label"
 
 type RowItem = {
@@ -919,6 +929,50 @@ export const components = [
               onChange={(checked) => console.log(checked)}
             />
             <Checkbox checked="indeterminate" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    header: "InfoLabel",
+    subText: <></>,
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <InfoLabel size={"lg"}>Label</InfoLabel>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    header: "Menu",
+    subText: <></>,
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar>
+              <MenubarMenu>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
           </div>
         ),
       },

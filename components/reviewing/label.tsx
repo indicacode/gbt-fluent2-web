@@ -1,26 +1,42 @@
 "use client"
 
-import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
+import { ComponentPropsWithoutRef, forwardRef, LegacyRef } from "react"
+import { Root } from "@radix-ui/react-label"
 import { tv, VariantProps } from "tailwind-variants"
 
-import { cn } from "@/lib/utils"
-
 const label = tv({
-  base: "flex flex-wrap text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+  base: "flex justify-center gap-0.5 align-middle text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+  variants: {
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+    },
+    size: {
+      sm: "text-sm",
+      md: "text-md",
+      lg: "text-lg",
+    },
+  },
 })
 
-const Label = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
-    VariantProps<typeof label>
->(({ className, ...props }, ref) => (
-  <LabelPrimitive.Root
-    ref={ref}
-    className={cn(label(), className)}
-    {...props}
-  />
-))
-Label.displayName = LabelPrimitive.Root.displayName
+export interface LabelProps
+  extends VariantProps<typeof label>,
+    ComponentPropsWithoutRef<typeof Root> {
+  required?: boolean
+}
 
-export { Label }
+function Label(
+  { className, required, children, disabled, size, ...props }: LabelProps,
+  ref: LegacyRef<HTMLLabelElement>
+) {
+  return (
+    <Root ref={ref} className={label({ className, size, disabled })} {...props}>
+      {children}
+      {required && <span className="text-red-500">*</span>}
+    </Root>
+  )
+}
+
+const ForwardedLabel = forwardRef(Label)
+ForwardedLabel.displayName = Root.displayName
+
+export { ForwardedLabel as Label }
