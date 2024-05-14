@@ -19,7 +19,7 @@ const buttonVariants = tv({
   variants: {
     variant: {
       primary:
-        "dark:text-whitesmoke active:gray-200 duration-400 bg-brand-primary text-white active:border-brand-secondary active:bg-[#0C3B5E] data-[disabled=true]:bg-[#F0F0F0] data-[disabled=true]:text-black data-[selected=true]:before:bg-white data-[disabled=false]:hover:bg-[#115EA3]",
+        "dark:text-whitesmoke duration-400 border bg-brand-primary text-white active:border-brand-secondary active:bg-[#0C3B5E] data-[disabled=true]:bg-[#F0F0F0] data-[disabled=true]:text-black data-[selected=true]:before:bg-white data-[disabled=false]:hover:bg-[#115EA3]",
       secondary:
         "bg-gray-200 text-black before:border-black active:bg-gray-400 data-[disabled=true]:bg-[#F0F0F0] data-[selected=true]:before:bg-black data-[disabled=false]:hover:bg-gray-300",
       outline:

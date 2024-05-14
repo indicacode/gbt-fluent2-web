@@ -94,6 +94,7 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 import InfoLabel from "@/components/reviewing/infoLabel"
 import { Label } from "@/components/reviewing/label"
+import { Link } from "@/components/reviewing/link"
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -209,7 +210,7 @@ export const components = [
           </div>
         ),
         cardComponent: (
-          <>
+          <div className="flex gap-2">
             <Button shape="square">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button shape="circular" variant="outline">
@@ -217,7 +218,7 @@ export const components = [
             </Button>
             <Button variant="subtle">Subtle</Button>
             <Button variant="transparent">Transparent</Button>
-          </>
+          </div>
         ),
       },
       {
@@ -975,6 +976,27 @@ export const components = [
                 </MenubarContent>
               </MenubarMenu>
             </Menubar>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    header: "Link",
+    subText: <></>,
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Link href="#">Link default</Link>
+            <Link href="#" variant="subtle">
+              Link subtle
+            </Link>
+            <Link href="#" disabled>
+              disabled
+            </Link>
           </div>
         ),
       },
