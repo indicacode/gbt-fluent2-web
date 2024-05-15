@@ -7,7 +7,7 @@ import {
 import * as PopoverRadix from "@radix-ui/react-popover"
 import { tv } from "tailwind-variants"
 
-import { Label } from "@/components/reviewing/label"
+import { Label } from "@/components/done/label"
 import {
   Popover,
   PopoverContent,

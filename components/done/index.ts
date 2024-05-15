@@ -1,6 +1,6 @@
 export * from "./accordion"
 export * from "./button"
-export * from "../reviewing/input"
+export * from "./input"
 export * from "./divider"
 export * from "./slider"
 export * from "./switch"
