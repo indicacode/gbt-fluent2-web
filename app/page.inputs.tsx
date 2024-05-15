@@ -36,6 +36,9 @@ import {
   Textarea,
 } from "@/components/done"
 import Combobox from "@/components/done/combobox"
+import InfoLabel from "@/components/done/infoLabel"
+import { Label } from "@/components/done/label"
+import { Link } from "@/components/done/link"
 import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
 import {
   Menubar,
@@ -92,9 +95,6 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
-import InfoLabel from "@/components/reviewing/infoLabel"
-import { Label } from "@/components/reviewing/label"
-import { Link } from "@/components/reviewing/link"
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -528,36 +528,23 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Dialog>
-            <DialogTrigger
-              className={
-                "dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white"
-              }
-            >
-              Open Dialog
-            </DialogTrigger>
-            <DialogContent className={"dark:bg-gray-800"}>
+          <Dialog nonModal>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
               <DialogHeader>
-                <DialogTitle className={"text-2xl font-bold "}>
-                  This is a dialog.
-                </DialogTitle>
+                <DialogTitle>This is a dialog.</DialogTitle>
               </DialogHeader>
-              <h2 className={"text-lg"}>
-                Dialogs are often interruptions, so use them for important
-                actions. If you need to give someone an update on an action they
-                just took but that they don't need to act on, try a toast.
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
               </h2>
-              <div className={"flex flex-row justify-end"}>
-                <Button
-                  className={"mr-2"}
-                  size={"default"}
-                  variant={"secondary"}
-                >
+              <div className="flex flex-row justify-end">
+                <Button className="mr-2" size="default" variant="secondary">
                   Deny
                 </Button>
-                <Button className={""} variant={"default"}>
-                  Agree
-                </Button>
+                <Button className="">Agree</Button>
               </div>
             </DialogContent>
           </Dialog>
@@ -776,14 +763,19 @@ export const components = [
           </Accordion>
         ),
       },
-        {
-            cardComponent: (
-                <div>
-                    <h2 className={"font-extrabold"}>Image</h2>
-                    <h2>An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, multiple will also be collapsed by default on the first render
-                    </h2>
-                </div>
-            )}
+      {
+        cardComponent: (
+          <div>
+            <h2 className={"font-extrabold"}>Image</h2>
+            <h2>
+              An accordion supports multiple panels expanded simultaneously.
+              Since it's not simple to determine which panel will be opened by
+              default, multiple will also be collapsed by default on the first
+              render
+            </h2>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -807,14 +799,19 @@ export const components = [
           </Avatar>
         ),
       },
-        {
+      {
         cardComponent: (
-            <div>
-                <h2 className={"font-extrabold"}>Image</h2>
-                <h2>An avatar can display an image.
-                    It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.</h2>
-            </div>
-        )}
+          <div>
+            <h2 className={"font-extrabold"}>Image</h2>
+            <h2>
+              An avatar can display an image. It is recommended to also include
+              a name in addition to the image: the initials from the name are
+              displayed while the image is loading, and the name makes the
+              Avatar accessible to screen readers.
+            </h2>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -870,13 +867,18 @@ export const components = [
           </RadioGroup>
         ),
       },
-        {
-            cardComponent: (
-                <div>
-                    <h2 className={"font-extrabold"}>Layout</h2>
-                    <h2>This component has layout options, you can either have it as a horizontal radio group, or as a vertical radio group, you can take advantage of this to </h2>
-                </div>
-            )}
+      {
+        cardComponent: (
+          <div>
+            <h2 className={"font-extrabold"}>Layout</h2>
+            <h2>
+              This component has layout options, you can either have it as a
+              horizontal radio group, or as a vertical radio group, you can take
+              advantage of this to{" "}
+            </h2>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -890,7 +892,6 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col items-center justify-center gap-10">
             <Card
-
               className="w-[540px]"
               cardPreview="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.EAf0oMwvFLL7MMZOIEJKLwHaC9%26pid%3DApi&f=1&ipt=a11aa5dcda31eee8bdc446511e1ce983681641249334e18726f3b67e7e6bba8c&ipo=images"
             >

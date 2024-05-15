@@ -1,57 +1,84 @@
 "use client"
 
 import * as React from "react"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { Cross2Icon } from "@radix-ui/react-icons"
+import {
+  Close,
+  Content,
+  Description,
+  Overlay,
+  Portal,
+  Root,
+  Title,
+  Trigger,
+} from "@radix-ui/react-dialog"
 
 import { cn } from "@/lib/utils"
 
-const Dialog = DialogPrimitive.Root
+function Dialog({
+  children,
+  nonModal,
+  ...props
+}: {
+  children: React.ReactNode
+}) {
+  const childrenWithProps = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { nonModal })
+    }
+    return child
+  })
+  return <Root {...props}>{childrenWithProps}</Root>
+}
 
-const DialogTrigger = DialogPrimitive.Trigger
+const DialogTrigger = Trigger
 
-const DialogPortal = DialogPrimitive.Portal
+const DialogPortal = Portal
 
-const DialogClose = DialogPrimitive.Close
+const DialogClose = Close
 
 const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
+  React.ElementRef<typeof Overlay>,
+  React.ComponentPropsWithoutRef<typeof Overlay>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
+  <Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-[#00000066]  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
   />
 ))
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
-
+DialogOverlay.displayName = Overlay.displayName
+///////////////////////
+// TODO do nonModal //
+/////////////////////
 const DialogContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  React.ElementRef<typeof Content>,
+  React.ComponentPropsWithoutRef<typeof Content>
+>(({ className, onInteractOutside, nonModal, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
-    <DialogPrimitive.Content
+    <Content
+      onInteractOutside={(e) => {
+        if (nonModal) {
+          e.preventDefault()
+          e.stopPropagation()
+        }
+        onInteractOutside?.(e)
+      }}
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-slate-200 bg-white p-6 text-black shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg dark:border-slate-800 dark:bg-gray-800 dark:text-white",
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-slate-200 bg-white p-6 text-sm text-black shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] dark:border-slate-800 dark:bg-gray-800 dark:text-white sm:rounded-lg",
         className
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-slate-100 data-[state=open]:text-slate-500 dark:ring-offset-slate-950 dark:focus:ring-slate-300 dark:data-[state=open]:bg-slate-800 dark:data-[state=open]:text-slate-400">
-        <Cross2Icon className="h-4 w-4" />
-        <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
+    </Content>
   </DialogPortal>
 ))
-DialogContent.displayName = DialogPrimitive.Content.displayName
+DialogContent.displayName = Content.displayName
 
 const DialogHeader = ({
   className,
@@ -82,31 +109,31 @@ const DialogFooter = ({
 DialogFooter.displayName = "DialogFooter"
 
 const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+  React.ElementRef<typeof Title>,
+  React.ComponentPropsWithoutRef<typeof Title>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title
+  <Title
     ref={ref}
     className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
+      "text-xl font-semibold leading-none tracking-tight",
       className
     )}
     {...props}
   />
 ))
-DialogTitle.displayName = DialogPrimitive.Title.displayName
+DialogTitle.displayName = Title.displayName
 
 const DialogDescription = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+  React.ElementRef<typeof Description>,
+  React.ComponentPropsWithoutRef<typeof Description>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description
+  <Description
     ref={ref}
     className={cn("text-sm text-slate-400 dark:text-slate-300", className)}
     {...props}
   />
 ))
-DialogDescription.displayName = DialogPrimitive.Description.displayName
+DialogDescription.displayName = Description.displayName
 
 export {
   Dialog,
