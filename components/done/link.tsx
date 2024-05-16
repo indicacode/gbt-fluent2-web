@@ -42,5 +42,6 @@ function Link(
     </NextLink>
   )
 }
+
 const ForwardedLink = forwardRef(Link)
 export { ForwardedLink as Link }

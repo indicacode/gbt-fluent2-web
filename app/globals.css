@@ -30,12 +30,12 @@
   strong {
     @apply font-bold dark:text-white;
   }
+
   code {
-    @apply italic text-sm bg-[#fff1] rounded px-[0.1em] py-[0.4em] m-[0.2em];
-  }
-  blockquote{
-    @apply text-[0.95em] italic leading-relaxed border-l-4 dark:border-[#ddd] border-[#333] pl-[0.8em] mx-[1em] my-0.5;
+    @apply m-[0.2em] rounded bg-[#fff1] px-[0.1em] py-[0.4em] text-sm italic;
   }
 
-
+  blockquote {
+    @apply mx-[1em] my-0.5 border-l-4 border-[#333] pl-[0.8em] text-[0.95em] italic leading-relaxed dark:border-[#ddd];
+  }
 }

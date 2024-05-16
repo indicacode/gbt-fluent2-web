@@ -104,6 +104,7 @@ interface CardProps
 
   size?: "sm" | "md" | "lg"
 }
+
 function Card(
   {
     onSelectionChange = () => {},
@@ -165,6 +166,7 @@ function Card(
     </div>
   )
 }
+
 Card.displayName = "Card"
 
 function FloatingAction({ children }: { children: ReactNode }) {
@@ -220,6 +222,7 @@ function CardHeader(
     </div>
   )
 }
+
 CardHeader.displayName = "CardHeader"
 
 const ForwardedCardHeader = forwardRef(CardHeader)
@@ -243,6 +246,7 @@ function CardTitle(
     />
   )
 }
+
 CardTitle.displayName = "CardTitle"
 
 const ForwardedCardTitle = forwardRef(CardTitle)
@@ -266,6 +270,7 @@ function CardDescription(
     />
   )
 }
+
 CardDescription.displayName = "CardDescription"
 
 const ForwardedCardDescription = forwardRef(CardDescription)
@@ -288,6 +293,7 @@ function CardContent(
     />
   )
 }
+
 CardContent.displayName = "CardContent"
 
 const ForwardedCardContent = forwardRef(CardContent)
@@ -310,6 +316,7 @@ function CardFooter(
     />
   )
 }
+
 CardFooter.displayName = "CardFooter"
 
 const ForwardedCardFooter = forwardRef(CardFooter)

@@ -822,28 +822,8 @@ export const components = [
         "Show/Hide". Choosing an option should produce an immediate result.
       </>
     ),
-    cards: [{ cardHeader: "", cardSubtext: "", cardComponent: <Switch />},
-        {cardComponent:(
-                <div className={"flex flex-col"}>
-                    <h2 className="font-extrabold">Required</h2>
-                    <h2>When a Switch is marked as <code>required</code>, its label also gets the required styling</h2>
-                    <div className={"flex flex-row"}>
-                    <Switch className={"mt-4"}/>
-                        <Label className={"mt-4 ml-2"} required={true}>Required</Label>
-                    </div>
-                </div>
-            )},
-        {cardComponent:(
-                <div className={"flex flex-col"}>
-                    <h2 className="font-extrabold">Label Wrapping</h2>
-                    <h2>The label will wrap if it is wider than the available space. The Switch track will stay aligned to the first line of text.
-
-                    </h2>
-                </div>
-            )},
-    ],
+    cards: [{ cardHeader: "", cardSubtext: "", cardComponent: <Switch /> }],
   },
-
   {
     header: "Textarea",
     subText: <>Textarea allows the user to enter and edit multiline text.</>,

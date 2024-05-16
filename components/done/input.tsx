@@ -222,6 +222,7 @@ Input.displayName = "Input"
 function InputLeftAddon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
+
 function InputRightAddon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }

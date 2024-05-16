@@ -153,6 +153,7 @@ function Divider(
     </Root>
   )
 }
+
 Divider.displayName = "Divider"
 const forwardedDivider = forwardRef(Divider)
 export { forwardedDivider as Divider }
