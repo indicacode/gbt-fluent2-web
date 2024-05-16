@@ -33,7 +33,7 @@ const inputVariants = tv({
     inputDecoration:
       "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-[1] bg-[#106CBD] text-white transition-all", // This is the line that appears under the input
     input:
-      "h-full w-full select-text border-none bg-transparent placeholder-[#707070] outline-none dark:text-gray-600 dark:placeholder-gray-300",
+      "h-full w-full select-text border-none bg-transparent placeholder-[#707070] outline-none dark:text-gray-600",
   },
   variants: {
     variant: {

@@ -253,17 +253,17 @@ export const components = [
         ),
         cardComponent: (
           <div className="flex gap-4">
-            <Button isDisabled>Primary</Button>
-            <Button isDisabled variant="secondary">
+            <Button disabled>Primary</Button>
+            <Button disabled variant="secondary">
               Secondary
             </Button>
-            <Button isDisabled variant="outline">
+            <Button disabled variant="outline">
               Outline
             </Button>
-            <Button isDisabled variant="subtle">
+            <Button disabled variant="subtle">
               Subtle
             </Button>
-            <Button isDisabled variant="transparent">
+            <Button disabled variant="transparent">
               Transparent
             </Button>
           </div>
