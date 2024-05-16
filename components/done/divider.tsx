@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ComponentPropsWithoutRef, Ref } from "react"
+import { ComponentPropsWithoutRef, forwardRef, Ref } from "react"
 import { Root } from "@radix-ui/react-separator"
 import { tv } from "tailwind-variants"
 
@@ -122,7 +122,6 @@ function Divider(
   }: DividerProps,
   ref: Ref<HTMLDivElement>
 ) {
-  console.log(alignOrientation(align, orientation))
   return (
     <Root
       ref={ref}
@@ -155,5 +154,5 @@ function Divider(
   )
 }
 Divider.displayName = "Divider"
-
-export { Divider }
+const forwardedDivider = forwardRef(Divider)
+export { forwardedDivider as Divider }

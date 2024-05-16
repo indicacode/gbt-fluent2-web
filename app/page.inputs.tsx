@@ -95,6 +95,8 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
+import { ToastAction } from "@/components/reviewing/toast"
+import { toast } from "@/components/reviewing/use-toast"
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -210,7 +212,7 @@ export const components = [
           </div>
         ),
         cardComponent: (
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             <Button shape="square">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button shape="circular" variant="outline">
@@ -226,13 +228,13 @@ export const components = [
         cardSubtext:
           "Button has an icon slot that, if specified, renders an icon either before or after the children, as specified by the iconPosition prop.",
         cardComponent: (
-          <>
+          <div className="flex gap-4">
             <Button toggle />
             <Button toggle variant="secondary" />
             <Button toggle variant="outline" />
             <Button toggle variant="subtle" />
             <Button toggle variant="transparent" />
-          </>
+          </div>
         ),
       },
       {
@@ -248,7 +250,7 @@ export const components = [
           </div>
         ),
         cardComponent: (
-          <>
+          <div className="flex gap-4">
             <Button isDisabled>Primary</Button>
             <Button isDisabled variant="secondary">
               Secondary
@@ -262,7 +264,7 @@ export const components = [
             <Button isDisabled variant="transparent">
               Transparent
             </Button>
-          </>
+          </div>
         ),
       },
     ],
@@ -632,7 +634,7 @@ export const components = [
     header: "Table",
     subText: (
       <>
-        <blockquote>
+        <blockquote className="text-black dark:text-white">
           💡 This component is considered <strong>low-level</strong> and should
           be used when there is a need for more <strong>customization</strong>
           and support for <strong>non-standard features</strong>. Please check
@@ -675,13 +677,16 @@ export const components = [
                         <Avatar
                           aria-label={author.label}
                           status={author.status}
+                          size="sm"
                           // name={author.label}
                         >
                           <AvatarImage
                             src="https://github.com/shadcn.pn"
                             alt="@shadcn"
                           />
-                          <AvatarFallback>{author.label}</AvatarFallback>
+                          <AvatarFallback size="sm">
+                            {author.label}
+                          </AvatarFallback>
                         </Avatar>
 
                         <>{author.label}</>
@@ -732,13 +737,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion
-            defaultValue="item-2"
-            type="multiple"
-            size="md"
-            collapsible={true}
-            className="w-full"
-          >
+          <Accordion type="multiple" size="md" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -908,7 +907,7 @@ export const components = [
                 <Button variant="secondary">Button 2</Button>
               </CardFooter>
             </Card>
-            <Card orientation="horizontal" variant="filled-alt">
+            <Card orientation="horizontal" selectable variant="filled-alt">
               <CardHeader image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cDhXXBPPmXB0TeWGmhYA-AHaE8%26pid%3DApi&f=1&ipt=cd7797c8ef5c996d9ca56b20a8c65b8df7bb69d45d9afe2e963243aa4e8c43cc&ipo=images">
                 <CardTitle>Card Title</CardTitle>
                 <CardDescription>Card Description</CardDescription>
@@ -917,7 +916,7 @@ export const components = [
                 <BsThreeDots />
               </FloatingAction>
             </Card>
-            <Card variant="outline">
+            <Card size="lg" variant="outline">
               <CardHeader>
                 <CardTitle>Breakfast in Paris</CardTitle>
                 <CardDescription>
@@ -1022,6 +1021,36 @@ export const components = [
             <Link href="#" disabled>
               disabled
             </Link>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    header: "Toast",
+    subText: <></>,
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <ToastAction altText="Goto schedule to undo">
+                      Undo
+                    </ToastAction>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
           </div>
         ),
       },

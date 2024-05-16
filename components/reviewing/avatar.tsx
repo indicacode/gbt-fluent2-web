@@ -19,7 +19,7 @@ type AvatarProps = React.ComponentPropsWithoutRef<typeof Root> &
 
 //-------------avatar-and-avatar-image-------------//
 const avatar = tv({
-  base: "relative box-border flex rounded-full bg-gray-600",
+  base: "relative box-border flex shrink-0 rounded-full bg-gray-600",
   variants: {
     variant: {
       default: "rounded-full",
@@ -137,7 +137,7 @@ function AvatarFallback(
     <Fallback
       ref={ref}
       className={cn(
-        "bg-muted flex h-full w-full items-center justify-center rounded-full text-gray-800 dark:text-white",
+        "bg-muted flex h-full w-full items-center justify-center rounded-full text-white",
         className
       )}
       {...props}

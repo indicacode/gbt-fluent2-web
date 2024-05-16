@@ -23,6 +23,12 @@ const cardSlots = tv({
     cardFooter: "flex gap-4",
   },
   variants: {
+    size: {
+      sm: { cardSpacing: "p-2" },
+      md: { cardSpacing: "p-3" },
+      lg: { cardSpacing: "p-4" },
+      none: { cardSpacing: "p-0" },
+    },
     variant: {
       filled: {
         card: "bg-white text-slate-950 hover:bg-zinc-200 dark:bg-slate-950 dark:text-slate-50",
@@ -34,7 +40,7 @@ const cardSlots = tv({
         card: "border border-gray-300 shadow-none dark:border-zinc-200",
       },
       subtle: {
-        card: "border-none dark:text-gray-400 text-black shadow-none hover:cursor-pointer hover:bg-zinc-100",
+        card: "border-none text-black shadow-none hover:cursor-pointer hover:bg-zinc-100 dark:text-gray-400",
       },
       _unstiled: { card: "", cardContent: "" },
     },
@@ -53,6 +59,7 @@ const cardSlots = tv({
         card: "hover:cursor-pointer",
       },
     },
+
     orientation: {
       horizontal: {
         card: "flex bg-transparent p-0",
@@ -65,7 +72,7 @@ const cardSlots = tv({
       },
       vertical: {
         card: "flex flex-col",
-        cardSpacing: "flex-col gap-4 p-4",
+        cardSpacing: "flex-col gap-4",
         cardHeaderImage: "rounded",
       },
     },
@@ -73,6 +80,7 @@ const cardSlots = tv({
   defaultVariants: {
     variant: "filled",
     orientation: "vertical",
+    size: "sm",
   },
 })
 
@@ -93,6 +101,8 @@ interface CardProps
   onSelectionChange?: () => void
   /** False is the default value */
   cardPreview?: string | false
+
+  size?: "sm" | "md" | "lg"
 }
 function Card(
   {
@@ -101,6 +111,7 @@ function Card(
     defaultChecked = false,
     selectable = false,
     cardPreview = false,
+    size,
     className,
     children,
     variant,
@@ -148,7 +159,9 @@ function Card(
       {...props}
     >
       {cardPreview && <img alt="card preview" src={cardPreview} />}
-      <div className={cardSpacing({ orientation })}>{childrenWithProps}</div>
+      <div className={cardSpacing({ orientation, size })}>
+        {childrenWithProps}
+      </div>
     </div>
   )
 }
