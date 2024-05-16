@@ -213,7 +213,9 @@ export const components = [
         ),
         cardComponent: (
           <div className="flex gap-4">
-            <Button shape="square">Primary</Button>
+            <Button shape="square" variant="primary">
+              Primary
+            </Button>
             <Button variant="secondary">Secondary</Button>
             <Button shape="circular" variant="outline">
               Outline

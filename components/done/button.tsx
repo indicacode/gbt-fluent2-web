@@ -19,15 +19,23 @@ const buttonVariants = tv({
   variants: {
     variant: {
       primary:
-        "dark:text-whitesmoke duration-400 border bg-brand-primary text-white active:border-brand-secondary active:bg-[#0C3B5E] data-[disabled=true]:bg-[#F0F0F0] data-[disabled=true]:text-black data-[selected=true]:before:bg-white data-[disabled=false]:hover:bg-[#115EA3]",
+        "duration-400 border border-transparent bg-brand-primary text-white active:border-brand-primary active:bg-[#0C3B5E] " +
+        "hover:bg-[#115EA3] data-[disabled=true]:bg-[#F0F0F0] data-[disabled=true]:text-black data-[selected=true]:before:bg-white",
       secondary:
-        "bg-gray-200 text-black before:border-black active:bg-gray-400 data-[disabled=true]:bg-[#F0F0F0] data-[selected=true]:before:bg-black data-[disabled=false]:hover:bg-gray-300",
+        "bg-gray-200 text-black before:border-black hover:bg-gray-300 active:bg-gray-400 data-[disabled=true]:bg-[#F0F0F0] data-[selected=true]:before:bg-black",
       outline:
-        "border-2 border-brand-primary shadow-sm before:border-black active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black data-[disabled=false]:hover:bg-[#F5F5F5] dark:text-white dark:before:border-white data-[disabled=false]:dark:hover:bg-white/10",
+        "border-2 border-brand-primary shadow-sm before:border-black active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black " +
+        "hover:bg-[#F5F5F5] dark:text-white dark:before:border-white dark:hover:bg-white/10",
       transparent:
-        "bg-transparent active:before:bg-brand-primary data-[selected=true]:text-brand-primary data-[selected=true]:before:bg-brand-primary data-[disabled=false]:hover:text-brand-primary data-[disabled=false]:hover:before:border-0 data-[disabled=false]:hover:before:bg-brand-primary dark:data-[selected=true]:before:border-0",
+        "bg-transparent active:before:bg-brand-primary data-[selected=true]:text-brand-primary data-[selected=true]:before:bg-brand-primary " +
+        "hover:text-brand-primary hover:before:border-0 hover:before:bg-brand-primary " +
+        "dark:data-[selected=true]:before:border-0",
       subtle:
-        "bg-transparent before:border-black active:bg-[#E0E0E0] active:before:bg-brand-primary data-[selected=true]:bg-[#EBEBEB] data-[selected=true]:before:border-0 data-[selected=true]:before:bg-brand-primary data-[disabled=false]:hover:bg-[#F5F5F5] data-[disabled=false]:hover:before:border-0 data-[disabled=false]:hover:before:bg-brand-primary dark:text-white  dark:before:border-slate-300 dark:active:bg-white/20 dark:data-[selected=true]:bg-[#f0f0f011] dark:data-[selected=true]:hover:bg-white/10 data-[disabled=false]:dark:hover:bg-white/10 dark:data-[selected=true]:active:bg-white/20",
+        "bg-transparent before:border-black active:bg-[#E0E0E0] active:before:bg-brand-primary data-[selected=true]:bg-[#EBEBEB] " +
+        "hover:bg-[#F5F5F5] data-[selected=true]:before:border-0 data-[selected=true]:before:bg-brand-primary " +
+        "hover:before:border-0 hover:before:bg-brand-primary dark:text-white " +
+        "dark:before:border-slate-300 dark:active:bg-white/20 dark:data-[selected=true]:bg-[#f0f0f011] " +
+        "dark:hover:bg-white/10 dark:data-[selected=true]:hover:bg-white/10 dark:data-[selected=true]:active:bg-white/20",
     },
     toggle: {
       true: "aspect-square w-fit before:rounded-full before:border-2 before:p-2 before:content-['']",

@@ -35,59 +35,68 @@ export default function Page() {
   const currentDocs = searchParams.get("section")
 
   return (
-    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row ">
+    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-slate-200 to-zinc-300  transition-colors dark:from-slate-950 dark:to-zinc-950">
       <div
-        className={`flex min-h-full w-full flex-col gap-10 border-r-2 border-zinc-400 bg-slate-200 p-3 pt-4 transition-all  dark:border-zinc-700 dark:bg-slate-950 ${
+        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between border-r-2 border-zinc-400 bg-transparent p-3 pt-4 transition-all dark:border-zinc-700 dark:bg-transparent ${
           isMobile && isCollapsed ? " max-w-14" : "max-w-44"
         }`}
       >
-        <div className="flex h-[1.5rem] min-w-fit items-center justify-center gap-2 overflow-hidden pl-1 text-black dark:text-white">
-          <HamburgerMenuIcon
-            onClick={() => setIsCollapsed((p) => !p)}
-            className={`font-2xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : " hidden"}`}
-          />
-          <h2
-            className={`whitespace-nowrap text-2xl font-bold ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+        <div className="flex h-fit flex-col gap-10">
+          <div
+            onClick={() => {
+              if (isMobile) {
+                setIsCollapsed((p) => !p)
+              }
+            }}
+            className="flex h-[1.5rem] min-w-fit items-center justify-center gap-2 overflow-hidden pl-1 text-black dark:text-white"
           >
-            Fluent2
-          </h2>
+            <HamburgerMenuIcon
+              className={`font-4xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : " hidden"}`}
+            />
+            <h2
+              className={`whitespace-nowrap text-2xl font-bold ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+            >
+              Fluent2
+            </h2>
+          </div>
+
+          <Accordion
+            className="flex h-full w-full flex-col bg-transparent  pt-4"
+            type="multiple"
+          >
+            {sideBarKeys.map((key, idx) => (
+              <AccordionItem
+                key={idx}
+                className={`bg-transparent font-bold  transition-all ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+                value={"item" + idx}
+              >
+                <AccordionTrigger>
+                  <span className="pb-1 text-[1.2em]">{key}</span>
+                </AccordionTrigger>
+                <AccordionContent>
+                  {sideBar[key as SideBarType].map(
+                    (component: ItemsType, itemIdx: number) => (
+                      <Link
+                        key={itemIdx}
+                        className="flex font-normal"
+                        href={`?${new URLSearchParams({
+                          section: component,
+                        })}`}
+                        aria-labelledby={`${key}-${itemIdx}`}
+                      >
+                        {component}
+                      </Link>
+                    )
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
 
-        <Accordion
-          className="flex h-full w-full flex-col bg-transparent  pt-4"
-          type="multiple"
-        >
-          {sideBarKeys.map((key, idx) => (
-            <AccordionItem
-              key={idx}
-              className={`bg-transparent font-bold  transition-all ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
-              value={"item" + idx}
-            >
-              <AccordionTrigger>
-                <span className="pb-1 text-[1.2em]">{key}</span>
-              </AccordionTrigger>
-              <AccordionContent>
-                {sideBar[key as SideBarType].map(
-                  (component: ItemsType, itemIdx: number) => (
-                    <Link
-                      key={itemIdx}
-                      className="flex font-normal"
-                      href={`?${new URLSearchParams({
-                        section: component,
-                      })}`}
-                      aria-labelledby={`${key}-${itemIdx}`}
-                    >
-                      {component}
-                    </Link>
-                  )
-                )}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-        <ThemeSwitch />
+        <ThemeSwitch className="self-center" />
       </div>
-      <main className="flex  min-h-full w-full items-center justify-center bg-gradient-to-r from-slate-200 to-zinc-300  dark:from-slate-950 dark:to-zinc-950">
+      <main className="flex  min-h-full w-full items-center justify-center  py-12">
         {components.map(({ header, subText, cards }, idx) => {
           return (
             currentDocs === header && (

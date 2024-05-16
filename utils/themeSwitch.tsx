@@ -5,7 +5,9 @@ import Image from "next/image"
 import { useTheme } from "next-themes"
 import { GoMoon, GoSun } from "react-icons/go"
 
-export default function ThemeSwitch() {
+import { cn } from "@/lib/utils"
+
+export default function ThemeSwitch({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false)
   const { setTheme, resolvedTheme } = useTheme()
 
@@ -27,7 +29,12 @@ export default function ThemeSwitch() {
 
   if (resolvedTheme === "dark") {
     return (
-      <div className="flex aspect-square cursor-pointer items-center justify-center rounded-full">
+      <div
+        className={cn(
+          "flex aspect-square w-8 cursor-pointer items-center justify-center rounded-full",
+          className
+        )}
+      >
         <GoSun size={24} onClick={() => setTheme("light")} />
       </div>
     )
@@ -35,7 +42,12 @@ export default function ThemeSwitch() {
 
   if (resolvedTheme === "light") {
     return (
-      <div className="flex aspect-square cursor-pointer items-center justify-center rounded-full">
+      <div
+        className={cn(
+          "flex aspect-square w-8 cursor-pointer items-center justify-center rounded-full",
+          className
+        )}
+      >
         <GoMoon size={24} onClick={() => setTheme("dark")} />
       </div>
     )
