@@ -95,8 +95,7 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
-import { ToastAction } from "@/components/reviewing/toast"
-import { toast } from "@/components/reviewing/use-toast"
+import {AiFillApple} from "react-icons/ai";
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -212,10 +211,8 @@ export const components = [
           </div>
         ),
         cardComponent: (
-          <div className="flex gap-4">
-            <Button shape="square" variant="primary">
-              Primary
-            </Button>
+          <div className="flex gap-2">
+            <Button shape="square">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button shape="circular" variant="outline">
               Outline
@@ -230,13 +227,13 @@ export const components = [
         cardSubtext:
           "Button has an icon slot that, if specified, renders an icon either before or after the children, as specified by the iconPosition prop.",
         cardComponent: (
-          <div className="flex gap-4">
+          <>
             <Button toggle />
             <Button toggle variant="secondary" />
             <Button toggle variant="outline" />
             <Button toggle variant="subtle" />
             <Button toggle variant="transparent" />
-          </div>
+          </>
         ),
       },
       {
@@ -252,21 +249,21 @@ export const components = [
           </div>
         ),
         cardComponent: (
-          <div className="flex gap-4">
-            <Button disabled>Primary</Button>
-            <Button disabled variant="secondary">
+          <>
+            <Button isDisabled>Primary</Button>
+            <Button isDisabled variant="secondary">
               Secondary
             </Button>
-            <Button disabled variant="outline">
+            <Button isDisabled variant="outline">
               Outline
             </Button>
-            <Button disabled variant="subtle">
+            <Button isDisabled variant="subtle">
               Subtle
             </Button>
-            <Button disabled variant="transparent">
+            <Button isDisabled variant="transparent">
               Transparent
             </Button>
-          </div>
+          </>
         ),
       },
     ],
@@ -636,7 +633,7 @@ export const components = [
     header: "Table",
     subText: (
       <>
-        <blockquote className="text-black dark:text-white">
+        <blockquote>
           💡 This component is considered <strong>low-level</strong> and should
           be used when there is a need for more <strong>customization</strong>
           and support for <strong>non-standard features</strong>. Please check
@@ -679,16 +676,13 @@ export const components = [
                         <Avatar
                           aria-label={author.label}
                           status={author.status}
-                          size="sm"
                           // name={author.label}
                         >
                           <AvatarImage
                             src="https://github.com/shadcn.pn"
                             alt="@shadcn"
                           />
-                          <AvatarFallback size="sm">
-                            {author.label}
-                          </AvatarFallback>
+                          <AvatarFallback>{author.label}</AvatarFallback>
                         </Avatar>
 
                         <>{author.label}</>
@@ -739,7 +733,13 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion type="multiple" size="md" collapsible className="w-full">
+          <Accordion
+            defaultValue="item-2"
+            type="multiple"
+            size="md"
+            collapsible={true}
+            className="w-full"
+          >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -774,9 +774,317 @@ export const components = [
               default, multiple will also be collapsed by default on the first
               render
             </h2>
+              <Accordion
+              defaultValue="item-2"
+              type="multiple"
+              size="md"
+              collapsible={true}
+              className="w-full"
+          >
+              <AccordionItem value="item-1">
+                  <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                  <AccordionContent>
+                      Yes. Try it for yourself, with a few lines of code you get
+                      beautiful UI!
+                  </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                  <AccordionTrigger>Is it styled?</AccordionTrigger>
+                  <AccordionContent>
+                      Yes. It comes with default styles that matches the Fluent2
+                      Aesthetic!
+                  </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                  <AccordionTrigger>Is it animated?</AccordionTrigger>
+                  <AccordionContent>
+                      Yes. It's animated by default with a smooth expanding motion,
+                      you can disable animations.
+                  </AccordionContent>
+              </AccordionItem>
+          </Accordion>
           </div>
         ),
       },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Image</h2>
+                    <h2>
+                        An accordion supports multiple panels expanded simultaneously.
+                        Since it's not simple to determine which panel will be opened by
+                        default, multiple will also be collapsed by default on the first
+                        render
+                    </h2>
+                    <Accordion
+                        defaultValue="item-2"
+                        type="multiple"
+                        size="md"
+                        collapsible={true}
+                        className="w-full"
+                    >
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. Try it for yourself, with a few lines of code you get
+                                beautiful UI!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it styled?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It comes with default styles that matches the Fluent2
+                                Aesthetic!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Is it animated?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It's animated by default with a smooth expanding motion,
+                                you can disable animations.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+            ),
+        },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Multiple</h2>
+                    <h2>
+                        An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, multiple will also be collapsed by default on the first render
+                    </h2>
+                    <Accordion
+                        defaultValue="item-2"
+                        type="multiple"
+                        size="md"
+                        collapsible={true}
+                        className="w-full"
+                    >
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. Try it for yourself, with a few lines of code you get
+                                beautiful UI!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it styled?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It comes with default styles that matches the Fluent2
+                                Aesthetic!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Is it animated?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It's animated by default with a smooth expanding motion,
+                                you can disable animations.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+            ),
+        },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Multi Panem`ws=</h2>
+                    <h2>
+                        An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, multiple will also be collapsed by default on the first render
+                    </h2>
+                    <Accordion
+                        defaultValue="item-2"
+                        type="multiple"
+                        size="md"
+                        collapsible={true}
+                        className="w-full"
+                    >
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. Try it for yourself, with a few lines of code you get
+                                beautiful UI!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it styled?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It comes with default styles that matches the Fluent2
+                                Aesthetic!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Is it animated?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It's animated by default with a smooth expanding motion,
+                                you can disable animations.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+            ),
+        },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Open Items</h2>
+                    <h2>
+                        An accordion can have defined open items. If no open item is present, all panels will be closed by default
+
+                    </h2>
+                    <Accordion
+                        defaultValue="item-2"
+                        type="multiple"
+                        size="md"
+                        collapsible={true}
+                        className="w-full"
+                    >
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. Try it for yourself, with a few lines of code you get
+                                beautiful UI!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it styled?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It comes with default styles that matches the Fluent2
+                                Aesthetic!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Is it animated?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It's animated by default with a smooth expanding motion,
+                                you can disable animations.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+            ),
+        },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Expand Icon Position
+                    </h2>
+                    <h2>
+An                         accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, multiple will also be collapsed by default on the first render
+                    </h2>
+                    <Accordion
+                        defaultValue="item-2"
+                        type="multiple"
+                        size="md"
+                        collapsible={true}
+                        className="w-full"
+                    >
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. Try it for yourself, with a few lines of code you get
+                                beautiful UI!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it styled?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It comes with default styles that matches the Fluent2
+                                Aesthetic!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Is it animated?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It's animated by default with a smooth expanding motion,
+                                you can disable animations.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+            ),
+        },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>With Icon</h2>
+                    <h2>
+                        An accordion header can contain an icon.
+                    </h2>
+                    <Accordion
+                        defaultValue="item-2"
+                        type="multiple"
+                        size="md"
+                        collapsible={true}
+                        className="w-full"
+                    >
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. Try it for yourself, with a few lines of code you get
+                                beautiful UI!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it styled?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It comes with default styles that matches the Fluent2
+                                Aesthetic!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Is it animated?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It's animated by default with a smooth expanding motion,
+                                you can disable animations.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+            ),
+        },
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Collapsible</h2>
+                    <h2>
+                        An accordion header can contain an icon.
+                    </h2>
+                    <Accordion
+                        defaultValue="item-2"
+                        type="multiple"
+                        size="md"
+                        collapsible={true}
+                        className="w-full"
+                    >
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>  </AccordionTrigger>
+                            <AccordionContent>
+                                Yes. Try it for yourself, with a few lines of code you get
+                                beautiful UI!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-2">
+                            <AccordionTrigger>Is it styled?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It comes with default styles that matches the Fluent2
+                                Aesthetic!
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="item-3">
+                            <AccordionTrigger>Is it animated?</AccordionTrigger>
+                            <AccordionContent>
+                                Yes. It's animated by default with a smooth expanding motion,
+                                you can disable animations.
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+
+            ),
+        },
     ],
   },
   {
@@ -810,6 +1118,7 @@ export const components = [
               displayed while the image is loading, and the name makes the
               Avatar accessible to screen readers.
             </h2>
+              <Accordion>a</Accordion>
           </div>
         ),
       },
@@ -824,8 +1133,28 @@ export const components = [
         "Show/Hide". Choosing an option should produce an immediate result.
       </>
     ),
-    cards: [{ cardHeader: "", cardSubtext: "", cardComponent: <Switch /> }],
+    cards: [{ cardHeader: "", cardSubtext: "", cardComponent: <Switch />},
+        {cardComponent:(
+                <div className={"flex flex-col"}>
+                    <h2 className="font-extrabold">Required</h2>
+                    <h2>When a Switch is marked as <code>required</code>, its label also gets the required styling</h2>
+                    <div className={"flex flex-row"}>
+                    <Switch className={"mt-4"}/>
+                        <Label className={"mt-4 ml-2"} required={true}>Required</Label>
+                    </div>
+                </div>
+            )},
+        {cardComponent:(
+                <div className={"flex flex-col"}>
+                    <h2 className="font-extrabold">Label Wrapping</h2>
+                    <h2>The label will wrap if it is wider than the available space. The Switch track will stay aligned to the first line of text.
+
+                    </h2>
+                </div>
+            )},
+    ],
   },
+
   {
     header: "Textarea",
     subText: <>Textarea allows the user to enter and edit multiline text.</>,
@@ -909,7 +1238,7 @@ export const components = [
                 <Button variant="secondary">Button 2</Button>
               </CardFooter>
             </Card>
-            <Card orientation="horizontal" selectable variant="filled-alt">
+            <Card orientation="horizontal" variant="filled-alt">
               <CardHeader image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cDhXXBPPmXB0TeWGmhYA-AHaE8%26pid%3DApi&f=1&ipt=cd7797c8ef5c996d9ca56b20a8c65b8df7bb69d45d9afe2e963243aa4e8c43cc&ipo=images">
                 <CardTitle>Card Title</CardTitle>
                 <CardDescription>Card Description</CardDescription>
@@ -918,7 +1247,7 @@ export const components = [
                 <BsThreeDots />
               </FloatingAction>
             </Card>
-            <Card size="lg" variant="outline">
+            <Card variant="outline">
               <CardHeader>
                 <CardTitle>Breakfast in Paris</CardTitle>
                 <CardDescription>
@@ -1023,36 +1352,6 @@ export const components = [
             <Link href="#" disabled>
               disabled
             </Link>
-          </div>
-        ),
-      },
-    ],
-  },
-  {
-    header: "Toast",
-    subText: <></>,
-    cards: [
-      {
-        cardHeader: "",
-        cardSubtext: "",
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Button
-              variant="outline"
-              onClick={() => {
-                toast({
-                  title: "Scheduled: Catch up ",
-                  description: "Friday, February 10, 2023 at 5:57 PM",
-                  action: (
-                    <ToastAction altText="Goto schedule to undo">
-                      Undo
-                    </ToastAction>
-                  ),
-                })
-              }}
-            >
-              Add to calendar
-            </Button>
           </div>
         ),
       },
