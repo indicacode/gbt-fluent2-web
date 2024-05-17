@@ -36,6 +36,9 @@ export default function Page() {
 
   return (
     <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-slate-200 to-zinc-300  transition-colors dark:from-slate-950 dark:to-zinc-950">
+      <span
+        className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-44"}`}
+      />
       <div
         className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between border-r-2 border-zinc-400 bg-transparent p-3 pt-4 transition-all dark:border-zinc-700 dark:bg-transparent ${
           isMobile && isCollapsed ? " max-w-14" : "max-w-44"
@@ -96,7 +99,7 @@ export default function Page() {
 
         <ThemeSwitch className="self-center" />
       </div>
-      <main className="flex  min-h-full w-full items-center justify-center  py-12">
+      <main className="flex min-h-full w-full items-center justify-center py-12">
         {components.map(({ header, subText, cards }, idx) => {
           return (
             currentDocs === header && (
