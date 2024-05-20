@@ -1,8 +1,7 @@
 "use client"
 
-import React, { Fragment, useState } from "react"
-import Link from "next/link"
-import { useSearchParams } from "next/navigation"
+import React, { Fragment, useCallback, useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import ThemeSwitch from "@/utils/themeSwitch"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { HamburgerMenuIcon } from "@radix-ui/react-icons"
@@ -24,18 +23,29 @@ type ItemsType = {
 
 export default function Page() {
   const [isCollapsed, setIsCollapsed] = useState(true)
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   const isMobile = useMediaQuery(["(max-width: 640px)"], {
     ssr: true,
     fallback: [false],
   })[0]
 
-  const searchParams = useSearchParams()
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set(name, value)
+
+      return params.toString()
+    },
+    [searchParams]
+  )
   const sideBarKeys = Object.keys(sideBar)
   const currentDocs = searchParams.get("section")
-
+  const currentAccordion = searchParams.get("accordion")
   return (
-    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-slate-200 to-zinc-300  transition-colors dark:from-slate-950 dark:to-zinc-950">
+    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-100  transition-colors dark:from-slate-950 dark:to-zinc-950">
       <span
         className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-44"}`}
       />
@@ -66,6 +76,7 @@ export default function Page() {
           <Accordion
             className="flex h-full w-full flex-col bg-transparent  pt-4"
             type="multiple"
+            defaultValue={[currentAccordion]}
           >
             {sideBarKeys.map((key, idx) => (
               <AccordionItem
@@ -74,21 +85,36 @@ export default function Page() {
                 value={"item" + idx}
               >
                 <AccordionTrigger>
-                  <span className="pb-1 text-[1.2em]">{key}</span>
+                  <span
+                    onClick={() =>
+                      router.push(
+                        pathname +
+                          "?" +
+                          createQueryString("accordion", "item" + idx)
+                      )
+                    }
+                    className="cursor-pointer pb-1 text-[1.2em]"
+                  >
+                    {key}
+                  </span>
                 </AccordionTrigger>
                 <AccordionContent>
                   {sideBar[key as SideBarType].map(
                     (component: ItemsType, itemIdx: number) => (
-                      <Link
+                      <span
                         key={itemIdx}
-                        className="flex font-normal"
-                        href={`?${new URLSearchParams({
-                          section: component,
-                        })}`}
+                        className="flex cursor-pointer font-normal"
+                        onClick={() =>
+                          router.push(
+                            pathname +
+                              "?" +
+                              createQueryString("section", component)
+                          )
+                        }
                         aria-labelledby={`${key}-${itemIdx}`}
                       >
                         {component}
-                      </Link>
+                      </span>
                     )
                   )}
                 </AccordionContent>
@@ -126,7 +152,7 @@ export default function Page() {
                       )}
                       <div
                         className="relative flex min-w-fit
-                       overflow-hidden rounded  border border-zinc-400 bg-zinc-50 p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
+                       overflow-hidden rounded border border-zinc-400 bg-[#fafafa] p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
                       >
                         {cardComponent}
                       </div>

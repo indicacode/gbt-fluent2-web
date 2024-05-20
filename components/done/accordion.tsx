@@ -1,7 +1,11 @@
 "use client"
 
-import * as React from "react"
-import { Fragment } from "react"
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  Fragment,
+} from "react"
 import { Content, Header, Item, Root, Trigger } from "@radix-ui/react-accordion"
 import { ChevronRightIcon } from "@radix-ui/react-icons"
 import { tv } from "tailwind-variants"
@@ -66,20 +70,21 @@ const {
   // size,
 })
 
-const Accordion = ({ children, className, ...props }: any) => {
-  return (
-    <Root {...props} className={className + " flex flex-col gap-3"}>
-      {children}
-    </Root>
-  )
-}
+const Accordion = forwardRef<
+  ElementRef<typeof Root>,
+  ComponentPropsWithoutRef<typeof Root>
+>(({ className, children, ...props }, ref) => (
+  <Root {...props} ref={ref} className={className + " flex flex-col gap-3"}>
+    {children}
+  </Root>
+))
 
 Accordion.displayName = "Accordion"
 //----------------------------------------//
 
-const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof Item>,
-  React.ComponentPropsWithoutRef<typeof Item>
+const AccordionItem = forwardRef<
+  ElementRef<typeof Item>,
+  ComponentPropsWithoutRef<typeof Item>
 >(({ className, ...props }, ref) => {
   // const [size] = getcontext()
   return (
@@ -90,9 +95,9 @@ const AccordionItem = React.forwardRef<
 AccordionItem.displayName = "AccordionItem"
 //----------------------------------------//
 
-const AccordionTrigger = React.forwardRef<
-  React.ElementRef<typeof Trigger>,
-  React.ComponentPropsWithoutRef<typeof Trigger>
+const AccordionTrigger = forwardRef<
+  ElementRef<typeof Trigger>,
+  ComponentPropsWithoutRef<typeof Trigger>
 >(
   (
     {
@@ -146,9 +151,9 @@ const AccordionTrigger = React.forwardRef<
 AccordionTrigger.displayName = Trigger.displayName
 //----------------------------------------//
 
-const AccordionContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
+const AccordionContent = forwardRef<
+  ElementRef<typeof Content>,
+  ComponentPropsWithoutRef<typeof Content>
 >(({ className, children, ...props }, ref) => (
   <Content ref={ref} className={contentStyles({ className })} {...props}>
     <div className={contentStyles({ className })}>{children}</div>

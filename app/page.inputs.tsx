@@ -1414,7 +1414,7 @@ export const components = [
               onClick={() => {
                 toast({
                   messageBar: true,
-                  variant: "info",
+                  variant: "error",
                   title: "Scheduled: Catch up ",
                   description: "Friday, February 10, 2023 at 5:57 PM",
                   action: (
