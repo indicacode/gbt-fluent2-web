@@ -6,9 +6,6 @@
 
 
 @layer base {
-  * {
-    @apply transition-all
-  }
   @font-face {
     font-family: Segoe;
     src: url(/fonts/Segoe_UI.ttf);

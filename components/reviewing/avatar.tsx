@@ -1,34 +1,48 @@
 "use client"
 
-import * as React from "react"
-import { ComponentPropsWithoutRef, forwardRef, Ref } from "react"
+import {
+  Children,
+  cloneElement,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  isValidElement,
+  Ref,
+} from "react"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "react-icons/ci"
 import { tv, VariantProps } from "tailwind-variants"
 
-import { cn } from "@/lib/utils"
-
-import { StatusBadge } from "../reviewing" //--------------------types--------------------//
+import { StatusBadge } from "../reviewing"
 
 //--------------------types--------------------//
 
-type AvatarProps = React.ComponentPropsWithoutRef<typeof Root> &
+type AvatarProps = ComponentPropsWithoutRef<typeof Root> &
   VariantProps<typeof avatar> & {
-    status: "online" | "offline" | "away" | "busy" | "do-not-disturb"
+    status?: "online" | "offline" | "away" | "busy" | "do-not-disturb"
   }
 
 //-------------avatar-and-avatar-image-------------//
-const avatar = tv({
-  base: "relative box-border flex shrink-0 rounded-full bg-gray-600",
+const avatarSlots = tv({
+  slots: {
+    avatar: "relative box-border flex shrink-0 rounded-full bg-gray-600",
+    avatarFallback:
+      "bg-muted flex h-full w-full items-center justify-center rounded-full text-white",
+    avatarActiveRing:
+      "h-fit max-h-fit w-fit max-w-fit rounded-full border-2 border-blue-500 border-opacity-0 p-0.5",
+  },
   variants: {
     variant: {
-      default: "rounded-full",
-      group: "rounded-[5px]",
+      default: { avatar: "rounded-full" },
+      group: { avatar: "rounded-[5px]" },
     },
     size: {
-      sm: "h-8 w-8", //32px
-      md: "h-12 w-12", //48px
-      lg: "h-[72px] w-[72px]", //72px
+      sm: { avatar: "h-8 w-8" }, //32px
+      md: { avatar: "h-12 w-12" }, //48px
+      lg: { avatar: "h-[72px] w-[72px]" }, //72px
+    },
+    active: {
+      true: { avatarActiveRing: "border-opacity-100" },
     },
   },
   defaultVariants: {
@@ -47,23 +61,38 @@ const avatar = tv({
  * @property {string} className - Additional user styles
  */
 
-const Avatar = React.forwardRef<React.ElementRef<typeof Root>, AvatarProps>(
-  ({ className, variant, size = "md", status, children, ...props }, ref) => {
-    const childrenWithProps = React.Children.map(children, (child) => {
-      if (React.isValidElement(child)) {
-        return React.cloneElement(child, { variant, size, status })
+const { avatar, avatarFallback, avatarActiveRing } = avatarSlots({})
+
+const Avatar = forwardRef<ElementRef<typeof Root>, AvatarProps>(
+  (
+    {
+      className,
+      variant,
+      active = false,
+      size = "md",
+      status = "offline",
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const childrenWithProps = Children.map(children, (child) => {
+      if (isValidElement(child)) {
+        return cloneElement(child, { variant, size, status })
       }
       return child
     })
     return (
-      <Root
-        className={avatar({ variant, size, className })}
-        ref={ref}
-        {...props}
-      >
-        {childrenWithProps}
-        <StatusBadge size={size} status={status} />
-      </Root>
+      <div className={avatarActiveRing({ active })}>
+        <Root
+          className={avatar({ variant, size, className })}
+          ref={ref}
+          {...props}
+        >
+          {childrenWithProps}
+          <StatusBadge size={size} status={status} />
+        </Root>
+      </div>
     )
   }
 )
@@ -79,9 +108,9 @@ Avatar.displayName = Root.displayName
  * @param {string} className - Additional CSS classes provided by the user.
  */
 
-const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof Image>,
-  React.ComponentPropsWithoutRef<typeof Image>
+const AvatarImage = forwardRef<
+  ElementRef<typeof Image>,
+  ComponentPropsWithoutRef<typeof Image>
 >(({ className, variant, size, status, ...props }, ref) => (
   <Image
     ref={ref}
@@ -105,7 +134,7 @@ AvatarImage.displayName = Image.displayName
 
 type AvatarFallbackProps = ComponentPropsWithoutRef<typeof Fallback> & {
   children: string
-  size: "sm" | "md" | "lg"
+  size?: "sm" | "md" | "lg"
 }
 type AvatarFallbackTypes = Ref<HTMLSpanElement> & Ref<typeof Fallback>
 
@@ -113,10 +142,6 @@ function AvatarFallback(
   { className, children, size, ...props }: AvatarFallbackProps,
   ref: AvatarFallbackTypes
 ) {
-  let initials = ""
-  children.split(" ").forEach((item) => (initials += item.slice(0, 1)))
-  console.log(initials)
-
   let iconSize: "20" | "30" | "50"
 
   switch (size) {
@@ -136,16 +161,19 @@ function AvatarFallback(
   return (
     <Fallback
       ref={ref}
-      className={cn(
-        "bg-muted flex h-full w-full items-center justify-center rounded-full text-white",
-        className
-      )}
+      className={avatarFallback({
+        size,
+        className,
+      })}
       {...props}
     >
       {
         <>
-          {<CiUser size={iconSize} className="text-2xl " /> ||
-            children?.split(" ").map((name) => name.slice(0, 1).toUpperCase())}
+          {children === undefined ? (
+            <CiUser size={iconSize} className="text-2xl " />
+          ) : (
+            children?.split(" ").map((name) => name.slice(0, 1).toUpperCase())
+          )}
         </>
       }
     </Fallback>

@@ -23,7 +23,7 @@ const config = withTV({
           light: "#33b3d6",
           dark: "#005f79",
           disabled: "#a3a3a3",
-          subtle:"#0e63ad"
+          subtle: "#0e63ad",
         },
       },
       keyframes: {
@@ -42,7 +42,7 @@ const config = withTV({
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("tailwindcss-radix")],
 }) satisfies Config
 
 export default config

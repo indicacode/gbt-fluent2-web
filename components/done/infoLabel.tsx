@@ -50,9 +50,8 @@ export default function InfoLabel({
   return (
     <div className={container({})}>
       <Label size={size}>{children}</Label>
-
       <Popover>
-        <PopoverTrigger asChild className="max-w-fit">
+        <PopoverTrigger className="max-w-fit">
           <SizedIcons size={size} />
         </PopoverTrigger>
         <PopoverContent align="start" side="top">

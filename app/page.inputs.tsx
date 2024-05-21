@@ -73,6 +73,9 @@ import {
   DrawerHeader,
   DrawerTrigger,
   FloatingAction,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   Select,
   SelectContent,
   SelectGroup,
@@ -95,6 +98,7 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
+import Persona from "@/components/reviewing/persona"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
 
@@ -739,7 +743,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion type="" size="md" collapsible className="w-full">
+          <Accordion type="" size="md" className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -772,12 +776,7 @@ export const components = [
           "              default, multiple will also be collapsed by default on the first\n" +
           "              render.",
         cardComponent: (
-          <Accordion
-            type="multiple"
-            size="md"
-            collapsible={true}
-            className="w-full"
-          >
+          <Accordion type="multiple" size="md" className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -804,15 +803,14 @@ export const components = [
       },
 
       {
-          cardHeader:"Navigation",
-          cardSubtext:"An accordion supports keyboard navigation.",
+        cardHeader: "Navigation",
+        cardSubtext: "An accordion supports keyboard navigation.",
         cardComponent: (
           <div>
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -841,19 +839,18 @@ export const components = [
         ),
       },
       {
-          cardHeader: "Multi Panels",
-          cardSubtext:"An accordion supports multiple panels expanded simultaneously.\n" +
-              "              Since it's not simple to determine which panel will be opened by\n" +
-              "              default, multiple will also be collapsed by default on the first\n" +
-              "              render.",
+        cardHeader: "Multi Panels",
+        cardSubtext:
+          "An accordion supports multiple panels expanded simultaneously.\n" +
+          "              Since it's not simple to determine which panel will be opened by\n" +
+          "              default, multiple will also be collapsed by default on the first\n" +
+          "              render.",
         cardComponent: (
           <div>
-
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -882,17 +879,16 @@ export const components = [
         ),
       },
       {
-          cardHeader:"Open Items",
-          cardSubtext:" An accordion can have defined open items. If no open item is\n" +
-              "              present, all panels will be closed by default.",
+        cardHeader: "Open Items",
+        cardSubtext:
+          " An accordion can have defined open items. If no open item is\n" +
+          "              present, all panels will be closed by default.",
         cardComponent: (
           <div>
-
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -921,20 +917,18 @@ export const components = [
         ),
       },
       {
-          cardHeader:("Expand Icon Position"),
-          cardSubtext:" An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
+        cardHeader: "Expand Icon Position",
+        cardSubtext:
+          " An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
 
         cardComponent: (
           <div>
             <h2 className={"font-extrabold"}></h2>
-            <h2>
-
-            </h2>
+            <h2></h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -963,15 +957,14 @@ export const components = [
         ),
       },
       {
-          cardHeader:"With Icon",
+        cardHeader: "With Icon",
         cardComponent: (
-      <div>
+          <div>
             <h2>An accordion header can contain an icon.</h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -1000,7 +993,7 @@ export const components = [
         ),
       },
       {
-          cardHeader:"Collapsible",
+        cardHeader: "Collapsible",
         cardComponent: (
           <div>
             <h2 className={"font-extrabold"}>Collapsible</h2>
@@ -1009,7 +1002,6 @@ export const components = [
               defaultValue="item-2"
               type="multiple"
               size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -1054,25 +1046,33 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Avatar status="online" size="sm">
-            {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
-            <AvatarFallback size={""}>Josh Well</AvatarFallback>
-          </Avatar>
+          <div className="flex gap-4">
+            <Avatar status="online" size="sm">
+              {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
+              <AvatarFallback>Josh Well</AvatarFallback>
+            </Avatar>
+            <Avatar status="online" size="md">
+              {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
+              <AvatarFallback>Josh Well</AvatarFallback>
+            </Avatar>
+            <Avatar status="online" size="lg">
+              {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
+              <AvatarFallback>Josh Well</AvatarFallback>
+            </Avatar>
+            <Avatar status="online" size="sm">
+              <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
+              <AvatarFallback>Josh Well</AvatarFallback>
+            </Avatar>
+          </div>
         ),
       },
       {
-        cardComponent: (
-          <div>
-            <h2 className={"font-extrabold"}>Image</h2>
-            <h2>
-              An avatar can display an image. It is recommended to also include
-              a name in addition to the image: the initials from the name are
-              displayed while the image is loading, and the name makes the
-              Avatar accessible to screen readers.
-            </h2>
-            <Accordion>a</Accordion>
-          </div>
-        ),
+        cardHeader: "Image",
+        cardSubtext:
+          "An avatar can display an image. It is recommended to also include a name in addition to the " +
+          "image: the initials from the name are displayed while the image is loading, and the name makes " +
+          "the Avatar accessible to screen readers.",
+        cardComponent: <></>,
       },
     ],
   },
@@ -1263,7 +1263,7 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
-            <InfoLabel size={"lg"}>Label</InfoLabel>
+            <InfoLabel size="lg">Label</InfoLabel>
           </div>
         ),
       },
@@ -1386,6 +1386,56 @@ export const components = [
             >
               Add to calendar
             </Button>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    header: "Persona",
+    subText: <></>,
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Persona
+              name="Kevin Sturgis"
+              secondaryText="Available"
+              avatar={{
+                src: "https://avatars.githubusercontent.com/u/124599?v=4",
+                name: "Kevin Sturgis",
+                status: "online",
+                size: "md",
+              }}
+            />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    header: "Popover",
+    subText: <></>,
+    cards: [
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline">Open popover</Button>
+              </PopoverTrigger>
+              <PopoverContent
+                className="w-radix-popover-trigger"
+                align="start"
+                side="top"
+              >
+                Hello, I'm a popover
+              </PopoverContent>
+            </Popover>
           </div>
         ),
       },

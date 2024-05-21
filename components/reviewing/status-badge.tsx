@@ -3,7 +3,9 @@ import { tv, VariantProps } from "tailwind-variants"
 
 //--------------------types--------------------//
 
-type StatusBadgeProps = VariantProps<typeof statusBadge>
+type StatusBadgeProps = VariantProps<typeof statusBadge> & {
+  className?: string
+}
 
 //--------------------------------------------//
 
@@ -49,12 +51,13 @@ const statusBadge = tv({
 })
 
 export function StatusBadge({
-  status = "online",
+  status = "offline",
   appearance = "filled",
   iconPosition = "before",
   shape = "circular",
   size = "default",
   variant = "default",
+  className,
 }: StatusBadgeProps) {
   return (
     <div
@@ -65,6 +68,7 @@ export function StatusBadge({
         shape,
         size,
         variant,
+        className,
       })}
     />
   )
