@@ -1,11 +1,7 @@
 import React, { ComponentPropsWithoutRef } from "react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/reviewing/avatar"
-import { StatusBadge } from "@/components/reviewing/status-badge"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/done/avatar"
+import { StatusBadge } from "@/components/done/status-badge"
 
 type PersonaProps = Omit<
   ComponentPropsWithoutRef<typeof Avatar>,

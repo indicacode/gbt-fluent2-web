@@ -39,6 +39,7 @@ import Combobox from "@/components/done/combobox"
 import InfoLabel from "@/components/done/infoLabel"
 import { Label } from "@/components/done/label"
 import { Link } from "@/components/done/link"
+import Persona from "@/components/done/persona"
 import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
 import {
   Menubar,
@@ -98,7 +99,6 @@ import {
 } from "@/components/reviewing"
 import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
-import Persona from "@/components/reviewing/persona"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
 

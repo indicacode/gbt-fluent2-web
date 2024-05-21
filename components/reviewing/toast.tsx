@@ -99,6 +99,7 @@ const ToastIcon = ({ variant }) => {
       throw new Error("Not implemented")
     }
   }
+
   return <span className={toastIcon({ variant })}> {currentIcon(variant)}</span>
 }
 

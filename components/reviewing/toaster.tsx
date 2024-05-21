@@ -48,7 +48,8 @@ export function Toaster() {
               </div>
               {(multiline || isMobile) && (
                 <div className="flex w-full gap-2">
-                  <div className="flex w-full" /> {action}
+                  <div className="flex w-full" />
+                  {action}
                 </div>
               )}
             </Toast>
