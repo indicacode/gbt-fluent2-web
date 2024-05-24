@@ -39,7 +39,6 @@ import Combobox from "@/components/done/combobox"
 import InfoLabel from "@/components/done/infoLabel"
 import { Label } from "@/components/done/label"
 import { Link } from "@/components/done/link"
-import Persona from "@/components/done/persona"
 import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
 import {
   Menubar,
@@ -74,9 +73,6 @@ import {
   DrawerHeader,
   DrawerTrigger,
   FloatingAction,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Select,
   SelectContent,
   SelectGroup,
@@ -743,7 +739,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion type="" size="md" className="w-full">
+          <Accordion type="" size="md" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -776,7 +772,12 @@ export const components = [
           "              default, multiple will also be collapsed by default on the first\n" +
           "              render.",
         cardComponent: (
-          <Accordion type="multiple" size="md" className="w-full">
+          <Accordion
+            type="multiple"
+            size="md"
+            collapsible={true}
+            className="w-full"
+          >
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -803,14 +804,15 @@ export const components = [
       },
 
       {
-        cardHeader: "Navigation",
-        cardSubtext: "An accordion supports keyboard navigation.",
+          cardHeader:"Navigation",
+          cardSubtext:"An accordion supports keyboard navigation.",
         cardComponent: (
           <div>
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
+              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -839,18 +841,19 @@ export const components = [
         ),
       },
       {
-        cardHeader: "Multi Panels",
-        cardSubtext:
-          "An accordion supports multiple panels expanded simultaneously.\n" +
-          "              Since it's not simple to determine which panel will be opened by\n" +
-          "              default, multiple will also be collapsed by default on the first\n" +
-          "              render.",
+          cardHeader: "Multi Panels",
+          cardSubtext:"An accordion supports multiple panels expanded simultaneously.\n" +
+              "              Since it's not simple to determine which panel will be opened by\n" +
+              "              default, multiple will also be collapsed by default on the first\n" +
+              "              render.",
         cardComponent: (
           <div>
+
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
+              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -879,16 +882,17 @@ export const components = [
         ),
       },
       {
-        cardHeader: "Open Items",
-        cardSubtext:
-          " An accordion can have defined open items. If no open item is\n" +
-          "              present, all panels will be closed by default.",
+          cardHeader:"Open Items",
+          cardSubtext:" An accordion can have defined open items. If no open item is\n" +
+              "              present, all panels will be closed by default.",
         cardComponent: (
           <div>
+
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
+              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -917,18 +921,20 @@ export const components = [
         ),
       },
       {
-        cardHeader: "Expand Icon Position",
-        cardSubtext:
-          " An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
+          cardHeader:("Expand Icon Position"),
+          cardSubtext:" An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
 
         cardComponent: (
           <div>
             <h2 className={"font-extrabold"}></h2>
-            <h2></h2>
+            <h2>
+
+            </h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
+              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -957,14 +963,15 @@ export const components = [
         ),
       },
       {
-        cardHeader: "With Icon",
+          cardHeader:"With Icon",
         cardComponent: (
-          <div>
+      <div>
             <h2>An accordion header can contain an icon.</h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
+              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -993,7 +1000,7 @@ export const components = [
         ),
       },
       {
-        cardHeader: "Collapsible",
+          cardHeader:"Collapsible",
         cardComponent: (
           <div>
             <h2 className={"font-extrabold"}>Collapsible</h2>
@@ -1002,6 +1009,7 @@ export const components = [
               defaultValue="item-2"
               type="multiple"
               size="md"
+              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
@@ -1046,34 +1054,137 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <div className="flex gap-4">
-            <Avatar status="online" size="sm">
-              {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
-              <AvatarFallback>Josh Well</AvatarFallback>
-            </Avatar>
-            <Avatar status="online" size="md">
-              {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
-              <AvatarFallback>Josh Well</AvatarFallback>
-            </Avatar>
-            <Avatar status="online" size="lg">
-              {/*<AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />*/}
-              <AvatarFallback>Josh Well</AvatarFallback>
-            </Avatar>
-            <Avatar status="online" size="sm">
-              <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
-              <AvatarFallback>Josh Well</AvatarFallback>
-            </Avatar>
-          </div>
+            <div className={"flex flex-row"}>
+          <Avatar status="online" size="sm">
+            <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
+            <AvatarFallback size={""}>Josh Well</AvatarFallback>
+          </Avatar>
+                <Avatar status="online" size="sm">
+                    <AvatarFallback size={""}>Joshua Graham</AvatarFallback>
+                </Avatar>
+                <Avatar status={"busy"} size="sm">
+                    <AvatarFallback size={""}>Ane Parker</AvatarFallback>
+                </Avatar>
+                <Avatar status={"do-not-disturb"} size="sm">
+                    <AvatarFallback size={""}>Helen Pereira</AvatarFallback>
+                    <AvatarImage src={""}/>
+                </Avatar>
+                <Avatar status={"busy"} size="sm">
+                    <AvatarFallback size={""}>Johnny Mans</AvatarFallback>
+                    <AvatarImage src={"https://images.pexels.com/photos/23909935/pexels-photo-23909935/free-photo-of-moda-tendencia-amor-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                </Avatar>
+                <Avatar status={"online"} size="sm">
+                    <AvatarFallback size={""}>Jordan Terrence</AvatarFallback>
+                    <AvatarImage src={"https://images.pexels.com/photos/22884699/pexels-photo-22884699/free-photo-of-cafeina-cafe-copo-taca.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                </Avatar>
+                <Avatar status={"online"} size="sm">
+                    <AvatarFallback size={""}>Fernanda Almeida</AvatarFallback>
+                    <AvatarImage src={"https://images.pexels.com/photos/22814807/pexels-photo-22814807/free-photo-of-moda-tendencia-mulher-modelo.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                </Avatar>
+
+            </div>
         ),
       },
       {
-        cardHeader: "Image",
-        cardSubtext:
-          "An avatar can display an image. It is recommended to also include a name in addition to the " +
-          "image: the initials from the name are displayed while the image is loading, and the name makes " +
-          "the Avatar accessible to screen readers.",
-        cardComponent: <></>,
+          cardHeader: "Image",
+          cardSubtext:"An avatar can display an image.\n" +
+              "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+        cardComponent: (
+          <div className={"flex flex-row"}>
+                    <Avatar status={"away"}>
+                        <AvatarFallback>Jordan Herrera</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+              <Avatar status={"away"}>
+                  <AvatarFallback>Kaio </AvatarFallback>
+                  <AvatarImage src={"https://images.pexels.com/photos/24702820/pexels-photo-24702820/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+              </Avatar>
+              <Avatar status={"online"}>
+                  <AvatarFallback>Jordan Herrera</AvatarFallback>
+                  <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+              </Avatar>
+              <Avatar status={"online"}>
+                  <AvatarFallback>Jordan Herrera</AvatarFallback>
+                  <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+              </Avatar>
+          </div>
+        ),
       },
+        {
+            cardHeader: "Badge",
+            cardSubtext:"An avatar can have a badge to indicate presence status. See the PresenceBadge component for more info.\n" +
+                "\n",
+            cardComponent: (
+                <div className={"flex flex-row"}>
+                    <Avatar status={"away"}>
+                        <AvatarFallback>Jordan Herrera</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"away"}>
+                        <AvatarFallback>Kaio Karlos </AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/24702820/pexels-photo-24702820/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"online"}>
+                        <AvatarFallback>Jordan Herrera</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"online"}>
+                        <AvatarFallback>Piccarte Artsy</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Badge Icon",
+            cardSubtext:"An avatar can display an image.\n" +
+                "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+            cardComponent: (
+                <div className={"flex flex-row"}>
+                    <Avatar status={"away"}>
+                        <AvatarFallback>Jordan Herrera</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"away"}>
+                        <AvatarFallback>Kaio Pereira </AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"online"}>
+                        <AvatarFallback>Victoria Petes</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"online"}>
+                        <AvatarFallback>Loucas Marquise</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                </div>
+            ),
+        }, {
+            cardHeader: "Badge Icon",
+            cardSubtext:"An avatar can display an image.\n" +
+                "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+            cardComponent: (
+                <div className={"flex flex-row"}>
+                    <Avatar status={"away"}>
+                        <AvatarFallback>Jordan Herrera</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"away"}>
+                        <AvatarFallback>Kaio Pereira </AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"online"}>
+                        <AvatarFallback>Junior Silva</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                    <Avatar status={"online"}>
+                        <AvatarFallback>Loucas Marquise</AvatarFallback>
+                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                    </Avatar>
+                </div>
+            ),
+        },
+
     ],
   },
   {
@@ -1263,7 +1374,7 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
-            <InfoLabel size="lg">Label</InfoLabel>
+            <InfoLabel size={"lg"}>Label</InfoLabel>
           </div>
         ),
       },
@@ -1386,56 +1497,6 @@ export const components = [
             >
               Add to calendar
             </Button>
-          </div>
-        ),
-      },
-    ],
-  },
-  {
-    header: "Persona",
-    subText: <></>,
-    cards: [
-      {
-        cardHeader: "",
-        cardSubtext: "",
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Persona
-              name="Kevin Sturgis"
-              secondaryText="Available"
-              avatar={{
-                src: "https://avatars.githubusercontent.com/u/124599?v=4",
-                name: "Kevin Sturgis",
-                status: "online",
-                size: "md",
-              }}
-            />
-          </div>
-        ),
-      },
-    ],
-  },
-  {
-    header: "Popover",
-    subText: <></>,
-    cards: [
-      {
-        cardHeader: "",
-        cardSubtext: "",
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant="outline">Open popover</Button>
-              </PopoverTrigger>
-              <PopoverContent
-                className="w-radix-popover-trigger"
-                align="start"
-                side="top"
-              >
-                Hello, I'm a popover
-              </PopoverContent>
-            </Popover>
           </div>
         ),
       },
