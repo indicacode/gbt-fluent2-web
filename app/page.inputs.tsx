@@ -1348,14 +1348,15 @@ export const components = [
   },
   {
     header: "Checkbox",
-    subText: <></>,
+    subText: <>Checkboxes give people a way to select one or more items from a group, or switch between two mutually exclusive options (checked or unchecked).</>,
     cards: [
       {
-        cardHeader: "",
-        cardSubtext: "",
+        cardHeader: "Disabled",
+        cardSubtext: "A checkbox can be disabled",
         cardComponent: (
           <div className="flex gap-2">
             <Checkbox
+                disabled={true}
               size="large"
               onChange={(checked) => console.log(checked)}
             />
@@ -1363,6 +1364,19 @@ export const components = [
           </div>
         ),
       },
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Checkbox
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                    />
+                    <Checkbox checked="indeterminate" />
+                </div>
+            ),
+        },
     ],
   },
   {
