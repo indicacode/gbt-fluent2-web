@@ -385,9 +385,7 @@ export const components = [
     subText:
       "A combobox combines a text field and a dropdown giving people a way to select an option from a list or enter their own choice.",
     cards: [
-      {
-        cardHeader: "",
-        cardSubtext: "",
+        {
         cardComponent: (
           <Combobox
             emptyIndicator="uo"
@@ -395,6 +393,7 @@ export const components = [
               { value: "next.js", label: "Next.js" },
               { value: "remix", label: "Remix" },
             ]}
+
             tags
             multiselect
             creatable
@@ -403,6 +402,41 @@ export const components = [
           />
         ),
       },
+
+        {
+            cardHeader: "Filtering",
+            cardSubtext:"We provide useComboboxFilter() hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function. We recommend using filtering when creating a freeform Combobox.",
+            cardComponent: (
+                <Combobox
+                    emptyIndicator="uo"
+                    selectedOptions={[
+                        { value: "next.js", label: "Next.js" },
+                        { value: "remix", label: "Remix" },
+                    ]}
+
+                    tags
+                    multiselect
+                    creatable
+                    placeholder="Select you favorite frameworks"
+                    options={frameworks}
+                />
+            ),
+        },
+        {
+            cardHeader: "Multiselect With Tags",
+            cardSubtext:"Combobox can display multiselect values in custom tags. This example uses a controlled selection so the tags can be used to remove selected options Best pets",
+            cardComponent: (
+                <Combobox
+                    emptyIndicator="uo"
+                    tags
+                    multiselect
+                    creatable
+                    placeholder="Select you favorite frameworks"
+                    options={frameworks}
+                />
+            ),
+        },
+
     ],
   },
   {
@@ -485,7 +519,7 @@ export const components = [
           </li>
           <li>
             <code>Drawer</code>: A combination of OverlayDrawer and
-            InlineDrawer. Used when toggling between the two modes is necessary.
+            InlineDrawer. Used when togglin g between the two modes is necessary.
             Often used for responsiveness.
           </li>
         </ul>
@@ -1003,7 +1037,7 @@ export const components = [
           cardHeader:"Collapsible",
         cardComponent: (
           <div>
-            <h2 className={"font-extrabold"}>Collapsible</h2>
+            <h2 className={"font-extrabold"}></h2>
             <h2>An accordion header can contain an icon.</h2>
             <Accordion
               defaultValue="item-2"
@@ -1351,36 +1385,182 @@ export const components = [
     subText: <>Checkboxes give people a way to select one or more items from a group, or switch between two mutually exclusive options (checked or unchecked).</>,
     cards: [
       {
-        cardHeader: "Disabled",
-        cardSubtext: "A checkbox can be disabled",
+        cardHeader: "",
+        cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
             <Checkbox
-                disabled={true}
               size="large"
               onChange={(checked) => console.log(checked)}
             />
-            <Checkbox checked="indeterminate" />
+              <Checkbox
+
+                  size="large"
+                  checked={"true"}
+                  onChange={(checked) => console.log(checked)}
+              />
           </div>
         ),
       },
         {
-            cardHeader: "",
-            cardSubtext: "",
+            cardHeader: "Disabled",
+            cardSubtext: "A Checkbox can be disabled.",
             cardComponent: (
                 <div className="flex gap-2">
                     <Checkbox
+                        disabled={true}
                         size="large"
                         onChange={(checked) => console.log(checked)}
                     />
-                    <Checkbox checked="indeterminate" />
+                    <Checkbox
+                        disabled={true}
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                        checked={"true"}
+                    />
                 </div>
             ),
         },
+        {
+            cardHeader: "Large",
+            cardSubtext: "A Checkbox can be large in size.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Checkbox
+
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                    />
+                    <Checkbox
+
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                        checked={"true"}
+                    />
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Mixed",
+            cardSubtext: "A checkbox can be initially mixed (also known as indeterminate) using the checked={indeterminate} property, In this example, the mixed state is used when a group of options has differing values.",
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <div className={"flex text-center items-center flex-row"}>
+                    <Checkbox
+                        checked={"indeterminate"}
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                    />
+
+                        <h2 className={"ml-2"}>All of the options</h2>
+                    </div>
+                    <div className={"flex text-center items-center flex-row"}>
+                        <Checkbox
+
+                            size="large"
+                            onChange={(checked) => console.log(checked)}
+                        />
+                        <h2 className={"ml-2"}>Apples</h2>
+                    </div>
+                    <div className={"flex text-center items-center flex-row"}>
+                        <Checkbox
+                            size="large"
+                            onChange={(checked) => console.log(checked)}
+                        />
+                        <h2 className={"ml-2"}>Cherry</h2>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Label Before",
+            cardSubtext: "The label can be placed before the checkbox.",
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <div className={"flex text-center items-center  flex-row"}>
+                    <h2 className={"ml-2"}>Cherries</h2>
+
+                        <Checkbox
+
+                            className={"ml-2"}
+                            size="large"
+                            onChange={(checked) => console.log(checked)}
+                        />
+
+                    </div>
+                    <div className={"flex text-center ml-1 items-center flex-row"}>
+                    <h2 className={"ml-2"}>Apples</h2>
+
+                        <Checkbox
+
+                            size="large"
+                            className={"ml-3"}
+                            onChange={(checked) => console.log(checked)}
+                        />
+
+                    </div>
+
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Circular",
+            cardSubtext: "A checkbox can have a circular shape. Usage warning: Unless you are designing a tasks experience, we strongly discourage using this styling variant, as it can be confused with RadioItem",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Checkbox
+                        rounded={true}
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                    />
+                    <Checkbox
+                        rounded={true}
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                        checked={"true"}
+                    />
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Required",
+            cardSubtext: "When a checkbox is marked as required, its label also gets the required styling.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Checkbox
+                        rounded={true}
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                    />
+                    <Checkbox
+                        rounded={true}
+                        size="large"
+                        onChange={(checked) => console.log(checked)}
+                        checked={"true"}
+                    />
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Label Wrapping",
+            cardSubtext: "The label will wrap if it is wider than the available space. The checkbox indicator will stay aligned to the first line of text.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Checkbox
+                        rounded={true}
+                        size="large"
+                        aria-label={"Label Wrapping text"}
+                        onChange={(checked) => console.log(checked)}
+                    />
+
+                </div>
+            ),
+        },
+
     ],
   },
-  {
-    header: "InfoLabel",
+    {
+        header: "InfoLabel",
     subText: <></>,
     cards: [
       {
