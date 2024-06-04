@@ -465,6 +465,79 @@ export const components = [
           </div>
         ),
       },
+        {
+            cardHeader: "Vertical",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex h-fit w-full flex-col ">
+                    <Divider orientation="vertical" align="center">
+                        1
+                    </Divider>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Appearance",
+            cardSubtext: "A divider can have a brand, subtle, or strong appearance. When not specified, it has its default experience",
+            cardComponent: (
+                <div className="flex h-fit w-full flex-col ">
+                    <Divider orientation="horizontal" align="center">
+                        1
+                    </Divider>
+
+                    <Divider variant="subtle" orientation="horizontal" align="center">
+                        2
+                    </Divider>
+                    <Divider variant="brand" orientation="horizontal" align="center">
+                        3
+                    </Divider>
+                    <Divider variant="strong" orientation="horizontal" align="center">
+                        4
+                    </Divider>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Align Content",
+            cardSubtext: "The label associated with the divider can be aligned at the start, center, or end of the divider line.",
+            cardComponent: (
+                <div className="flex h-fit w-full flex-col ">
+                    <Divider orientation="horizontal" align="start">
+                        Start
+                    </Divider>
+                    <Divider variant="subtle" orientation="horizontal" align="center">
+                        Center
+                    </Divider>
+                    <Divider variant="brand" orientation="horizontal" align="cend">
+                        End
+                    </Divider>
+                    <Divider variant="strong" orientation="horizontal" align="center">
+                        4
+                    </Divider>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Custom Styles",
+            cardSubtext: "A divider can have custom styles applied to both the label and the line.",
+            cardComponent: (
+                <div className="flex h-fit w-full flex-col ">
+                    <Divider className={"bg-red-200"} orientation="horizontal" align="start">
+                        Start
+                    </Divider>
+                    <Divider variant="subtle" orientation="horizontal" align="center">
+                        Center
+                    </Divider>
+                    <Divider variant="brand" orientation="horizontal" align="cend">
+                        End
+                    </Divider>
+                    <Divider variant="strong" orientation="horizontal" align="center">
+                        4
+                    </Divider>
+                </div>
+            ),
+        },
+
     ],
   },
   {
