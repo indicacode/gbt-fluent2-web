@@ -508,7 +508,7 @@ export const components = [
                     <Divider variant="subtle" orientation="horizontal" align="center">
                         Center
                     </Divider>
-                    <Divider variant="brand" orientation="horizontal" align="cend">
+                    <Divider variant="brand" orientation="horizontal" align="end">
                         End
                     </Divider>
                     <Divider variant="strong" orientation="horizontal" align="center">
@@ -522,17 +522,20 @@ export const components = [
             cardSubtext: "A divider can have custom styles applied to both the label and the line.",
             cardComponent: (
                 <div className="flex h-fit w-full flex-col ">
-                    <Divider className={"bg-red-200"} orientation="horizontal" align="start">
+                    <Divider  orientation="horizontal" align="start">
                         Start
                     </Divider>
                     <Divider variant="subtle" orientation="horizontal" align="center">
                         Center
                     </Divider>
-                    <Divider variant="brand" orientation="horizontal" align="cend">
+                    <Divider variant="brand"  orientation="horizontal" align="end">
                         End
                     </Divider>
                     <Divider variant="strong" orientation="horizontal" align="center">
                         4
+                    </Divider>
+                    <Divider variant={"primary"} orientation={"horizontal"} align={"center"}>
+                        5
                     </Divider>
                 </div>
             ),
@@ -1678,7 +1681,7 @@ export const components = [
   },
   {
     header: "Link",
-    subText: <></>,
+    subText: <>Links allow users to navigate between different locations. They can be used as standalone controls or inline with text.</>,
     cards: [
       {
         cardHeader: "",
@@ -1695,11 +1698,26 @@ export const components = [
           </div>
         ),
       },
+        {
+            cardHeader: "Appearance",
+            cardSubtext: "",
+
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Link href="#">Link default</Link>
+                    <Link href="#" variant="subtle">
+                        <Link href={"https://youtube.com"}></Link> Youtube</Link>
+                    <Link href="#" disabled>
+                        disabled
+                    </Link>
+                </div>
+            ),
+        },
     ],
   },
   {
     header: "Toast",
-    subText: <></>,
+    subText: <></>,xww
     cards: [
       {
         cardHeader: "",
