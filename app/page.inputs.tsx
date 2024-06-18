@@ -367,17 +367,35 @@ export const components = [
         ),
       },
       {
+          cardHeader:"Placeholder",
+          cardSubtext:" An input can have placeholder text. If using the placeholder as a\n" +
+              "              label (which is not recommended for usability), be sure to provide\n" +
+              "              an aria-label for screen reader users.",
         cardComponent: (
           <div>
-            <h2 className={"font-extrabold"}>Placeholder</h2>
-            <h2>
-              An input can have placeholder text. If using the placeholder as a
-              label (which is not recommended for usability), be sure to provide
-              an aria-label for screen reader users.
-            </h2>
+            <Input placeholder={"This is the placeholder text!"}></Input>
           </div>
         ),
       },
+        {
+            cardHeader:"Size",
+            cardSubtext:" An input can have different sizes. Those being small (sm) medium (md) and large (lg)",
+            cardComponent: (
+                <div className={"flex  flex-col"}>
+                    <Input  size={""} placeholder={"Small Input"}></Input>
+
+                </div>
+            ),
+        },
+        {
+            cardHeader:"Type",
+            cardSubtext:" An input can have a custom text-based type such as email, url, or password based on the type of value the user will enter. Note that no custom styling is currently applied for alternative types, and some types may activate browser-default styling which does not match the Fluent design language.",
+            cardComponent: (
+                <div>
+                    <Input placeholder={"This is the placeholder text!"}></Input>
+                </div>
+            ),
+        },
     ],
   },
   {
@@ -428,6 +446,22 @@ export const components = [
             cardComponent: (
                 <Combobox
                     emptyIndicator="uo"
+
+                    tags
+                    multiselect
+                    creatable
+                    placeholder="Select you favorite frameworks"
+                    options={frameworks}
+                />
+            ),
+        },
+        {
+            cardHeader: "Multiselect With Value Strings",
+            cardSubtext:"Multiselect Combobox supports using a controlled value todisplay selected options when not in focus, similar to v8 behavior.We recommend using tags rather than the value string when possible,since they have better UX and accessibility.s",
+            cardComponent: (
+                <Combobox
+                    emptyIndicator="uo"
+
                     tags
                     multiselect
                     creatable
@@ -515,6 +549,7 @@ export const components = [
                         4
                     </Divider>
                 </div>
+
             ),
         },
         {
@@ -623,8 +658,184 @@ export const components = [
           </Drawer>
         ),
       },
+        {
+            cardHeader: "Overlay",
+            cardSubtext: "",
+            cardComponent: (
+                <Drawer position="bottom">
+                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                        Open drawer
+                    </DrawerTrigger>
+
+                    <DrawerContent>
+                        <DrawerHeader className="flex flex-col items-center">
+                            Im the header!
+                        </DrawerHeader>
+                        <DrawerDescription className={" text-slate-50"}>
+                            And i the content
+                        </DrawerDescription>
+                        <DrawerFooter>aaaaaaa</DrawerFooter>
+                    </DrawerContent>
+                </Drawer>
+            ),
+        },
+        {
+            cardHeader: "Overlay No Modal",
+            cardSubtext: "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content."
+                ,
+            cardComponent: (
+                <Drawer position="bottom">
+                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                        Open drawer
+                    </DrawerTrigger>
+
+                    <DrawerContent>
+                        <DrawerHeader className="flex flex-col items-center">
+                            Im the header!
+                        </DrawerHeader>
+                        <DrawerDescription className={" text-slate-50"}>
+                            And i the content
+                        </DrawerDescription>
+                        <DrawerFooter>aaaaaaa</DrawerFooter>
+                    </DrawerContent>
+                </Drawer>
+            ),
+        },
+        {
+            cardHeader: "Inline",
+            cardSubtext: "InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as the main surface, users can still interact with other UI elements. This could be useful for swapping between different items in the main surface."
+            ,
+            cardComponent: (
+                <Drawer position="bottom">
+                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                        Open drawer
+                    </DrawerTrigger>
+
+                    <DrawerContent>
+                        <DrawerHeader className="flex flex-col items-center">
+                            Im the header!
+                        </DrawerHeader>
+                        <DrawerDescription className={" text-slate-50"}>
+                            And i the content
+                        </DrawerDescription>
+                        <DrawerFooter>aaaaaaa</DrawerFooter>
+                    </DrawerContent>
+                </Drawer>
+            ),
+        },
+        {
+            cardHeader: "Position",
+            cardSubtext: "When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen. This can be specified by the position prop."
+            ,
+            cardComponent: (
+                <div>
+                <Drawer position="bottom">
+                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                        Open drawer from the bottom
+                    </DrawerTrigger>
+
+                    <DrawerContent>
+                        <DrawerHeader className="flex flex-col items-center">
+                            Im the header!
+                        </DrawerHeader>
+                        <DrawerDescription className={" text-slate-50"}>
+                            And i the content
+                        </DrawerDescription>
+                        <DrawerFooter>aaaaaaa</DrawerFooter>
+                    </DrawerContent>
+                </Drawer>
+                    <Drawer position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open drawer from the right
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer position="left">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary mt-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open drawer from the left
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Size",
+            cardSubtext: "The size prop controls the width of the drawer. The default is small."
+            ,
+            cardComponent: (
+                <div className={""}>
+
+                    <Drawer size={"small"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open small drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  position="bottom">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open medium drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  size={"lg"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open large drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                </div>
+            ),
+        },
     ],
   },
+
   {
     header: "Dialog",
     subText: (
@@ -642,7 +853,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Dialog nonModal>
+          <Dialog   >
             <DialogTrigger>Open Dialog</DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -710,10 +921,10 @@ export const components = [
   {
     header: "DataGrid",
     subText: (
-      <span className="inline">
-        This component is a higher level extension of the <code>Table</code>
-        primitive component. <code>DataGrid</code> is a feature-rich, so there
-        should always be full feature parity with what can be achieved with
+      <span className="inliData e Hora: 9:54 , **10/06/2024**ne">
+        This component is aStatus da Casa: INSTÁVEL / *CAÍDA* higher level extension of the <code>Table</code>
+        primitive componentCasa: https://blbet2.com. <code>DataGrid</code> is a feature-rich, so there
+        should always be fuOperar por sua próprio risco!ll feature parity with what can be achieved with
         primitives. This component is <strong>opinionated</strong> and this is
         intentional. If the desired scenario can be achieved easily and does not
         vary too much from documented examples, it can be very convenient. If
@@ -853,7 +1064,7 @@ export const components = [
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
-                Yes. Try it for yourself, with a few lines of code you get
+                Yes. Try it for yourself, with a few lines of code you get9
                 beautiful UI!
               </AccordionContent>
             </AccordionItem>
@@ -1197,24 +1408,23 @@ export const components = [
       },
       {
           cardHeader: "Image",
-          cardSubtext:"An avatar can display an image.\n" +
-              "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+          cardSubtext:"An avatar can display an image, It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
         cardComponent: (
           <div className={"flex flex-row"}>
                     <Avatar status={"away"}>
                         <AvatarFallback>Jordan Herrera</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                        <AvatarImage src={"https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=800"}/>
                     </Avatar>
               <Avatar status={"away"}>
-                  <AvatarFallback>Kaio </AvatarFallback>
+                  <AvatarFallback>Kaio Telmo </AvatarFallback>
                   <AvatarImage src={"https://images.pexels.com/photos/24702820/pexels-photo-24702820/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
               </Avatar>
               <Avatar status={"online"}>
-                  <AvatarFallback>Jordan Herrera</AvatarFallback>
-                  <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                  <AvatarFallback>Carlos John</AvatarFallback>
+                  <AvatarImage src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"}/>
               </Avatar>
               <Avatar status={"online"}>
-                  <AvatarFallback>Jordan Herrera</AvatarFallback>
+                  <AvatarFallback>Ana Watson</AvatarFallback>
                   <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
               </Avatar>
           </div>
@@ -1227,7 +1437,7 @@ export const components = [
             cardComponent: (
                 <div className={"flex flex-row"}>
                     <Avatar status={"away"}>
-                        <AvatarFallback>Jordan Herrera</AvatarFallback>
+                        <AvatarFallback>Jordan Cummings</AvatarFallback>
                         <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
                     </Avatar>
                     <Avatar status={"away"}>
@@ -1236,7 +1446,7 @@ export const components = [
                     </Avatar>
                     <Avatar status={"online"}>
                         <AvatarFallback>Jordan Herrera</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
+                        <AvatarImage src={"https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=800"}/>
                     </Avatar>
                     <Avatar status={"online"}>
                         <AvatarFallback>Piccarte Artsy</AvatarFallback>
@@ -1246,7 +1456,7 @@ export const components = [
             ),
         },
         {
-            cardHeader: "Badge Icon",
+            cardHeader: "Avatar Icon",
             cardSubtext:"An avatar can display an image.\n" +
                 "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
             cardComponent: (
@@ -1280,7 +1490,7 @@ export const components = [
                         <AvatarImage src={"https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
                     </Avatar>
                     <Avatar status={"away"}>
-                        <AvatarFallback>Kaio Pereira </AvatarFallback>
+                        <AvatarFallback>Alonso Rencio </AvatarFallback>
                         <AvatarImage src={"https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
                     </Avatar>
                     <Avatar status={"online"}>
@@ -1644,10 +1854,41 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
-            <InfoLabel size={"lg"}>Label</InfoLabel>
+            <InfoLabel size={"lg"}>This is an example of a InfoLabel </InfoLabel>
           </div>
         ),
       },
+        {
+            cardHeader: "Required",
+            cardSubtext: "When marked required, the indicator asterisk is placed before the InfoButton.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <InfoLabel size={"lg"}>This is an example of a Required InfoLabel <h2 className={"text-red-500 "}>*</h2> </InfoLabel>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Size",
+            cardSubtext: "InfoLabel's size prop affects the size of the Label and InfoButton. The default size is medium.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <InfoLabel size={"lg"}>This is an example of a Required InfoLabel <h2 className={"text-red-500 "}>*</h2> </InfoLabel>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "In a Field",
+            cardSubtext: "An InfoLabel can be used in a Field by rendering the label prop as an InfoLabel. This uses the slot render function support. See the code from this story for an example.",
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <InfoLabel size={"lg"}>This is an example of a Field With an Info Label</InfoLabel>
+                    <Input placeholder={"Input email here!"}></Input>
+                </div>
+            ),
+        },
+
+
+
     ],
   },
   {
@@ -1698,7 +1939,31 @@ export const components = [
           </div>
         ),
       },
+
         {
+            cardHeader: "Appearance",
+            cardSubtext: "",
+
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Link href="#" variant="subtle">
+                        A Subtle Link
+                    </Link>
+                </div>
+            ),
+        },  {
+            cardHeader: "Inline",
+            cardSubtext: "",
+
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Link href="#">Link default</Link>
+                    <Link href="#" variant="subtle">
+                        <Link href={"https://youtube.com"}>Youtube</Link>
+                    </Link>
+                </div>
+            ),
+        },  {
             cardHeader: "Appearance",
             cardSubtext: "",
 
@@ -1706,9 +1971,7 @@ export const components = [
                 <div className="flex flex-col gap-2">
                     <Link href="#">Link default</Link>
                     <Link href="#" variant="subtle">
-                        <Link href={"https://youtube.com"}></Link> Youtube</Link>
-                    <Link href="#" disabled>
-                        disabled
+                        <Link href={"https://youtube.com"}>Youtube</Link>
                     </Link>
                 </div>
             ),
@@ -1717,7 +1980,7 @@ export const components = [
   },
   {
     header: "Toast",
-    subText: <></>,xww
+    subText: <></>,
     cards: [
       {
         cardHeader: "",

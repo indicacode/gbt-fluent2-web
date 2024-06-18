@@ -86,7 +86,7 @@ const dividerSlots = tv({
         after: "max-h-[1px] min-h-[1px]",
       },
       vertical: {
-        root: "h-full min-w-[1px] min-w-fit flex-col justify-center",
+        root: "h-full min-w-[1px] max-w-fit flex-col justify-center",
         before: "min-w-[1px] max-w-[1px]",
         after: "min-w-[1px] max-w-[1px]",
       },
