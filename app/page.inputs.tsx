@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react"
+ import React, { ReactElement } from "react"
 import {
   DocumentPdfRegular,
   DocumentRegular,
@@ -850,31 +850,235 @@ export const components = [
     ),
     cards: [
       {
-        cardHeader: "",
-        cardSubtext: "",
+        cardHeader: "Alert",
+        cardSubtext: "An alert Dialog is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response. Examples include action confirmation prompts and error message confirmations. The alert Dialog role enables assistive technologies and browsers to distinguish alert dialogs from other dialogs so they have the option of giving alert dialogs special treatment, such as playing a system alert sound. By default clicking on backdrop will not dismiss an alert Dialog.",
         cardComponent: (
           <Dialog   >
             <DialogTrigger>Open Dialog</DialogTrigger>
             <DialogContent>
-              <DialogHeader>
-                <DialogTitle>This is a dialog.</DialogTitle>
-              </DialogHeader>
-              <h2>
+                <DialogHeader>
+                    <DialogTitle>This is a dialog.</DialogTitle>
+                </DialogHeader>
+                <h2>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam exercitationem cumque repellendus eaque est dolor eius
                 expedita nulla ullam? Tenetur reprehenderit aut voluptatum
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <Button className="mr-2" size="default" variant="secondary">
+                <DialogTrigger className="mr-2" size="default" variant="secondary">
+                    <Button variant={"secondary"}>
                   Deny
-                </Button>
-                <Button className="">Agree</Button>
+                    </Button>
+                </DialogTrigger>
+                <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
               </div>
             </DialogContent>
           </Dialog>
         ),
       },
+        {
+            cardHeader: "Scrolling Long Content",
+            cardSubtext: "By default DialogContent should grow until it fits viewport size, overflowed content will be scrollable",
+            cardComponent: (
+                <Dialog   >
+                    <DialogTrigger>Open Dialog</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>This is a dialog.</DialogTitle>
+                        </DialogHeader>
+                        <h2>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam exercitationem cumque repellendus eaque est dolor eius
+                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                            impedit voluptates in natus iure cumque eaque?
+                        </h2>
+                        <div className="flex flex-row justify-end">
+                            <DialogTrigger className="mr-2" size="default" variant="secondary">
+                                <Button variant={"secondary"}>
+                                    Deny
+                                </Button>
+                            </DialogTrigger>
+                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ),
+        },
+        {
+            cardHeader: "Actions",
+            cardSubtext: "Dialogs should be used for providing the user with quick prompt options where decisions should be made quickly. They should be used for actions that are not reversible, such as deleting an item.\n" +
+                "\n" +
+                "DialogActions should be used to provide the user with a set of actions to choose from. The actions should be clear and concise, and should be used to guide the user to the next step in the process.",
+            cardComponent: (
+                <Dialog   >
+                    <DialogTrigger>Open Dialog</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>This is a dialog.</DialogTitle>
+                        </DialogHeader>
+                        <h2>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam exercitationem cumque repellendus eaque est dolor eius
+                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                            impedit voluptates in natus iure cumque eaque?
+                        </h2>
+                        <div className="flex flex-row justify-end">
+                            <DialogTrigger className="mr-2" size="default" variant="secondary">
+                                <Button variant={"secondary"}>
+                                    Deny
+                                </Button>
+                            </DialogTrigger>
+                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ),
+        },
+        {
+            cardHeader: "Fluid Actions",
+            cardSubtext: "Use the fluid prop on the DialogActions component so that it spans the entire width of the dialog. This prop can be useful for having large number of actions.",
+            cardComponent: (
+                <Dialog   >
+                    <DialogTrigger>Open Dialog</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>This is a dialog.</DialogTitle>
+                        </DialogHeader>
+                        <h2>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam exercitationem cumque repellendus eaque est dolor eius
+                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                            impedit voluptates in natus iure cumque eaque?
+                        </h2>
+                        <div className="flex flex-row justify-end">
+                            <DialogTrigger className="mr-2" size="default" variant="secondary">
+                                <Button variant={"secondary"}>
+                                    Deny
+                                </Button>
+                            </DialogTrigger>
+                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ),
+        },
+        {
+            cardHeader: "No Focusable Element",
+            cardSubtext: " Dialog should always have at least one focusable element. Some accessibility issues might happen if no focusable element is provided, like this one caught in Talkback.\n" +
+                "\n" +
+                "In the case when there is no focusable element inside a Dialog the only way to close the Dialog would be clicking on the backdrop.",
+            cardComponent: (
+                <Dialog   >
+                    <DialogTrigger>Open Dialog</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>This is a dialog.</DialogTitle>
+                        </DialogHeader>
+                        <h2>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam exercitationem cumque repellendus eaque est dolor eius
+                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                            impedit voluptates in natus iure cumque eaque?
+                        </h2>
+                        <div className="flex flex-row justify-end">
+                            <DialogTrigger className="mr-2" size="default" variant="secondary">
+                                <Button variant={"secondary"}>
+                                    Deny
+                                </Button>
+                            </DialogTrigger>
+                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ),
+        },
+        {
+            cardHeader: "Change Focus",
+            cardSubtext: "Changing the default focused element can be done in an effect",
+            cardComponent: (
+                <Dialog   >
+                    <DialogTrigger>Open Dialog</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>This is a dialog.</DialogTitle>
+                        </DialogHeader>
+                        <h2>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam exercitationem cumque repellendus eaque est dolor eius
+                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                            impedit voluptates in natus iure cumque eaque?
+                        </h2>
+                        <div className="flex flex-row justify-end">
+                            <DialogTrigger className="mr-2" size="default" variant="secondary">
+                                <Button variant={"secondary"}>
+                                    Deny
+                                </Button>
+                            </DialogTrigger>
+                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ),
+        },
+        {
+            cardHeader: "Trigger Outside Dialog",
+            cardSubtext: " When using a Dialog without a DialogTrigger (or when using a DialogTrigger outside of a Dialog), it becomes your responsibility to control some of the dialog's behavior.You must make sure that the open state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by onOpenChange callback on Dialog component).You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the useRestoreFocusTarget hook, or by manually invoking .focus() on the target element).The example bellow showcases both explicit responsibilities:When using a Dialog without a DialogTrigger (or when using a DialogTrigger outside of a Dialog), it becomes your responsibility to control some of the dialog's behavior.You must make sure that the open state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by onOpenChange callback on Dialog component).You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the useRestoreFocusTarget hook, or by manually invoking .focus() on the target element). The example bellow showcases both explicit responsibilities",
+            cardComponent: (
+                <Dialog   >
+                    <DialogTrigger>Open Dialog</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>This is a dialog.</DialogTitle>
+                        </DialogHeader>
+                        <h2>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam exercitationem cumque repellendus eaque est dolor eius
+                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                            impedit voluptates in natus iure cumque eaque?
+                        </h2>
+                        <div className="flex flex-row justify-end">
+                            <DialogTrigger className="mr-2" size="default" variant="secondary">
+                                <Button variant={"secondary"}>
+                                    Deny
+                                </Button>
+                            </DialogTrigger>
+                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ),
+        },
+        {
+            cardHeader: "No Focusable Element",
+            cardSubtext: " Dialog should always have at least one focusable element. Some accessibility issues might happen if no focusable element is provided, like this one caught in Talkback.\n" +
+                "\n" +
+                "In the case when there is no focusable element inside a Dialog the only way to close the Dialog would be clicking on the backdrop.",
+            cardComponent: (
+                <Dialog   >
+                    <DialogTrigger>Open Dialog</DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>
+                            <DialogTitle>This is a dialog.</DialogTitle>
+                        </DialogHeader>
+                        <h2>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Quisquam exercitationem cumque repellendus eaque est dolor eius
+                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                            impedit voluptates in natus iure cumque eaque?
+                        </h2>
+                        <div className="flex flex-row justify-end">
+                            <DialogTrigger className="mr-2" size="default" variant="secondary">
+                                <Button variant={"secondary"}>
+                                    Deny
+                                </Button>
+                            </DialogTrigger>
+                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+            ),
+        },
     ],
   },
   {
