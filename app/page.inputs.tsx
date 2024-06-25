@@ -545,9 +545,6 @@ export const components = [
                     <Divider variant="brand" orientation="horizontal" align="end">
                         End
                     </Divider>
-                    <Divider variant="strong" orientation="horizontal" align="center">
-                        4
-                    </Divider>
                 </div>
 
             ),
@@ -610,7 +607,7 @@ export const components = [
   {
     header: "Drawer",
     subText: (
-      <div className="flex flex-col">
+      <div className="mt-4 flex flex-col">
         <div>
           The Drawer gives users a quick entry point to configuration and
           information. It should be used when retaining context is beneficial to
@@ -2218,11 +2215,11 @@ export const components = [
     ],
   },
   {
-    header: "MensageBar",
+    header: "MessageBar",
     subText: <></>,
     cards: [
       {
-        cardHeader: "",
+        cardHeader: "Default",
         cardSubtext: "",
         cardComponent: (
           <div className="flex flex-col gap-2">
@@ -2244,7 +2241,8 @@ export const components = [
                       </ToastAction>
                     </>
                   ),
-                })
+                }
+                )
               }}
             >
               Add to calendar
@@ -2252,6 +2250,30 @@ export const components = [
           </div>
         ),
       },
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Button
+                        variant="outline"
+                        onClick={() => {
+                            toast({
+                                messageBar: true,
+                                variant: "error",
+                                title: "Scheduled: Catch up ",
+                                description: "Friday, February 10, 2023 at 5:57 PM",
+                                action: (
+                                    <>
+                                        <ToastAction altText="Goto schedule to undo">
+                                            Undo
+                                        </ToastAction>
+                                        <ToastAction altText="Goto schedule to undo">
+                                            Undo
+                                        </ToastAction>
+                                    </>
+                                ),
+                            },
     ],
   },
 ] as const
