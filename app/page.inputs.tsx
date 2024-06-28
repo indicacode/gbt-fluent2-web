@@ -581,7 +581,7 @@ export const components = [
       "A Select allows one option to be selected from multiple options. The Select component is a wrapper around the native <select> element.",
     cards: [
       {
-        cardHeader: "",
+        cardHeader: "Default",
         cardSubtext: "",
         cardComponent: (
           <Select>
@@ -602,6 +602,92 @@ export const components = [
           </Select>
         ),
       },
+        {
+            cardHeader: "Appearance",
+            cardSubtext: "Select can have different appearances. The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements.",
+            cardComponent: (
+                <Select>
+                    <SelectTrigger className={"w-40"}>
+                        <SelectValue placeholder={"Select something"}></SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup className={""}>
+                            <SelectLabel>Fruits</SelectLabel>
+                            <SelectItem className={""} value={"apple"}>
+                                Apple
+                            </SelectItem>
+                            <SelectItem value={"banana"}>Banana</SelectItem>
+                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
+                            <SelectItem value={"grapes"}>Grapes</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            ),
+        },{
+            cardHeader: "Controlled",
+            cardSubtext: "The value of a Select can be controlled by updating the selected prop on option elements.",
+            cardComponent: (
+                <Select>
+                    <SelectTrigger className={"w-40"}>
+                        <SelectValue placeholder={"Select something"}></SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup className={""}>
+                            <SelectLabel>Fruits</SelectLabel>
+                            <SelectItem className={""} value={"apple"}>
+                                Apple
+                            </SelectItem>
+                            <SelectItem value={"banana"}>Banana</SelectItem>
+                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
+                            <SelectItem value={"grapes"}>Grapes</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            ),
+        },{
+            cardHeader: "Disabled",
+            cardSubtext: "A Select can be disabled through the native disabled prop",
+            cardComponent: (
+                <Select>
+                    <SelectTrigger className={"w-40"}>
+                        <SelectValue placeholder={"Select something"}></SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup className={""}>
+                            <SelectLabel>Fruits</SelectLabel>
+                            <SelectItem className={""} value={"apple"}>
+                                Apple
+                            </SelectItem>
+                            <SelectItem value={"banana"}>Banana</SelectItem>
+                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
+                            <SelectItem value={"grapes"}>Grapes</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            ),
+        },
+        {
+            cardHeader: "Size",
+            cardSubtext: "A Select's size can be set to small, medium (default), or large.",
+            cardComponent: (
+                <Select>
+                    <SelectTrigger className={"w-40"}>
+                        <SelectValue placeholder={"Select something"}></SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup className={""}>
+                            <SelectLabel>Fruits</SelectLabel>
+                            <SelectItem className={""} value={"apple"}>
+                                Apple
+                            </SelectItem>
+                            <SelectItem value={"banana"}>Banana</SelectItem>
+                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
+                            <SelectItem value={"grapes"}>Grapes</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            ),
+        },
     ],
   },
   {
@@ -778,6 +864,228 @@ export const components = [
         {
             cardHeader: "Size",
             cardSubtext: "The size prop controls the width of the drawer. The default is small."
+            ,
+            cardComponent: (
+                <div className={""}>
+
+                    <Drawer size={"small"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open small drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  position="bottom">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open medium drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  size={"lg"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open large drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Separator",
+            cardSubtext: "The separator prop adds a line separator between the drawer and the content. Its placement will be determined by the position prop"
+            ,
+            cardComponent: (
+                <div className={""}>
+
+                    <Drawer size={"small"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open small drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  position="bottom">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open medium drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  size={"lg"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open large drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "With Title",
+            cardSubtext: "DrawerHeaderTitle is a component that provides a structured heading for a Drawer and can be used to display a title and an action. Although it works as a standalone component, it is intended to be used within a DrawerHeader. The title renders an h2 element by default but it can be customized using the heading prop."
+            ,
+            cardComponent: (
+                <div className={""}>
+
+                    <Drawer size={"small"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open small drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  position="bottom">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open medium drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  size={"lg"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open large drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "With Navigation",
+            cardSubtext: " Drawers can have any type of content and one great case is to have a toolbar in the header. Drawer ships with a DrawerHeaderNavigation component that can be used to display a toolbar in the header of the drawer. This can be combined with DrawerHeaderTitle to display a title in the header."
+            ,
+            cardComponent: (
+                <div className={""}>
+
+                    <Drawer size={"small"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open small drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  position="bottom">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open medium drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer  size={"lg"} position="right">
+                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open large drawer
+                        </DrawerTrigger>
+
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "With Scroll",
+            cardSubtext: "By default, the drawer will not scroll its content when it overflows. To enable this behavior, the DrawerBody component can be used to wrap the content of the drawer.\n" +
+                "\n" +
+                "Important note: if the drawer content does not contain any focusable elements, the DrawerBody itself needs a tabIndex of 0 to ensure keyboard scroll access."
             ,
             cardComponent: (
                 <div className={""}>
@@ -1772,8 +2080,8 @@ export const components = [
       " A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
     cards: [
       {
-        cardHeader: "",
-        cardSubtext: "",
+        cardHeader: "Default",
+        cardSubtext: "This is the default radiogroup copmonent provided by fluent2",
         cardComponent: (
           <RadioGroup defaultValue="1">
             <div className="flex items-center space-x-2">
@@ -1791,18 +2099,179 @@ export const components = [
           </RadioGroup>
         ),
       },
-      {
-        cardComponent: (
-          <div>
-            <h2 className={"font-extrabold"}>Layout</h2>
-            <h2>
-              This component has layout options, you can either have it as a
-              horizontal radio group, or as a vertical radio group, you can take
-              advantage of this to{" "}
-            </h2>
-          </div>
-        ),
-      },
+
+        {
+            cardComponent: (
+                <div>
+                    <h2 className={"font-extrabold"}>Layout</h2>
+                    <h2>
+                        This component has layout options, you can either have it as a
+                        horizontal radio group, or as a vertical radio group, you can take
+                        advantage of this to{" "}
+                    </h2>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Default",
+            cardSubtext: "This is the default radiogroup copmonent provided by fluent2",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
+        {
+            cardHeader: "Layout: horizontal",
+            cardSubtext: "The horizontal layout places each radio item in a row, with labels after the radio indicator.",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
+        {
+            cardHeader: "Layout: horizontal-stacked",
+            cardSubtext: "The horizontal-stacked layout places each radio item in a row, with labels below the radio indicator.",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
+        {
+            cardHeader: "Default Value",
+            cardSubtext: "The initially selected item can be set by setting the defaultValue of RadioGroup. Alternatively, one Radio item can have defaultChecked set. Both methods have the same effect, but only one should be used in a given RadioGroup.",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
+        {
+            cardHeader: "Controlled Value",
+            cardSubtext: "The selected radio item can be controlled using the value and onChange props.",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
+        {
+            cardHeader: "Required",
+            cardSubtext: "Use the required prop to indicate that one of the radio items must be selected. Or, if the RadioGroup is inside a Field, it will inherit the required prop from the Field.",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
+        {
+            cardHeader: "Disabled",
+            cardSubtext: "RadioGroup can be disabled, which disables all Radio Items inside.",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
+        {
+            cardHeader: "Disabled Item",
+            cardSubtext: "Radio Items can be disabled manually and individually",
+            cardComponent: (
+                <RadioGroup defaultValue="1">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="1" id="r1" />
+                        <Label htmlFor="r1">Example 1</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="2" id="r2" />
+                        <Label htmlFor="r2">Example 2</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="3" id="r3" />
+                        <Label htmlFor="r3">Example 3</Label>
+                    </div>
+                </RadioGroup>
+            ),
+        },
     ],
   },
   {
@@ -2479,6 +2948,29 @@ export const components = [
         },
     ],
   },
+    {
+        header: "Link",
+        subText: <>Links allow users to navigate between different locations. They can be used as standalone controls or inline with text.</>,
+        cards: [
+            {
+                cardHeader: "",
+                cardSubtext: "",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Link href="#">Link default</Link>
+                        <Link href="#" variant="subtle">
+                            Link subtle
+                        </Link>
+                        <Link href="#" disabled>
+                            disabled
+                        </Link>
+                    </div>
+                )
+                ,}
+            ,]
+
+
+    },
 ] as const
 
 export const sideBar = {
