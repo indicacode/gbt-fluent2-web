@@ -1120,7 +1120,7 @@ export const components = [
                             <DrawerFooter>aaaaaaa</DrawerFooter>
                         </DrawerContent>
                     </Drawer>
-                    <Drawer  size={"lg"} position="right">
+                    <Drawer  size={"lg"} position ="right">
                         <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                             Open large drawer
                         </DrawerTrigger>
@@ -2081,7 +2081,7 @@ export const components = [
     cards: [
       {
         cardHeader: "Default",
-        cardSubtext: "This is the default radiogroup copmonent provided by fluent2",
+        cardSubtext: "This is the default radiogroup component provided by fluent2",
         cardComponent: (
           <RadioGroup defaultValue="1">
             <div className="flex items-center space-x-2">
@@ -2112,82 +2112,23 @@ export const components = [
                 </div>
             ),
         },
-        {
-            cardHeader: "Default",
-            cardSubtext: "This is the default radiogroup copmonent provided by fluent2",
-            cardComponent: (
-                <RadioGroup defaultValue="1">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
-                    </div>
-                </RadioGroup>
-            ),
-        },
-        {
-            cardHeader: "Layout: horizontal",
-            cardSubtext: "The horizontal layout places each radio item in a row, with labels after the radio indicator.",
-            cardComponent: (
-                <RadioGroup defaultValue="1">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
-                    </div>
-                </RadioGroup>
-            ),
-        },
-        {
-            cardHeader: "Layout: horizontal-stacked",
-            cardSubtext: "The horizontal-stacked layout places each radio item in a row, with labels below the radio indicator.",
-            cardComponent: (
-                <RadioGroup defaultValue="1">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
-                    </div>
-                </RadioGroup>
-            ),
-        },
+
         {
             cardHeader: "Default Value",
             cardSubtext: "The initially selected item can be set by setting the defaultValue of RadioGroup. Alternatively, one Radio item can have defaultChecked set. Both methods have the same effect, but only one should be used in a given RadioGroup.",
             cardComponent: (
-                <RadioGroup defaultValue="1">
+                <RadioGroup defaultValue="4">
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
+                        <RadioGroupItem value="4" id="r4" />
+                        <Label htmlFor="r4">Example 1</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
+                        <RadioGroupItem value="5" id="r5" />
+                        <Label htmlFor="r5">Example 2</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
+                        <RadioGroupItem value="6" id="r6" />
+                        <Label htmlFor="r6">Example 3</Label>
                     </div>
                 </RadioGroup>
             ),
@@ -2196,18 +2137,18 @@ export const components = [
             cardHeader: "Controlled Value",
             cardSubtext: "The selected radio item can be controlled using the value and onChange props.",
             cardComponent: (
-                <RadioGroup defaultValue="1">
+                <RadioGroup defaultValue="7">
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
+                        <RadioGroupItem value="7" id="r7" />
+                        <Label htmlFor="r7">Example 1</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
+                        <RadioGroupItem value="8" id="r8" />
+                        <Label htmlFor="r8">Example 2</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
+                        <RadioGroupItem value="9" id="r9" />
+                        <Label htmlFor="r9">Example 3</Label>
                     </div>
                 </RadioGroup>
             ),
@@ -2216,38 +2157,38 @@ export const components = [
             cardHeader: "Required",
             cardSubtext: "Use the required prop to indicate that one of the radio items must be selected. Or, if the RadioGroup is inside a Field, it will inherit the required prop from the Field.",
             cardComponent: (
-                <RadioGroup defaultValue="1">
+                <RadioGroup required={true} defaultValue="10">
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
+                        <RadioGroupItem value="10" id="r10" />
+                        <Label htmlFor="r10">Example 1</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
+                        <RadioGroupItem value="11" id="r11" />
+                        <Label htmlFor="r11">Example 2</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
+                        <RadioGroupItem value="12" id="r12" />
+                        <Label htmlFor="r12">Example 3</Label>
                     </div>
-                </RadioGroup>
-            ),
-        },
+ </RadioGroup>
+ ),
+ },
         {
             cardHeader: "Disabled",
             cardSubtext: "RadioGroup can be disabled, which disables all Radio Items inside.",
             cardComponent: (
-                <RadioGroup defaultValue="1">
+                <RadioGroup disabled={true} defaultValue="13">
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
+                        <RadioGroupItem value="13" id="r13" />
+                        <Label htmlFor="r13">Example 1</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
+                        <RadioGroupItem value="14" id="r14" />
+                        <Label htmlFor="r14">Example 2</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
+                        <RadioGroupItem value="15" id="r15" />
+                        <Label htmlFor="r15">Example 3</Label>
                     </div>
                 </RadioGroup>
             ),
@@ -2256,18 +2197,18 @@ export const components = [
             cardHeader: "Disabled Item",
             cardSubtext: "Radio Items can be disabled manually and individually",
             cardComponent: (
-                <RadioGroup defaultValue="1">
+                <RadioGroup defaultValue="16">
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="1" id="r1" />
-                        <Label htmlFor="r1">Example 1</Label>
+                        <RadioGroupItem disabled={true} value="2" id="r16" />
+                        <Label htmlFor="r16">Example 1 - Disabled</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="2" id="r2" />
-                        <Label htmlFor="r2">Example 2</Label>
+                        <RadioGroupItem value="17" id="r17" />
+                        <Label htmlFor="r17">Example 2</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="3" id="r3" />
-                        <Label htmlFor="r3">Example 3</Label>
+                        <RadioGroupItem value="18" id="r18" />
+                        <Label htmlFor="r18">Example 3</Label>
                     </div>
                 </RadioGroup>
             ),
@@ -2646,8 +2587,114 @@ export const components = [
                 </div>
             ),
         },
+        {
+            cardHeader: "As Button",
+            cardSubtext: "When the href property is not provided, the component is rendered as html <button>",
+
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Link href="#" variant="subtle">
+                        A Subtle Link
+                    </Link>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "As Span",
+            cardSubtext: "A Link can be rendered as an html <span>, in which case it will have role=\"button\" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.",
+
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Link href="#" variant="subtle">
+                        A Subtle Link
+                    </Link>
+                </div>
+            ),
+        },
     ],
   },
+    {
+        header: "Link",
+        subText: <>Links allow users to navigate between different locations. They can be used as standalone controls or inline with text.</>,
+        cards: [
+            {
+                cardHeader: "",
+                cardSubtext: "",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Link href="#">Link default</Link>
+                        <Link href="#" variant="subtle">
+                            Link subtle
+                        </Link>
+                        <Link href="#" disabled>
+                            disabled
+                        </Link>
+                    </div>
+                ),
+            },
+
+            {
+                cardHeader: "Appearance",
+                cardSubtext: "",
+
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Link href="#" variant="subtle">
+                            A Subtle Link
+                        </Link>
+                    </div>
+                ),
+            },  {
+                cardHeader: "Inline",
+                cardSubtext: "",
+
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Link href="#">Link default</Link>
+                        <Link href="#" variant="subtle">
+                            <Link href={"https://youtube.com"}>Youtube</Link>
+                        </Link>
+                    </div>
+                ),
+            },  {
+                cardHeader: "Appearance",
+                cardSubtext: "",
+
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Link href="#">Link default</Link>
+                        <Link href="#" variant="subtle">
+                            <Link href={"https://youtube.com"}>Youtube</Link>
+                        </Link>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "As Button",
+                cardSubtext: "When the href property is not provided, the component is rendered as html <button>",
+
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Link href="#" variant="subtle">
+                            A Subtle Link
+                        </Link>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "As Span",
+                cardSubtext: "A Link can be rendered as an html <span>, in which case it will have role=\"button\" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.",
+
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Link href="#" variant="subtle">
+                            A Subtle Link
+                        </Link>
+                    </div>
+                ),
+            },
+        ],
+    },
   {
     header: "Toast",
     subText: <></>,
@@ -2948,29 +2995,7 @@ export const components = [
         },
     ],
   },
-    {
-        header: "Link",
-        subText: <>Links allow users to navigate between different locations. They can be used as standalone controls or inline with text.</>,
-        cards: [
-            {
-                cardHeader: "",
-                cardSubtext: "",
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Link href="#">Link default</Link>
-                        <Link href="#" variant="subtle">
-                            Link subtle
-                        </Link>
-                        <Link href="#" disabled>
-                            disabled
-                        </Link>
-                    </div>
-                )
-                ,}
-            ,]
-
-
-    },
+    ,
 ] as const
 
 export const sideBar = {
