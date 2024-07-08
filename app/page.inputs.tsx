@@ -624,31 +624,10 @@ export const components = [
                 </Select>
             ),
         },{
-            cardHeader: "Controlled",
-            cardSubtext: "The value of a Select can be controlled by updating the selected prop on option elements.",
-            cardComponent: (
-                <Select>
-                    <SelectTrigger className={"w-40"}>
-                        <SelectValue placeholder={"Select something"}></SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectGroup className={""}>
-                            <SelectLabel>Fruits</SelectLabel>
-                            <SelectItem className={""} value={"apple"}>
-                                Apple
-                            </SelectItem>
-                            <SelectItem value={"banana"}>Banana</SelectItem>
-                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
-                            <SelectItem value={"grapes"}>Grapes</SelectItem>
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
-            ),
-        },{
             cardHeader: "Disabled",
             cardSubtext: "A Select can be disabled through the native disabled prop",
             cardComponent: (
-                <Select>
+                <Select disabled={true}>
                     <SelectTrigger className={"w-40"}>
                         <SelectValue placeholder={"Select something"}></SelectValue>
                     </SelectTrigger>
@@ -1558,6 +1537,22 @@ export const components = [
         cardSubtext: "",
         cardComponent: <Slider size={"sm"} step={1} />,
       },
+        {
+            cardHeader: "Step",
+            cardSubtext: "You can define the step value of a slider so that the value will always be a multiple of that step",
+            cardComponent: <Slider size={"sm"}  step={25} />,
+        },
+        {
+            cardHeader: "Min Max",
+            cardSubtext: "A slider with min and max values displayed",
+            cardComponent:<div className={"flex flex-row"}>  <h2 className={"mr-1"}>Min: 10</h2>  <Slider className={"w-[40vw]"} size={"sm"}  step={10}  /> <h2 className={"flex flex-row  ml-1"}>Max: 100</h2> </div>,
+        },
+        {
+            cardHeader: "Disabled",
+            cardSubtext: "A disabled slider will not change or fire events on click or keyboard press.",
+            cardComponent: <Slider disabled={true} className={"w-[40vw]"} size={"sm"}  step={10}  />,
+        },
+
     ],
   },
   {
@@ -2133,26 +2128,7 @@ export const components = [
                 </RadioGroup>
             ),
         },
-        {
-            cardHeader: "Controlled Value",
-            cardSubtext: "The selected radio item can be controlled using the value and onChange props.",
-            cardComponent: (
-                <RadioGroup defaultValue="7">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="7" id="r7" />
-                        <Label htmlFor="r7">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="8" id="r8" />
-                        <Label htmlFor="r8">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="9" id="r9" />
-                        <Label htmlFor="r9">Example 3</Label>
-                    </div>
-                </RadioGroup>
-            ),
-        },
+
         {
             cardHeader: "Required",
             cardSubtext: "Use the required prop to indicate that one of the radio items must be selected. Or, if the RadioGroup is inside a Field, it will inherit the required prop from the Field.",
@@ -2187,7 +2163,7 @@ export const components = [
                         <Label htmlFor="r14">Example 2</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="15" id="r15" />
+                        <RadioGroupItem  value="15" id="r15" />
                         <Label htmlFor="r15">Example 3</Label>
                     </div>
                 </RadioGroup>
@@ -2206,9 +2182,9 @@ export const components = [
                         <RadioGroupItem value="17" id="r17" />
                         <Label htmlFor="r17">Example 2</Label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="18" id="r18" />
-                        <Label htmlFor="r18">Example 3</Label>
+                    <div  className="flex items-center space-x-2">
+                        <RadioGroupItem disabled={true} value="18" id="r18" />
+                        <Label htmlFor="r18">Example 3 - Disabled</Label>
                     </div>
                 </RadioGroup>
             ),
@@ -2529,6 +2505,75 @@ export const components = [
           </div>
         ),
       },
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
     ],
   },
   {
@@ -2570,7 +2615,7 @@ export const components = [
                 <div className="flex flex-col gap-2">
                     <Link href="#">Link default</Link>
                     <Link href="#" variant="subtle">
-                        <Link href={"https://youtube.com"}>Youtube</Link>
+                        <Link target={"_blank"} href={"https://youtube.com"}>Youtube</Link>
                     </Link>
                 </div>
             ),
@@ -2582,7 +2627,7 @@ export const components = [
                 <div className="flex flex-col gap-2">
                     <Link href="#">Link default</Link>
                     <Link href="#" variant="subtle">
-                        <Link href={"https://youtube.com"}>Youtube</Link>
+                        <Link target={"_blank"} href={"https://youtube.com"}>Youtube</Link>
                     </Link>
                 </div>
             ),
@@ -2613,88 +2658,6 @@ export const components = [
         },
     ],
   },
-    {
-        header: "Link",
-        subText: <>Links allow users to navigate between different locations. They can be used as standalone controls or inline with text.</>,
-        cards: [
-            {
-                cardHeader: "",
-                cardSubtext: "",
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Link href="#">Link default</Link>
-                        <Link href="#" variant="subtle">
-                            Link subtle
-                        </Link>
-                        <Link href="#" disabled>
-                            disabled
-                        </Link>
-                    </div>
-                ),
-            },
-
-            {
-                cardHeader: "Appearance",
-                cardSubtext: "",
-
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Link href="#" variant="subtle">
-                            A Subtle Link
-                        </Link>
-                    </div>
-                ),
-            },  {
-                cardHeader: "Inline",
-                cardSubtext: "",
-
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Link href="#">Link default</Link>
-                        <Link href="#" variant="subtle">
-                            <Link href={"https://youtube.com"}>Youtube</Link>
-                        </Link>
-                    </div>
-                ),
-            },  {
-                cardHeader: "Appearance",
-                cardSubtext: "",
-
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Link href="#">Link default</Link>
-                        <Link href="#" variant="subtle">
-                            <Link href={"https://youtube.com"}>Youtube</Link>
-                        </Link>
-                    </div>
-                ),
-            },
-            {
-                cardHeader: "As Button",
-                cardSubtext: "When the href property is not provided, the component is rendered as html <button>",
-
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Link href="#" variant="subtle">
-                            A Subtle Link
-                        </Link>
-                    </div>
-                ),
-            },
-            {
-                cardHeader: "As Span",
-                cardSubtext: "A Link can be rendered as an html <span>, in which case it will have role=\"button\" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.",
-
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Link href="#" variant="subtle">
-                            A Subtle Link
-                        </Link>
-                    </div>
-                ),
-            },
-        ],
-    },
   {
     header: "Toast",
     subText: <></>,
