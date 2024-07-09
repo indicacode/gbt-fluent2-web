@@ -2480,7 +2480,7 @@ export const components = [
   },
   {
     header: "Menu",
-    subText: <></>,
+    subText: <>A menu displays a list of actions. The Menu component handles the state management of the passed in list of actions.</>,
     cards: [
       {
         cardHeader: "",
@@ -2506,7 +2506,53 @@ export const components = [
         ),
       },
         {
-            cardHeader: "",
+            cardHeader: "Interaction",
+            cardSubtext: "Each sub component of the Menu that renders DOM elements can be assigned HTML event listeners. You can simply add an onClick listener to individual MenuItem without needing to control the entire component. Special handling is required for checkboxes and radio items inside a Menu, read the further examples below to see how to handle those variants.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar varian onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Menu Item Link Navigation",
+            cardSubtext: "To implement a navigation menu, simply use the MenuItemLink component that provides the correct semantics for link based navigation.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Menu Items With Icons",
             cardSubtext: "",
             cardComponent: (
                 <div className="flex gap-2">
@@ -2529,7 +2575,53 @@ export const components = [
             ),
         },
         {
-            cardHeader: "",
+            cardHeader: "Aligning With Icons",
+            cardSubtext: "The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Aligning With Selectable Items",
+            cardSubtext: "The hasCheckmarks prop will align menu items if only a subset of menu items are selectable.\n",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Secondary Content For Menu Items",
             cardSubtext: "",
             cardComponent: (
                 <div className="flex gap-2">
@@ -2552,7 +2644,7 @@ export const components = [
             ),
         },
         {
-            cardHeader: "",
+            cardHeader: "Controlling Open And Close",
             cardSubtext: "",
             cardComponent: (
                 <div className="flex gap-2">
@@ -2574,6 +2666,148 @@ export const components = [
                 </div>
             ),
         },
+        {
+            cardHeader: "Grouping Items",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Visual Divider Only",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Checkbox Items",
+            cardSubtext: "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
+                "\n" +
+                "<input type=\"checkbox\" name=\"name\" value=\"value\" />",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Switch Item",
+            cardSubtext: "A variant of MenuItemCheckbox that displays selection using a switch design. This is commonly used for menus that don't really have strong selection function but needs to support an exceptional selected option.",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Radio Items",
+            cardSubtext: "A variant of MenuItem that handles radio like selection. The name and value props are are used similar to HTML checkboxes with input",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },{
+            cardHeader: "Checkbox Items",
+            cardSubtext: "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
+                "\n" +
+                "<input type=\"checkbox\" name=\"name\" value=\"value\" />",
+            cardComponent: (
+                <div className="flex gap-2">
+                    <Menubar onValueChange={(e) => console.log(e)}>
+                        <MenubarMenu value={"share"}>
+                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarContent>
+                                <MenubarItem>
+                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                </MenubarItem>
+                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Share</MenubarItem>
+                                <MenubarSeparator />
+                                <MenubarItem>Print</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+                </div>
+            ),
+        },
+
     ],
   },
   {
@@ -2948,6 +3182,78 @@ export const components = [
                                         </>
                                     ),
                                 }
+                            {
+                                cardHeader: "Manual Layout",
+                                    cardSubtext: "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
+                                cardComponent: (
+                                <div className="flex flex-col gap-2">
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => {
+                                            toast({
+                                                messageBar: true,
+                                                variant: "error",
+                                                title: "Scheduled: Catch up ",
+                                                description: "Friday, February 10, 2023 at 5:57 PM",
+                                                action: (
+                                                    <>
+                                                        <ToastAction altText="Goto schedule to undo">
+                                                            Undo
+                                                        </ToastAction>
+                                                        <ToastAction altText="Goto schedule to undo">
+                                                            Undo
+                                                        </ToastAction>
+                                                    </>
+                                                ),
+                                            }
+                                            {
+                                                cardHeader: "Manual Layout",
+                                                    cardSubtext: "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
+                                                cardComponent: (
+                                                <div className="flex flex-col gap-2">
+                                                    <Button
+                                                        variant="outline"
+                                                        onClick={() => {
+                                                            toast({
+                                                                messageBar: true,
+                                                                variant: "error",
+                                                                title: "Scheduled: Catch up ",
+                                                                description: "Friday, February 10, 2023 at 5:57 PM",
+                                                                action: (
+                                                                    <>
+                                                                        <ToastAction altText="Goto schedule to undo">
+                                                                            Undo
+                                                                        </ToastAction>
+                                                                        <ToastAction altText="Goto schedule to undo">
+                                                                            Undo
+                                                                        </ToastAction>
+                                                                    </>
+                                                                ),
+                                                            }
+                                                            {
+                                                                cardHeader: "Manual Layout",
+                                                                    cardSubtext: "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
+                                                                cardComponent: (
+                                                                <div className="flex flex-col gap-2">
+                                                                    <Button
+                                                                        variant="outline"
+                                                                        onClick={() => {
+                                                                            toast({
+                                                                                messageBar: true,
+                                                                                variant: "error",
+                                                                                title: "Scheduled: Catch up ",
+                                                                                description: "Friday, February 10, 2023 at 5:57 PM",
+                                                                                action: (
+                                                                                    <>
+                                                                                        <ToastAction altText="Goto schedule to undo">
+                                                                                            Undo
+                                                                                        </ToastAction>
+                                                                                        <ToastAction altText="Goto schedule to undo">
+                                                                                            Undo
+                                                                                        </ToastAction>
+                                                                                    </>
+                                                                                ),
+                                                                            }
                             )
                         }}
                     >
