@@ -2762,7 +2762,9 @@ export const components = [
         },
         {
             cardHeader: "Radio Items",
-            cardSubtext: "A variant of MenuItem that handles radio like selection. The name and value props are are used similar to HTML checkboxes with input",
+            cardSubtext: "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
+                "\n" +
+                "<input type=\"checkbox\" name=\"name\" value=\"value\" />",
             cardComponent: (
                 <div className="flex gap-2">
                     <Menubar onValueChange={(e) => console.log(e)}>
@@ -3182,78 +3184,6 @@ export const components = [
                                         </>
                                     ),
                                 }
-                            {
-                                cardHeader: "Manual Layout",
-                                    cardSubtext: "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
-                                cardComponent: (
-                                <div className="flex flex-col gap-2">
-                                    <Button
-                                        variant="outline"
-                                        onClick={() => {
-                                            toast({
-                                                messageBar: true,
-                                                variant: "error",
-                                                title: "Scheduled: Catch up ",
-                                                description: "Friday, February 10, 2023 at 5:57 PM",
-                                                action: (
-                                                    <>
-                                                        <ToastAction altText="Goto schedule to undo">
-                                                            Undo
-                                                        </ToastAction>
-                                                        <ToastAction altText="Goto schedule to undo">
-                                                            Undo
-                                                        </ToastAction>
-                                                    </>
-                                                ),
-                                            }
-                                            {
-                                                cardHeader: "Manual Layout",
-                                                    cardSubtext: "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
-                                                cardComponent: (
-                                                <div className="flex flex-col gap-2">
-                                                    <Button
-                                                        variant="outline"
-                                                        onClick={() => {
-                                                            toast({
-                                                                messageBar: true,
-                                                                variant: "error",
-                                                                title: "Scheduled: Catch up ",
-                                                                description: "Friday, February 10, 2023 at 5:57 PM",
-                                                                action: (
-                                                                    <>
-                                                                        <ToastAction altText="Goto schedule to undo">
-                                                                            Undo
-                                                                        </ToastAction>
-                                                                        <ToastAction altText="Goto schedule to undo">
-                                                                            Undo
-                                                                        </ToastAction>
-                                                                    </>
-                                                                ),
-                                                            }
-                                                            {
-                                                                cardHeader: "Manual Layout",
-                                                                    cardSubtext: "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
-                                                                cardComponent: (
-                                                                <div className="flex flex-col gap-2">
-                                                                    <Button
-                                                                        variant="outline"
-                                                                        onClick={() => {
-                                                                            toast({
-                                                                                messageBar: true,
-                                                                                variant: "error",
-                                                                                title: "Scheduled: Catch up ",
-                                                                                description: "Friday, February 10, 2023 at 5:57 PM",
-                                                                                action: (
-                                                                                    <>
-                                                                                        <ToastAction altText="Goto schedule to undo">
-                                                                                            Undo
-                                                                                        </ToastAction>
-                                                                                        <ToastAction altText="Goto schedule to undo">
-                                                                                            Undo
-                                                                                        </ToastAction>
-                                                                                    </>
-                                                                                ),
-                                                                            }
                             )
                         }}
                     >
