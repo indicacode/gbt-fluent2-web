@@ -403,7 +403,7 @@ export const components = [
     subText:
       "A combobox combines a text field and a dropdown giving people a way to select an option from a list or enter their own choice.",
     cards: [
-        {
+      {
         cardComponent: (
           <Combobox
             emptyIndicator="uo"
@@ -411,7 +411,21 @@ export const components = [
               { value: "next.js", label: "Next.js" },
               { value: "remix", label: "Remix" },
             ]}
+            tags
+            multiselect
+            placeholder="Select you favorite frameworks"
+            options={frameworks}
+          />
+        ),
+      },
 
+      {
+        cardHeader: "Filtering",
+        cardSubtext:
+          "We provide useComboboxFilter() hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function. We recommend using filtering when creating a freeform Combobox.",
+        cardComponent: (
+          <Combobox
+            emptyIndicator="No Items Found"
             tags
             multiselect
             creatable
@@ -420,34 +434,14 @@ export const components = [
           />
         ),
       },
-
-        {
-            cardHeader: "Filtering",
-            cardSubtext:"We provide useComboboxFilter() hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function. We recommend using filtering when creating a freeform Combobox.",
-            cardComponent: (
-                <Combobox
-                    emptyIndicator="uo"
-                    selectedOptions={[
-                        { value: "next.js", label: "Next.js" },
-                        { value: "remix", label: "Remix" },
-                    ]}
-
-                    tags
-                    multiselect
-                    creatable
-                    placeholder="Select you favorite frameworks"
-                    options={frameworks}
-                />
-            ),
-        },
-        {
-            cardHeader: "Multiselect With Tags",
-            cardSubtext:"Combobox can display multiselect values in custom tags. This example uses a controlled selection so the tags can be used to remove selected options Best pets",
-            cardComponent: (
-                <Combobox
-                    emptyIndicator="uo"
-
-                    tags
+      {
+        cardHeader: "Multiselect With Tags",
+        cardSubtext:
+          "Combobox can display multiselect values in custom tags. This example uses a controlled selection so the tags can be used to remove selected options Best pets",
+        cardComponent: (
+          <Combobox
+            emptyIndicator="uo"
+tags
                     multiselect
                     creatable
                     placeholder="Select you favorite frameworks"
@@ -460,17 +454,14 @@ export const components = [
             cardSubtext:"Multiselect Combobox supports using a controlled value todisplay selected options when not in focus, similar to v8 behavior.We recommend using tags rather than the value string when possible,since they have better UX and accessibility.s",
             cardComponent: (
                 <Combobox
-                    emptyIndicator="uo"
-
-                    tags
-                    multiselect
-                    creatable
-                    placeholder="Select you favorite frameworks"
-                    options={frameworks}
-                />
-            ),
-        },
-
+                    emptyIndicator="uo"            tags
+            multiselect
+            creatable
+            placeholder="Select you favorite frameworks"
+            options={frameworks}
+          />
+        ),
+      },
     ],
   },
   {
@@ -499,80 +490,85 @@ export const components = [
           </div>
         ),
       },
-        {
-            cardHeader: "Vertical",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex h-fit w-full flex-col ">
-                    <Divider orientation="vertical" align="center">
-                        1
-                    </Divider>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Appearance",
-            cardSubtext: "A divider can have a brand, subtle, or strong appearance. When not specified, it has its default experience",
-            cardComponent: (
-                <div className="flex h-fit w-full flex-col ">
-                    <Divider orientation="horizontal" align="center">
-                        1
-                    </Divider>
+      {
+        cardHeader: "Vertical",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex h-fit w-full flex-col ">
+            <Divider orientation="vertical" align="center">
+              1
+            </Divider>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Appearance",
+        cardSubtext:
+          "A divider can have a brand, subtle, or strong appearance. When not specified, it has its default experience",
+        cardComponent: (
+          <div className="flex h-fit w-full flex-col ">
+            <Divider orientation="horizontal" align="center">
+              1
+            </Divider>
 
-                    <Divider variant="subtle" orientation="horizontal" align="center">
-                        2
-                    </Divider>
-                    <Divider variant="brand" orientation="horizontal" align="center">
-                        3
-                    </Divider>
-                    <Divider variant="strong" orientation="horizontal" align="center">
-                        4
-                    </Divider>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Align Content",
-            cardSubtext: "The label associated with the divider can be aligned at the start, center, or end of the divider line.",
-            cardComponent: (
-                <div className="flex h-fit w-full flex-col ">
-                    <Divider orientation="horizontal" align="start">
-                        Start
-                    </Divider>
-                    <Divider variant="subtle" orientation="horizontal" align="center">
-                        Center
-                    </Divider>
-                    <Divider variant="brand" orientation="horizontal" align="end">
-                        End
-                    </Divider>
-                </div>
+            <Divider variant="subtle" orientation="horizontal" align="center">
+              2
+            </Divider>
+            <Divider variant="brand" orientation="horizontal" align="center">
+              3
+            </Divider>
+            <Divider variant="strong" orientation="horizontal" align="center">
+              4
+            </Divider>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Align Content",
+        cardSubtext:
+          "The label associated with the divider can be aligned at the start, center, or end of the divider line.",
+        cardComponent: (
+          <div className="flex h-fit w-full flex-col ">
+            <Divider orientation="horizontal" align="start">
+              Start
+            </Divider>
+            <Divider variant="subtle" orientation="horizontal" align="center">
+              Center
+            </Divider>
+            <Divider variant="brand" orientation="horizontal" align="end">
+              End
 
-            ),
-        },
-        {
-            cardHeader: "Custom Styles",
-            cardSubtext: "A divider can have custom styles applied to both the label and the line.",
-            cardComponent: (
-                <div className="flex h-fit w-full flex-col ">
-                    <Divider  orientation="horizontal" align="start">
-                        Start
-                    </Divider>
-                    <Divider variant="subtle" orientation="horizontal" align="center">
-                        Center
-                    </Divider>
-                    <Divider variant="brand"  orientation="horizontal" align="end">
-                        End
-                    </Divider>
-                    <Divider variant="strong" orientation="horizontal" align="center">
-                        4
-                    </Divider>
+            </Divider>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Custom Styles",
+        cardSubtext:
+          "A divider can have custom styles applied to both the label and the line.",
+        cardComponent: (
+          <div className="flex h-fit w-full flex-col ">
+            <Divider
+
+              orientation="horizontal"
+              align="start"
+            >
+              Start
+            </Divider>
+            <Divider variant="subtle" orientation="horizontal" align="center">
+              Center
+            </Divider>
+            <Divider variant="brand" orientation="horizontal" align="end">
+              End
+            </Divider>
+            <Divider variant="strong" orientation="horizontal" align="center">
+              4</Divider>
                     <Divider variant={"primary"} orientation={"horizontal"} align={"center"}>
                         5
-                    </Divider>
-                </div>
-            ),
-        },
-
+            </Divider>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -692,8 +688,8 @@ export const components = [
           </li>
           <li>
             <code>Drawer</code>: A combination of OverlayDrawer and
-            InlineDrawer. Used when togglin g between the two modes is necessary.
-            Often used for responsiveness.
+            InlineDrawer. Used when togglin g between the two modes is
+            necessary. Often used for responsiveness.
           </li>
         </ul>
       </div>
@@ -1629,8 +1625,8 @@ export const components = [
       },
 
       {
-          cardHeader:"Navigation",
-          cardSubtext:"An accordion supports keyboard navigation.",
+        cardHeader: "Navigation",
+        cardSubtext: "An accordion supports keyboard navigation.",
         cardComponent: (
           <div>
             <Accordion
@@ -1666,14 +1662,14 @@ export const components = [
         ),
       },
       {
-          cardHeader: "Multi Panels",
-          cardSubtext:"An accordion supports multiple panels expanded simultaneously.\n" +
-              "              Since it's not simple to determine which panel will be opened by\n" +
-              "              default, multiple will also be collapsed by default on the first\n" +
-              "              render.",
+        cardHeader: "Multi Panels",
+        cardSubtext:
+          "An accordion supports multiple panels expanded simultaneously.\n" +
+          "              Since it's not simple to determine which panel will be opened by\n" +
+          "              default, multiple will also be collapsed by default on the first\n" +
+          "              render.",
         cardComponent: (
           <div>
-
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1707,12 +1703,12 @@ export const components = [
         ),
       },
       {
-          cardHeader:"Open Items",
-          cardSubtext:" An accordion can have defined open items. If no open item is\n" +
-              "              present, all panels will be closed by default.",
+        cardHeader: "Open Items",
+        cardSubtext:
+          " An accordion can have defined open items. If no open item is\n" +
+          "              present, all panels will be closed by default.",
         cardComponent: (
           <div>
-
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1746,15 +1742,14 @@ export const components = [
         ),
       },
       {
-          cardHeader:("Expand Icon Position"),
-          cardSubtext:" An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
+        cardHeader: "Expand Icon Position",
+        cardSubtext:
+          " An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
 
         cardComponent: (
           <div>
             <h2 className={"font-extrabold"}></h2>
-            <h2>
-
-            </h2>
+            <h2></h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1788,9 +1783,9 @@ export const components = [
         ),
       },
       {
-          cardHeader:"With Icon",
+        cardHeader: "With Icon",
         cardComponent: (
-      <div>
+          <div>
             <h2>An accordion header can contain an icon.</h2>
             <Accordion
               defaultValue="item-2"
@@ -1825,7 +1820,7 @@ export const components = [
         ),
       },
       {
-          cardHeader:"Collapsible",
+        cardHeader: "Collapsible",
         cardComponent: (
           <div>
             <h2 className={"font-extrabold"}></h2>
@@ -1879,136 +1874,215 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-            <div className={"flex flex-row"}>
-          <Avatar status="online" size="sm">
-            <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
-            <AvatarFallback size={""}>Josh Well</AvatarFallback>
-          </Avatar>
-                <Avatar status="online" size="sm">
-                    <AvatarFallback size={""}>Joshua Graham</AvatarFallback>
-                </Avatar>
-                <Avatar status={"busy"} size="sm">
-                    <AvatarFallback size={""}>Ane Parker</AvatarFallback>
-                </Avatar>
-                <Avatar status={"do-not-disturb"} size="sm">
-                    <AvatarFallback size={""}>Helen Pereira</AvatarFallback>
-                    <AvatarImage src={""}/>
-                </Avatar>
-                <Avatar status={"busy"} size="sm">
-                    <AvatarFallback size={""}>Johnny Mans</AvatarFallback>
-                    <AvatarImage src={"https://images.pexels.com/photos/23909935/pexels-photo-23909935/free-photo-of-moda-tendencia-amor-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                </Avatar>
-                <Avatar status={"online"} size="sm">
-                    <AvatarFallback size={""}>Jordan Terrence</AvatarFallback>
-                    <AvatarImage src={"https://images.pexels.com/photos/22884699/pexels-photo-22884699/free-photo-of-cafeina-cafe-copo-taca.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                </Avatar>
-                <Avatar status={"online"} size="sm">
-                    <AvatarFallback size={""}>Fernanda Almeida</AvatarFallback>
-                    <AvatarImage src={"https://images.pexels.com/photos/22814807/pexels-photo-22814807/free-photo-of-moda-tendencia-mulher-modelo.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                </Avatar>
-
-            </div>
-        ),
-      },
-      {
-          cardHeader: "Image",
-          cardSubtext:"An avatar can display an image, It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
-        cardComponent: (
           <div className={"flex flex-row"}>
-                    <Avatar status={"away"}>
-                        <AvatarFallback>Jordan Herrera</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=800"}/>
-                    </Avatar>
-              <Avatar status={"away"}>
-                  <AvatarFallback>Kaio Telmo </AvatarFallback>
-                  <AvatarImage src={"https://images.pexels.com/photos/24702820/pexels-photo-24702820/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-              </Avatar>
-              <Avatar status={"online"}>
-                  <AvatarFallback>Carlos John</AvatarFallback>
-                  <AvatarImage src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"}/>
-              </Avatar>
-              <Avatar status={"online"}>
-                  <AvatarFallback>Ana Watson</AvatarFallback>
-                  <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-              </Avatar>
+            <Avatar status="online" size="sm">
+              <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
+              <AvatarFallback size={""}>Josh Well</AvatarFallback>
+            </Avatar>
+            <Avatar status="online" size="sm">
+              <AvatarFallback size={""}>Joshua Graham</AvatarFallback>
+            </Avatar>
+            <Avatar status={"busy"} size="sm">
+              <AvatarFallback size={""}>Ane Parker</AvatarFallback>
+            </Avatar>
+            <Avatar status={"do-not-disturb"} size="sm">
+              <AvatarFallback size={""}>Helen Pereira</AvatarFallback>
+              <AvatarImage src={""} />
+            </Avatar>
+            <Avatar status={"busy"} size="sm">
+              <AvatarFallback size={""}>Johnny Mans</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23909935/pexels-photo-23909935/free-photo-of-moda-tendencia-amor-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"} size="sm">
+              <AvatarFallback size={""}>Jordan Terrence</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/22884699/pexels-photo-22884699/free-photo-of-cafeina-cafe-copo-taca.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"} size="sm">
+              <AvatarFallback size={""}>Fernanda Almeida</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/22814807/pexels-photo-22814807/free-photo-of-moda-tendencia-mulher-modelo.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
           </div>
         ),
       },
-        {
-            cardHeader: "Badge",
-            cardSubtext:"An avatar can have a badge to indicate presence status. See the PresenceBadge component for more info.\n" +
-                "\n",
-            cardComponent: (
-                <div className={"flex flex-row"}>
-                    <Avatar status={"away"}>
-                        <AvatarFallback>Jordan Cummings</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"away"}>
-                        <AvatarFallback>Kaio Karlos </AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/24702820/pexels-photo-24702820/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"online"}>
-                        <AvatarFallback>Jordan Herrera</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=800"}/>
-                    </Avatar>
-                    <Avatar status={"online"}>
-                        <AvatarFallback>Piccarte Artsy</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Avatar Icon",
-            cardSubtext:"An avatar can display an image.\n" +
-                "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
-            cardComponent: (
-                <div className={"flex flex-row"}>
-                    <Avatar status={"away"}>
-                        <AvatarFallback>Jordan Herrera</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"away"}>
-                        <AvatarFallback>Kaio Pereira </AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"online"}>
-                        <AvatarFallback>Victoria Petes</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"online"}>
-                        <AvatarFallback>Loucas Marquise</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                </div>
-            ),
-        }, {
-            cardHeader: "Badge Icon",
-            cardSubtext:"An avatar can display an image.\n" +
-                "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
-            cardComponent: (
-                <div className={"flex flex-row"}>
-                    <Avatar status={"away"}>
-                        <AvatarFallback>Jordan Herrera</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"away"}>
-                        <AvatarFallback>Alonso Rencio </AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"online"}>
-                        <AvatarFallback>Junior Silva</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                    <Avatar status={"online"}>
-                        <AvatarFallback>Loucas Marquise</AvatarFallback>
-                        <AvatarImage src={"https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"}/>
-                    </Avatar>
-                </div>
-            ),
-        },
-
+      {
+        cardHeader: "Image",
+        cardSubtext:
+          "An avatar can display an image, It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+        cardComponent: (
+          <div className={"flex flex-row"}>
+            <Avatar status={"away"}>
+              <AvatarFallback>Jordan Herrera</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=800"
+                }
+              />
+            </Avatar>
+            <Avatar status={"away"}>
+              <AvatarFallback>Kaio Telmo </AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/24702820/pexels-photo-24702820/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Carlos John</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Ana Watson</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Badge",
+        cardSubtext:
+          "An avatar can have a badge to indicate presence status. See the PresenceBadge component for more info.\n" +
+          "\n",
+        cardComponent: (
+          <div className={"flex flex-row"}>
+            <Avatar status={"away"}>
+              <AvatarFallback>Jordan Cummings</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"away"}>
+              <AvatarFallback>Kaio Karlos </AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/24702820/pexels-photo-24702820/free-photo-of-moda-tendencia-pessoas-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Jordan Herrera</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=800"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Piccarte Artsy</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Avatar Icon",
+        cardSubtext:
+          "An avatar can display an image.\n" +
+          "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+        cardComponent: (
+          <div className={"flex flex-row"}>
+            <Avatar status={"away"}>
+              <AvatarFallback>Jordan Herrera</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"away"}>
+              <AvatarFallback>Kaio Pereira </AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Victoria Petes</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Loucas Marquise</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Badge Icon",
+        cardSubtext:
+          "An avatar can display an image.\n" +
+          "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+        cardComponent: (
+          <div className={"flex flex-row"}>
+            <Avatar status={"away"}>
+              <AvatarFallback>Jordan Herrera</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"away"}>
+              <AvatarFallback>Alonso Rencio </AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Junior Silva</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+            <Avatar status={"online"}>
+              <AvatarFallback>Loucas Marquise</AvatarFallback>
+              <AvatarImage
+                src={
+                  "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                }
+              />
+            </Avatar>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -2310,7 +2384,12 @@ export const components = [
   },
   {
     header: "Checkbox",
-    subText: <>Checkboxes give people a way to select one or more items from a group, or switch between two mutually exclusive options (checked or unchecked).</>,
+    subText: (
+      <>
+        Checkboxes give people a way to select one or more items from a group,
+        or switch between two mutually exclusive options (checked or unchecked).
+      </>
+    ),
     cards: [
       {
         cardHeader: "",
@@ -2321,174 +2400,167 @@ export const components = [
               size="large"
               onChange={(checked) => console.log(checked)}
             />
-              <Checkbox
-
-                  size="large"
-                  checked={"true"}
-                  onChange={(checked) => console.log(checked)}
-              />
+            <Checkbox
+              size="large"
+              checked={"true"}
+              onChange={(checked) => console.log(checked)}
+            />
           </div>
         ),
       },
-        {
-            cardHeader: "Disabled",
-            cardSubtext: "A Checkbox can be disabled.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Checkbox
-                        disabled={true}
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                    />
-                    <Checkbox
-                        disabled={true}
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                        checked={"true"}
-                    />
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Large",
-            cardSubtext: "A Checkbox can be large in size.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Checkbox
+      {
+        cardHeader: "Disabled",
+        cardSubtext: "A Checkbox can be disabled.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Checkbox
+              disabled={true}
+              size="large"
+              onChange={(checked) => console.log(checked)}
+            />
+            <Checkbox
+              disabled={true}
+              size="large"
+              onChange={(checked) => console.log(checked)}
+              checked={"true"}
+            />
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Large",
+        cardSubtext: "A Checkbox can be large in size.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Checkbox
+              size="large"
+              onChange={(checked) => console.log(checked)}
+            />
+            <Checkbox
+              size="large"
+              onChange={(checked) => console.log(checked)}
+              checked={"true"}
+            />
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Mixed",
+        cardSubtext:
+          "A checkbox can be initially mixed (also known as indeterminate) using the checked={indeterminate} property, In this example, the mixed state is used when a group of options has differing values.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <div className={"flex flex-row items-center text-center"}>
+              <Checkbox
+                checked={"indeterminate"}
+                size="large"
+                onChange={(checked) => console.log(checked)}
+              />
 
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                    />
-                    <Checkbox
+              <h2 className={"ml-2"}>All of the options</h2>
+            </div>
+            <div className={"flex flex-row items-center text-center"}>
+              <Checkbox
+                size="large"
+                onChange={(checked) => console.log(checked)}
+              />
+              <h2 className={"ml-2"}>Apples</h2>
+            </div>
+            <div className={"flex flex-row items-center text-center"}>
+              <Checkbox
+                size="large"
+                onChange={(checked) => console.log(checked)}
+              />
+              <h2 className={"ml-2"}>Cherry</h2>
+            </div>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Label Before",
+        cardSubtext: "The label can be placed before the checkbox.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <div className={"flex flex-row items-center  text-center"}>
+              <h2 className={"ml-2"}>Cherries</h2>
 
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                        checked={"true"}
-                    />
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Mixed",
-            cardSubtext: "A checkbox can be initially mixed (also known as indeterminate) using the checked={indeterminate} property, In this example, the mixed state is used when a group of options has differing values.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <div className={"flex text-center items-center flex-row"}>
-                    <Checkbox
-                        checked={"indeterminate"}
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                    />
+              <Checkbox
+                className={"ml-2"}
+                size="large"
+                onChange={(checked) => console.log(checked)}
+              />
+            </div>
+            <div className={"ml-1 flex flex-row items-center text-center"}>
+              <h2 className={"ml-2"}>Apples</h2>
 
-                        <h2 className={"ml-2"}>All of the options</h2>
-                    </div>
-                    <div className={"flex text-center items-center flex-row"}>
-                        <Checkbox
-
-                            size="large"
-                            onChange={(checked) => console.log(checked)}
-                        />
-                        <h2 className={"ml-2"}>Apples</h2>
-                    </div>
-                    <div className={"flex text-center items-center flex-row"}>
-                        <Checkbox
-                            size="large"
-                            onChange={(checked) => console.log(checked)}
-                        />
-                        <h2 className={"ml-2"}>Cherry</h2>
-                    </div>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Label Before",
-            cardSubtext: "The label can be placed before the checkbox.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <div className={"flex text-center items-center  flex-row"}>
-                    <h2 className={"ml-2"}>Cherries</h2>
-
-                        <Checkbox
-
-                            className={"ml-2"}
-                            size="large"
-                            onChange={(checked) => console.log(checked)}
-                        />
-
-                    </div>
-                    <div className={"flex text-center ml-1 items-center flex-row"}>
-                    <h2 className={"ml-2"}>Apples</h2>
-
-                        <Checkbox
-
-                            size="large"
-                            className={"ml-3"}
-                            onChange={(checked) => console.log(checked)}
-                        />
-
-                    </div>
-
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Circular",
-            cardSubtext: "A checkbox can have a circular shape. Usage warning: Unless you are designing a tasks experience, we strongly discourage using this styling variant, as it can be confused with RadioItem",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Checkbox
-                        rounded={true}
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                    />
-                    <Checkbox
-                        rounded={true}
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                        checked={"true"}
-                    />
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Required",
-            cardSubtext: "When a checkbox is marked as required, its label also gets the required styling.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Checkbox
-                        rounded={true}
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                    />
-                    <Checkbox
-                        rounded={true}
-                        size="large"
-                        onChange={(checked) => console.log(checked)}
-                        checked={"true"}
-                    />
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Label Wrapping",
-            cardSubtext: "The label will wrap if it is wider than the available space. The checkbox indicator will stay aligned to the first line of text.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Checkbox
-                        rounded={true}
-                        size="large"
-                        aria-label={"Label Wrapping text"}
-                        onChange={(checked) => console.log(checked)}
-                    />
-
-                </div>
-            ),
-        },
-
+              <Checkbox
+                size="large"
+                className={"ml-3"}
+                onChange={(checked) => console.log(checked)}
+              />
+            </div>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Circular",
+        cardSubtext:
+          "A checkbox can have a circular shape. Usage warning: Unless you are designing a tasks experience, we strongly discourage using this styling variant, as it can be confused with RadioItem",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Checkbox
+              rounded={true}
+              size="large"
+              onChange={(checked) => console.log(checked)}
+            />
+            <Checkbox
+              rounded={true}
+              size="large"
+              onChange={(checked) => console.log(checked)}
+              checked={"true"}
+            />
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Required",
+        cardSubtext:
+          "When a checkbox is marked as required, its label also gets the required styling.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Checkbox
+              rounded={true}
+              size="large"
+              onChange={(checked) => console.log(checked)}
+            />
+            <Checkbox
+              rounded={true}
+              size="large"
+              onChange={(checked) => console.log(checked)}
+              checked={"true"}
+            />
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Label Wrapping",
+        cardSubtext:
+          "The label will wrap if it is wider than the available space. The checkbox indicator will stay aligned to the first line of text.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Checkbox
+              rounded={true}
+              size="large"
+              aria-label={"Label Wrapping text"}
+              onChange={(checked) => console.log(checked)}
+            />
+          </div>
+        ),
+      },
     ],
   },
-    {
-        header: "InfoLabel",
+  {
+    header: "InfoLabel",
     subText: <></>,
     cards: [
       {

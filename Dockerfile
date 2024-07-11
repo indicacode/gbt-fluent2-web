@@ -10,8 +10,9 @@ WORKDIR /app
 # Copy all files for local dependencies
 # ⚠️ IGNORE_CACHE
 COPY yarn*.lock package*.json pnpm-lock*.yaml .yarnrc*.yml ./
-
-RUN yarn set version berry
+RUN corepack enable
+RUN yarn set version stable
+RUN yarn install
 
 RUN \
   if [ -f yarn.lock ]; then yarn --immutable; \

@@ -118,6 +118,8 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
       className,
       children,
       disabled,
+      onFocus = () => "",
+      onBlur = () => "",
       ...rest
     },
     ref
@@ -130,13 +132,6 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
 
     // By using useCallback the function doesn't get recreated on a new
     // memory reference every time the component re-renders.
-    const handleFocus = useCallback(() => {
-      setFocus(true)
-    }, [])
-
-    const handleBlur = useCallback(() => {
-      setFocus(false)
-    }, [])
 
     const handleMouseDown = useCallback(() => {
       setActive(true)
@@ -190,8 +185,14 @@ const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
           <div className={inputDecoration({ focus, active })} />
           <input
             id={"input_id-" + inputId}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            onFocus={(event) => {
+              setFocus(true)
+              onFocus(event)
+            }}
+            onBlur={(event) => {
+              setFocus(false)
+              onBlur(event)
+            }}
             disabled={disabled}
             className={input({
               className,
