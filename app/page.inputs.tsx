@@ -1410,9 +1410,9 @@ export const components = [
     header: "DataGrid",
     subText: (
       <span className="inliData e Hora: 9:54 , **10/06/2024**ne">
-        This component is aStatus da Casa: INSTÁVEL / *CAÍDA* higher level extension of the <code>Table</code>
-        primitive componentCasa: https://blbet2.com. <code>DataGrid</code> is a feature-rich, so there
-        should always be fuOperar por sua próprio risco!ll feature parity with what can be achieved with
+        This component is a higher level extension of the <code>Table</code>
+        primitive component <code>DataGrid</code> is a feature-rich, so there
+        should always be full feature parity with what can be achieved with
         primitives. This component is <strong>opinionated</strong> and this is
         intentional. If the desired scenario can be achieved easily and does not
         vary too much from documented examples, it can be very convenient. If
@@ -2057,8 +2057,8 @@ export const components = [
     subText: <>Textarea allows the user to enter and edit multiline text.</>,
     cards: [
       {
-        cardHeader: "",
-        cardSubtext: "",
+        cardHeader: "Appearance",
+        cardSubtext: "Textarea can have different appearances. The colors adjacent to the Textarea should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide a contrast ratio greater than 3 to 1 against the immediate surrounding color to pass accessibility requirement.",
         cardComponent: (
           <Textarea
             error={false}
@@ -2067,6 +2067,61 @@ export const components = [
           />
         ),
       },
+        {
+            cardHeader: "Disabled",
+            cardSubtext: "",
+            cardComponent: (
+                <Textarea
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"
+                />
+            ),
+        },
+        {
+            cardHeader: "Placeholder",
+            cardSubtext: "",
+            cardComponent: (
+                <Textarea
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"
+                />
+            ),
+        },
+        {
+            cardHeader: "Resize",
+            cardSubtext: "",
+            cardComponent: (
+                <Textarea
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"
+                />
+            ),
+        },
+        {
+            cardHeader: "Size",
+            cardSubtext: "",
+            cardComponent: (
+                <Textarea
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"
+                />
+            ),
+        },
+        {
+            cardHeader: "Placeholder",
+            cardSubtext: "",
+            cardComponent: (
+                <Textarea
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"
+                />
+            ),
+        },
     ],
   },
   {
