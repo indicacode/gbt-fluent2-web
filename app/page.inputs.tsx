@@ -2822,16 +2822,15 @@ export const components = [
           <div className="flex gap-2">
             <Menubar onValueChange={(e) => console.log(e)}>
               <MenubarMenu value={"share"}>
-                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarTrigger>Navigation</MenubarTrigger>
                 <MenubarContent>
                   <MenubarItem>
-                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                      <Link href={"/"}>
+                    Home Page</Link>
                   </MenubarItem>
-                  <MenubarItem>New Window</MenubarItem>
+                    <MenubarItem> <Link target={"_blank"} href={"https://grbtec.com.br"}>Go to our company's home page</Link> </MenubarItem>
                   <MenubarSeparator />
-                  <MenubarItem>Share</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Print</MenubarItem>
+                  <MenubarItem> <Link href={"/?section=Button"}>Go to Button</Link> </MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
             </Menubar>
@@ -2843,21 +2842,25 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
-            <Menubar onValueChange={(e) => console.log(e)}>
-              <MenubarMenu value={"share"}>
-                <MenubarTrigger>File</MenubarTrigger>
-                <MenubarContent>
-                  <MenubarItem>
-                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarItem>New Window</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Share</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Print</MenubarItem>
-                </MenubarContent>
-              </MenubarMenu>
-            </Menubar>
+              <Menubar onValueChange={(e) => console.log(e)}>
+                  <MenubarMenu value={"share"}>
+                      <MenubarTrigger>Edit content</MenubarTrigger>
+                      <MenubarContent>
+                          <MenubarItem>
+                              <ScissorsIcon size={18} /> Cut{" "}
+                              <MenubarShortcut>⌘T</MenubarShortcut>
+                          </MenubarItem>
+                          <MenubarItem>
+                              <Copy16Filled /> Copy <MenubarShortcut>⌘C</MenubarShortcut>
+                          </MenubarItem>
+                          <MenubarSeparator />
+                          <MenubarItem>
+                              <ClipboardPasteIcon size={15} />
+                              Paste <MenubarShortcut>⌘V</MenubarShortcut>
+                          </MenubarItem>
+                      </MenubarContent>
+                  </MenubarMenu>
+              </Menubar>
           </div>
         ),
       },
@@ -2867,21 +2870,25 @@ export const components = [
           "The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.",
         cardComponent: (
           <div className="flex gap-2">
-            <Menubar onValueChange={(e) => console.log(e)}>
-              <MenubarMenu value={"share"}>
-                <MenubarTrigger>File</MenubarTrigger>
-                <MenubarContent>
-                  <MenubarItem>
-                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarItem>New Window</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Share</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Print</MenubarItem>
-                </MenubarContent>
-              </MenubarMenu>
-            </Menubar>
+              <Menubar onValueChange={(e) => console.log(e)}>
+                  <MenubarMenu value={"share"}>
+                      <MenubarTrigger>Edit content</MenubarTrigger>
+                      <MenubarContent>
+                          <MenubarItem>
+                              <ScissorsIcon size={18} /> Cut{" "}
+                              <MenubarShortcut>⌘T</MenubarShortcut>
+                          </MenubarItem>
+                          <MenubarItem>
+                              <Copy16Filled /> Copy <MenubarShortcut>⌘C</MenubarShortcut>
+                          </MenubarItem>
+                          <MenubarSeparator />
+                          <MenubarItem>
+                              <ClipboardPasteIcon size={15} />
+                              Paste <MenubarShortcut>⌘V</MenubarShortcut>
+                          </MenubarItem>
+                      </MenubarContent>
+                  </MenubarMenu>
+              </Menubar>
           </div>
         ),
       },
