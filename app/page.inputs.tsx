@@ -1,14 +1,15 @@
- import React, { ReactElement } from "react"
+import React, { ReactElement } from "react"
 import {
-    Copy16Filled,
-    DocumentPdfRegular,
-    DocumentRegular,
-    EditRegular,
-    FolderRegular,
-    OpenRegular,
-    PeopleRegular,
-    VideoRegular,
+  Copy16Filled,
+  DocumentPdfRegular,
+  DocumentRegular,
+  EditRegular,
+  FolderRegular,
+  OpenRegular,
+  PeopleRegular,
+  VideoRegular,
 } from "@fluentui/react-icons"
+import { ClipboardPasteIcon, ScissorsIcon } from "lucide-react"
 import { BsThreeDots } from "react-icons/bs"
 import {
   GiBanana,
@@ -98,7 +99,6 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
- import {ClipboardPasteIcon, ScissorsIcon} from "lucide-react";
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -369,35 +369,37 @@ export const components = [
         ),
       },
       {
-          cardHeader:"Placeholder",
-          cardSubtext:" An input can have placeholder text. If using the placeholder as a\n" +
-              "              label (which is not recommended for usability), be sure to provide\n" +
-              "              an aria-label for screen reader users.",
+        cardHeader: "Placeholder",
+        cardSubtext:
+          " An input can have placeholder text. If using the placeholder as a\n" +
+          "              label (which is not recommended for usability), be sure to provide\n" +
+          "              an aria-label for screen reader users.",
         cardComponent: (
           <div>
             <Input placeholder={"This is the placeholder text!"}></Input>
           </div>
         ),
       },
-        {
-            cardHeader:"Size",
-            cardSubtext:" An input can have different sizes. Those being small (sm) medium (md) and large (lg)",
-            cardComponent: (
-                <div className={"flex  flex-col"}>
-                    <Input  size={""} placeholder={"Small Input"}></Input>
-
-                </div>
-            ),
-        },
-        {
-            cardHeader:"Type",
-            cardSubtext:" An input can have a custom text-based type such as email, url, or password based on the type of value the user will enter. Note that no custom styling is currently applied for alternative types, and some types may activate browser-default styling which does not match the Fluent design language.",
-            cardComponent: (
-                <div>
-                    <Input placeholder={"This is the placeholder text!"}></Input>
-                </div>
-            ),
-        },
+      {
+        cardHeader: "Size",
+        cardSubtext:
+          " An input can have different sizes. Those being small (sm) medium (md) and large (lg)",
+        cardComponent: (
+          <div className={"flex  flex-col"}>
+            <Input size={""} placeholder={"Small Input"}></Input>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Type",
+        cardSubtext:
+          " An input can have a custom text-based type such as email, url, or password based on the type of value the user will enter. Note that no custom styling is currently applied for alternative types, and some types may activate browser-default styling which does not match the Fluent design language.",
+        cardComponent: (
+          <div>
+            <Input placeholder={"This is the placeholder text!"}></Input>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -443,20 +445,22 @@ export const components = [
         cardComponent: (
           <Combobox
             emptyIndicator="uo"
-tags
-                    multiselect
-                    creatable
-                    placeholder="Select you favorite frameworks"
-                    options={frameworks}
-                />
-            ),
-        },
-        {
-            cardHeader: "Multiselect With Value Strings",
-            cardSubtext:"Multiselect Combobox supports using a controlled value todisplay selected options when not in focus, similar to v8 behavior.We recommend using tags rather than the value string when possible,since they have better UX and accessibility.s",
-            cardComponent: (
-                <Combobox
-                    emptyIndicator="uo"            tags
+            tags
+            multiselect
+            creatable
+            placeholder="Select you favorite frameworks"
+            options={frameworks}
+          />
+        ),
+      },
+      {
+        cardHeader: "Multiselect With Value Strings",
+        cardSubtext:
+          "Multiselect Combobox supports using a controlled value todisplay selected options when not in focus, similar to v8 behavior.We recommend using tags rather than the value string when possible,since they have better UX and accessibility.s",
+        cardComponent: (
+          <Combobox
+            emptyIndicator="uo"
+            tags
             multiselect
             creatable
             placeholder="Select you favorite frameworks"
@@ -539,7 +543,6 @@ tags
             </Divider>
             <Divider variant="brand" orientation="horizontal" align="end">
               End
-
             </Divider>
           </div>
         ),
@@ -550,11 +553,7 @@ tags
           "A divider can have custom styles applied to both the label and the line.",
         cardComponent: (
           <div className="flex h-fit w-full flex-col ">
-            <Divider
-
-              orientation="horizontal"
-              align="start"
-            >
+            <Divider orientation="horizontal" align="start">
               Start
             </Divider>
             <Divider variant="subtle" orientation="horizontal" align="center">
@@ -564,9 +563,14 @@ tags
               End
             </Divider>
             <Divider variant="strong" orientation="horizontal" align="center">
-              4</Divider>
-                    <Divider variant={"primary"} orientation={"horizontal"} align={"center"}>
-                        5
+              4
+            </Divider>
+            <Divider
+              variant={"primary"}
+              orientation={"horizontal"}
+              align={"center"}
+            >
+              5
             </Divider>
           </div>
         ),
@@ -600,71 +604,75 @@ tags
           </Select>
         ),
       },
-        {
-            cardHeader: "Appearance",
-            cardSubtext: "Select can have different appearances. The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements.",
-            cardComponent: (
-                <Select>
-                    <SelectTrigger className={"w-40"}>
-                        <SelectValue placeholder={"Select something"}></SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectGroup className={""}>
-                            <SelectLabel>Fruits</SelectLabel>
-                            <SelectItem className={""} value={"apple"}>
-                                Apple
-                            </SelectItem>
-                            <SelectItem value={"banana"}>Banana</SelectItem>
-                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
-                            <SelectItem value={"grapes"}>Grapes</SelectItem>
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
-            ),
-        },{
-            cardHeader: "Disabled",
-            cardSubtext: "A Select can be disabled through the native disabled prop",
-            cardComponent: (
-                <Select disabled={true}>
-                    <SelectTrigger className={"w-40"}>
-                        <SelectValue placeholder={"Select something"}></SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectGroup className={""}>
-                            <SelectLabel>Fruits</SelectLabel>
-                            <SelectItem className={""} value={"apple"}>
-                                Apple
-                            </SelectItem>
-                            <SelectItem value={"banana"}>Banana</SelectItem>
-                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
-                            <SelectItem value={"grapes"}>Grapes</SelectItem>
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
-            ),
-        },
-        {
-            cardHeader: "Size",
-            cardSubtext: "A Select's size can be set to small, medium (default), or large.",
-            cardComponent: (
-                <Select>
-                    <SelectTrigger className={"w-40"}>
-                        <SelectValue placeholder={"Select something"}></SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectGroup className={""}>
-                            <SelectLabel>Fruits</SelectLabel>
-                            <SelectItem className={""} value={"apple"}>
-                                Apple
-                            </SelectItem>
-                            <SelectItem value={"banana"}>Banana</SelectItem>
-                            <SelectItem value={"blueberry"}>Blueberry</SelectItem>
-                            <SelectItem value={"grapes"}>Grapes</SelectItem>
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
-            ),
-        },
+      {
+        cardHeader: "Appearance",
+        cardSubtext:
+          "Select can have different appearances. The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements.",
+        cardComponent: (
+          <Select>
+            <SelectTrigger className={"w-40"}>
+              <SelectValue placeholder={"Select something"}></SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup className={""}>
+                <SelectLabel>Fruits</SelectLabel>
+                <SelectItem className={""} value={"apple"}>
+                  Apple
+                </SelectItem>
+                <SelectItem value={"banana"}>Banana</SelectItem>
+                <SelectItem value={"blueberry"}>Blueberry</SelectItem>
+                <SelectItem value={"grapes"}>Grapes</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        ),
+      },
+      {
+        cardHeader: "Disabled",
+        cardSubtext:
+          "A Select can be disabled through the native disabled prop",
+        cardComponent: (
+          <Select disabled={true}>
+            <SelectTrigger className={"w-40"}>
+              <SelectValue placeholder={"Select something"}></SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup className={""}>
+                <SelectLabel>Fruits</SelectLabel>
+                <SelectItem className={""} value={"apple"}>
+                  Apple
+                </SelectItem>
+                <SelectItem value={"banana"}>Banana</SelectItem>
+                <SelectItem value={"blueberry"}>Blueberry</SelectItem>
+                <SelectItem value={"grapes"}>Grapes</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        ),
+      },
+      {
+        cardHeader: "Size",
+        cardSubtext:
+          "A Select's size can be set to small, medium (default), or large.",
+        cardComponent: (
+          <Select>
+            <SelectTrigger className={"w-40"}>
+              <SelectValue placeholder={"Select something"}></SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup className={""}>
+                <SelectLabel>Fruits</SelectLabel>
+                <SelectItem className={""} value={"apple"}>
+                  Apple
+                </SelectItem>
+                <SelectItem value={"banana"}>Banana</SelectItem>
+                <SelectItem value={"blueberry"}>Blueberry</SelectItem>
+                <SelectItem value={"grapes"}>Grapes</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        ),
+      },
     ],
   },
   {
@@ -718,406 +726,399 @@ tags
           </Drawer>
         ),
       },
-        {
-            cardHeader: "Overlay",
-            cardSubtext: "",
-            cardComponent: (
-                <Drawer position="bottom">
-                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                        Open drawer
-                    </DrawerTrigger>
+      {
+        cardHeader: "Overlay",
+        cardSubtext: "",
+        cardComponent: (
+          <Drawer position="bottom">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              Open drawer
+            </DrawerTrigger>
 
-                    <DrawerContent>
-                        <DrawerHeader className="flex flex-col items-center">
-                            Im the header!
-                        </DrawerHeader>
-                        <DrawerDescription className={" text-slate-50"}>
-                            And i the content
-                        </DrawerDescription>
-                        <DrawerFooter>aaaaaaa</DrawerFooter>
-                    </DrawerContent>
-                </Drawer>
-            ),
-        },
-        {
-            cardHeader: "Overlay No Modal",
-            cardSubtext: "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content."
-                ,
-            cardComponent: (
-                <Drawer position="bottom">
-                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                        Open drawer
-                    </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader className="flex flex-col items-center">
+                Im the header!
+              </DrawerHeader>
+              <DrawerDescription className={" text-slate-50"}>
+                And i the content
+              </DrawerDescription>
+              <DrawerFooter>aaaaaaa</DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        ),
+      },
+      {
+        cardHeader: "Overlay No Modal",
+        cardSubtext:
+          "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content.",
+        cardComponent: (
+          <Drawer position="bottom">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              Open drawer
+            </DrawerTrigger>
 
-                    <DrawerContent>
-                        <DrawerHeader className="flex flex-col items-center">
-                            Im the header!
-                        </DrawerHeader>
-                        <DrawerDescription className={" text-slate-50"}>
-                            And i the content
-                        </DrawerDescription>
-                        <DrawerFooter>aaaaaaa</DrawerFooter>
-                    </DrawerContent>
-                </Drawer>
-            ),
-        },
-        {
-            cardHeader: "Inline",
-            cardSubtext: "InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as the main surface, users can still interact with other UI elements. This could be useful for swapping between different items in the main surface."
-            ,
-            cardComponent: (
-                <Drawer position="bottom">
-                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                        Open drawer
-                    </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader className="flex flex-col items-center">
+                Im the header!
+              </DrawerHeader>
+              <DrawerDescription className={" text-slate-50"}>
+                And i the content
+              </DrawerDescription>
+              <DrawerFooter>aaaaaaa</DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        ),
+      },
+      {
+        cardHeader: "Inline",
+        cardSubtext:
+          "InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as the main surface, users can still interact with other UI elements. This could be useful for swapping between different items in the main surface.",
+        cardComponent: (
+          <Drawer position="bottom">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              Open drawer
+            </DrawerTrigger>
 
-                    <DrawerContent>
-                        <DrawerHeader className="flex flex-col items-center">
-                            Im the header!
-                        </DrawerHeader>
-                        <DrawerDescription className={" text-slate-50"}>
-                            And i the content
-                        </DrawerDescription>
-                        <DrawerFooter>aaaaaaa</DrawerFooter>
-                    </DrawerContent>
-                </Drawer>
-            ),
-        },
-        {
-            cardHeader: "Position",
-            cardSubtext: "When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen. This can be specified by the position prop."
-            ,
-            cardComponent: (
-                <div>
-                <Drawer position="bottom">
-                    <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                        Open drawer from the bottom
-                    </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader className="flex flex-col items-center">
+                Im the header!
+              </DrawerHeader>
+              <DrawerDescription className={" text-slate-50"}>
+                And i the content
+              </DrawerDescription>
+              <DrawerFooter>aaaaaaa</DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        ),
+      },
+      {
+        cardHeader: "Position",
+        cardSubtext:
+          "When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen. This can be specified by the position prop.",
+        cardComponent: (
+          <div>
+            <Drawer position="bottom">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open drawer from the bottom
+              </DrawerTrigger>
 
-                    <DrawerContent>
-                        <DrawerHeader className="flex flex-col items-center">
-                            Im the header!
-                        </DrawerHeader>
-                        <DrawerDescription className={" text-slate-50"}>
-                            And i the content
-                        </DrawerDescription>
-                        <DrawerFooter>aaaaaaa</DrawerFooter>
-                    </DrawerContent>
-                </Drawer>
-                    <Drawer position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open drawer from the right
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open drawer from the right
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer position="left">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary mt-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open drawer from the left
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer position="left">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 mt-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open drawer from the left
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Size",
+        cardSubtext:
+          "The size prop controls the width of the drawer. The default is small.",
+        cardComponent: (
+          <div className={""}>
+            <Drawer size={"small"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open small drawer
+              </DrawerTrigger>
 
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Size",
-            cardSubtext: "The size prop controls the width of the drawer. The default is small."
-            ,
-            cardComponent: (
-                <div className={""}>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer position="bottom">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open medium drawer
+              </DrawerTrigger>
 
-                    <Drawer size={"small"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open small drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer size={"lg"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open large drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  position="bottom">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open medium drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Separator",
+        cardSubtext:
+          "The separator prop adds a line separator between the drawer and the content. Its placement will be determined by the position prop",
+        cardComponent: (
+          <div className={""}>
+            <Drawer size={"small"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open small drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  size={"lg"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open large drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer position="bottom">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open medium drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Separator",
-            cardSubtext: "The separator prop adds a line separator between the drawer and the content. Its placement will be determined by the position prop"
-            ,
-            cardComponent: (
-                <div className={""}>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer size={"lg"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open large drawer
+              </DrawerTrigger>
 
-                    <Drawer size={"small"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open small drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "With Title",
+        cardSubtext:
+          "DrawerHeaderTitle is a component that provides a structured heading for a Drawer and can be used to display a title and an action. Although it works as a standalone component, it is intended to be used within a DrawerHeader. The title renders an h2 element by default but it can be customized using the heading prop.",
+        cardComponent: (
+          <div className={""}>
+            <Drawer size={"small"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open small drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  position="bottom">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open medium drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer position="bottom">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open medium drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  size={"lg"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open large drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer size={"lg"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open large drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "With Title",
-            cardSubtext: "DrawerHeaderTitle is a component that provides a structured heading for a Drawer and can be used to display a title and an action. Although it works as a standalone component, it is intended to be used within a DrawerHeader. The title renders an h2 element by default but it can be customized using the heading prop."
-            ,
-            cardComponent: (
-                <div className={""}>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "With Navigation",
+        cardSubtext:
+          " Drawers can have any type of content and one great case is to have a toolbar in the header. Drawer ships with a DrawerHeaderNavigation component that can be used to display a toolbar in the header of the drawer. This can be combined with DrawerHeaderTitle to display a title in the header.",
+        cardComponent: (
+          <div className={""}>
+            <Drawer size={"small"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open small drawer
+              </DrawerTrigger>
 
-                    <Drawer size={"small"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open small drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer position="bottom">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open medium drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  position="bottom">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open medium drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer size={"lg"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open large drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  size={"lg"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open large drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "With Scroll",
+        cardSubtext:
+          "By default, the drawer will not scroll its content when it overflows. To enable this behavior, the DrawerBody component can be used to wrap the content of the drawer.\n" +
+          "\n" +
+          "Important note: if the drawer content does not contain any focusable elements, the DrawerBody itself needs a tabIndex of 0 to ensure keyboard scroll access.",
+        cardComponent: (
+          <div className={""}>
+            <Drawer size={"sm"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open small drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "With Navigation",
-            cardSubtext: " Drawers can have any type of content and one great case is to have a toolbar in the header. Drawer ships with a DrawerHeaderNavigation component that can be used to display a toolbar in the header of the drawer. This can be combined with DrawerHeaderTitle to display a title in the header."
-            ,
-            cardComponent: (
-                <div className={""}>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer position="bottom">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open medium drawer
+              </DrawerTrigger>
 
-                    <Drawer size={"small"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open small drawer
-                        </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+            <Drawer size={"lg"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                Open large drawer
+              </DrawerTrigger>
 
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  position="bottom">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open medium drawer
-                        </DrawerTrigger>
-
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  size={"lg"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open large drawer
-                        </DrawerTrigger>
-
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "With Scroll",
-            cardSubtext: "By default, the drawer will not scroll its content when it overflows. To enable this behavior, the DrawerBody component can be used to wrap the content of the drawer.\n" +
-                "\n" +
-                "Important note: if the drawer content does not contain any focusable elements, the DrawerBody itself needs a tabIndex of 0 to ensure keyboard scroll access."
-            ,
-            cardComponent: (
-                <div className={""}>
-
-                    <Drawer size={"sm"} position="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open small drawer
-                        </DrawerTrigger>
-
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  position="bottom">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open medium drawer
-                        </DrawerTrigger>
-
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                    <Drawer  size={"lg"} position ="right">
-                        <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary ml-2 px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                            Open large drawer
-                        </DrawerTrigger>
-
-                        <DrawerContent>
-                            <DrawerHeader className="flex flex-col items-center">
-                                Im the header!
-                            </DrawerHeader>
-                            <DrawerDescription className={" text-slate-50"}>
-                                And i the content
-                            </DrawerDescription>
-                            <DrawerFooter>aaaaaaa</DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
-                </div>
-            ),
-        },
+              <DrawerContent>
+                <DrawerHeader className="flex flex-col items-center">
+                  Im the header!
+                </DrawerHeader>
+                <DrawerDescription className={" text-slate-50"}>
+                  And i the content
+                </DrawerDescription>
+                <DrawerFooter>aaaaaaa</DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        ),
+      },
     ],
   },
-
   {
     header: "Dialog",
     subText: (
@@ -1133,234 +1134,282 @@ tags
     cards: [
       {
         cardHeader: "Alert",
-        cardSubtext: "An alert Dialog is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response. Examples include action confirmation prompts and error message confirmations. The alert Dialog role enables assistive technologies and browsers to distinguish alert dialogs from other dialogs so they have the option of giving alert dialogs special treatment, such as playing a system alert sound. By default clicking on backdrop will not dismiss an alert Dialog.",
+        cardSubtext:
+          "An alert Dialog is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response. Examples include action confirmation prompts and error message confirmations. The alert Dialog role enables assistive technologies and browsers to distinguish alert dialogs from other dialogs so they have the option of giving alert dialogs special treatment, such as playing a system alert sound. By default clicking on backdrop will not dismiss an alert Dialog.",
         cardComponent: (
-          <Dialog   >
+          <Dialog>
             <DialogTrigger>Open Dialog</DialogTrigger>
             <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>This is a dialog.</DialogTitle>
-                </DialogHeader>
-                <h2>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam exercitationem cumque repellendus eaque est dolor eius
                 expedita nulla ullam? Tenetur reprehenderit aut voluptatum
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger className="mr-2" size="default" variant="secondary">
-                    <Button variant={"secondary"}>
-                  Deny
-                    </Button>
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
-                <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
               </div>
             </DialogContent>
           </Dialog>
         ),
       },
-        {
-            cardHeader: "Scrolling Long Content",
-            cardSubtext: "By default DialogContent should grow until it fits viewport size, overflowed content will be scrollable",
-            cardComponent: (
-                <Dialog   >
-                    <DialogTrigger>Open Dialog</DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>This is a dialog.</DialogTitle>
-                        </DialogHeader>
-                        <h2>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Quisquam exercitationem cumque repellendus eaque est dolor eius
-                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                            impedit voluptates in natus iure cumque eaque?
-                        </h2>
-                        <div className="flex flex-row justify-end">
-                            <DialogTrigger className="mr-2" size="default" variant="secondary">
-                                <Button variant={"secondary"}>
-                                    Deny
-                                </Button>
-                            </DialogTrigger>
-                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            ),
-        },
-        {
-            cardHeader: "Actions",
-            cardSubtext: "Dialogs should be used for providing the user with quick prompt options where decisions should be made quickly. They should be used for actions that are not reversible, such as deleting an item.\n" +
-                "\n" +
-                "DialogActions should be used to provide the user with a set of actions to choose from. The actions should be clear and concise, and should be used to guide the user to the next step in the process.",
-            cardComponent: (
-                <Dialog   >
-                    <DialogTrigger>Open Dialog</DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>This is a dialog.</DialogTitle>
-                        </DialogHeader>
-                        <h2>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Quisquam exercitationem cumque repellendus eaque est dolor eius
-                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                            impedit voluptates in natus iure cumque eaque?
-                        </h2>
-                        <div className="flex flex-row justify-end">
-                            <DialogTrigger className="mr-2" size="default" variant="secondary">
-                                <Button variant={"secondary"}>
-                                    Deny
-                                </Button>
-                            </DialogTrigger>
-                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            ),
-        },
-        {
-            cardHeader: "Fluid Actions",
-            cardSubtext: "Use the fluid prop on the DialogActions component so that it spans the entire width of the dialog. This prop can be useful for having large number of actions.",
-            cardComponent: (
-                <Dialog   >
-                    <DialogTrigger>Open Dialog</DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>This is a dialog.</DialogTitle>
-                        </DialogHeader>
-                        <h2>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Quisquam exercitationem cumque repellendus eaque est dolor eius
-                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                            impedit voluptates in natus iure cumque eaque?
-                        </h2>
-                        <div className="flex flex-row justify-end">
-                            <DialogTrigger className="mr-2" size="default" variant="secondary">
-                                <Button variant={"secondary"}>
-                                    Deny
-                                </Button>
-                            </DialogTrigger>
-                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            ),
-        },
-        {
-            cardHeader: "No Focusable Element",
-            cardSubtext: " Dialog should always have at least one focusable element. Some accessibility issues might happen if no focusable element is provided, like this one caught in Talkback.\n" +
-                "\n" +
-                "In the case when there is no focusable element inside a Dialog the only way to close the Dialog would be clicking on the backdrop.",
-            cardComponent: (
-                <Dialog   >
-                    <DialogTrigger>Open Dialog</DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>This is a dialog.</DialogTitle>
-                        </DialogHeader>
-                        <h2>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Quisquam exercitationem cumque repellendus eaque est dolor eius
-                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                            impedit voluptates in natus iure cumque eaque?
-                        </h2>
-                        <div className="flex flex-row justify-end">
-                            <DialogTrigger className="mr-2" size="default" variant="secondary">
-                                <Button variant={"secondary"}>
-                                    Deny
-                                </Button>
-                            </DialogTrigger>
-                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            ),
-        },
-        {
-            cardHeader: "Change Focus",
-            cardSubtext: "Changing the default focused element can be done in an effect",
-            cardComponent: (
-                <Dialog   >
-                    <DialogTrigger>Open Dialog</DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>This is a dialog.</DialogTitle>
-                        </DialogHeader>
-                        <h2>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Quisquam exercitationem cumque repellendus eaque est dolor eius
-                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                            impedit voluptates in natus iure cumque eaque?
-                        </h2>
-                        <div className="flex flex-row justify-end">
-                            <DialogTrigger className="mr-2" size="default" variant="secondary">
-                                <Button variant={"secondary"}>
-                                    Deny
-                                </Button>
-                            </DialogTrigger>
-                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            ),
-        },
-        {
-            cardHeader: "Trigger Outside Dialog",
-            cardSubtext: " When using a Dialog without a DialogTrigger (or when using a DialogTrigger outside of a Dialog), it becomes your responsibility to control some of the dialog's behavior.You must make sure that the open state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by onOpenChange callback on Dialog component).You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the useRestoreFocusTarget hook, or by manually invoking .focus() on the target element).The example bellow showcases both explicit responsibilities:When using a Dialog without a DialogTrigger (or when using a DialogTrigger outside of a Dialog), it becomes your responsibility to control some of the dialog's behavior.You must make sure that the open state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by onOpenChange callback on Dialog component).You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the useRestoreFocusTarget hook, or by manually invoking .focus() on the target element). The example bellow showcases both explicit responsibilities",
-            cardComponent: (
-                <Dialog   >
-                    <DialogTrigger>Open Dialog</DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>This is a dialog.</DialogTitle>
-                        </DialogHeader>
-                        <h2>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Quisquam exercitationem cumque repellendus eaque est dolor eius
-                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                            impedit voluptates in natus iure cumque eaque?
-                        </h2>
-                        <div className="flex flex-row justify-end">
-                            <DialogTrigger className="mr-2" size="default" variant="secondary">
-                                <Button variant={"secondary"}>
-                                    Deny
-                                </Button>
-                            </DialogTrigger>
-                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            ),
-        },
-        {
-            cardHeader: "No Focusable Element",
-            cardSubtext: " Dialog should always have at least one focusable element. Some accessibility issues might happen if no focusable element is provided, like this one caught in Talkback.\n" +
-                "\n" +
-                "In the case when there is no focusable element inside a Dialog the only way to close the Dialog would be clicking on the backdrop.",
-            cardComponent: (
-                <Dialog   >
-                    <DialogTrigger>Open Dialog</DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>
-                            <DialogTitle>This is a dialog.</DialogTitle>
-                        </DialogHeader>
-                        <h2>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Quisquam exercitationem cumque repellendus eaque est dolor eius
-                            expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                            impedit voluptates in natus iure cumque eaque?
-                        </h2>
-                        <div className="flex flex-row justify-end">
-                            <DialogTrigger className="mr-2" size="default" variant="secondary">
-                                <Button variant={"secondary"}>
-                                    Deny
-                                </Button>
-                            </DialogTrigger>
-                            <DialogTrigger className=""> <Button variant={"primary"}>Agree</Button></DialogTrigger>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-            ),
-        },
+      {
+        cardHeader: "Scrolling Long Content",
+        cardSubtext:
+          "By default DialogContent should grow until it fits viewport size, overflowed content will be scrollable",
+        cardComponent: (
+          <Dialog>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
+              </h2>
+              <div className="flex flex-row justify-end">
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
+                </DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+      },
+      {
+        cardHeader: "Actions",
+        cardSubtext:
+          "Dialogs should be used for providing the user with quick prompt options where decisions should be made quickly. They should be used for actions that are not reversible, such as deleting an item.\n" +
+          "\n" +
+          "DialogActions should be used to provide the user with a set of actions to choose from. The actions should be clear and concise, and should be used to guide the user to the next step in the process.",
+        cardComponent: (
+          <Dialog>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
+              </h2>
+              <div className="flex flex-row justify-end">
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
+                </DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+      },
+      {
+        cardHeader: "Fluid Actions",
+        cardSubtext:
+          "Use the fluid prop on the DialogActions component so that it spans the entire width of the dialog. This prop can be useful for having large number of actions.",
+        cardComponent: (
+          <Dialog>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
+              </h2>
+              <div className="flex flex-row justify-end">
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
+                </DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+      },
+      {
+        cardHeader: "No Focusable Element",
+        cardSubtext:
+          " Dialog should always have at least one focusable element. Some accessibility issues might happen if no focusable element is provided, like this one caught in Talkback.\n" +
+          "\n" +
+          "In the case when there is no focusable element inside a Dialog the only way to close the Dialog would be clicking on the backdrop.",
+        cardComponent: (
+          <Dialog>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
+              </h2>
+              <div className="flex flex-row justify-end">
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
+                </DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+      },
+      {
+        cardHeader: "Change Focus",
+        cardSubtext:
+          "Changing the default focused element can be done in an effect",
+        cardComponent: (
+          <Dialog>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
+              </h2>
+              <div className="flex flex-row justify-end">
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
+                </DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+      },
+      {
+        cardHeader: "Trigger Outside Dialog",
+        cardSubtext:
+          " When using a Dialog without a DialogTrigger (or when using a DialogTrigger outside of a Dialog), it becomes your responsibility to control some of the dialog's behavior.You must make sure that the open state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by onOpenChange callback on Dialog component).You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the useRestoreFocusTarget hook, or by manually invoking .focus() on the target element).The example bellow showcases both explicit responsibilities:When using a Dialog without a DialogTrigger (or when using a DialogTrigger outside of a Dialog), it becomes your responsibility to control some of the dialog's behavior.You must make sure that the open state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by onOpenChange callback on Dialog component).You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the useRestoreFocusTarget hook, or by manually invoking .focus() on the target element). The example bellow showcases both explicit responsibilities",
+        cardComponent: (
+          <Dialog>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
+              </h2>
+              <div className="flex flex-row justify-end">
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
+                </DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+      },
+      {
+        cardHeader: "No Focusable Element",
+        cardSubtext:
+          " Dialog should always have at least one focusable element. Some accessibility issues might happen if no focusable element is provided, like this one caught in Talkback.\n" +
+          "\n" +
+          "In the case when there is no focusable element inside a Dialog the only way to close the Dialog would be clicking on the backdrop.",
+        cardComponent: (
+          <Dialog>
+            <DialogTrigger>Open Dialog</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>This is a dialog.</DialogTitle>
+              </DialogHeader>
+              <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam exercitationem cumque repellendus eaque est dolor eius
+                expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                impedit voluptates in natus iure cumque eaque?
+              </h2>
+              <div className="flex flex-row justify-end">
+                <DialogTrigger
+                  className="mr-2"
+                  size="default"
+                  variant="secondary"
+                >
+                  <Button variant={"secondary"}>Deny</Button>
+                </DialogTrigger>
+                <DialogTrigger className="">
+                  {" "}
+                  <Button variant={"primary"}>Agree</Button>
+                </DialogTrigger>
+              </div>
+            </DialogContent>
+          </Dialog>
+        ),
+      },
     ],
   },
   {
@@ -1535,22 +1584,37 @@ tags
         cardSubtext: "",
         cardComponent: <Slider size={"sm"} step={1} />,
       },
-        {
-            cardHeader: "Step",
-            cardSubtext: "You can define the step value of a slider so that the value will always be a multiple of that step",
-            cardComponent: <Slider size={"sm"}  step={25} />,
-        },
-        {
-            cardHeader: "Min Max",
-            cardSubtext: "A slider with min and max values displayed",
-            cardComponent:<div className={"flex flex-row"}>  <h2 className={"mr-1"}>Min: 10</h2>  <Slider className={"w-[40vw]"} size={"sm"}  step={10}  /> <h2 className={"flex flex-row  ml-1"}>Max: 100</h2> </div>,
-        },
-        {
-            cardHeader: "Disabled",
-            cardSubtext: "A disabled slider will not change or fire events on click or keyboard press.",
-            cardComponent: <Slider disabled={true} className={"w-[40vw]"} size={"sm"}  step={10}  />,
-        },
-
+      {
+        cardHeader: "Step",
+        cardSubtext:
+          "You can define the step value of a slider so that the value will always be a multiple of that step",
+        cardComponent: <Slider size={"sm"} step={25} />,
+      },
+      {
+        cardHeader: "Min Max",
+        cardSubtext: "A slider with min and max values displayed",
+        cardComponent: (
+          <div className={"flex flex-row"}>
+            {" "}
+            <h2 className={"mr-1"}>Min: 10</h2>{" "}
+            <Slider className={"w-[40vw]"} size={"sm"} step={10} />{" "}
+            <h2 className={"ml-1 flex  flex-row"}>Max: 100</h2>{" "}
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Disabled",
+        cardSubtext:
+          "A disabled slider will not change or fire events on click or keyboard press.",
+        cardComponent: (
+          <Slider
+            disabled={true}
+            className={"w-[40vw]"}
+            size={"sm"}
+            step={10}
+          />
+        ),
+      },
     ],
   },
   {
@@ -2134,122 +2198,139 @@ tags
     cards: [
       {
         cardHeader: "Appearance",
-        cardSubtext: "Textarea can have different appearances. The colors adjacent to the Textarea should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide a contrast ratio greater than 3 to 1 against the immediate surrounding color to pass accessibility requirement.",
+        cardSubtext:
+          "Textarea can have different appearances. The colors adjacent to the Textarea should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide a contrast ratio greater than 3 to 1 against the immediate surrounding color to pass accessibility requirement.",
         cardComponent: (
-            <div className={"flex flex-col "}>
-                <h2>A Textarea with a Outline Appearance</h2>
-          <Textarea
+          <div className={"flex flex-col "}>
+            <h2>A Textarea with a Outline Appearance</h2>
+            <Textarea
               variant={"outline"}
-            error={false}
-            className="font-bold text-black dark:text-white"
-            labelText="TextArea"/>
-                <h2>A Textarea with a Filled Dark Appearance</h2>
-                <Textarea
-                    variant={"filledDark"}
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"/>
-                <h2>Textarea with a Filled Light Appearance </h2>
-                <Textarea
-                    variant={"filledLight"}
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"/>
-
-            </div>
-
+              error={true}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+            />
+            <h2>A Textarea with a Filled Dark Appearance</h2>
+            <Textarea
+              variant={"filledDark"}
+              error={false}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+            />
+            <h2>Textarea with a Filled Light Appearance </h2>
+            <Textarea
+              variant={"filledLight"}
+              error={false}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+            />
+          </div>
         ),
       },
-        {
-            cardHeader: "Disabled",
-            cardSubtext: "",
-            cardComponent: (
-                <Textarea
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"
-                />
-            ),
-        },
-        {
-            cardHeader: "Uncontrolled",
-            cardSubtext: "",
-            cardComponent: (
-                <Textarea
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"
-                />
-            ),
-        },
-        {
-            cardHeader: "Controlled",
-            cardSubtext: "",
-            cardComponent: (
-                <Textarea
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"
-                />
-            ),
-        },
-        {
-            cardHeader: "Resize",
-            cardSubtext: "",
-            cardComponent: (
-                <div>
-                <Textarea
-                    error={false}
-                    size={"sm"}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"
-                />
-                    <Textarea
-                        error={false}
-                        className="font-bold text-black dark:text-white"
-                        labelText="TextArea"
-                    />
-                    <Textarea
-                        error={false}
-                        className="font-bold text-black dark:text-white"
-                        labelText="TextArea"
-                    />
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Size",
-            cardSubtext: "",
-            cardComponent: (
-                <Textarea
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"
-                />
-            ),
-        },
-        {
-            cardHeader: "Placeholder",
-            cardSubtext: "",
-            cardComponent: (
-                <Textarea
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"
-                />
-            ),
-        },
-        {
-            cardHeader: "Placeholder",
-            cardSubtext: "",
-            cardComponent: (
-                <Textarea
-                    error={false}
-                    className="font-bold text-black dark:text-white"
-                    labelText="TextArea"
-                />
-            ),
-        },
+      {
+        cardHeader: "Disabled",
+        cardSubtext: "",
+        cardComponent: (
+          <Textarea
+            error={false}
+            className="font-bold text-black dark:text-white"
+            labelText="TextArea"
+          />
+        ),
+      },
+      {
+        cardHeader: "Uncontrolled",
+        cardSubtext: "",
+        cardComponent: (
+          <Textarea
+            error={false}
+            className="font-bold text-black dark:text-white"
+            labelText="TextArea"
+          />
+        ),
+      },
+      {
+        cardHeader: "Controlled",
+        cardSubtext: "",
+        cardComponent: (
+          <Textarea
+            error={false}
+            className="font-bold text-black dark:text-white"
+            labelText="TextArea"
+          />
+        ),
+      },
+      {
+        cardHeader: "Resize",
+        cardSubtext: "",
+        cardComponent: (
+          <div>
+            <Textarea
+              error={false}
+              size={"sm"}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+            />
+            <Textarea
+              error={false}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+            />
+            <Textarea
+              error={false}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+            />
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Size",
+        cardSubtext: "",
+        cardComponent: (
+          <>
+            <Textarea
+              error={false}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+              size="sm"
+            />
+            <Textarea
+              error={false}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+              size="md"
+            />
+            <Textarea
+              error={false}
+              className="font-bold text-black dark:text-white"
+              labelText="TextArea"
+              size="lg"
+            />
+          </>
+        ),
+      },
+      {
+        cardHeader: "Placeholder",
+        cardSubtext: "",
+        cardComponent: (
+          <Textarea
+            error={false}
+            className="font-bold text-black dark:text-white"
+            labelText="TextArea"
+          />
+        ),
+      },
+      {
+        cardHeader: "Placeholder",
+        cardSubtext: "",
+        cardComponent: (
+          <Textarea
+            error={false}
+            className="font-bold text-black dark:text-white"
+            labelText="TextArea"
+          />
+        ),
+      },
     ],
   },
   {
@@ -2259,7 +2340,8 @@ tags
     cards: [
       {
         cardHeader: "Default",
-        cardSubtext: "This is the default radiogroup component provided by fluent2",
+        cardSubtext:
+          "This is the default radiogroup component provided by fluent2",
         cardComponent: (
           <RadioGroup defaultValue="1">
             <div className="flex items-center space-x-2">
@@ -2278,100 +2360,103 @@ tags
         ),
       },
 
-        {
-            cardComponent: (
-                <div>
-                    <h2 className={"font-extrabold"}>Layout</h2>
-                    <h2>
-                        This component has layout options, you can either have it as a
-                        horizontal radio group, or as a vertical radio group, you can take
-                        advantage of this to{" "}
-                    </h2>
-                </div>
-            ),
-        },
+      {
+        cardComponent: (
+          <div>
+            <h2 className={"font-extrabold"}>Layout</h2>
+            <h2>
+              This component has layout options, you can either have it as a
+              horizontal radio group, or as a vertical radio group, you can take
+              advantage of this to{" "}
+            </h2>
+          </div>
+        ),
+      },
 
-        {
-            cardHeader: "Default Value",
-            cardSubtext: "The initially selected item can be set by setting the defaultValue of RadioGroup. Alternatively, one Radio item can have defaultChecked set. Both methods have the same effect, but only one should be used in a given RadioGroup.",
-            cardComponent: (
-                <RadioGroup defaultValue="4">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="4" id="r4" />
-                        <Label htmlFor="r4">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="5" id="r5" />
-                        <Label htmlFor="r5">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="6" id="r6" />
-                        <Label htmlFor="r6">Example 3</Label>
-                    </div>
-                </RadioGroup>
-            ),
-        },
+      {
+        cardHeader: "Default Value",
+        cardSubtext:
+          "The initially selected item can be set by setting the defaultValue of RadioGroup. Alternatively, one Radio item can have defaultChecked set. Both methods have the same effect, but only one should be used in a given RadioGroup.",
+        cardComponent: (
+          <RadioGroup defaultValue="4">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="4" id="r4" />
+              <Label htmlFor="r4">Example 1</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="5" id="r5" />
+              <Label htmlFor="r5">Example 2</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="6" id="r6" />
+              <Label htmlFor="r6">Example 3</Label>
+            </div>
+          </RadioGroup>
+        ),
+      },
 
-        {
-            cardHeader: "Required",
-            cardSubtext: "Use the required prop to indicate that one of the radio items must be selected. Or, if the RadioGroup is inside a Field, it will inherit the required prop from the Field.",
-            cardComponent: (
-                <RadioGroup required={true} defaultValue="10">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="10" id="r10" />
-                        <Label htmlFor="r10">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="11" id="r11" />
-                        <Label htmlFor="r11">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="12" id="r12" />
-                        <Label htmlFor="r12">Example 3</Label>
-                    </div>
- </RadioGroup>
- ),
- },
-        {
-            cardHeader: "Disabled",
-            cardSubtext: "RadioGroup can be disabled, which disables all Radio Items inside.",
-            cardComponent: (
-                <RadioGroup disabled={true} defaultValue="13">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="13" id="r13" />
-                        <Label htmlFor="r13">Example 1</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="14" id="r14" />
-                        <Label htmlFor="r14">Example 2</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem  value="15" id="r15" />
-                        <Label htmlFor="r15">Example 3</Label>
-                    </div>
-                </RadioGroup>
-            ),
-        },
-        {
-            cardHeader: "Disabled Item",
-            cardSubtext: "Radio Items can be disabled manually and individually",
-            cardComponent: (
-                <RadioGroup defaultValue="16">
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem disabled={true} value="2" id="r16" />
-                        <Label htmlFor="r16">Example 1 - Disabled</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="17" id="r17" />
-                        <Label htmlFor="r17">Example 2</Label>
-                    </div>
-                    <div  className="flex items-center space-x-2">
-                        <RadioGroupItem disabled={true} value="18" id="r18" />
-                        <Label htmlFor="r18">Example 3 - Disabled</Label>
-                    </div>
-                </RadioGroup>
-            ),
-        },
+      {
+        cardHeader: "Required",
+        cardSubtext:
+          "Use the required prop to indicate that one of the radio items must be selected. Or, if the RadioGroup is inside a Field, it will inherit the required prop from the Field.",
+        cardComponent: (
+          <RadioGroup required={true} defaultValue="10">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="10" id="r10" />
+              <Label htmlFor="r10">Example 1</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="11" id="r11" />
+              <Label htmlFor="r11">Example 2</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="12" id="r12" />
+              <Label htmlFor="r12">Example 3</Label>
+            </div>
+          </RadioGroup>
+        ),
+      },
+      {
+        cardHeader: "Disabled",
+        cardSubtext:
+          "RadioGroup can be disabled, which disables all Radio Items inside.",
+        cardComponent: (
+          <RadioGroup disabled={true} defaultValue="13">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="13" id="r13" />
+              <Label htmlFor="r13">Example 1</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="14" id="r14" />
+              <Label htmlFor="r14">Example 2</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="15" id="r15" />
+              <Label htmlFor="r15">Example 3</Label>
+            </div>
+          </RadioGroup>
+        ),
+      },
+      {
+        cardHeader: "Disabled Item",
+        cardSubtext: "Radio Items can be disabled manually and individually",
+        cardComponent: (
+          <RadioGroup defaultValue="16">
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem disabled={true} value="2" id="r16" />
+              <Label htmlFor="r16">Example 1 - Disabled</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="17" id="r17" />
+              <Label htmlFor="r17">Example 2</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem disabled={true} value="18" id="r18" />
+              <Label htmlFor="r18">Example 3 - Disabled</Label>
+            </div>
+          </RadioGroup>
+        ),
+      },
     ],
   },
   {
@@ -2622,46 +2707,61 @@ tags
         cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
-            <InfoLabel size={"lg"}>This is an example of a InfoLabel </InfoLabel>
+            <InfoLabel size={"lg"}>
+              This is an example of a InfoLabel{" "}
+            </InfoLabel>
           </div>
         ),
       },
-        {
-            cardHeader: "Required",
-            cardSubtext: "When marked required, the indicator asterisk is placed before the InfoButton.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <InfoLabel size={"lg"}>This is an example of a Required InfoLabel <h2 className={"text-red-500 "}>*</h2> </InfoLabel>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Size",
-            cardSubtext: "InfoLabel's size prop affects the size of the Label and InfoButton. The default size is medium.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <InfoLabel size={"lg"}>This is an example of a Required InfoLabel <h2 className={"text-red-500 "}>*</h2> </InfoLabel>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "In a Field",
-            cardSubtext: "An InfoLabel can be used in a Field by rendering the label prop as an InfoLabel. This uses the slot render function support. See the code from this story for an example.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <InfoLabel size={"lg"}>This is an example of a Field With an Info Label</InfoLabel>
-                    <Input placeholder={"Input email here!"}></Input>
-                </div>
-            ),
-        },
-
-
-
+      {
+        cardHeader: "Required",
+        cardSubtext:
+          "When marked required, the indicator asterisk is placed before the InfoButton.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <InfoLabel size={"lg"}>
+              This is an example of a Required InfoLabel{" "}
+              <h2 className={"text-red-500 "}>*</h2>{" "}
+            </InfoLabel>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Size",
+        cardSubtext:
+          "InfoLabel's size prop affects the size of the Label and InfoButton. The default size is medium.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <InfoLabel size={"lg"}>
+              This is an example of a Required InfoLabel{" "}
+              <h2 className={"text-red-500 "}>*</h2>{" "}
+            </InfoLabel>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "In a Field",
+        cardSubtext:
+          "An InfoLabel can be used in a Field by rendering the label prop as an InfoLabel. This uses the slot render function support. See the code from this story for an example.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <InfoLabel size={"lg"}>
+              This is an example of a Field With an Info Label
+            </InfoLabel>
+            <Input placeholder={"Input email here!"}></Input>
+          </div>
+        ),
+      },
     ],
   },
   {
     header: "Menu",
-    subText: <>A menu displays a list of actions. The Menu component handles the state management of the passed in list of actions.</>,
+    subText: (
+      <>
+        A menu displays a list of actions. The Menu component handles the state
+        management of the passed in list of actions.
+      </>
+    ),
     cards: [
       {
         cardHeader: "Default",
@@ -2686,314 +2786,333 @@ tags
           </div>
         ),
       },
-        {
-            cardHeader: "Interaction",
-            cardSubtext: "Each sub component of the Menu that renders DOM elements can be assigned HTML event listeners. You can simply add an onClick listener to individual MenuItem without needing to control the entire component. Special handling is required for checkboxes and radio items inside a Menu, read the further examples below to see how to handle those variants.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>Edit content</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    <ScissorsIcon size={18}/> Cut <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem><Copy16Filled/> Copy <MenubarShortcut>⌘C</MenubarShortcut> </MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem> <ClipboardPasteIcon size={15}/>Paste <MenubarShortcut>⌘V</MenubarShortcut> </MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Menu Item Link Navigation",
-            cardSubtext: "To implement a navigation menu, simply use the MenuItemLink component that provides the correct semantics for link based navigation.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Menu Items With Icons",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Aligning With Icons",
-            cardSubtext: "The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Aligning With Selectable Items",
-            cardSubtext: "The hasCheckmarks prop will align menu items if only a subset of menu items are selectable.\n",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Secondary Content For Menu Items",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Controlling Open And Close",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Grouping Items",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Visual Divider Only",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Checkbox Items",
-            cardSubtext: "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
-                "\n" +
-                "<input type=\"checkbox\" name=\"name\" value=\"value\" />",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Switch Item",
-            cardSubtext: "A variant of MenuItemCheckbox that displays selection using a switch design. This is commonly used for menus that don't really have strong selection function but needs to support an exceptional selected option.",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Radio Items",
-            cardSubtext: "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
-                "\n" +
-                "<input type=\"checkbox\" name=\"name\" value=\"value\" />",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },{
-            cardHeader: "Checkbox Items",
-            cardSubtext: "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
-                "\n" +
-                "<input type=\"checkbox\" name=\"name\" value=\"value\" />",
-            cardComponent: (
-                <div className="flex gap-2">
-                    <Menubar onValueChange={(e) => console.log(e)}>
-                        <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
-                            <MenubarContent>
-                                <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-                                </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
-                            </MenubarContent>
-                        </MenubarMenu>
-                    </Menubar>
-                </div>
-            ),
-        },
-
+      {
+        cardHeader: "Interaction",
+        cardSubtext:
+          "Each sub component of the Menu that renders DOM elements can be assigned HTML event listeners. You can simply add an onClick listener to individual MenuItem without needing to control the entire component. Special handling is required for checkboxes and radio items inside a Menu, read the further examples below to see how to handle those variants.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>Edit content</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    <ScissorsIcon size={18} /> Cut{" "}
+                    <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>
+                    <Copy16Filled /> Copy <MenubarShortcut>⌘C</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>
+                    <ClipboardPasteIcon size={15} />
+                    Paste <MenubarShortcut>⌘V</MenubarShortcut>
+                  </MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Menu Item Link Navigation",
+        cardSubtext:
+          "To implement a navigation menu, simply use the MenuItemLink component that provides the correct semantics for link based navigation.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Menu Items With Icons",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Aligning With Icons",
+        cardSubtext:
+          "The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.The hasIcons prop will align menu items if only a subset of menu items contain an icon. When separation of menu items is only for visual aesthetics, the MenuDivider component can be used by itself as it has no accessible markup features.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Aligning With Selectable Items",
+        cardSubtext:
+          "The hasCheckmarks prop will align menu items if only a subset of menu items are selectable.\n",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Secondary Content For Menu Items",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Controlling Open And Close",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Grouping Items",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Visual Divider Only",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Checkbox Items",
+        cardSubtext:
+          "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
+          "\n" +
+          '<input type="checkbox" name="name" value="value" />',
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Switch Item",
+        cardSubtext:
+          "A variant of MenuItemCheckbox that displays selection using a switch design. This is commonly used for menus that don't really have strong selection function but needs to support an exceptional selected option.",
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Radio Items",
+        cardSubtext:
+          "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
+          "\n" +
+          '<input type="checkbox" name="name" value="value" />',
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Checkbox Items",
+        cardSubtext:
+          "A variant of MenuItem that handles checkbox like selection. The name and value props are are used similar to HTML checkboxes with input\n" +
+          "\n" +
+          '<input type="checkbox" name="name" value="value" />',
+        cardComponent: (
+          <div className="flex gap-2">
+            <Menubar onValueChange={(e) => console.log(e)}>
+              <MenubarMenu value={"share"}>
+                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarContent>
+                  <MenubarItem>
+                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                  </MenubarItem>
+                  <MenubarItem>New Window</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Share</MenubarItem>
+                  <MenubarSeparator />
+                  <MenubarItem>Print</MenubarItem>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
+          </div>
+        ),
+      },
     ],
   },
   {
     header: "Link",
-    subText: <>Links allow users to navigate between different locations. They can be used as standalone controls or inline with text.</>,
+    subText: (
+      <>
+        Links allow users to navigate between different locations. They can be
+        used as standalone controls or inline with text.
+      </>
+    ),
     cards: [
       {
         cardHeader: "",
@@ -3011,66 +3130,74 @@ tags
         ),
       },
 
-        {
-            cardHeader: "Appearance",
-            cardSubtext: "",
+      {
+        cardHeader: "Appearance",
+        cardSubtext: "",
 
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Link href="#" variant="subtle">
-                        A Subtle Link
-                    </Link>
-                </div>
-            ),
-        },  {
-            cardHeader: "Inline",
-            cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Link href="#" variant="subtle">
+              A Subtle Link
+            </Link>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Inline",
+        cardSubtext: "",
 
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Link href="#">Link default</Link>
-                    <Link href="#" variant="subtle">
-                        <Link target={"_blank"} href={"https://youtube.com"}>Youtube</Link>
-                    </Link>
-                </div>
-            ),
-        },  {
-            cardHeader: "Appearance",
-            cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Link href="#">Link default</Link>
+            <Link href="#" variant="subtle">
+              <Link target={"_blank"} href={"https://youtube.com"}>
+                Youtube
+              </Link>
+            </Link>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Appearance",
+        cardSubtext: "",
 
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Link href="#">Link default</Link>
-                    <Link href="#" variant="subtle">
-                        <Link target={"_blank"} href={"https://youtube.com"}>Youtube</Link>
-                    </Link>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "As Button",
-            cardSubtext: "When the href property is not provided, the component is rendered as html <button>",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Link href="#">Link default</Link>
+            <Link href="#" variant="subtle">
+              <Link target={"_blank"} href={"https://youtube.com"}>
+                Youtube
+              </Link>
+            </Link>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "As Button",
+        cardSubtext:
+          "When the href property is not provided, the component is rendered as html <button>",
 
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Link href="#" variant="subtle">
-                        A Subtle Link
-                    </Link>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "As Span",
-            cardSubtext: "A Link can be rendered as an html <span>, in which case it will have role=\"button\" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Link href="#" variant="subtle">
+              A Subtle Link
+            </Link>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "As Span",
+        cardSubtext:
+          'A Link can be rendered as an html <span>, in which case it will have role="button" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.',
 
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Link href="#" variant="subtle">
-                        A Subtle Link
-                    </Link>
-                </div>
-            ),
-        },
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Link href="#" variant="subtle">
+              A Subtle Link
+            </Link>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -3106,64 +3233,64 @@ tags
           </div>
         ),
       },
-        {
-            cardHeader: "Toast Location ",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                title: "Toast Generated ",
-                                description: "Location: Top-Right (Default)",
-                                action: (
-                                    <div className="flex gap-4">
-                                        <ToastAction altText="Goto schedule to undo">
-                                            Undo
-                                        </ToastAction>{" "}
-                                        <ToastAction altText="Goto schedule to undo">
-                                            Undo
-                                        </ToastAction>
-                                    </div>
-                                ),
-                            })
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "",
-            cardSubtext: "",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                title: "Scheduled: Catch up ",
-                                description: "Friday, February 10, 2023 at 5:57 PM",
-                                action: (
-                                    <div className="flex gap-4">
-                                        <ToastAction altText="Goto schedule to undo">
-                                            Undo
-                                        </ToastAction>{" "}
-                                        <ToastAction altText="Goto schedule to undo">
-                                            Undo
-                                        </ToastAction>
-                                    </div>
-                                ),
-                            })
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        }
+      {
+        cardHeader: "Toast Location ",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  title: "Toast Generated ",
+                  description: "Location: Top-Right (Default)",
+                  action: (
+                    <div className="flex gap-4">
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>{" "}
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </div>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <div className="flex gap-4">
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>{" "}
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </div>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
     ],
   },
   {
@@ -3193,8 +3320,7 @@ tags
                       </ToastAction>
                     </>
                   ),
-                }
-                )
+                })
               }}
             >
               Add to calendar
@@ -3202,236 +3328,235 @@ tags
           </div>
         ),
       },
-        {
-            cardHeader: "Intent",
-            cardSubtext: "MessageBar components come built-in with preset intents that determine the design and aria live announcement, While it is recommended to use the preset intents, it's possible to configure the aria live politeness with the politeness prop.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                    messageBar: true,
-                                    variant: "error",
-                                    title: "Scheduled: Catch up ",
-                                    description: "Friday, February 10, 2023 at 5:57 PM",
-                                    action: (
-                                        <>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                        </>
-                                    ),
-                                }
-                            )
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Shape",
-            cardSubtext: "MessageBar can have either rounded or square corners, please follow the usage guidance for these shapes:\n" +
-                "\n" +
-                "    rounded used for component level message bars\n" +
-                "    square used for page/app level message bars",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                    messageBar: true,
-                                    variant: "error",
-                                    title: "Scheduled: Catch up ",
-                                    description: "Friday, February 10, 2023 at 5:57 PM",
-                                    action: (
-                                        <>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                        </>
-                                    ),
-                                }
-                            )
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Actions",
-            cardSubtext: "The MessageBar can have different actions.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                    messageBar: true,
-                                    variant: "error",
-                                    title: "Scheduled: Catch up ",
-                                    description: "Friday, February 10, 2023 at 5:57 PM",
-                                    action: (
-                                        <>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                        </>
-                                    ),
-                                }
-                            )
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Dismiss",
-            cardSubtext: "MessageBar components should be used in a MessageBarGroup when possible to enable exit animations. Once inside a MessageBarGroup component, the default exit animation will trigger automatically when the component is unmounted from DOM.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                    messageBar: true,
-                                    variant: "error",
-                                    title: "Scheduled: Catch up ",
-                                    description: "Friday, February 10, 2023 at 5:57 PM",
-                                    action: (
-                                        <>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                        </>
-                                    ),
-                                }
-                            )
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Animation",
-            cardSubtext: "Enter animations are also handled within the MessageBarGroup. However avoid entry animations for MessageBar components on page load. However, MessageBar components that are mounted during the lifecycle of an app can use enter animations.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                    messageBar: true,
-                                    variant: "error",
-                                    title: "Scheduled: Catch up ",
-                                    description: "Friday, February 10, 2023 at 5:57 PM",
-                                    action: (
-                                        <>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                        </>
-                                    ),
-                                }
-                            )
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Reflow",
-            cardSubtext: "The MessageBar will reflow by default once the body content wraps to a second line. This changes the layout of the actions in the MessageBar.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                    messageBar: true,
-                                    variant: "error",
-                                    title: "Scheduled: Catch up ",
-                                    description: "Friday, February 10, 2023 at 5:57 PM",
-                                    action: (
-                                        <>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                        </>
-                                    ),
-                                }
-                            )
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
-        {
-            cardHeader: "Manual Layout",
-            cardSubtext: "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
-            cardComponent: (
-                <div className="flex flex-col gap-2">
-                    <Button
-                        variant="outline"
-                        onClick={() => {
-                            toast({
-                                    messageBar: true,
-                                    variant: "error",
-                                    title: "Scheduled: Catch up ",
-                                    description: "Friday, February 10, 2023 at 5:57 PM",
-                                    action: (
-                                        <>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                            <ToastAction altText="Goto schedule to undo">
-                                                Undo
-                                            </ToastAction>
-                                        </>
-                                    ),
-                                }
-                            )
-                        }}
-                    >
-                        Add to calendar
-                    </Button>
-                </div>
-            ),
-        },
+      {
+        cardHeader: "Intent",
+        cardSubtext:
+          "MessageBar components come built-in with preset intents that determine the design and aria live announcement, While it is recommended to use the preset intents, it's possible to configure the aria live politeness with the politeness prop.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  messageBar: true,
+                  variant: "error",
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Shape",
+        cardSubtext:
+          "MessageBar can have either rounded or square corners, please follow the usage guidance for these shapes:\n" +
+          "\n" +
+          "    rounded used for component level message bars\n" +
+          "    square used for page/app level message bars",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  messageBar: true,
+                  variant: "error",
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Actions",
+        cardSubtext: "The MessageBar can have different actions.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  messageBar: true,
+                  variant: "error",
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Dismiss",
+        cardSubtext:
+          "MessageBar components should be used in a MessageBarGroup when possible to enable exit animations. Once inside a MessageBarGroup component, the default exit animation will trigger automatically when the component is unmounted from DOM.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  messageBar: true,
+                  variant: "error",
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Animation",
+        cardSubtext:
+          "Enter animations are also handled within the MessageBarGroup. However avoid entry animations for MessageBar components on page load. However, MessageBar components that are mounted during the lifecycle of an app can use enter animations.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  messageBar: true,
+                  variant: "error",
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Reflow",
+        cardSubtext:
+          "The MessageBar will reflow by default once the body content wraps to a second line. This changes the layout of the actions in the MessageBar.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  messageBar: true,
+                  variant: "error",
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Manual Layout",
+        cardSubtext:
+          "It's possible to opt out of automatic reflow with the layout prop. This can be useful if an application has an existing responsive design mechanism.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                toast({
+                  messageBar: true,
+                  variant: "error",
+                  title: "Scheduled: Catch up ",
+                  description: "Friday, February 10, 2023 at 5:57 PM",
+                  action: (
+                    <>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                      <ToastAction altText="Goto schedule to undo">
+                        Undo
+                      </ToastAction>
+                    </>
+                  ),
+                })
+              }}
+            >
+              Add to calendar
+            </Button>
+          </div>
+        ),
+      },
     ],
   },
-    ,
+  ,
 ] as const
 
 export const sideBar = {
@@ -3439,22 +3564,3 @@ export const sideBar = {
   Theme: ["1", "2"].sort(),
   Components: components.map((component) => component.header).sort(),
 } as const
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

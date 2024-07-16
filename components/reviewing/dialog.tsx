@@ -84,13 +84,7 @@ const DialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex",
-      className
-    )}
-    {...props}
-  />
+  <div className={cn("flex", className)} {...props} />
 )
 DialogHeader.displayName = "DialogHeader"
 

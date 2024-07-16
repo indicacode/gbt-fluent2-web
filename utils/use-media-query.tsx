@@ -5,6 +5,7 @@ import { useCallbackRef } from "./use-callback-ref"
 export interface UseMediaQueryOptions {
   fallback?: boolean[]
   ssr?: boolean
+
   getWindow?(): typeof window
 }
 

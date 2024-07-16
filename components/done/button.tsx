@@ -24,7 +24,7 @@ const buttonVariants = tv({
       secondary:
         " bg-gray-200 text-black before:border-black hover:bg-gray-300 active:bg-gray-400 data-[disabled=true]:bg-[#F0F0F0] data-[selected=true]:before:bg-black",
       outline:
-         " border-2 border-brand-primary shadow-sm before:border-black active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black data-[disabled=true]:active:border-brand-primary " +
+        " border-2 border-brand-primary shadow-sm before:border-black active:border-slate-400 active:before:border-slate-400 data-[selected=true]:before:bg-black data-[disabled=true]:active:border-brand-primary " +
         " data-[disabled=false]:hover:bg-[#F5F5F5] dark:text-white dark:before:border-white data-[disabled=false]:dark:hover:bg-white/10",
       transparent:
         " bg-transparent active:before:bg-brand-primary data-[selected=true]:text-brand-primary data-[selected=true]:before:bg-brand-primary " +

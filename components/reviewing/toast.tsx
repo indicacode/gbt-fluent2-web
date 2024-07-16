@@ -48,15 +48,13 @@ const toastVariants = tv({
     toastIcon: "",
   },
   variants: {
-    location:{
+    location: {
       topright: "",
-      topleft:"",
+      topleft: "",
       topcenter: "",
-      bottomcenter:"",
-      bottomleft:"",
-      bottomright:""
-
-
+      bottomcenter: "",
+      bottomleft: "",
+      bottomright: "",
     },
     variant: {
       info: {
