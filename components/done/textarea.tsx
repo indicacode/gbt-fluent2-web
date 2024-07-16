@@ -14,7 +14,7 @@ const inputVariants = tv({
     root: " flex flex-col",
     label: " text-lg font-bold dark:text-slate-200",
     textarea:
-      " flex min-h-[60px] w-full resize-none text-clip rounded-md border border-slate-200 bg-transparent px-4 py-2 text-sm shadow-sm transition-colors duration-200 placeholder:text-slate-500 focus:border-b-blue-400 focus-visible:outline-none focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-200 dark:text-slate-200 dark:placeholder:text-slate-400 dark:focus-visible:ring-slate-300",
+      " flex  w-full resize-none text-clip rounded-md border border-slate-200 bg-transparent px-4 py-2 text-sm shadow-sm transition-colors duration-200 placeholder:text-slate-500 focus:border-b-blue-400 focus-visible:outline-none focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-200 dark:text-slate-200 dark:placeholder:text-slate-400 dark:focus-visible:ring-slate-300",
   },
   variants: {
     variant: {
@@ -24,9 +24,9 @@ const inputVariants = tv({
       filledLight: " dark:bg-white/90",
 },
     sizes:{
-      sm: " h-10  w-full",
-      md: " h-14 w-full",
-      lg: " h-18 w-full"
+      sm: " min-h-10  w-full",
+      md: " min-h-14 w-full",
+      lg: " min-h-18 w-full"
     },
       error: {
       true: "",

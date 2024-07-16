@@ -1,12 +1,13 @@
  import React, { ReactElement } from "react"
 import {
-  DocumentPdfRegular,
-  DocumentRegular,
-  EditRegular,
-  FolderRegular,
-  OpenRegular,
-  PeopleRegular,
-  VideoRegular,
+    Copy16Filled,
+    DocumentPdfRegular,
+    DocumentRegular,
+    EditRegular,
+    FolderRegular,
+    OpenRegular,
+    PeopleRegular,
+    VideoRegular,
 } from "@fluentui/react-icons"
 import { BsThreeDots } from "react-icons/bs"
 import {
@@ -97,6 +98,7 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
+ import {ClipboardPasteIcon, ScissorsIcon} from "lucide-react";
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -1065,7 +1067,7 @@ tags
             cardComponent: (
                 <div className={""}>
 
-                    <Drawer size={"small"} position="right">
+                    <Drawer size={"sm"} position="right">
                         <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                             Open small drawer
                         </DrawerTrigger>
@@ -2662,22 +2664,22 @@ tags
     subText: <>A menu displays a list of actions. The Menu component handles the state management of the passed in list of actions.</>,
     cards: [
       {
-        cardHeader: "",
+        cardHeader: "Default",
         cardSubtext: "",
         cardComponent: (
           <div className="flex gap-2">
             <Menubar onValueChange={(e) => console.log(e)}>
               <MenubarMenu value={"share"}>
-                <MenubarTrigger>File</MenubarTrigger>
+                <MenubarTrigger>Toggle Menu</MenubarTrigger>
                 <MenubarContent>
                   <MenubarItem>
-                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                    New <MenubarShortcut>⌘T</MenubarShortcut>
                   </MenubarItem>
                   <MenubarItem>New Window</MenubarItem>
                   <MenubarSeparator />
-                  <MenubarItem>Share</MenubarItem>
+                  <MenubarItem>Open File</MenubarItem>
                   <MenubarSeparator />
-                  <MenubarItem>Print</MenubarItem>
+                  <MenubarItem>Open Folder</MenubarItem>
                 </MenubarContent>
               </MenubarMenu>
             </Menubar>
@@ -2689,18 +2691,16 @@ tags
             cardSubtext: "Each sub component of the Menu that renders DOM elements can be assigned HTML event listeners. You can simply add an onClick listener to individual MenuItem without needing to control the entire component. Special handling is required for checkboxes and radio items inside a Menu, read the further examples below to see how to handle those variants.",
             cardComponent: (
                 <div className="flex gap-2">
-                    <Menubar varian onValueChange={(e) => console.log(e)}>
+                    <Menubar onValueChange={(e) => console.log(e)}>
                         <MenubarMenu value={"share"}>
-                            <MenubarTrigger>File</MenubarTrigger>
+                            <MenubarTrigger>Edit content</MenubarTrigger>
                             <MenubarContent>
                                 <MenubarItem>
-                                    New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                                    <ScissorsIcon size={18}/> Cut <MenubarShortcut>⌘T</MenubarShortcut>
                                 </MenubarItem>
-                                <MenubarItem>New Window</MenubarItem>
+                                <MenubarItem><Copy16Filled/> Copy <MenubarShortcut>⌘C</MenubarShortcut> </MenubarItem>
                                 <MenubarSeparator />
-                                <MenubarItem>Share</MenubarItem>
-                                <MenubarSeparator />
-                                <MenubarItem>Print</MenubarItem>
+                                <MenubarItem> <ClipboardPasteIcon size={15}/>Paste <MenubarShortcut>⌘V</MenubarShortcut> </MenubarItem>
                             </MenubarContent>
                         </MenubarMenu>
                     </Menubar>
@@ -3107,7 +3107,7 @@ tags
         ),
       },
         {
-            cardHeader: "",
+            cardHeader: "Toast Location ",
             cardSubtext: "",
             cardComponent: (
                 <div className="flex flex-col gap-2">
@@ -3115,8 +3115,8 @@ tags
                         variant="outline"
                         onClick={() => {
                             toast({
-                                title: "Scheduled: Catch up ",
-                                description: "Friday, February 10, 2023 at 5:57 PM",
+                                title: "Toast Generated ",
+                                description: "Location: Top-Right (Default)",
                                 action: (
                                     <div className="flex gap-4">
                                         <ToastAction altText="Goto schedule to undo">
