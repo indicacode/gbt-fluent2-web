@@ -2134,11 +2134,28 @@ tags
         cardHeader: "Appearance",
         cardSubtext: "Textarea can have different appearances. The colors adjacent to the Textarea should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide a contrast ratio greater than 3 to 1 against the immediate surrounding color to pass accessibility requirement.",
         cardComponent: (
+            <div className={"flex flex-col "}>
+                <h2>A Textarea with a Outline Appearance</h2>
           <Textarea
+              variant={"outline"}
             error={false}
             className="font-bold text-black dark:text-white"
-            labelText="TextArea"
-          />
+            labelText="TextArea"/>
+                <h2>A Textarea with a Filled Dark Appearance</h2>
+                <Textarea
+                    variant={"filledDark"}
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"/>
+                <h2>Textarea with a Filled Light Appearance </h2>
+                <Textarea
+                    variant={"filledLight"}
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"/>
+
+            </div>
+
         ),
       },
         {
@@ -2153,7 +2170,18 @@ tags
             ),
         },
         {
-            cardHeader: "Placeholder",
+            cardHeader: "Uncontrolled",
+            cardSubtext: "",
+            cardComponent: (
+                <Textarea
+                    error={false}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"
+                />
+            ),
+        },
+        {
+            cardHeader: "Controlled",
             cardSubtext: "",
             cardComponent: (
                 <Textarea
@@ -2167,6 +2195,30 @@ tags
             cardHeader: "Resize",
             cardSubtext: "",
             cardComponent: (
+                <div>
+                <Textarea
+                    error={false}
+                    size={"sm"}
+                    className="font-bold text-black dark:text-white"
+                    labelText="TextArea"
+                />
+                    <Textarea
+                        error={false}
+                        className="font-bold text-black dark:text-white"
+                        labelText="TextArea"
+                    />
+                    <Textarea
+                        error={false}
+                        className="font-bold text-black dark:text-white"
+                        labelText="TextArea"
+                    />
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Size",
+            cardSubtext: "",
+            cardComponent: (
                 <Textarea
                     error={false}
                     className="font-bold text-black dark:text-white"
@@ -2175,7 +2227,7 @@ tags
             ),
         },
         {
-            cardHeader: "Size",
+            cardHeader: "Placeholder",
             cardSubtext: "",
             cardComponent: (
                 <Textarea
@@ -3054,6 +3106,64 @@ tags
           </div>
         ),
       },
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Button
+                        variant="outline"
+                        onClick={() => {
+                            toast({
+                                title: "Scheduled: Catch up ",
+                                description: "Friday, February 10, 2023 at 5:57 PM",
+                                action: (
+                                    <div className="flex gap-4">
+                                        <ToastAction altText="Goto schedule to undo">
+                                            Undo
+                                        </ToastAction>{" "}
+                                        <ToastAction altText="Goto schedule to undo">
+                                            Undo
+                                        </ToastAction>
+                                    </div>
+                                ),
+                            })
+                        }}
+                    >
+                        Add to calendar
+                    </Button>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
+                <div className="flex flex-col gap-2">
+                    <Button
+                        variant="outline"
+                        onClick={() => {
+                            toast({
+                                title: "Scheduled: Catch up ",
+                                description: "Friday, February 10, 2023 at 5:57 PM",
+                                action: (
+                                    <div className="flex gap-4">
+                                        <ToastAction altText="Goto schedule to undo">
+                                            Undo
+                                        </ToastAction>{" "}
+                                        <ToastAction altText="Goto schedule to undo">
+                                            Undo
+                                        </ToastAction>
+                                    </div>
+                                ),
+                            })
+                        }}
+                    >
+                        Add to calendar
+                    </Button>
+                </div>
+            ),
+        }
     ],
   },
   {
@@ -3329,3 +3439,22 @@ export const sideBar = {
   Theme: ["1", "2"].sort(),
   Components: components.map((component) => component.header).sort(),
 } as const
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,43 +6,49 @@ export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   labelText: string
   error: boolean
+  
 }
 
 const inputVariants = tv({
   slots: {
-    root: "flex flex-col",
-    label: "text-lg font-bold dark:text-slate-200",
+    root: " flex flex-col",
+    label: " text-lg font-bold dark:text-slate-200",
     textarea:
-      "flex min-h-[60px] w-full resize-none text-clip rounded-md border border-slate-200 bg-transparent px-4 py-2 text-sm shadow-sm transition-colors duration-200 placeholder:text-slate-500 focus:border-b-blue-400 focus-visible:outline-none focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-200 dark:text-slate-200 dark:placeholder:text-slate-400 dark:focus-visible:ring-slate-300",
+      " flex min-h-[60px] w-full resize-none text-clip rounded-md border border-slate-200 bg-transparent px-4 py-2 text-sm shadow-sm transition-colors duration-200 placeholder:text-slate-500 focus:border-b-blue-400 focus-visible:outline-none focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-200 dark:text-slate-200 dark:placeholder:text-slate-400 dark:focus-visible:ring-slate-300",
   },
   variants: {
     variant: {
-      focus: "border-b-2 border-gray-500",
-      outline: "border-[1px] bg-transparent",
-      filledDark: "dark:bg-dark/90",
-      filledLight: "dark:bg-white/90",
+      focus: " border-b-2 border-gray-500",
+      outline: " border-[1px] bg-transparent",
+      filledDark: " dark:bg-dark/90",
+      filledLight: " dark:bg-white/90",
+},
+    sizes:{
+      sm: " h-10  w-full",
+      md: " h-14 w-full",
+      lg: " h-18 w-full"
     },
-    error: {
+      error: {
       true: "",
       false: {
-        root: "relative z-10 h-fit overflow-hidden rounded-md transition-all before:absolute before:bottom-0 before:left-[50%] before:h-full before:max-h-[0px] before:w-full before:max-w-[0px] before:translate-x-[-50%] before:scale-y-[1] before:bg-[#106CBD] before:text-white before:transition-all before:content-['']",
+        root: " relative z-10 h-fit overflow-hidden rounded-md transition-all before:absolute before:bottom-0 before:left-[50%] before:h-full before:max-h-[0px] before:w-full before:max-w-[0px] before:translate-x-[-50%] before:scale-y-[1] before:bg-[#106CBD] before:text-white before:transition-all before:content-['']",
       },
     },
     focus: {
       true: {
-        root: "before:max-h-[3px] before:max-w-full before:scale-y-[1.0]",
+        root: " h-[3px] before:max-w-full before:scale-y-[1.0]",
       },
     },
     active: {
       true: {
-        root: "before:max-h-[3px] before:max-w-full before:scale-y-[1.0] before:bg-gray-500",
+        root: " before:max-h-[3px] before:max-w-full before:scale-y-[1.0] before:bg-gray-500",
       },
     },
   },
 })
 
 function Textarea(
-  { className, labelText, error = false, ...props }: TextareaProps,
+  { className, labelText,variant, error = false, ...props }: TextareaProps,
   ref: Ref<HTMLTextAreaElement>
 ) {
   const [focus, setFocus] = useState(false)
@@ -86,7 +92,7 @@ function Textarea(
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         className={textarea({
-          className,
+          className
         })}
         ref={ref}
         {...props}
