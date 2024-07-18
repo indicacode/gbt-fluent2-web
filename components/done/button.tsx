@@ -15,7 +15,7 @@ export interface ButtonProps
 }
 
 const buttonVariants = tv({
-  base: "text-md flex cursor-pointer items-center justify-center px-3 py-1 font-medium data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50 data-[disabled=true]:active:border-inherit",
+  base: "text-md flex transition-colors cursor-pointer items-center justify-center px-3 py-1 font-medium data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50 data-[disabled=true]:active:border-inherit",
   variants: {
     variant: {
       primary:
