@@ -2205,7 +2205,6 @@ export const components = [
             <h2>A Textarea with a Outline Appearance</h2>
             <Textarea
               variant={"outline"}
-              error={true}
               className="font-bold text-black dark:text-white"
               labelText="TextArea"
             />
@@ -2214,45 +2213,46 @@ export const components = [
               variant={"filledDark"}
               error={false}
               className="font-bold text-black dark:text-white"
-              labelText="TextArea"
+              labelText=" Dark TextArea"
             />
             <h2>Textarea with a Filled Light Appearance </h2>
             <Textarea
               variant={"filledLight"}
               error={false}
               className="font-bold text-black dark:text-white"
-              labelText="TextArea"
+              labelText="Light TextArea "
             />
           </div>
         ),
       },
       {
-        cardHeader: "Disabled",
-        cardSubtext: "",
+        cardHeader: "Placeholder",
+        cardSubtext: "Any textarea or input field can have the placeholder attribute!",
         cardComponent: (
-          <Textarea
+          <Textarea disabled={true}
             error={false}
             className="font-bold text-black dark:text-white"
             labelText="TextArea"
           />
         ),
       },
+        {
+            cardHeader: "Disabled",
+            cardSubtext: "",
+            cardComponent: (
+                <Textarea disabled={true}
+                          error={false}
+                          className="font-bold text-black dark:text-white"
+                          labelText="TextArea"
+                />
+            ),
+        },
       {
         cardHeader: "Uncontrolled",
         cardSubtext: "",
         cardComponent: (
           <Textarea
-            error={false}
-            className="font-bold text-black dark:text-white"
-            labelText="TextArea"
-          />
-        ),
-      },
-      {
-        cardHeader: "Controlled",
-        cardSubtext: "",
-        cardComponent: (
-          <Textarea
+
             error={false}
             className="font-bold text-black dark:text-white"
             labelText="TextArea"
@@ -2261,7 +2261,7 @@ export const components = [
       },
       {
         cardHeader: "Resize",
-        cardSubtext: "",
+        cardSubtext: " When typing inside of a textarea, if you run out of space for your entire message, the TextArea component will automatically grow expand the typing area vertically so you can finish your message.",
         cardComponent: (
           <div>
             <Textarea
@@ -2270,16 +2270,7 @@ export const components = [
               className="font-bold text-black dark:text-white"
               labelText="TextArea"
             />
-            <Textarea
-              error={false}
-              className="font-bold text-black dark:text-white"
-              labelText="TextArea"
-            />
-            <Textarea
-              error={false}
-              className="font-bold text-black dark:text-white"
-              labelText="TextArea"
-            />
+
           </div>
         ),
       },
@@ -2309,29 +2300,7 @@ export const components = [
           </>
         ),
       },
-      {
-        cardHeader: "Placeholder",
-        cardSubtext: "",
-        cardComponent: (
-          <Textarea
-            error={false}
-            className="font-bold text-black dark:text-white"
-            labelText="TextArea"
-          />
-        ),
-      },
-      {
-        cardHeader: "Placeholder",
-        cardSubtext: "",
-        cardComponent: (
-          <Textarea
-            error={false}
-            className="font-bold text-black dark:text-white"
-            labelText="TextArea"
-          />
-        ),
-      },
-    ],
+          ],
   },
   {
     header: "RadioGroup",
