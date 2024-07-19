@@ -33,17 +33,15 @@ import {
   TableRow,
 } from "@/components/reviewing/"
 
-import { columns } from "./data-table.components"
-
-type DataTableProps = {
-  fetchUsers: ({
+type DataTableProps<T> = {
+  fetchData: ({
     pageIndex,
     pageSize,
   }: {
-    pageIndex: any
-    pageSize: any
-  }) => Promise<any>
-  columns: Array<ColumnDef<any>>
+    pageIndex: number
+    pageSize: number
+  }) => Promise<T[]>
+  columns: Array<ColumnDef<T>>
   pagination: {
     pageIndex: number
     pageSize: number
@@ -51,21 +49,19 @@ type DataTableProps = {
     pageCount?: number
     manualPagination: boolean
   }
+  initialData: T[]
+  filterPlaceholder?: string
+  columnFilterKey?: string
 }
 
-type UserInput = Array<Record<string, unknown>>
-
-/**
- * @param {UserInput} columns - An array that defines the structure of the table. Each item in the array represents a column in the table.
- * @param {(pageSize: number, pageIndex: number) => Promise<UserInput>} fetchUsers - A function that fetches the data for the table. It should return a promise that resolves with an array of data.
- * @param {Object} pagination - An object that controls the pagination behavior of the table.
- * @param {number} pagination.pageIndex - The current page index.
- * @param {number} pagination.pageSize - The number of rows per page.
- * @param {number} pagination.rowCount - The total number of rows in the table.
- * @param {number} [pagination.pageCount] - The total number of pages.
- * @param {boolean} pagination.manualPagination - A boolean that indicates whether the pagination is controlled manually or automatically.
- */
-export function DataTable({ columns, fetchUsers, pagination }: DataTableProps) {
+export function DataTable<T>({
+  columns,
+  fetchData,
+  initialData,
+  pagination,
+  filterPlaceholder = "Filter...",
+  columnFilterKey,
+}: DataTableProps<T>) {
   const [rowSelection, setRowSelection] = useState({})
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -77,17 +73,17 @@ export function DataTable({ columns, fetchUsers, pagination }: DataTableProps) {
 
   const { data, error, isLoading } = useSWR(
     {
-      pageSize: paginationState["pageSize"],
-      pageIndex: paginationState["pageIndex"],
+      pageSize: paginationState.pageSize,
+      pageIndex: paginationState.pageIndex,
     },
-    fetchUsers,
-    { suspense: true }
+    fetchData,
+    { suspense: true, fallbackData: initialData }
   )
 
-  const memoizedColumns = useMemo(() => columns, [])
+  const memoizedColumns = useMemo(() => columns, [columns])
 
-  const table: TableType<UserInput[0]> = useReactTable({
-    data,
+  const table: TableType<T> = useReactTable({
+    data: data ?? [],
     columns: memoizedColumns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -112,21 +108,35 @@ export function DataTable({ columns, fetchUsers, pagination }: DataTableProps) {
 
   return (
     <div className="w-full text-black dark:text-white">
-      <FilterButton table={table} />
+      {columnFilterKey && (
+        <FilterButton
+          table={table}
+          placeholder={filterPlaceholder}
+          columnKey={columnFilterKey}
+        />
+      )}
       <Table table={table} />
       <Pagination table={table} />
     </div>
   )
 }
 
-function FilterButton({ table }: { table: TableType<UserInput[0]> }) {
+function FilterButton<T>({
+  table,
+  placeholder,
+  columnKey,
+}: {
+  table: TableType<T>
+  placeholder: string
+  columnKey: string
+}) {
   return (
     <div className="flex items-center py-4">
       <Input
-        placeholder="Filter emails..."
-        value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+        placeholder={placeholder}
+        value={(table.getColumn(columnKey)?.getFilterValue() as string) ?? ""}
         onChange={(event) =>
-          table.getColumn("email")?.setFilterValue(event.target.value)
+          table.getColumn(columnKey)?.setFilterValue(event.target.value)
         }
         className="max-w-sm"
       />
@@ -140,38 +150,36 @@ function FilterButton({ table }: { table: TableType<UserInput[0]> }) {
           {table
             .getAllColumns()
             .filter((column) => column.getCanHide())
-            .map((column) => {
-              return (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  className="capitalize"
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) => column.toggleVisibility(value)}
-                >
-                  {column.id}
-                </DropdownMenuCheckboxItem>
-              )
-            })}
+            .map((column) => (
+              <DropdownMenuCheckboxItem
+                key={column.id}
+                className="capitalize"
+                checked={column.getIsVisible()}
+                onCheckedChange={(value) => column.toggleVisibility(value)}
+              >
+                {column.id}
+              </DropdownMenuCheckboxItem>
+            ))}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
   )
 }
 
-function Table({ table }: { table: TableType<UserInput[0]> }) {
+function Table<T>({ table }: { table: TableType<T> }) {
   const { rows } = table.getRowModel()
+  const columns = table.getAllColumns()
 
   const tableContainerRef = useRef<HTMLDivElement>(null)
-
   const rowVirtualizer = useVirtual({
     parentRef: tableContainerRef,
     size: rows.length,
   })
   const { virtualItems: virtualRows, totalSize } = rowVirtualizer
 
-  const paddingTop = virtualRows?.length > 0 ? virtualRows?.[0]?.start || 0 : 0
+  const paddingTop = virtualRows.length > 0 ? virtualRows[0].start || 0 : 0
   const paddingBottom =
-    virtualRows?.length > 0 ? totalSize - (virtualRows?.at(-1)?.end || 0) : 0
+    virtualRows.length > 0 ? totalSize - (virtualRows.at(-1)?.end || 0) : 0
 
   return (
     <div
@@ -208,8 +216,8 @@ function Table({ table }: { table: TableType<UserInput[0]> }) {
               <td style={{ height: paddingTop }} />
             </tr>
           )}
-          {virtualRows?.length ? (
-            virtualRows.map((virtualRow, index) => {
+          {virtualRows.length ? (
+            virtualRows.map((virtualRow) => {
               const row = rows[virtualRow.index]
               return (
                 <TableRow
@@ -245,7 +253,7 @@ function Table({ table }: { table: TableType<UserInput[0]> }) {
   )
 }
 
-function Pagination({ table }: { table: TableType<UserInput[0]> }) {
+function Pagination<T>({ table }: { table: TableType<T> }) {
   return (
     <div className="flex w-full flex-row items-center justify-end space-x-2 py-4">
       <div className="text-muted-foreground flex-1 text-sm">
