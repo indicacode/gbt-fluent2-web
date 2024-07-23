@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import {
   ColumnDef,
@@ -33,6 +33,12 @@ import {
   TableRow,
 } from "@/components/reviewing/"
 
+type PaginationProps<T> = {
+  table: TableType<T>
+  getData: (pageIndex: number) => { data: any; error: any; isLoading: boolean }
+  pageSize: number
+}
+
 type DataTableProps<T> = {
   fetchData: ({
     pageIndex,
@@ -49,7 +55,6 @@ type DataTableProps<T> = {
     pageCount?: number
     manualPagination: boolean
   }
-  initialData: T[]
   filterPlaceholder?: string
   columnFilterKey?: string
 }
@@ -57,10 +62,9 @@ type DataTableProps<T> = {
 export function DataTable<T>({
   columns,
   fetchData,
-  initialData,
   pagination,
-  filterPlaceholder = "Filter...",
   columnFilterKey,
+  filterPlaceholder = "Filter...",
 }: DataTableProps<T>) {
   const [rowSelection, setRowSelection] = useState({})
   const [sorting, setSorting] = useState<SortingState>([])
@@ -71,19 +75,23 @@ export function DataTable<T>({
     pageSize: pagination.pageSize,
   })
 
-  const { data, error, isLoading } = useSWR(
-    {
-      pageSize: paginationState.pageSize,
-      pageIndex: paginationState.pageIndex,
-    },
-    fetchData,
-    { suspense: true, fallbackData: initialData }
-  )
+  const getData = (pageIndex = null) => {
+    const { data, error, isLoading } = useSWR(
+      {
+        pageSize: paginationState.pageSize,
+        pageIndex: pageIndex ?? paginationState.pageIndex,
+      },
+      fetchData
+    )
+    return { data, error, isLoading }
+  }
+
+  const { data, error, isLoading } = getData()
 
   const memoizedColumns = useMemo(() => columns, [columns])
 
   const table: TableType<T> = useReactTable({
-    data: data ?? [],
+    data: !isLoading ? data?.results : [],
     columns: memoizedColumns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -95,8 +103,7 @@ export function DataTable<T>({
     onRowSelectionChange: setRowSelection,
     onPaginationChange: setPaginationState,
     manualPagination: pagination.manualPagination,
-    rowCount: pagination.rowCount,
-    pageCount: pagination.pageCount,
+    pageCount: -1,
     state: {
       sorting,
       columnFilters,
@@ -115,8 +122,12 @@ export function DataTable<T>({
           columnKey={columnFilterKey}
         />
       )}
-      <Table table={table} />
-      <Pagination table={table} />
+      <Table table={table} error={error} />
+      <Pagination
+        pageSize={pagination.pageSize}
+        getData={getData}
+        table={table}
+      />
     </div>
   )
 }
@@ -130,20 +141,26 @@ function FilterButton<T>({
   placeholder: string
   columnKey: string
 }) {
+  const [filterValue, setFilterValue] = useState<string>("")
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFilterValue(event.target.value)
+    table.getColumn(columnKey)?.setFilterValue(event.target.value)
+  }
+
   return (
     <div className="flex items-center py-4">
       <Input
         placeholder={placeholder}
-        value={(table.getColumn(columnKey)?.getFilterValue() as string) ?? ""}
-        onChange={(event) =>
-          table.getColumn(columnKey)?.setFilterValue(event.target.value)
-        }
+        value={filterValue}
+        onChange={handleFilterChange}
         className="max-w-sm"
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="transparent" className="ml-auto">
-            Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
+            Columns
+            <ChevronDownIcon className="ml-2 h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -166,7 +183,7 @@ function FilterButton<T>({
   )
 }
 
-function Table<T>({ table }: { table: TableType<T> }) {
+function Table<T>({ table, error }: { table: TableType<T>; error: any }) {
   const { rows } = table.getRowModel()
   const columns = table.getAllColumns()
 
@@ -180,6 +197,10 @@ function Table<T>({ table }: { table: TableType<T> }) {
   const paddingTop = virtualRows.length > 0 ? virtualRows[0].start || 0 : 0
   const paddingBottom =
     virtualRows.length > 0 ? totalSize - (virtualRows.at(-1)?.end || 0) : 0
+
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
 
   return (
     <div
@@ -253,18 +274,37 @@ function Table<T>({ table }: { table: TableType<T> }) {
   )
 }
 
-function Pagination<T>({ table }: { table: TableType<T> }) {
+function Pagination<T>({ table, getData, pageSize }: PaginationProps<T>) {
+  const [pageIndex, setPageIndex] = useState(0)
+  const [canNext, setCanNext] = useState(false)
+  const { data, error, isLoading } = getData(pageIndex)
+  const { data: nextPageData, isLoading: isNextPageLoading } = getData(
+    pageIndex + 1
+  )
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setCanNext(data.results.length === pageSize)
+    }
+  }, [data, isLoading, pageSize])
+
+  useEffect(() => {
+    if (!isNextPageLoading && nextPageData) {
+      setCanNext(nextPageData.results.length > 0)
+    }
+  }, [nextPageData, isNextPageLoading])
+
   return (
-    <div className="flex w-full flex-row items-center justify-end space-x-2 py-4">
-      <div className="text-muted-foreground flex-1 text-sm">
-        {table.getFilteredSelectedRowModel().rows.length} of{" "}
-        {table.getFilteredRowModel().rows.length} row(s) selected.
-      </div>
-      <div className="flex flex-row space-x-2">
+    <div className="flex w-full flex-row items-center justify-between py-4">
+      <div className="flex items-center space-x-2"></div>
+      <div className="flex items-center space-x-2">
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.previousPage()}
+          onClick={() => {
+            table.previousPage()
+            setPageIndex((prev) => prev - 1)
+          }}
           disabled={!table.getCanPreviousPage()}
         >
           Previous
@@ -272,8 +312,11 @@ function Pagination<T>({ table }: { table: TableType<T> }) {
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
+          onClick={() => {
+            table.nextPage()
+            setPageIndex((prev) => prev + 1)
+          }}
+          disabled={!canNext}
         >
           Next
         </Button>
