@@ -500,10 +500,58 @@ export const components = [
         cardHeader: "Vertical",
         cardSubtext: "",
         cardComponent: (
-          <div className="flex h-fit w-full flex-col ">
+          <div className="flex h-fit w-full flex-row gap-10 ">
             <Divider orientation="vertical" align="center">
               1
             </Divider>
+              <Divider variant="subtle" orientation="vertical" align="center">
+                  2
+              </Divider>
+              <Divider variant="brand" orientation="vertical" align="center">
+                  3
+              </Divider>
+              <Divider variant="strong" orientation="vertical" align="center">
+                  4
+              </Divider>
+              <Divider orientation="vertical" align="center">
+                  5
+              </Divider>
+              <Divider variant="subtle" orientation="vertical" align="center">
+                  6
+              </Divider>
+              <Divider variant="brand" orientation="vertical" align="center">
+                  7
+              </Divider>
+              <Divider variant="strong" orientation="vertical" align="center">
+                  8
+              </Divider>
+              <Divider orientation="vertical" align="center">
+                  9
+              </Divider>
+              <Divider variant="subtle" orientation="vertical" align="center">
+                  10
+              </Divider>
+              <Divider variant="brand" orientation="vertical" align="center">
+                  11
+              </Divider>
+              <Divider variant="strong" orientation="vertical" align="center">
+                  12
+              </Divider>
+              <Divider orientation="vertical" align="center">
+                  13
+              </Divider>
+              <Divider variant="subtle" orientation="vertical" align="center">
+                  14
+              </Divider>
+              <Divider variant="brand" orientation="vertical" align="center">
+                  15
+              </Divider>
+              <Divider variant="strong" orientation="vertical" align="center">
+                  16
+              </Divider>
+              <Divider variant="brand" orientation="vertical" align="center">
+                  17
+              </Divider>
           </div>
         ),
       },
@@ -728,7 +776,7 @@ export const components = [
       },
       {
         cardHeader: "Overlay",
-        cardSubtext: "",
+        cardSubtext: "OverlayDrawer contains supplementary content and is used for complex creation, edit, or management experiences. For example, viewing details about an item in a list or editing settings. By default, drawer is blocking and signifies that the user's full attention is required when making configurations.",
         cardComponent: (
           <Drawer position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
@@ -752,7 +800,7 @@ export const components = [
         cardSubtext:
           "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content.",
         cardComponent: (
-          <Drawer position="bottom">
+          <Drawer modal={false} position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -774,7 +822,7 @@ export const components = [
         cardSubtext:
           "InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as the main surface, users can still interact with other UI elements. This could be useful for swapping between different items in the main surface.",
         cardComponent: (
-          <Drawer position="bottom">
+          <Drawer inline={true} position="left">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -1428,24 +1476,34 @@ export const components = [
               <TabsTrigger value={"meat"}>Meat</TabsTrigger>
             </TabsList>
             <TabsContent value={"fruits"}>
-              <div className={"flex w-[20%] flex-row justify-between "}>
-                <GiShinyApple size={40} />
-                <GiOrange size={40} />
-                <GiBanana size={40} />
+              <div className={"flex w-[20%]  flex-row justify-between "}>
+                <GiShinyApple className={"mr-1"} size={160} />
+                <GiOrange className={"mr-1"} size={160} />
+                <GiBanana className={"mr-1"} size={160} />
+
+                  <GiShinyApple className={"mr-1"} size={160} />
+                  <GiOrange className={"mr-1"} size={160} />
+                  <GiBanana className={"mr-1"} size={160} />
               </div>
             </TabsContent>
             <TabsContent value={"vegetables"}>
               <div className={"flex w-[20%] flex-row justify-between "}>
-                <GiGarlic size={40} />
-                <GiPumpkin size={40} />
-                <GiCarrot size={40} />
+                <GiGarlic className={"mr-1"} size={160} />
+                <GiPumpkin className={"mr-1"} size={160} />
+                <GiCarrot className={"mr-1"} size={160} />
+                  <GiGarlic className={"mr-1"} size={160} />
+                  <GiPumpkin className={"mr-1"} size={160} />
+                  <GiCarrot className={"mr-1"} size={160} />
               </div>
             </TabsContent>
             <TabsContent value={"meat"}>
               <div className={"flex w-[20%] flex-row justify-between "}>
-                <GiMeat size={40} />
-                <GiChickenLeg size={40} />
-                <GiRoastChicken size={40} />
+                <GiMeat size={160} />
+                <GiChickenLeg size={160} />
+                <GiRoastChicken size={160} />
+                  <GiMeat size={160} />
+                  <GiChickenLeg size={160} />
+                  <GiRoastChicken size={160} />
               </div>
             </TabsContent>
           </Tabs>
@@ -1456,7 +1514,7 @@ export const components = [
   {
     header: "DataGrid",
     subText: (
-      <span className="inliData e Hora: 9:54 , **10/06/2024**ne">
+      <span className="inline">
         This component is a higher level extension of the <code>Table</code>
         primitive component <code>DataGrid</code> is a feature-rich, so there
         should always be full feature parity with what can be achieved with
@@ -2435,36 +2493,46 @@ export const components = [
       "A card is a container that holds information and actions related to a single concept or object, like a document or a contact Cards can give information prominence and create predictable patterns. While they're very flexible, it's important to use them consistently for particular use cases across experiences",
     cards: [
       {
-        cardHeader: "",
-        cardSubtext: "",
+        cardHeader: "Default Card",
+        cardSubtext: "The default card variant is the filled commodity.  ",
         cardComponent: (
           <div className="flex flex-col items-center justify-center gap-10">
             <Card
               className="w-[540px]"
-              cardPreview="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.EAf0oMwvFLL7MMZOIEJKLwHaC9%26pid%3DApi&f=1&ipt=a11aa5dcda31eee8bdc446511e1ce983681641249334e18726f3b67e7e6bba8c&ipo=images"
+
             >
               <CardHeader image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cDhXXBPPmXB0TeWGmhYA-AHaE8%26pid%3DApi&f=1&ipt=cd7797c8ef5c996d9ca56b20a8c65b8df7bb69d45d9afe2e963243aa4e8c43cc&ipo=images">
-                <CardTitle>App Name </CardTitle>
-                <CardDescription>Developer</CardDescription>
+                <CardTitle>New Sweet Stuff!</CardTitle>
+                <CardDescription>Relaxing Kitty</CardDescription>
               </CardHeader>
               <CardContent>
                 Donut chocolate bar oat cake. Dragée tiramisu lollipop bear
                 claw. Marshmallow pastry jujubes toffee sugar plum.
               </CardContent>
               <CardFooter>
-                <Button>Button 1</Button>
-                <Button variant="secondary">Button 2</Button>
+                <Button>Order Some!</Button>
+                <Button variant="secondary">Pass up</Button>
               </CardFooter>
             </Card>
+          </div>)},
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
             <Card orientation="horizontal" selectable variant="filled-alt">
               <CardHeader image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cDhXXBPPmXB0TeWGmhYA-AHaE8%26pid%3DApi&f=1&ipt=cd7797c8ef5c996d9ca56b20a8c65b8df7bb69d45d9afe2e963243aa4e8c43cc&ipo=images">
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
+                <CardTitle>Eat Candy!</CardTitle>
+                <CardDescription>Relaxing Kitty</CardDescription>
               </CardHeader>
               <FloatingAction>
                 <BsThreeDots />
               </FloatingAction>
             </Card>
+                )},
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
             <Card size="lg" variant="outline">
               <CardHeader>
                 <CardTitle>Breakfast in Paris</CardTitle>
@@ -2474,10 +2542,15 @@ export const components = [
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div> A fresh croissant</div>
-                <div> A cup of coffee</div>
+                <div> A fresh croissant 🥐</div>
+                <div> A cup of coffee  ☕</div>
               </CardContent>
             </Card>
+                )},
+        {
+            cardHeader: "",
+            cardSubtext: "",
+            cardComponent: (
             <Card variant="subtle">
               <CardHeader>
                 <CardTitle>Card Title</CardTitle>
@@ -2486,11 +2559,9 @@ export const components = [
               <CardContent>Card Content</CardContent>
               <CardFooter>Card Footer</CardFooter>
             </Card>
-          </div>
-        ),
-      },
-    ],
-  },
+                )},
+            ],
+        },
   {
     header: "Checkbox",
     subText: (
@@ -3191,35 +3262,6 @@ export const components = [
       {
         cardHeader: "",
         cardSubtext: "",
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Button
-              variant="outline"
-              onClick={() => {
-                toast({
-                  title: "Scheduled: Catch up ",
-                  description: "Friday, February 10, 2023 at 5:57 PM",
-                  action: (
-                    <div className="flex gap-4">
-                      <ToastAction altText="Goto schedule to undo">
-                        Undo
-                      </ToastAction>{" "}
-                      <ToastAction altText="Goto schedule to undo">
-                        Undo
-                      </ToastAction>
-                    </div>
-                  ),
-                })
-              }}
-            >
-              Add to calendar
-            </Button>
-          </div>
-        ),
-      },
-      {
-        cardHeader: "Appearance",
-        cardSubtext: "Select can have different appearances. The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements.",
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Button

@@ -17,8 +17,8 @@ const cardSlots = tv({
     cardSpacing: "flex flex-col",
     cardHeader: "flex w-fit items-center gap-3",
     cardHeaderImage: "aspect-square h-full w-full object-cover",
-    cardTitle: "font-semibold text-stone-800",
-    cardDescription: "text-sm text-[#616161]",
+    cardTitle: "font-semibold text-stone-800 dark:text-slate-50",
+    cardDescription: "text-sm text-[#616161] dark:text-slate-400",
     cardContent: "",
     cardFooter: "flex gap-4",
   },
@@ -31,16 +31,16 @@ const cardSlots = tv({
     },
     variant: {
       filled: {
-        card: "bg-white text-slate-950 hover:bg-zinc-200 dark:bg-slate-950 dark:text-slate-50",
+        card: "bg-white text-slate-950 hover:bg-zinc-200  dark:bg-slate-950 dark:text-slate-50",
       },
       "filled-alt": {
-        card: " bg-zinc-50 hover:bg-zinc-300",
+        card: " bg-zinc-50 hover:bg-zinc-300 dark:hover:bg-slate-800",
       },
       outline: {
-        card: "border border-gray-300 shadow-none dark:border-zinc-200",
+        card: "border dark:hover:bg-slate-950 border-gray-300 dark:text-slate-50 shadow-none dark:border-zinc-200",
       },
       subtle: {
-        card: "border-none text-black shadow-none hover:cursor-pointer hover:bg-zinc-100 dark:text-gray-400",
+        card: "border-none text-black shadow-none dark:hover:bg-slate-800 hover:cursor-pointer hover:bg-zinc-100 dark:text-gray-400",
       },
       _unstiled: { card: "", cardContent: "" },
     },

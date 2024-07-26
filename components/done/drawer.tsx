@@ -26,15 +26,19 @@ const {
 
 const drawerSlots = tv({
   slots: {
-    drawerOverlay: "fixed inset-0 z-50 bg-black/80",
+    drawerOverlay: " fixed inset-0 z-50 bg-black/80",
     drawerContent:
-      "fixed z-50 flex h-full flex-col border  border-slate-200 bg-white p-4 text-white dark:border-slate-800 dark:bg-[#292929]",
+      " fixed z-50 flex h-full flex-col border  border-slate-200 bg-white p-4 text-white dark:border-slate-800 dark:bg-[#292929]",
     drawerHeader: "gap-1.5text-center flex sm:text-left",
     drawerFooter: "mt-auto flex flex-col gap-2",
     drawerTitle: "text-lg font-semibold leading-none tracking-tight",
     drawerDescription: "text-sm text-slate-500 dark:text-slate-400",
   },
   variants: {
+    inline: {
+       true: " flex ",
+
+    },
     position: {
       left: {
         drawerContent: "left-0 top-0 h-full",
@@ -52,7 +56,7 @@ const drawerSlots = tv({
       positionBottom: { drawerContent: "h-[320px] w-screen" },
     },
     divider: {
-      true: {
+      enabled: {
         drawerContent: "border-r-slate-600 dark:border-r-slate-400",
       },
       positionBottom: {
@@ -62,7 +66,7 @@ const drawerSlots = tv({
   },
   defaultVariants: {
     position: "left",
-    divider: true,
+    divider: "true",
     size: "sm",
   },
 })
