@@ -1684,7 +1684,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion type="" size="md" collapsible className="w-full">
+          <Accordion type="single" size="md"  className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>Is it easy to use?</AccordionTrigger>
               <AccordionContent>
@@ -2087,7 +2087,7 @@ export const components = [
           "An avatar can have a badge to indicate presence status. See the PresenceBadge component for more info.\n" +
           "\n",
         cardComponent: (
-          <div className={"flex flex-row"}>
+          <div className={"flex items-centerflex-row"}>
             <Avatar status={"away"}>
               <AvatarFallback>Jordan Cummings</AvatarFallback>
               <AvatarImage
@@ -2129,7 +2129,7 @@ export const components = [
           "An avatar can display an image.\n" +
           "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
         cardComponent: (
-          <div className={"flex flex-row"}>
+          <div className={"flex items-center flex-row"}>
             <Avatar status={"away"}>
               <AvatarFallback>Jordan Herrera</AvatarFallback>
               <AvatarImage
@@ -2171,7 +2171,7 @@ export const components = [
           "An avatar can display an image.\n" +
           "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
         cardComponent: (
-          <div className={"flex flex-row"}>
+          <div className={"flex items-center flex-row"}>
             <Avatar status={"away"}>
               <AvatarFallback>Jordan Herrera</AvatarFallback>
               <AvatarImage
@@ -2216,38 +2216,74 @@ export const components = [
         A switch represents a physical switch that allows someone to choose
         between two mutually exclusive options. For example, "On/Off" and
         "Show/Hide". Choosing an option should produce an immediate result.
+
       </>
     ),
     cards: [
-      { cardHeader: "", cardSubtext: "", cardComponent: <Switch /> },
-      {
-        cardComponent: (
-          <div className={"flex flex-col"}>
-            <h2 className="font-extrabold">Required</h2>
-            <h2>
-              When a Switch is marked as <code>required</code>, its label also
-              gets the required styling
-            </h2>
-            <div className={"flex flex-row"}>
-              <Switch className={"mt-4"} />
-              <Label className={"ml-2 mt-4"} required={true}>
-                Required
-              </Label>
-            </div>
-          </div>
-        ),
-      },
-      {
-        cardComponent: (
-          <div className={"flex flex-col"}>
-            <h2 className="font-extrabold">Label Wrapping</h2>
-            <h2>
-              The label will wrap if it is wider than the available space. The
-              Switch track will stay aligned to the first line of text.
-            </h2>
-          </div>
-        ),
-      },
+      { cardHeader: "", cardSubtext: " ", cardComponent:   <div className={"flex items-center flex-row"}>
+              <Switch className={""}  />
+              <h2 className={""}>This is a switch.</h2>
+          </div> },
+        { cardHeader: "Required", cardSubtext: " When a Switch is marked as , its label also gets the required styling", cardComponent:   <div className={"flex items-center flex-row"}>
+                <Switch className={""} />
+                <Label className={"ml-2"} required={true}>
+                    Required
+                </Label>
+            </div> },
+
+        {
+            cardHeader: "Checked",
+            cardSubtext: "A Switch can be initially checked by passing a value to the defaultChecked property, or have its checked value controlled via the checked property.",
+            cardComponent: (
+                <div className={"flex items-center flex-row"}>
+                    <Switch className={""} checked={true}/>
+                    <h2 className={" ml-2"}>Checked Switch</h2>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Disabled",
+            cardSubtext: " A Switch can be disabled.",
+            cardComponent: (
+                <div className={"flex items-center flex-row"}>
+                    <Switch  checked={true} className={""} disabled={true}/>
+                    <h2 className={"ml-2"}> This is a disabled switch!</h2>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Label",
+            cardSubtext: "A label can be provided to the Switch and is positioned above, before or after the component.\n",
+            cardComponent: (
+                <div className={"flex flex-row"}>
+                   <div className={"flex flex-row items-center"}>
+                       <h2>With label before and unchecked</h2>
+                       <Switch/>
+                   </div>
+                    <div className={" flex flex-col ml-2 items-center"}>
+                        <h2>With label above and checked</h2>
+                        <Switch checked={true}/>
+                    </div>
+                    <div className={" ml-2 flex flex-row items-center"}>
+                        <Switch/>
+                        <h2>With label after and unchecked</h2>
+
+                    </div>
+                </div>
+            ),
+        },
+        {
+            cardHeader: "Required",
+            cardSubtext: "When a Switch is marked as required, its label also gets the required styling.",
+            cardComponent: (
+                <div className={"flex items-center flex-row"}>
+                    <Switch  checked={true} className={""}/>
+
+                    <h2 className={"ml-2"}>Required</h2>
+                    <h2 className={"text-red-500 mb-2"}>*</h2>
+                </div>
+            ),
+        },
     ],
   },
   {
@@ -3223,7 +3259,7 @@ export const components = [
       {
         cardHeader: "As Button",
         cardSubtext:
-          "When the href property is not provided, the component is rendered as html <button>",
+          "When the href property is not provided, the component is rendered as a html  <button/>",
 
         cardComponent: (
           <div className="flex flex-col gap-2">
