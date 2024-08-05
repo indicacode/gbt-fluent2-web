@@ -25,7 +25,8 @@ type AvatarProps = ComponentPropsWithoutRef<typeof Root> &
 //-------------avatar-and-avatar-image-------------//
 const avatarSlots = tv({
   slots: {
-    avatar: "relative box-border flex shrink-0 rounded-full bg-gray-600",
+    avatar:
+      "relative box-border flex shrink-0 rounded-full bg-gray-600 object-cover",
     avatarFallback:
       "bg-muted flex h-full w-full items-center justify-center rounded-full text-white",
     avatarActiveRing:
