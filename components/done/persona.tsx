@@ -72,7 +72,7 @@ export default function Persona({
           />
         </span>
       ) : (
-        <Avatar status={avatar.status} size={avatar.size} {...props}>
+        <Avatar status={avatar.status } size={avatar.size} {...props}>
           <AvatarImage src={avatar.src} />
           <AvatarFallback>{avatar.name}</AvatarFallback>
         </Avatar>

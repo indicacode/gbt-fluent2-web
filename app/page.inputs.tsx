@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react"
+import React, {ReactElement, useState} from "react"
 import {
   Copy16Filled,
   DocumentPdfRegular,
@@ -99,6 +99,12 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
+import {AiFillCheckCircle} from "react-icons/ai";
+import {DropdownMenu} from "@radix-ui/react-dropdown-menu";
+import Persona from "@/components/done/persona";
+import {Skeleton} from "@/components/not-done/skeleton";
+
+
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -441,7 +447,7 @@ export const components = [
       {
         cardHeader: "Multiselect With Tags",
         cardSubtext:
-          "Combobox can display multiselect values in custom tags. This example uses a controlled selection so the tags can be used to remove selected options Best pets",
+          "Combobox can display multiselect values in custom tags. This example uses a controlled selection so the tags can be used to remove selected options.",
         cardComponent: (
           <Combobox
             emptyIndicator="uo"
@@ -701,7 +707,7 @@ export const components = [
       {
         cardHeader: "Size",
         cardSubtext:
-          "A Select's size can be set to small, medium (default), or large.",
+          "A Select's size can be set to small,k medium (default), or large.",
         cardComponent: (
           <Select>
             <SelectTrigger className={"w-40"}>
@@ -1001,60 +1007,65 @@ export const components = [
           </div>
         ),
       },
-      {
-        cardHeader: "With Title",
-        cardSubtext:
-          "DrawerHeaderTitle is a component that provides a structured heading for a Drawer and can be used to display a title and an action. Although it works as a standalone component, it is intended to be used within a DrawerHeader. The title renders an h2 element by default but it can be customized using the heading prop.",
-        cardComponent: (
-          <div className={""}>
-            <Drawer size={"small"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                Open small drawer
-              </DrawerTrigger>
+        {
+            cardHeader: "With Title",
+            cardSubtext:
+                "DrawerHeaderTitle is a component that provides a structured heading for a Drawer and can be used to display a title and an action. Although it works as a standalone component, it is intended to be used within a DrawerHeader. The title renders an h2 element by default but it can be customized using the heading prop.",
+            cardComponent: (
+                <div className={""}>
+                    <Drawer size={"small"} position="right">
+                        <DrawerTrigger
+                            className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open small drawer
+                        </DrawerTrigger>
 
-              <DrawerContent>
-                <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
-                </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
-                  And i the content
-                </DrawerDescription>
-                <DrawerFooter>aaaaaaa</DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-            <Drawer position="bottom">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                Open medium drawer
-              </DrawerTrigger>
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer position="bottom">
+                        <DrawerTrigger
+                            className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open medium drawer
+                        </DrawerTrigger>
 
-              <DrawerContent>
-                <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
-                </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
-                  And i the content
-                </DrawerDescription>
-                <DrawerFooter>aaaaaaa</DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-            <Drawer size={"lg"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
-                Open large drawer
-              </DrawerTrigger>
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                    <Drawer size={"lg"} position="right">
+                        <DrawerTrigger
+                            className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+                            Open large drawer
+                        </DrawerTrigger>
 
-              <DrawerContent>
-                <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
-                </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
-                  And i the content
-                </DrawerDescription>
-                <DrawerFooter>aaaaaaa</DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-          </div>
-        ),
-      },
+                        <DrawerContent>
+                            <DrawerHeader className="flex flex-col items-center">
+                                Im the header!
+                            </DrawerHeader>
+                            <DrawerDescription className={" text-slate-50"}>
+                                And i the content
+                            </DrawerDescription>
+                            <DrawerFooter>aaaaaaa</DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+                </div>
+            ),
+        },
+
+
       {
         cardHeader: "With Navigation",
         cardSubtext:
@@ -1910,7 +1921,7 @@ export const components = [
         cardHeader: "With Icon",
         cardComponent: (
           <div>
-            <h2>An accordion header can contain an icon.</h2>
+            <h2>An accordion header can contain an icon. <AiFillCheckCircle/></h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1948,7 +1959,7 @@ export const components = [
         cardComponent: (
           <div>
             <h2 className={"font-extrabold"}></h2>
-            <h2>An accordion header can contain an icon.</h2>
+            <h2>This is collapsible</h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1957,7 +1968,7 @@ export const components = [
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger> </AccordionTrigger>
+                <AccordionTrigger>Is it easy to use? </AccordionTrigger>
                 <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
@@ -2054,7 +2065,7 @@ export const components = [
                 }
               />
             </Avatar>
-            <Avatar status={"away"}>
+            <Avatar status={"do-not-disturb"}>
               <AvatarFallback>Kaio Telmo </AvatarFallback>
               <AvatarImage
                 src={
@@ -2070,7 +2081,7 @@ export const components = [
                 }
               />
             </Avatar>
-            <Avatar status={"online"}>
+            <Avatar status={"busy"}>
               <AvatarFallback>Ana Watson</AvatarFallback>
               <AvatarImage
                 src={
@@ -2084,7 +2095,7 @@ export const components = [
       {
         cardHeader: "Badge",
         cardSubtext:
-          "An avatar can have a badge to indicate presence status. See the PresenceBadge component for more info.\n" +
+          "An avatar can have a badge to indicate presence status. See the status prop inside of the avatar component for more info.\n" +
           "\n",
         cardComponent: (
           <div className={"flex items-centerflex-row"}>
@@ -2096,7 +2107,7 @@ export const components = [
                 }
               />
             </Avatar>
-            <Avatar status={"away"}>
+            <Avatar status={"do-not-disturb"}>
               <AvatarFallback>Kaio Karlos </AvatarFallback>
               <AvatarImage
                 src={
@@ -2112,7 +2123,7 @@ export const components = [
                 }
               />
             </Avatar>
-            <Avatar status={"online"}>
+            <Avatar status={"busy"}>
               <AvatarFallback>Piccarte Artsy</AvatarFallback>
               <AvatarImage
                 src={
@@ -2180,7 +2191,7 @@ export const components = [
                 }
               />
             </Avatar>
-            <Avatar status={"away"}>
+            <Avatar status={"offline"}>
               <AvatarFallback>Alonso Rencio </AvatarFallback>
               <AvatarImage
                 src={
@@ -2188,7 +2199,7 @@ export const components = [
                 }
               />
             </Avatar>
-            <Avatar status={"online"}>
+            <Avatar status={"busy"}>
               <AvatarFallback>Junior Silva</AvatarFallback>
               <AvatarImage
                 src={
@@ -2209,6 +2220,121 @@ export const components = [
       },
     ],
   },
+    {
+        header: "Skeleton",
+        subText: (
+            <>
+                The Skeleton component is a temporary animation placeholder for when a service call takes time to return data and we don't want to block rendering the rest of the UI.
+            </>
+        ),
+        cards: [
+            {
+                cardHeader: "Default",
+                cardSubtext: "",
+                cardComponent: (
+                    <div className={"flex w-full flex-row"}>
+                        <Skeleton className={"w-full h-4 "}/>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Appearance",
+                cardSubtext: "You can specify the appearance of the Skeleton. This is useful for instances where you want to render a Skeleton with a MaterialOS theme",
+                cardComponent: (
+                    <div className={"flex w-full flex-col"}>
+                        <Skeleton className={"w-full h-4 "}/>
+                        <h2>Opaque Appearance</h2>
+                        <Skeleton className={"w-full opacity-80 mt-6  h-4 "}/>
+                                <h2>Translucent Appearance</h2>
+
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Animation",
+                cardSubtext: "You can specify the animation style of the Skeleton. The default is 'pulse'",
+                cardComponent: (
+                    <div className={"flex w-full flex-col"}>
+                        <Skeleton className={"w-full animate-pulse mt-1  h-4 "}/>
+                        <h2>Pulse Animation</h2>
+
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Row",
+                cardSubtext: "You can specify the animation style of the Skeleton. The default is 'pulse'",
+                cardComponent: (
+                    <div className={"flex w-full  flex-col"}>
+                      <div className={"flex  items-center flex-row"}>
+                     <Skeleton className={"w-8 animate-pulse mt-2  h-8 rounded-full "}/>
+                    <Skeleton className={"w-full ml-2 mt-2 h-8 "}></Skeleton>
+                        </div>
+                        <div className={"flex w-full flex-row items-center"}>
+                        <Skeleton className={"w-8 animate-pulse mt-3 rounded-full  h-8 "}/>
+                        <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+                            <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+                            <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+                            <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+                        </div>
+                        <div className={"flex w-full flex-row items-center"}>
+                        <Skeleton className={"w-8 animate-pulse mt-3  h-8 "}/>
+                            <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+                            <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+                            <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+                            <Skeleton className={"w-[25%] mt-3 h-8 ml-2 "}/>
+
+                        </div>
+                    </div>
+
+                ),
+            },
+            {
+                cardHeader: "Size",
+                cardSubtext: "You can specify the size of the Skeleton by using the classes. The size is a number that represents the height of the Skeleton in pixels",
+                cardComponent: (
+                    <div className={"flex w-full flex-col"}>
+                    <div className={"flex w-full  flex-row"}>
+                        <h2>2</h2>
+                     <Skeleton className={"w-full ml-2 h-2"}/>
+                    </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>4</h2>
+                            <Skeleton className={"w-full ml-2 h-4"}/>
+                        </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>6</h2>
+                            <Skeleton className={"w-full ml-2 h-6"}/>
+                        </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>8</h2>
+                            <Skeleton className={"w-full ml-2 h-8"}/>
+                        </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>12</h2>
+                            <Skeleton className={"w-full ml-2 h-12"}/>
+                        </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>16</h2>
+                            <Skeleton className={"w-full ml-2 h-16"}/>
+                        </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>24</h2>
+                            <Skeleton className={"w-full ml-2 h-24"}/>
+                        </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>32</h2>
+                            <Skeleton className={"w-full ml-2 h-32"}/>
+                        </div>
+                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                            <h2>40</h2>
+                            <Skeleton className={"w-full ml-2 h-40"}/>
+                        </div>
+                    </div>
+                ),
+            },
+        ],
+    },
   {
     header: "Switch",
     subText: (
@@ -2286,6 +2412,48 @@ export const components = [
         },
     ],
   },
+    {
+        cardHeader: "Avatar Icon",
+        cardSubtext:
+            "An avatar can display an image.\n" +
+            "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
+        cardComponent: (
+            <div className={"flex items-center flex-row"}>
+                <Avatar status={"away"}>
+                    <AvatarFallback>Jordan Herrera</AvatarFallback>
+                    <AvatarImage
+                        src={
+                            "https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                        }
+                    />
+                </Avatar>
+                <Avatar status={"away"}>
+                    <AvatarFallback>Kaio Pereira </AvatarFallback>
+                    <AvatarImage
+                        src={
+                            "https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                        }
+                    />
+                </Avatar>
+                <Avatar status={"online"}>
+                    <AvatarFallback>Victoria Petes</AvatarFallback>
+                    <AvatarImage
+                        src={
+                            "https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                        }
+                    />
+                </Avatar>
+                <Avatar status={"online"}>
+                    <AvatarFallback>Loucas Marquise</AvatarFallback>
+                    <AvatarImage
+                        src={
+                            "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                        }
+                    />
+                </Avatar>
+            </div>
+        ),
+    },
   {
     header: "Textarea",
     subText: <>Textarea allows the user to enter and edit multiline text.</>,
@@ -2747,6 +2915,7 @@ export const components = [
             <Checkbox
               rounded={true}
               size="large"
+              required={true}
               onChange={(checked) => console.log(checked)}
             />
             <Checkbox
@@ -2765,11 +2934,11 @@ export const components = [
         cardComponent: (
           <div className="flex gap-2">
             <Checkbox
-              rounded={true}
               size="large"
               aria-label={"Label Wrapping text"}
               onChange={(checked) => console.log(checked)}
             />
+              <h2 className={"max-w-64"}>This label`s text will wrap around if it gets too big!</h2>
           </div>
         ),
       },
@@ -3284,6 +3453,7 @@ export const components = [
       },
     ],
   },
+
   {
     header: "Toast",
     subText: <>A Toasts displays temporary content to the user. Toasts are rendered as a separate surface that can be dismissed by user action or a application timeout. Toasts are typically used in the following situations,to Update the user on the status of a task
@@ -3510,6 +3680,7 @@ export const components = [
           </div>
         ),
       },
+
       {
         cardHeader: "Shape",
         cardSubtext:
@@ -3640,6 +3811,7 @@ export const components = [
           </div>
         ),
       },
+
       {
         cardHeader: "Reflow",
         cardSubtext:
@@ -3672,6 +3844,7 @@ export const components = [
           </div>
         ),
       },
+
       {
         cardHeader: "Manual Layout",
         cardSubtext:
@@ -3706,6 +3879,27 @@ export const components = [
       },
     ],
   },
+    {
+        header: "Persona",
+        subText: (
+            <>
+                A Persona is a visual representation of a person or status that showcases an Avatar, PresenceBadge, or an Avatar with a PresenceBadge.
+            </>
+        ),
+        cards: [
+
+            {
+                cardHeader: "Default",
+                cardSubtext: '',
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Persona status={"online"} name={"Mr Jordan"}>
+                        </Persona>
+                    </div>
+                ),
+            },
+        ],
+    },
   ,
 ] as const
 
