@@ -2320,9 +2320,9 @@ export const components = [
                         </div>
                         <div className={"flex w-full mt-5 items-center  flex-row"}>
                             <h2>24</h2>
-                            <Skeleton className={"w-full ml-2 h-24"}/>
+                            <Skeleton className={"w-full mt-5 ml-2 h-24"}/>
                         </div>
-                        <div className={"flex w-full mt-5 items-center  flex-row"}>
+                        <div className={"flex w-full  items-center  flex-row"}>
                             <h2>32</h2>
                             <Skeleton className={"w-full ml-2 h-32"}/>
                         </div>
@@ -2330,6 +2330,21 @@ export const components = [
                             <h2>40</h2>
                             <Skeleton className={"w-full ml-2 h-40"}/>
                         </div>
+
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Shape",
+                cardSubtext: "The shape of the Skeleton can be set to circle, rectangle, or square.",
+                cardComponent: (
+                    <div className={"flex items-center justify-between w-full "}>
+                        <div className={"w-full flex flex-row"}>
+                        <Skeleton className={"w-20 ml-2 h-20"}/>
+                        <Skeleton className={"w-20 mt-2 rounded-full ml-6 h-20"}/>
+                    </div>
+                        <Skeleton className={"w-full mt-2 rounded-ml ml-2 h-12"}/>
+
                     </div>
                 ),
             },
