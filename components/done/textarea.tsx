@@ -23,10 +23,10 @@ const inputVariants = tv({
   },
   variants: {
     variant: {
-      focus: { textarea: " border-b-2 border-gray-500 bg-red-500" },
+      focus: { textarea: " border-b-[2px] border-gray-500" },
       outline: { textarea: " border-[1px] bg-transparent" },
       filledDark: { textarea: " dark:bg-black/90 bg-gray-600" },
-      filledLight: { textarea: " dark:bg-white/90" },
+      filledLight: { textarea: " dark:bg-white" },
     },
     size: {
       sm: { textarea: " min-h-16 w-full" },

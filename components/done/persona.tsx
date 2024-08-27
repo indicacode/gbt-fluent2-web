@@ -46,7 +46,7 @@ export default function Persona({
       flexDirection = "flex-row"
   }
   let size
-  switch (avatar.size) {
+  switch (avatar?.size) {
     case "sm":
       size = "h-2 w-2"
       break
@@ -67,14 +67,14 @@ export default function Persona({
         >
           <StatusBadge
             className={"bottom-0 right-0"}
-            size={avatar.size}
-            status={avatar.status}
+            size={avatar?.size}
+            status={avatar?.status}
           />
         </span>
       ) : (
-        <Avatar status={avatar.status } size={avatar.size} {...props}>
-          <AvatarImage src={avatar.src} />
-          <AvatarFallback>{avatar.name}</AvatarFallback>
+        <Avatar status={avatar?.status } size={avatar?.size} {...props}>
+          <AvatarImage src={avatar?.src} />
+          <AvatarFallback>{avatar?.name}</AvatarFallback>
         </Avatar>
       )}
       <div className="flex flex-col">
