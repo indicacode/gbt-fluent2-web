@@ -45,12 +45,12 @@ export default function Page() {
   const currentDocs = searchParams.get("section")
   const currentAccordion = searchParams.get("accordion")
   return (
-    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-100  transition-colors dark:from-slate-950 dark:to-zinc-950">
+    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-200  transition-colors dark:from-slate-950 dark:to-zinc-950">
       <span
         className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-44"}`}
       />
       <div
-        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between border-r-2 border-zinc-400 bg-transparent p-3 pt-4 transition-all dark:border-zinc-700 dark:bg-transparent ${
+        className={`fixed z-50 flex max-h-screen min-h-screen overflow-y-scroll w-full flex-col justify-between shadow-2xl   bg-transparent p-3 pt-4 transition-all dark:border-zinc-700 dark:bg-transparent ${
           isMobile && isCollapsed ? " max-w-14" : "max-w-44"
         }`}
       >
@@ -81,7 +81,7 @@ export default function Page() {
             {sideBarKeys.map((key, idx) => (
               <AccordionItem
                 key={idx}
-                className={`bg-transparent font-bold  transition-all ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+                className={`bg-transparent font-bold transition-all ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
                 value={"item" + idx}
               >
                 <AccordionTrigger>
@@ -93,9 +93,11 @@ export default function Page() {
                           createQueryString("accordion", "item" + idx)
                       )
                     }
-                    className="cursor-pointer pb-1 text-[1.2em]"
+                    className="cursor-pointer  pb-1 text-[1.2em]"
                   >
-                    {key}
+
+
+                      {key}
                   </span>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -103,7 +105,7 @@ export default function Page() {
                     (component: ItemsType, itemIdx: number) => (
                       <span
                         key={itemIdx}
-                        className="flex cursor-pointer font-normal"
+                        className="flex  cursor-pointer font-normal"
                         onClick={() =>
                           router.push(
                             pathname +
@@ -114,6 +116,7 @@ export default function Page() {
                         aria-labelledby={`${key}-${itemIdx}`}
                       >
                         {component}
+
                       </span>
                     )
                   )}
@@ -145,7 +148,9 @@ export default function Page() {
                       {cardHeader && (
                         <>
                           <h2 className="text-2xl font-semibold dark:text-white">
+
                             {cardHeader}
+
                           </h2>
                           {cardSubtext}
                         </>

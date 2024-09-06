@@ -11,6 +11,7 @@ import {
 } from "@fluentui/react-icons"
 import {ClipboardPasteIcon, ScissorsIcon} from "lucide-react"
 import {BsThreeDots} from "react-icons/bs"
+import { RiFileTextLine } from "react-icons/ri";
 import {
     GiBanana,
     GiCarrot,
@@ -74,7 +75,7 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerTrigger,
-    FloatingAction,
+    FloatingAction, Popover, PopoverContent, PopoverTrigger,
     Select,
     SelectContent,
     SelectGroup,
@@ -103,6 +104,7 @@ import {AiFillCheckCircle} from "react-icons/ai";
 import {DropdownMenu} from "@radix-ui/react-dropdown-menu";
 import Persona from "@/components/done/persona";
 import {Skeleton} from "@/components/not-done/skeleton";
+import {PopoverProps} from "@radix-ui/react-popover";
 
 
 type RowItem = {
@@ -196,6 +198,7 @@ export const frameworks = [
     },
 ]
 
+
 export const components = [
     {
         header: "Button",
@@ -279,7 +282,9 @@ export const components = [
         ],
     },
     {
+
         header: "Input",
+
         subText: "An input component. Enter text into the input.",
         cards: [
             {
@@ -3988,6 +3993,172 @@ export const components = [
         ],
     },
     ,
+    {
+        header: "Popover",
+        subText: (
+            <>
+                A popover displays content on top of other content.
+            </>
+        ),
+        cards: [
+
+            {
+                cardHeader: "Default",
+                cardSubtext: '',
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                 <Button variant={"primary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Trapping Focus",
+                cardSubtext: 'When a Popover contains focusable elements, the modal dialog pattern will apply. By using the trapFocus prop, the component sets aria-hiddenappropriately to parent elements in the document so that elements not contained in the focus trap are hidden to screen reader users. This focus trap is automatically removed when the Popover is closed.',
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover  >
+                            <PopoverTrigger>
+                                <Button variant={"primary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                    <Button className={"mt-1"} variant={"secondary"}>Action</Button>
+                                    <Button className={"mt-1 ml-2"} variant={"secondary"}>Action</Button>
+                                        </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Controlling Open And Close",
+                cardSubtext: 'The opening and close of the Popover can be controlled with your own state. The onOpenChange callback will provide the hints for the state and triggers based on the appropriate event.\n' +
+                    '\n' +
+                    'When controlling the open state of the Popover, extra effort is required to ensure that interactions are still appropriate and that keyboard accessibility does not degrade.',
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                <Button variant={"primary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                        <Button className={"mt-1"} variant={"secondary"}>Action</Button>
+                                        <Button className={"mt-1 ml-2"} variant={"secondary"}>Action</Button>
+
+                                    </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Nested Popovers",
+                cardSubtext: "Popovers can be nested within each other. Too much nesting can result in extra accessibility considerations and are generally not a great user experience Since nested popovers will generally have an interactive PopoverTrigger to control the nested popover, make sure to combine their usage with the trapFocus prop for correct screen reader and keyboard accessibility Try and limit nesting to 2 levels Make sure to use trapFocus when nestingCreating nested popovers as separate components will result in more maintainable code ",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                <Button variant={"primary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                        <Button className={"mt-1"} variant={"secondary"}>Action</Button>
+                                        <Button className={"mt-1 ml-2"} variant={"secondary"}>Action</Button>
+
+                                    </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Anchor To Custom Target",
+                cardSubtext: "A Popover can be used without a trigger and anchored to any DOM element. This can be useful if a Popover instance needs to be reused in different places.\n" +
+                    "\n" +
+                    "Not using a PopoverTrigger will require more work to make sure your scenario is accessible, such as, implementing accessible markup and keyboard interactions for your trigger.",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                <Button variant={"primary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                        <Button className={"mt-1"} variant={"secondary"}>Action</Button>
+                                        <Button className={"mt-1 ml-2"} variant={"secondary"}>Action</Button>
+
+                                    </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Custom Trigger",
+                cardSubtext: "Native elements and Fluent components have first class support as children of PopoverTrigger so they will be injected automatically with the correct props for interactions and accessibility attributes.  It is possible to use your own custom React component as a child of PopoverTrigger. These components should use ref forwarding with React.forwardRef",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                <Button variant={"secondary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                        <Button className={"mt-1"} variant={"secondary"}>Action 1 </Button>
+                                        <Button className={"mt-1 ml-2"} variant={"primary"}>Action 2</Button>
+
+                                    </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+        ],
+    },
+
+
+
+
+
+
+
 ] as const
 
 export const sideBar = {
