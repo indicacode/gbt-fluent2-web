@@ -4150,6 +4150,81 @@ export const components = [
                     </div>
                 ),
             },
+            {
+                cardHeader: "Without Trigger",
+                cardSubtext: "When using a Popover without a PopoverTrigger, it is up to the user to make sure that the focus is restored correctly when the popover is closed. This can be done quite easily by using the useRestoreFocusTarget hook. The Popover already uses the useRestoreFocusSource hook directly, which will restore focus to the most recently focused target on close.",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                <Button variant={"secondary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                        <Button className={"mt-1"} variant={"secondary"}>Action 1 </Button>
+                                        <Button className={"mt-1 ml-2"} variant={"primary"}>Action 2</Button>
+
+                                    </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Internal Update Content",
+                cardSubtext: "",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                <Button variant={"secondary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                        <Button className={"mt-1"} variant={"secondary"}>Action 1 </Button>
+                                        <Button className={"mt-1 ml-2"} variant={"primary"}>Action 2</Button>
+
+                                    </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
+            {
+                cardHeader: "Appearance",
+                cardSubtext: "When using a Popover without a PopoverTrigger, it is up to the user to make sure that the focus is restored correctly when the popover is closed. This can be done quite easily by using the useRestoreFocusTarget hook. The Popover already uses the useRestoreFocusSource hook directly, which will restore focus to the most recently focused target on close.",
+                cardComponent: (
+                    <div className="flex flex-col gap-2">
+                        <Popover >
+                            <PopoverTrigger>
+                                <Button variant={"secondary"}>Popover Trigger</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
+                                <div>
+                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
+                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
+                                    <div className={"flex  flex-row"}>
+                                        <Button className={"mt-1"} variant={"secondary"}>Action 1 </Button>
+                                        <Button className={"mt-1 ml-2"} variant={"primary"}>Action 2</Button>
+
+                                    </div>
+                                </div>
+                            </PopoverContent>
+
+                        </Popover>
+                    </div>
+                ),
+            },
         ],
     },
 
