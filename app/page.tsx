@@ -18,7 +18,7 @@ import { components, sideBar } from "./page.inputs"
 type SideBarType = keyof typeof sideBar
 
 type ItemsType = {
-  [Key in SideBarType]: (typeof sideBar)[Key][number]
+  [Key in SideBarType]: (typeof sideBar)[Key]["items"][number]
 }[SideBarType]
 
 export default function Page() {
@@ -50,7 +50,7 @@ export default function Page() {
         className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-44"}`}
       />
       <div
-        className={`fixed z-50 flex max-h-screen min-h-screen overflow-y-scroll w-full flex-col justify-between shadow-2xl   bg-transparent p-3 pt-4 transition-all dark:border-zinc-700 dark:bg-transparent ${
+        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-scroll bg-transparent  p-3 pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
           isMobile && isCollapsed ? " max-w-14" : "max-w-44"
         }`}
       >
@@ -93,15 +93,14 @@ export default function Page() {
                           createQueryString("accordion", "item" + idx)
                       )
                     }
-                    className="cursor-pointer  pb-1 text-[1.2em]"
+                    className="flex cursor-pointer gap-2 pb-1 text-[1.2em]"
                   >
-
-
-                      {key}
+                    {sideBar[key as SideBarType].icon}
+                    {key}
                   </span>
                 </AccordionTrigger>
                 <AccordionContent>
-                  {sideBar[key as SideBarType].map(
+                  {sideBar[key as SideBarType].items.map(
                     (component: ItemsType, itemIdx: number) => (
                       <span
                         key={itemIdx}
@@ -116,7 +115,6 @@ export default function Page() {
                         aria-labelledby={`${key}-${itemIdx}`}
                       >
                         {component}
-
                       </span>
                     )
                   )}
@@ -148,9 +146,7 @@ export default function Page() {
                       {cardHeader && (
                         <>
                           <h2 className="text-2xl font-semibold dark:text-white">
-
                             {cardHeader}
-
                           </h2>
                           {cardSubtext}
                         </>

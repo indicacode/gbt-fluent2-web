@@ -36,8 +36,7 @@ const drawerSlots = tv({
   },
   variants: {
     inline: {
-       true: " flex ",
-
+      true: " flex ",
     },
     position: {
       left: {

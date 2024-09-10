@@ -37,10 +37,10 @@ const cardSlots = tv({
         card: " bg-zinc-50 hover:bg-zinc-300 dark:hover:bg-slate-800",
       },
       outline: {
-        card: "border dark:hover:bg-slate-950 border-gray-300 dark:text-slate-50 shadow-none dark:border-zinc-200",
+        card: "border border-gray-300 shadow-none dark:border-zinc-200 dark:text-slate-50 dark:hover:bg-slate-950",
       },
       subtle: {
-        card: "border-none text-black shadow-none dark:hover:bg-slate-800 hover:cursor-pointer hover:bg-zinc-100 dark:text-gray-400",
+        card: "border-none text-black shadow-none hover:cursor-pointer hover:bg-zinc-100 dark:text-gray-400 dark:hover:bg-slate-800",
       },
       _unstiled: { card: "", cardContent: "" },
     },

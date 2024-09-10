@@ -18,7 +18,7 @@ const PopoverTrigger = Trigger
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof Content>,
   React.ComponentPropsWithoutRef<typeof Content>
->(({ className, align = "center", sideOffset = 4, ...props }, ref, ) => (
+>(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
   <Portal>
     <Content
       ref={ref}

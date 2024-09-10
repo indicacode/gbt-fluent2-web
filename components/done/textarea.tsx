@@ -25,7 +25,7 @@ const inputVariants = tv({
     variant: {
       focus: { textarea: " border-b-[2px] border-gray-500" },
       outline: { textarea: " border-[1px] bg-transparent" },
-      filledDark: { textarea: " dark:bg-black/90 bg-gray-600" },
+      filledDark: { textarea: " bg-gray-600 dark:bg-black/90" },
       filledLight: { textarea: " dark:bg-white" },
     },
     size: {
