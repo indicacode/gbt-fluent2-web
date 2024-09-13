@@ -105,8 +105,10 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
+import Combobox from "@/components/done/combobox"
+import {Progress} from "@/components/not-done/progress";
 
-import Combobox from "../../erp/apps/web/src/components/done/combobox"
+
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -4306,6 +4308,78 @@ export const components = [
                     </div>
                 ),
             },
+        {
+            header: "ProgressBar",
+            subText: (
+                <>
+                    Progress bars allow users to not have the feeling that an action is not progressing, by giving them a visual cue of how close they are to completion, you retain the user`s attention with ease.
+                </>
+            ),
+            cards: [
+                {
+                    cardHeader: "Default Appearance",
+                    cardSubtext: "The normal progressbar.",
+                    cardComponent: (
+                        <div className="flex flex-col gap-2">
+                         <Progress></Progress>
+                        </div>
+                    ),
+                },
+
+                {
+                    cardHeader: "Appearance",
+                    cardSubtext: "",
+
+                    cardComponent: (
+                        <div className="flex flex-col gap-2">
+                            <Progress></Progress>
+                        </div>
+                    ),
+                },
+                {
+                    cardHeader: "Inline",
+                    cardSubtext: "",
+
+                    cardComponent: (
+                        <div className="flex flex-col gap-2">
+                            <Progress></Progress>
+                        </div>
+                    ),
+                },
+                {
+                    cardHeader: "Appearance",
+                    cardSubtext: "",
+
+                    cardComponent: (
+                        <div className="flex flex-col gap-2">
+                            <Progress></Progress>
+                        </div>
+                    ),
+                },
+                {
+                    cardHeader: "As Button",
+                    cardSubtext:
+                        "When the href property is not provided, the component is rendered as a html  <button/>",
+
+                    cardComponent: (
+                        <div className="flex flex-col gap-2">
+                            <Progress></Progress>
+                        </div>
+                    ),
+                },
+                {
+                    cardHeader: "As Span",
+                    cardSubtext:
+                        'A Link can be rendered as an html <span>, in which case it will have role="button" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.',
+
+                    cardComponent: (
+                        <div className="flex flex-col gap-2">
+                            <Progress></Progress>
+                        </div>
+                    ),
+                },
+            ],
+        },
         ],
     },
 
@@ -4317,8 +4391,7 @@ export const components = [
 ] as const
 
 export const sideBar = {
-  Concepts: { icon: null, items: ["2", "1"].sort() },
-  Theme: { icon: null, items: ["1", "2"].sort() },
+
   Components: {
     icon: <List20Filled />,
     items: components.map((component) => component.header).sort(),

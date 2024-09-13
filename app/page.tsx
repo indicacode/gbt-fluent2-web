@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import ThemeSwitch from "@/utils/themeSwitch"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { HamburgerMenuIcon } from "@radix-ui/react-icons"
+import {motion } from "framer-motion"
 
 import {
   Accordion,
@@ -14,6 +15,10 @@ import {
 } from "@/components/done"
 
 import { components, sideBar } from "./page.inputs"
+import {ArrowLeft16Regular, ArrowLeft20Regular, ArrowLeft24Regular, List20Filled} from "@fluentui/react-icons";
+import {FileArchive} from "lucide-react";
+import {FaFileAlt, FaRegFileAlt} from "react-icons/fa";
+import {PiFileTextThin} from "react-icons/pi";
 
 type SideBarType = keyof typeof sideBar
 
@@ -21,12 +26,13 @@ type ItemsType = {
   [Key in SideBarType]: (typeof sideBar)[Key]["items"][number]
 }[SideBarType]
 
+
+
 export default function Page() {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-
   const isMobile = useMediaQuery(["(max-width: 640px)"], {
     ssr: true,
     fallback: [false],
@@ -46,14 +52,16 @@ export default function Page() {
   const currentAccordion = searchParams.get("accordion")
   return (
     <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-200  transition-colors dark:from-slate-950 dark:to-zinc-950">
+
       <span
         className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-44"}`}
       />
       <div
-        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-scroll bg-transparent  p-3 pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
+        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-auto  bg-transparent   pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
           isMobile && isCollapsed ? " max-w-14" : "max-w-44"
         }`}
       >
+
         <div className="flex h-fit flex-col gap-10">
           <div
             onClick={() => {
@@ -93,7 +101,7 @@ export default function Page() {
                           createQueryString("accordion", "item" + idx)
                       )
                     }
-                    className="flex cursor-pointer gap-2 pb-1 text-[1.2em]"
+                    className="flex cursor-pointer gap-2 pl-2 pb-1 text-[1.2em]"
                   >
                     {sideBar[key as SideBarType].icon}
                     {key}
@@ -104,7 +112,7 @@ export default function Page() {
                     (component: ItemsType, itemIdx: number) => (
                       <span
                         key={itemIdx}
-                        className="flex  cursor-pointer font-normal"
+                        className="flex text-[14px] py-1 items-center w-full pl-3 h-fit hover:bg-brand-light focus:bg-brand-light active:bg-brand-light cursor-pointer font-normal"
                         onClick={() =>
                           router.push(
                             pathname +
@@ -114,6 +122,7 @@ export default function Page() {
                         }
                         aria-labelledby={`${key}-${itemIdx}`}
                       >
+                         <PiFileTextThin size={17}/>
                         {component}
                       </span>
                     )
@@ -126,6 +135,9 @@ export default function Page() {
 
         <ThemeSwitch className="self-center" />
       </div>
+        <div onClick={() => router.back()} className={"w-fit h-fit"}>
+        <div className={"rounded-full hover:bg-brand-light active:bg-brand-secondary z-40 flex ring-[1px] ring-black items-center justify-center mt-2 ml-2 w-8 h-8 "}><ArrowLeft16Regular/></div>
+            </div>
       <main className="flex min-h-full w-full items-center justify-center py-12">
         {components.map(({ header, subText, cards }, idx) => {
           return (
