@@ -50,7 +50,7 @@
     "framer-motion": "^11.5.4",
     "lucide-react": "^0.378.0",
     "math": "^0.0.3",
-    "next": "^14.2.9",
+    "next": "^14.2.11",
     "next-themes": "^0.3.0",
     "node-fetch": "^3.3.2",
     "prettier-plugin-css-order": "^2.1.2",
