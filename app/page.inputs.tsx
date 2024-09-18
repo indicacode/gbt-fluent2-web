@@ -1,4 +1,3 @@
-import React, { ReactElement } from "react"
 import {
   Copy16Filled,
   DocumentPdfRegular,
@@ -11,6 +10,7 @@ import {
   VideoRegular,
 } from "@fluentui/react-icons"
 import { ClipboardPasteIcon, ScissorsIcon } from "lucide-react"
+import { ReactElement, ReactNode } from "react"
 import { AiFillCheckCircle } from "react-icons/ai"
 import { BsThreeDots } from "react-icons/bs"
 import {
@@ -39,9 +39,9 @@ import {
   Switch,
   Textarea,
 } from "@/components/done"
+import Combobox from "@/components/done/combobox"
 import InfoLabel from "@/components/done/infoLabel"
 import { Label } from "@/components/done/label"
-import { Link } from "@/components/done/link"
 import Persona from "@/components/done/persona"
 import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
 import {
@@ -53,6 +53,7 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/not-done/menubar"
+import { Progress } from "@/components/not-done/progress"
 import { Skeleton } from "@/components/not-done/skeleton"
 import {
   Avatar,
@@ -105,19 +106,29 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
-import Combobox from "@/components/done/combobox"
-import {Progress} from "@/components/not-done/progress";
-
-
+import Link from "next/link"
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
-  author: { label: string; status: string }
+  author: {
+    label: string
+    status: "online" | "busy" | "away" | "offline" | "do-not-disturb"
+  }
   lastUpdated: { label: string; timestamp: number }
   lastUpdate: { icon: ReactElement; label: string }
 }
 
 type ColumnItem = { columnKey: string; label: string }
+
+type ComponentsType = Array<{
+  header: string
+  subText: string
+  cards: Array<{
+    cardHeader: string
+    cardSubtext: ReactNode
+    cardComponent: ReactNode
+  }>
+}>
 
 const fontSize = 22
 export const rowItems: Array<RowItem> = [
@@ -395,8 +406,8 @@ export const components = [
         cardSubtext:
           " An input can have different sizes. Those being small (sm) medium (md) and large (lg)",
         cardComponent: (
-          <div className={"flex  flex-col"}>
-            <Input size={""} placeholder={"Small Input"}></Input>
+          <div className={"flex flex-col"}>
+            <Input size="sm" placeholder={"Small Input"}></Input>
           </div>
         ),
       },
@@ -510,7 +521,7 @@ export const components = [
         cardHeader: "Vertical",
         cardSubtext: "",
         cardComponent: (
-          <div className="flex h-fit w-full flex-row gap-10 ">
+          <div className="flex h-fit w-full flex-row gap-10">
             <Divider orientation="vertical" align="center">
               1
             </Divider>
@@ -570,7 +581,7 @@ export const components = [
         cardSubtext:
           "A divider can have a brand, subtle, or strong appearance. When not specified, it has its default experience",
         cardComponent: (
-          <div className="flex h-fit w-full flex-col ">
+          <div className="flex h-fit w-full flex-col">
             <Divider orientation="horizontal" align="center">
               1
             </Divider>
@@ -592,7 +603,7 @@ export const components = [
         cardSubtext:
           "The label associated with the divider can be aligned at the start, center, or end of the divider line.",
         cardComponent: (
-          <div className="flex h-fit w-full flex-col ">
+          <div className="flex h-fit w-full flex-col">
             <Divider orientation="horizontal" align="start">
               Start
             </Divider>
@@ -610,7 +621,7 @@ export const components = [
         cardSubtext:
           "A divider can have custom styles applied to both the label and the line.",
         cardComponent: (
-          <div className="flex h-fit w-full flex-col ">
+          <div className="flex h-fit w-full flex-col">
             <Divider orientation="horizontal" align="start">
               Start
             </Divider>
@@ -767,7 +778,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Drawer position="bottom">
+          <Drawer defaultOpen={false} position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -776,7 +787,7 @@ export const components = [
               <DrawerHeader className="flex flex-col items-center">
                 Im the header!
               </DrawerHeader>
-              <DrawerDescription className={" text-slate-50"}>
+              <DrawerDescription className={"text-slate-50"}>
                 And i the content
               </DrawerDescription>
               <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -789,7 +800,7 @@ export const components = [
         cardSubtext:
           "OverlayDrawer contains supplementary content and is used for complex creation, edit, or management experiences. For example, viewing details about an item in a list or editing settings. By default, drawer is blocking and signifies that the user's full attention is required when making configurations.",
         cardComponent: (
-          <Drawer position="bottom">
+          <Drawer defaultOpen={false} position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -798,7 +809,7 @@ export const components = [
               <DrawerHeader className="flex flex-col items-center">
                 Im the header!
               </DrawerHeader>
-              <DrawerDescription className={" text-slate-50"}>
+              <DrawerDescription className={"text-slate-50"}>
                 And i the content
               </DrawerDescription>
               <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -811,7 +822,7 @@ export const components = [
         cardSubtext:
           "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content.",
         cardComponent: (
-          <Drawer modal={false} position="bottom">
+          <Drawer defaultOpen={false} modal={false} position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -820,7 +831,7 @@ export const components = [
               <DrawerHeader className="flex flex-col items-center">
                 Im the header!
               </DrawerHeader>
-              <DrawerDescription className={" text-slate-50"}>
+              <DrawerDescription className={"text-slate-50"}>
                 And i the content
               </DrawerDescription>
               <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -833,7 +844,7 @@ export const components = [
         cardSubtext:
           "InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as the main surface, users can still interact with other UI elements. This could be useful for swapping between different items in the main surface.",
         cardComponent: (
-          <Drawer inline={true} position="left">
+          <Drawer defaultOpen={false} inline={true} position="left">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -842,7 +853,7 @@ export const components = [
               <DrawerHeader className="flex flex-col items-center">
                 Im the header!
               </DrawerHeader>
-              <DrawerDescription className={" text-slate-50"}>
+              <DrawerDescription className={"text-slate-50"}>
                 And i the content
               </DrawerDescription>
               <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -856,7 +867,7 @@ export const components = [
           "When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen. This can be specified by the position prop.",
         cardComponent: (
           <div>
-            <Drawer position="bottom">
+            <Drawer defaultOpen={false} position="bottom">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open drawer from the bottom
               </DrawerTrigger>
@@ -865,13 +876,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer position="right">
+            <Drawer defaultOpen={false} position="right">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open drawer from the right
               </DrawerTrigger>
@@ -880,13 +891,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer position="left">
+            <Drawer defaultOpen={false} position="left">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 mt-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open drawer from the left
               </DrawerTrigger>
@@ -895,7 +906,7 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -909,9 +920,9 @@ export const components = [
         cardSubtext:
           "The size prop controls the width of the drawer. The default is small.",
         cardComponent: (
-          <div className={""}>
-            <Drawer size={"small"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+          <div>
+            <Drawer defaultOpen={false} size="sm" position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -919,13 +930,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer position="bottom">
+            <Drawer defaultOpen={false} position="bottom">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
@@ -934,13 +945,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer size={"lg"} position="right">
+            <Drawer defaultOpen={false} size={"lg"} position="right">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
@@ -949,7 +960,7 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -964,8 +975,8 @@ export const components = [
           "The separator prop adds a line separator between the drawer and the content. Its placement will be determined by the position prop",
         cardComponent: (
           <div className={""}>
-            <Drawer size={"small"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <Drawer defaultOpen={false} size={"sm"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -973,13 +984,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer position="bottom">
+            <Drawer defaultOpen={false} position="bottom">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
@@ -988,13 +999,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer size={"lg"} position="right">
+            <Drawer defaultOpen={false} size={"lg"} position="right">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
@@ -1003,7 +1014,7 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -1017,9 +1028,9 @@ export const components = [
         cardSubtext:
           "DrawerHeaderTitle is a component that provides a structured heading for a Drawer and can be used to display a title and an action. Although it works as a standalone component, it is intended to be used within a DrawerHeader. The title renders an h2 element by default but it can be customized using the heading prop.",
         cardComponent: (
-          <div className={""}>
-            <Drawer size={"small"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+          <div>
+            <Drawer defaultOpen={false} size={"sm"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -1027,13 +1038,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer position="bottom">
+            <Drawer defaultOpen={false} position="bottom">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
@@ -1042,13 +1053,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer size={"lg"} position="right">
+            <Drawer defaultOpen={false} size={"lg"} position="right">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
@@ -1057,7 +1068,7 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -1072,9 +1083,9 @@ export const components = [
         cardSubtext:
           " Drawers can have any type of content and one great case is to have a toolbar in the header. Drawer ships with a DrawerHeaderNavigation component that can be used to display a toolbar in the header of the drawer. This can be combined with DrawerHeaderTitle to display a title in the header.",
         cardComponent: (
-          <div className={""}>
-            <Drawer size={"small"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+          <div>
+            <Drawer defaultOpen={false} size={"sm"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -1082,13 +1093,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer position="bottom">
+            <Drawer defaultOpen={false} position="bottom">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
@@ -1097,13 +1108,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer size={"lg"} position="right">
+            <Drawer defaultOpen={false} size={"lg"} position="right">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
@@ -1112,7 +1123,7 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -1129,8 +1140,8 @@ export const components = [
           "Important note: if the drawer content does not contain any focusable elements, the DrawerBody itself needs a tabIndex of 0 to ensure keyboard scroll access.",
         cardComponent: (
           <div className={""}>
-            <Drawer size={"sm"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary  px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <Drawer defaultOpen={false} size={"sm"} position="right">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -1138,13 +1149,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer position="bottom">
+            <Drawer defaultOpen={false} position="bottom">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
@@ -1153,13 +1164,13 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Drawer size={"lg"} position="right">
+            <Drawer defaultOpen={false} size="lg" position="right">
               <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
@@ -1168,7 +1179,7 @@ export const components = [
                 <DrawerHeader className="flex flex-col items-center">
                   Im the header!
                 </DrawerHeader>
-                <DrawerDescription className={" text-slate-50"}>
+                <DrawerDescription className={"text-slate-50"}>
                   And i the content
                 </DrawerDescription>
                 <DrawerFooter>aaaaaaa</DrawerFooter>
@@ -1210,15 +1221,10 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
-                  {" "}
                   <Button variant={"primary"}>Agree</Button>
                 </DialogTrigger>
               </div>
@@ -1244,11 +1250,7 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
@@ -1280,15 +1282,10 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
-                  {" "}
                   <Button variant={"primary"}>Agree</Button>
                 </DialogTrigger>
               </div>
@@ -1314,11 +1311,7 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
@@ -1350,15 +1343,10 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
-                  {" "}
                   <Button variant={"primary"}>Agree</Button>
                 </DialogTrigger>
               </div>
@@ -1384,15 +1372,10 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
-                  {" "}
                   <Button variant={"primary"}>Agree</Button>
                 </DialogTrigger>
               </div>
@@ -1418,15 +1401,10 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
-                  {" "}
                   <Button variant={"primary"}>Agree</Button>
                 </DialogTrigger>
               </div>
@@ -1454,15 +1432,10 @@ export const components = [
                 impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
-                <DialogTrigger
-                  className="mr-2"
-                  size="default"
-                  variant="secondary"
-                >
+                <DialogTrigger className="mr-2">
                   <Button variant={"secondary"}>Deny</Button>
                 </DialogTrigger>
                 <DialogTrigger className="">
-                  {" "}
                   <Button variant={"primary"}>Agree</Button>
                 </DialogTrigger>
               </div>
@@ -1481,14 +1454,14 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Tabs defaultValue={"fruits"} className={"  w-[full]"}>
+          <Tabs defaultValue={"fruits"} className={"w-[full]"}>
             <TabsList className={"w-full"}>
               <TabsTrigger value={"fruits"}>Fruits</TabsTrigger>
               <TabsTrigger value={"vegetables"}>Vegetables</TabsTrigger>
               <TabsTrigger value={"meat"}>Meat</TabsTrigger>
             </TabsList>
             <TabsContent value={"fruits"}>
-              <div className={"flex w-[20%]  flex-row justify-between "}>
+              <div className={"flex w-[20%] flex-row justify-between"}>
                 <GiShinyApple className={"mr-1"} size={160} />
                 <GiOrange className={"mr-1"} size={160} />
                 <GiBanana className={"mr-1"} size={160} />
@@ -1499,7 +1472,7 @@ export const components = [
               </div>
             </TabsContent>
             <TabsContent value={"vegetables"}>
-              <div className={"flex w-[20%] flex-row justify-between "}>
+              <div className={"flex w-[20%] flex-row justify-between"}>
                 <GiGarlic className={"mr-1"} size={160} />
                 <GiPumpkin className={"mr-1"} size={160} />
                 <GiCarrot className={"mr-1"} size={160} />
@@ -1509,7 +1482,7 @@ export const components = [
               </div>
             </TabsContent>
             <TabsContent value={"meat"}>
-              <div className={"flex w-[20%] flex-row justify-between "}>
+              <div className={"flex w-[20%] flex-row justify-between"}>
                 <GiMeat size={160} />
                 <GiChickenLeg size={160} />
                 <GiRoastChicken size={160} />
@@ -1545,7 +1518,7 @@ export const components = [
         cardComponent: (
           <DataTable
             columns={columns}
-            fetchUsers={fetchUsers}
+            fetchData={fetchUsers}
             pagination={{
               manualPagination: true,
               pageIndex: 0,
@@ -1668,7 +1641,7 @@ export const components = [
             {" "}
             <h2 className={"mr-1"}>Min: 10</h2>{" "}
             <Slider className={"w-[40vw]"} size={"sm"} step={10} />{" "}
-            <h2 className={"ml-1 flex  flex-row"}>Max: 100</h2>{" "}
+            <h2 className={"ml-1 flex flex-row"}>Max: 100</h2>{" "}
           </div>
         ),
       },
@@ -1696,23 +1669,23 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Accordion type="single" size="md" className="w-full">
+          <Accordion type="single" className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+              <AccordionTrigger size="md">Is it easy to use?</AccordionTrigger>
               <AccordionContent>
                 Yes. Try it for yourself, with a few lines of code you get9
                 beautiful UI!
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger>Is it styled?</AccordionTrigger>
+              <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
               <AccordionContent>
                 Yes. It comes with default styles that matches the Fluent2
                 Aesthetic!
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
+              <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
               <AccordionContent>
                 Yes. It's animated by default with a smooth expanding motion,
                 you can disable animations.
@@ -1729,28 +1702,23 @@ export const components = [
           "              default, multiple will also be collapsed by default on the first\n" +
           "              render.",
         cardComponent: (
-          <Accordion
-            type="multiple"
-            size="md"
-            collapsible={true}
-            className="w-full"
-          >
+          <Accordion type="multiple" className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+              <AccordionTrigger size="md">Is it easy to use?</AccordionTrigger>
               <AccordionContent>
                 Yes. Try it for yourself, with a few lines of code you get
                 beautiful UI!
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger>Is it styled?</AccordionTrigger>
+              <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
               <AccordionContent>
                 Yes. It comes with default styles that matches the Fluent2
                 Aesthetic!
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger>Is it animated?</AccordionTrigger>
+              <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
               <AccordionContent>
                 Yes. It's animated by default with a smooth expanding motion,
                 you can disable animations.
@@ -1766,28 +1734,28 @@ export const components = [
         cardComponent: (
           <div>
             <Accordion
-              defaultValue="item-2"
+              defaultValue={["item-2"]}
               type="multiple"
-              size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                <AccordionTrigger size="md">
+                  Is it easy to use?
+                </AccordionTrigger>
                 <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It comes with default styles that matches the Fluent2
                   Aesthetic!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It's animated by default with a smooth expanding motion,
                   you can disable animations.
@@ -1807,28 +1775,28 @@ export const components = [
         cardComponent: (
           <div>
             <Accordion
-              defaultValue="item-2"
+              defaultValue={["item-2"]}
               type="multiple"
-              size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                <AccordionTrigger size="md">
+                  Is it easy to use?
+                </AccordionTrigger>
                 <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It comes with default styles that matches the Fluent2
                   Aesthetic!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It's animated by default with a smooth expanding motion,
                   you can disable animations.
@@ -1846,28 +1814,28 @@ export const components = [
         cardComponent: (
           <div>
             <Accordion
-              defaultValue="item-2"
+              defaultValue={["item-2"]}
               type="multiple"
-              size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                <AccordionTrigger size="md">
+                  Is it easy to use?
+                </AccordionTrigger>
                 <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It comes with default styles that matches the Fluent2
                   Aesthetic!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It's animated by default with a smooth expanding motion,
                   you can disable animations.
@@ -1887,28 +1855,28 @@ export const components = [
             <h2 className={"font-extrabold"}></h2>
             <h2></h2>
             <Accordion
-              defaultValue="item-2"
+              defaultValue={["item-2"]}
               type="multiple"
-              size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                <AccordionTrigger size="md">
+                  Is it easy to use?
+                </AccordionTrigger>
                 <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It comes with default styles that matches the Fluent2
                   Aesthetic!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It's animated by default with a smooth expanding motion,
                   you can disable animations.
@@ -1926,28 +1894,28 @@ export const components = [
               An accordion header can contain an icon. <AiFillCheckCircle />
             </h2>
             <Accordion
-              defaultValue="item-2"
+              defaultValue={["item-2"]}
               type="multiple"
-              size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it easy to use?</AccordionTrigger>
+                <AccordionTrigger size="md">
+                  Is it easy to use?
+                </AccordionTrigger>
                 <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It comes with default styles that matches the Fluent2
                   Aesthetic!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It's animated by default with a smooth expanding motion,
                   you can disable animations.
@@ -1964,28 +1932,28 @@ export const components = [
             <h2 className={"font-extrabold"}></h2>
             <h2>This is collapsible</h2>
             <Accordion
-              defaultValue="item-2"
+              defaultValue={["item-2"]}
               type="multiple"
-              size="md"
-              collapsible={true}
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it easy to use? </AccordionTrigger>
+                <AccordionTrigger size="md">
+                  Is it easy to use?
+                </AccordionTrigger>
                 <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it styled?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It comes with default styles that matches the Fluent2
                   Aesthetic!
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionTrigger size="md">Is it animated?</AccordionTrigger>
                 <AccordionContent>
                   Yes. It's animated by default with a smooth expanding motion,
                   you can disable animations.
@@ -2015,20 +1983,20 @@ export const components = [
           <div className={"flex flex-row"}>
             <Avatar status="online" size="sm">
               <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
-              <AvatarFallback size={""}>Josh Well</AvatarFallback>
+              <AvatarFallback>Josh Well</AvatarFallback>
             </Avatar>
             <Avatar status="online" size="sm">
-              <AvatarFallback size={""}>Joshua Graham</AvatarFallback>
+              <AvatarFallback>Joshua Graham</AvatarFallback>
             </Avatar>
             <Avatar status={"busy"} size="sm">
-              <AvatarFallback size={""}>Ane Parker</AvatarFallback>
+              <AvatarFallback>Ane Parker</AvatarFallback>
             </Avatar>
             <Avatar status={"do-not-disturb"} size="sm">
-              <AvatarFallback size={""}>Helen Pereira</AvatarFallback>
+              <AvatarFallback>Helen Pereira</AvatarFallback>
               <AvatarImage src={""} />
             </Avatar>
             <Avatar status={"busy"} size="sm">
-              <AvatarFallback size={""}>Johnny Mans</AvatarFallback>
+              <AvatarFallback>Johnny Mans</AvatarFallback>
               <AvatarImage
                 src={
                   "https://images.pexels.com/photos/23909935/pexels-photo-23909935/free-photo-of-moda-tendencia-amor-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
@@ -2036,7 +2004,7 @@ export const components = [
               />
             </Avatar>
             <Avatar status={"online"} size="sm">
-              <AvatarFallback size={""}>Jordan Terrence</AvatarFallback>
+              <AvatarFallback>Jordan Terrence</AvatarFallback>
               <AvatarImage
                 src={
                   "https://images.pexels.com/photos/22884699/pexels-photo-22884699/free-photo-of-cafeina-cafe-copo-taca.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
@@ -2044,7 +2012,7 @@ export const components = [
               />
             </Avatar>
             <Avatar status={"online"} size="sm">
-              <AvatarFallback size={""}>Fernanda Almeida</AvatarFallback>
+              <AvatarFallback>Fernanda Almeida</AvatarFallback>
               <AvatarImage
                 src={
                   "https://images.pexels.com/photos/22814807/pexels-photo-22814807/free-photo-of-moda-tendencia-mulher-modelo.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
@@ -2238,7 +2206,7 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <div className={"flex w-full flex-row"}>
-            <Skeleton className={"h-4 w-full "} />
+            <Skeleton className={"h-4 w-full"} />
           </div>
         ),
       },
@@ -2248,9 +2216,9 @@ export const components = [
           "You can specify the appearance of the Skeleton. This is useful for instances where you want to render a Skeleton with a MaterialOS theme",
         cardComponent: (
           <div className={"flex w-full flex-col"}>
-            <Skeleton className={"h-4 w-full "} />
+            <Skeleton className={"h-4 w-full"} />
             <h2>Opaque Appearance</h2>
-            <Skeleton className={"mt-6 h-4 w-full  opacity-80 "} />
+            <Skeleton className={"mt-6 h-4 w-full opacity-80"} />
             <h2>Translucent Appearance</h2>
           </div>
         ),
@@ -2261,7 +2229,7 @@ export const components = [
           "You can specify the animation style of the Skeleton. The default is 'pulse'",
         cardComponent: (
           <div className={"flex w-full flex-col"}>
-            <Skeleton className={"mt-1 h-4 w-full  animate-pulse "} />
+            <Skeleton className={"mt-1 h-4 w-full animate-pulse"} />
             <h2>Pulse Animation</h2>
           </div>
         ),
@@ -2271,28 +2239,24 @@ export const components = [
         cardSubtext:
           "You can specify the animation style of the Skeleton. The default is 'pulse'",
         cardComponent: (
-          <div className={"flex w-full  flex-col"}>
-            <div className={"flex  flex-row items-center"}>
-              <Skeleton
-                className={"mt-2 h-8 w-8  animate-pulse rounded-full "}
-              />
-              <Skeleton className={"ml-2 mt-2 h-8 w-full "}></Skeleton>
+          <div className={"flex w-full flex-col"}>
+            <div className={"flex flex-row items-center"}>
+              <Skeleton className={"mt-2 h-8 w-8 animate-pulse rounded-full"} />
+              <Skeleton className={"ml-2 mt-2 h-8 w-full"}></Skeleton>
             </div>
             <div className={"flex w-full flex-row items-center"}>
-              <Skeleton
-                className={"mt-3 h-8 w-8 animate-pulse  rounded-full "}
-              />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
+              <Skeleton className={"mt-3 h-8 w-8 animate-pulse rounded-full"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
             </div>
             <div className={"flex w-full flex-row items-center"}>
-              <Skeleton className={"mt-3 h-8 w-8  animate-pulse "} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%] "} />
+              <Skeleton className={"mt-3 h-8 w-8 animate-pulse"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
             </div>
           </div>
         ),
@@ -2303,39 +2267,39 @@ export const components = [
           "You can specify the size of the Skeleton by using the classes. The size is a number that represents the height of the Skeleton in pixels",
         cardComponent: (
           <div className={"flex w-full flex-col"}>
-            <div className={"flex w-full  flex-row"}>
+            <div className={"flex w-full flex-row"}>
               <h2>2</h2>
               <Skeleton className={"ml-2 h-2 w-full"} />
             </div>
-            <div className={"mt-5 flex w-full flex-row  items-center"}>
+            <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>4</h2>
               <Skeleton className={"ml-2 h-4 w-full"} />
             </div>
-            <div className={"mt-5 flex w-full flex-row  items-center"}>
+            <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>6</h2>
               <Skeleton className={"ml-2 h-6 w-full"} />
             </div>
-            <div className={"mt-5 flex w-full flex-row  items-center"}>
+            <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>8</h2>
               <Skeleton className={"ml-2 h-8 w-full"} />
             </div>
-            <div className={"mt-5 flex w-full flex-row  items-center"}>
+            <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>12</h2>
               <Skeleton className={"ml-2 h-12 w-full"} />
             </div>
-            <div className={"mt-5 flex w-full flex-row  items-center"}>
+            <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>16</h2>
               <Skeleton className={"ml-2 h-16 w-full"} />
             </div>
-            <div className={"mt-5 flex w-full flex-row  items-center"}>
+            <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>24</h2>
               <Skeleton className={"ml-2 mt-5 h-24 w-full"} />
             </div>
-            <div className={"flex w-full  flex-row  items-center"}>
+            <div className={"flex w-full flex-row items-center"}>
               <h2>32</h2>
               <Skeleton className={"ml-2 h-32 w-full"} />
             </div>
-            <div className={"mt-5 flex w-full flex-row  items-center"}>
+            <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>40</h2>
               <Skeleton className={"ml-2 h-40 w-full"} />
             </div>
@@ -2347,7 +2311,7 @@ export const components = [
         cardSubtext:
           "The shape of the Skeleton can be set to circle, rectangle, or square.",
         cardComponent: (
-          <div className={"flex w-full items-center justify-between "}>
+          <div className={"flex w-full items-center justify-between"}>
             <div className={"flex w-full flex-row"}>
               <Skeleton className={"ml-2 h-20 w-20"} />
               <Skeleton className={"ml-6 mt-2 h-20 w-20 rounded-full"} />
@@ -2399,7 +2363,7 @@ export const components = [
         cardComponent: (
           <div className={"flex flex-row items-center"}>
             <Switch className={""} checked={true} />
-            <h2 className={" ml-2"}>Checked Switch</h2>
+            <h2 className={"ml-2"}>Checked Switch</h2>
           </div>
         ),
       },
@@ -2423,11 +2387,11 @@ export const components = [
               <h2>With label before and unchecked</h2>
               <Switch />
             </div>
-            <div className={" ml-2 flex flex-col items-center"}>
+            <div className={"ml-2 flex flex-col items-center"}>
               <h2>With label above and checked</h2>
               <Switch checked={true} />
             </div>
-            <div className={" ml-2 flex flex-row items-center"}>
+            <div className={"ml-2 flex flex-row items-center"}>
               <Switch />
               <h2>With label after and unchecked</h2>
             </div>
@@ -2845,7 +2809,7 @@ export const components = [
             />
             <Checkbox
               size="large"
-              checked={"true"}
+              checked
               onChange={(checked) => console.log(checked)}
             />
           </div>
@@ -2865,7 +2829,7 @@ export const components = [
               disabled={true}
               size="large"
               onChange={(checked) => console.log(checked)}
-              checked={"true"}
+              checked
             />
           </div>
         ),
@@ -2882,7 +2846,7 @@ export const components = [
             <Checkbox
               size="large"
               onChange={(checked) => console.log(checked)}
-              checked={"true"}
+              checked
             />
           </div>
         ),
@@ -2924,7 +2888,7 @@ export const components = [
         cardSubtext: "The label can be placed before the checkbox.",
         cardComponent: (
           <div className="flex flex-col gap-2">
-            <div className={"flex flex-row items-center  text-center"}>
+            <div className={"flex flex-row items-center text-center"}>
               <h2 className={"ml-2"}>Cherries</h2>
 
               <Checkbox
@@ -2960,7 +2924,7 @@ export const components = [
               rounded={true}
               size="large"
               onChange={(checked) => console.log(checked)}
-              checked={"true"}
+              checked
             />
           </div>
         ),
@@ -2981,7 +2945,7 @@ export const components = [
               rounded={true}
               size="large"
               onChange={(checked) => console.log(checked)}
-              checked={"true"}
+              checked
             />
           </div>
         ),
@@ -3028,7 +2992,7 @@ export const components = [
           <div className="flex gap-2">
             <InfoLabel size={"lg"}>
               This is an example of a Required InfoLabel{" "}
-              <h2 className={"text-red-500 "}>*</h2>{" "}
+              <h2 className={"text-red-500"}>*</h2>{" "}
             </InfoLabel>
           </div>
         ),
@@ -3041,7 +3005,7 @@ export const components = [
           <div className="flex gap-2">
             <InfoLabel size={"lg"}>
               This is an example of a Required InfoLabel{" "}
-              <h2 className={"text-red-500 "}>*</h2>{" "}
+              <h2 className={"text-red-500"}>*</h2>{" "}
             </InfoLabel>
           </div>
         ),
@@ -3426,102 +3390,6 @@ export const components = [
       },
     ],
   },
-  {
-    header: "Link",
-    subText: (
-      <>
-        Links allow users to navigate between different locations. They can be
-        used as standalone controls or inline with text.
-      </>
-    ),
-    cards: [
-      {
-        cardHeader: "",
-        cardSubtext: "",
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Link href="#">Link default</Link>
-            <Link href="#" variant="subtle">
-              Link subtle
-            </Link>
-            <Link href="#" disabled>
-              disabled
-            </Link>
-          </div>
-        ),
-      },
-
-      {
-        cardHeader: "Appearance",
-        cardSubtext: "",
-
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Link href="#" variant="subtle">
-              A Subtle Link
-            </Link>
-          </div>
-        ),
-      },
-      {
-        cardHeader: "Inline",
-        cardSubtext: "",
-
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Link href="#">Link default</Link>
-            <Link href="#" variant="subtle">
-              <Link target={"_blank"} href={"https://youtube.com"}>
-                Youtube
-              </Link>
-            </Link>
-          </div>
-        ),
-      },
-      {
-        cardHeader: "Appearance",
-        cardSubtext: "",
-
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Link href="#">Link default</Link>
-            <Link href="#" variant="subtle">
-              <Link target={"_blank"} href={"https://youtube.com"}>
-                Youtube
-              </Link>
-            </Link>
-          </div>
-        ),
-      },
-      {
-        cardHeader: "As Button",
-        cardSubtext:
-          "When the href property is not provided, the component is rendered as a html  <button/>",
-
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Link href="#" variant="subtle">
-              A Subtle Link
-            </Link>
-          </div>
-        ),
-      },
-      {
-        cardHeader: "As Span",
-        cardSubtext:
-          'A Link can be rendered as an html <span>, in which case it will have role="button" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.',
-
-        cardComponent: (
-          <div className="flex flex-col gap-2">
-            <Link href="#" variant="subtle">
-              A Subtle Link
-            </Link>
-          </div>
-        ),
-      },
-    ],
-  },
-
   {
     header: "Toast",
     subText: (
@@ -3987,7 +3855,7 @@ export const components = [
         cardSubtext:
           "A Persona supports two text alignments, start being the default position.",
         cardComponent: (
-          <div className="flex flex-row  gap-2">
+          <div className="flex flex-row gap-2">
             <Persona
               name={"Alex Whittaker"}
               secondaryText={"Available"}
@@ -4023,7 +3891,6 @@ export const components = [
       },
     ],
   },
-  ,
   {
     header: "Popover",
     subText: <>A popover displays content on top of other content.</>,
@@ -4038,14 +3905,14 @@ export const components = [
                 <Button variant={"primary"}>Popover Trigger</Button>
               </PopoverTrigger>
               <PopoverContent
-                className={" rounded-md px-3 py-4"}
-                sideOffset={"-11"}
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
               >
                 <div>
                   <h2 className={"mb-1 text-lg font-extrabold"}>
                     This is a Popover!
                   </h2>
-                  <h3 className={" text-md pl-1"}>
+                  <h3 className={"text-md pl-1"}>
                     ... And you can edit it to contain whatever you want!
                   </h3>
                 </div>
@@ -4065,17 +3932,17 @@ export const components = [
                 <Button variant={"primary"}>Popover Trigger</Button>
               </PopoverTrigger>
               <PopoverContent
-                className={" rounded-md px-3 py-4"}
-                sideOffset={"-11"}
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
               >
                 <div>
                   <h2 className={"mb-1 text-lg font-extrabold"}>
                     This is a Popover!
                   </h2>
-                  <h3 className={" text-md pl-1"}>
+                  <h3 className={"text-md pl-1"}>
                     ... And you can edit it to contain whatever you want!
                   </h3>
-                  <div className={"flex  flex-row"}>
+                  <div className={"flex flex-row"}>
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
@@ -4102,17 +3969,17 @@ export const components = [
                 <Button variant={"primary"}>Popover Trigger</Button>
               </PopoverTrigger>
               <PopoverContent
-                className={" rounded-md px-3 py-4"}
-                sideOffset={"-11"}
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
               >
                 <div>
                   <h2 className={"mb-1 text-lg font-extrabold"}>
                     This is a Popover!
                   </h2>
-                  <h3 className={" text-md pl-1"}>
+                  <h3 className={"text-md pl-1"}>
                     ... And you can edit it to contain whatever you want!
                   </h3>
-                  <div className={"flex  flex-row"}>
+                  <div className={"flex flex-row"}>
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
@@ -4137,17 +4004,17 @@ export const components = [
                 <Button variant={"primary"}>Popover Trigger</Button>
               </PopoverTrigger>
               <PopoverContent
-                className={" rounded-md px-3 py-4"}
-                sideOffset={"-11"}
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
               >
                 <div>
                   <h2 className={"mb-1 text-lg font-extrabold"}>
                     This is a Popover!
                   </h2>
-                  <h3 className={" text-md pl-1"}>
+                  <h3 className={"text-md pl-1"}>
                     ... And you can edit it to contain whatever you want!
                   </h3>
-                  <div className={"flex  flex-row"}>
+                  <div className={"flex flex-row"}>
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
@@ -4174,17 +4041,17 @@ export const components = [
                 <Button variant={"primary"}>Popover Trigger</Button>
               </PopoverTrigger>
               <PopoverContent
-                className={" rounded-md px-3 py-4"}
-                sideOffset={"-11"}
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
               >
                 <div>
                   <h2 className={"mb-1 text-lg font-extrabold"}>
                     This is a Popover!
                   </h2>
-                  <h3 className={" text-md pl-1"}>
+                  <h3 className={"text-md pl-1"}>
                     ... And you can edit it to contain whatever you want!
                   </h3>
-                  <div className={"flex  flex-row"}>
+                  <div className={"flex flex-row"}>
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
@@ -4209,191 +4076,311 @@ export const components = [
                 <Button variant={"secondary"}>Popover Trigger</Button>
               </PopoverTrigger>
               <PopoverContent
-                className={" rounded-md px-3 py-4"}
-                sideOffset={"-11"}
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
               >
                 <div>
                   <h2 className={"mb-1 text-lg font-extrabold"}>
                     This is a Popover!
                   </h2>
-                  <h3 className={" text-md pl-1"}>
+                  <h3 className={"text-md pl-1"}>
                     ... And you can edit it to contain whatever you want!
                   </h3>
-                  <div className={"flex  flex-row"}>
+                  <div className={"flex flex-row"}>
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action 1{" "}
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"primary"}>Action 2</Button>
-
-                                    </div>
-                                </div>
-                            </PopoverContent>
-
-                        </Popover>
-                    </div>
-                ),
-            },
-            {
-                cardHeader: "Without Trigger",
-                cardSubtext: "When using a Popover without a PopoverTrigger, it is up to the user to make sure that the focus is restored correctly when the popover is closed. This can be done quite easily by using the useRestoreFocusTarget hook. The Popover already uses the useRestoreFocusSource hook directly, which will restore focus to the most recently focused target on close.",
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Popover >
-                            <PopoverTrigger>
-                                <Button variant={"secondary"}>Popover Trigger</Button>
-                            </PopoverTrigger>
-                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
-                                <div>
-                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
-                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
-                                    <div className={"flex  flex-row"}>
-                                        <Button className={"mt-1"} variant={"secondary"}>Action 1 </Button>
-                                        <Button className={"mt-1 ml-2"} variant={"primary"}>Action 2</Button>
-
-                                    </div>
-                                </div>
-                            </PopoverContent>
-
-                        </Popover>
-                    </div>
-                ),
-            },
-            {
-                cardHeader: "Internal Update Content",
-                cardSubtext: "",
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Popover >
-                            <PopoverTrigger>
-                                <Button variant={"secondary"}>Popover Trigger</Button>
-                            </PopoverTrigger>
-                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
-                                <div>
-                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
-                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
-                                    <div className={"flex  flex-row"}>
-                                        <Button className={"mt-1"} variant={"secondary"}>Action 1 </Button>
-                                        <Button className={"mt-1 ml-2"} variant={"primary"}>Action 2</Button>
-
-                                    </div>
-                                </div>
-                            </PopoverContent>
-
-                        </Popover>
-                    </div>
-                ),
-            },
-            {
-                cardHeader: "Appearance",
-                cardSubtext: "When using a Popover without a PopoverTrigger, it is up to the user to make sure that the focus is restored correctly when the popover is closed. This can be done quite easily by using the useRestoreFocusTarget hook. The Popover already uses the useRestoreFocusSource hook directly, which will restore focus to the most recently focused target on close.",
-                cardComponent: (
-                    <div className="flex flex-col gap-2">
-                        <Popover >
-                            <PopoverTrigger>
-                                <Button variant={"secondary"}>Popover Trigger</Button>
-                            </PopoverTrigger>
-                            <PopoverContent className={" px-3 py-4 rounded-md"} sideOffset={"-11"} >
-                                <div>
-                                    <h2 className={"mb-1 font-extrabold text-lg"}>This is a Popover!</h2>
-                                    <h3 className={" pl-1 text-md"}>... And you can edit it to contain whatever you want!</h3>
-                                    <div className={"flex  flex-row"}>
-                                        <Button className={"mt-1"} variant={"secondary"}>Action 1 </Button>
-                                        <Button className={"mt-1 ml-2"} variant={"primary"}>Action 2</Button>
-
-                                    </div>
-                                </div>
-                            </PopoverContent>
-
-                        </Popover>
-                    </div>
-                ),
-            },
-        {
-            header: "ProgressBar",
-            subText: (
-                <>
-                    Progress bars allow users to not have the feeling that an action is not progressing, by giving them a visual cue of how close they are to completion, you retain the user`s attention with ease.
-                </>
+                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                      Action 2
+                    </Button>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Without Trigger",
+        cardSubtext:
+          "When using a Popover without a PopoverTrigger, it is up to the user to make sure that the focus is restored correctly when the popover is closed. This can be done quite easily by using the useRestoreFocusTarget hook. The Popover already uses the useRestoreFocusSource hook directly, which will restore focus to the most recently focused target on close.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Popover>
+              <PopoverTrigger>
+                <Button variant={"secondary"}>Popover Trigger</Button>
+              </PopoverTrigger>
+              <PopoverContent
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
+              >
+                <div>
+                  <h2 className={"mb-1 text-lg font-extrabold"}>
+                    This is a Popover!
+                  </h2>
+                  <h3 className={"text-md pl-1"}>
+                    ... And you can edit it to contain whatever you want!
+                  </h3>
+                  <div className={"flex flex-row"}>
+                    <Button className={"mt-1"} variant={"secondary"}>
+                      Action 1{" "}
+                    </Button>
+                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                      Action 2
+                    </Button>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Internal Update Content",
+        cardSubtext: "",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Popover>
+              <PopoverTrigger>
+                <Button variant={"secondary"}>Popover Trigger</Button>
+              </PopoverTrigger>
+              <PopoverContent
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
+              >
+                <div>
+                  <h2 className={"mb-1 text-lg font-extrabold"}>
+                    This is a Popover!
+                  </h2>
+                  <h3 className={"text-md pl-1"}>
+                    ... And you can edit it to contain whatever you want!
+                  </h3>
+                  <div className={"flex flex-row"}>
+                    <Button className={"mt-1"} variant={"secondary"}>
+                      Action 1{" "}
+                    </Button>
+                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                      Action 2
+                    </Button>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        ),
+      },
+      {
+        cardHeader: "Appearance",
+        cardSubtext:
+          "When using a Popover without a PopoverTrigger, it is up to the user to make sure that the focus is restored correctly when the popover is closed. This can be done quite easily by using the useRestoreFocusTarget hook. The Popover already uses the useRestoreFocusSource hook directly, which will restore focus to the most recently focused target on close.",
+        cardComponent: (
+          <div className="flex flex-col gap-2">
+            <Popover>
+              <PopoverTrigger>
+                <Button variant={"secondary"}>Popover Trigger</Button>
+              </PopoverTrigger>
+              <PopoverContent
+                className={"rounded-md px-3 py-4"}
+                sideOffset={-11}
+              >
+                <div>
+                  <h2 className={"mb-1 text-lg font-extrabold"}>
+                    This is a Popover!
+                  </h2>
+                  <h3 className={"text-md pl-1"}>
+                    ... And you can edit it to contain whatever you want!
+                  </h3>
+                  <div className={"flex flex-row"}>
+                    <Button className={"mt-1"} variant={"secondary"}>
+                      Action 1{" "}
+                    </Button>
+                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                      Action 2
+                    </Button>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+        ),
+      },
+      {
+        header: "ProgressBar",
+        subText: (
+          <>
+            Progress bars allow users to not have the feeling that an action is
+            not progressing, by giving them a visual cue of how close they are
+            to completion, you retain the user`s attention with ease.
+          </>
+        ),
+        cards: [
+          {
+            cardHeader: "Default Appearance",
+            cardSubtext: "The normal progressbar.",
+            cardComponent: (
+              <div className="flex flex-col gap-2">
+                <Progress></Progress>
+              </div>
             ),
-            cards: [
-                {
-                    cardHeader: "Default Appearance",
-                    cardSubtext: "The normal progressbar.",
-                    cardComponent: (
-                        <div className="flex flex-col gap-2">
-                         <Progress></Progress>
-                        </div>
-                    ),
-                },
+          },
 
-                {
-                    cardHeader: "Appearance",
-                    cardSubtext: "",
+          {
+            cardHeader: "Appearance",
+            cardSubtext: "",
 
-                    cardComponent: (
-                        <div className="flex flex-col gap-2">
-                            <Progress></Progress>
-                        </div>
-                    ),
-                },
-                {
-                    cardHeader: "Inline",
-                    cardSubtext: "",
+            cardComponent: (
+              <div className="flex flex-col gap-2">
+                <Progress></Progress>
+              </div>
+            ),
+          },
+          {
+            cardHeader: "Inline",
+            cardSubtext: "",
 
-                    cardComponent: (
-                        <div className="flex flex-col gap-2">
-                            <Progress></Progress>
-                        </div>
-                    ),
-                },
-                {
-                    cardHeader: "Appearance",
-                    cardSubtext: "",
+            cardComponent: (
+              <div className="flex flex-col gap-2">
+                <Progress></Progress>
+              </div>
+            ),
+          },
+          {
+            cardHeader: "Appearance",
+            cardSubtext: "",
 
-                    cardComponent: (
-                        <div className="flex flex-col gap-2">
-                            <Progress></Progress>
-                        </div>
-                    ),
-                },
-                {
-                    cardHeader: "As Button",
-                    cardSubtext:
-                        "When the href property is not provided, the component is rendered as a html  <button/>",
+            cardComponent: (
+              <div className="flex flex-col gap-2">
+                <Progress></Progress>
+              </div>
+            ),
+          },
+          {
+            cardHeader: "As Button",
+            cardSubtext:
+              "When the href property is not provided, the component is rendered as a html  <button/>",
 
-                    cardComponent: (
-                        <div className="flex flex-col gap-2">
-                            <Progress></Progress>
-                        </div>
-                    ),
-                },
-                {
-                    cardHeader: "As Span",
-                    cardSubtext:
-                        'A Link can be rendered as an html <span>, in which case it will have role="button" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.',
+            cardComponent: (
+              <div className="flex flex-col gap-2">
+                <Progress></Progress>
+              </div>
+            ),
+          },
+          {
+            cardHeader: "As Span",
+            cardSubtext:
+              'A Link can be rendered as an html <span>, in which case it will have role="button" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.',
 
-                    cardComponent: (
-                        <div className="flex flex-col gap-2">
-                            <Progress></Progress>
-                        </div>
-                    ),
-                },
-            ],
-        },
+            cardComponent: (
+              <div className="flex flex-col gap-2">
+                <Progress></Progress>
+              </div>
+            ),
+          },
         ],
-    },
-
-
-
-
-
-
-] as const
+      },
+    ],
+  },
+  // {
+  //   header: "Link",
+  //   subText: (
+  //     <>
+  //       Links allow users to navigate between different locations. They can be
+  //       used as standalone controls or inline with text.
+  //     </>
+  //   ),
+  //   cards: [
+  //     {
+  //       cardHeader: "",
+  //       cardSubtext: "",
+  //       cardComponent: (
+  //         <div className="flex flex-col gap-2">
+  //           <Link href="#">Link default</Link>
+  //           <Link href="#" variant="subtle">
+  //             Link subtle
+  //           </Link>
+  //           <Link href="#" disabled>
+  //             disabled
+  //           </Link>
+  //         </div>
+  //       ),
+  //     },
+  //
+  //     {
+  //       cardHeader: "Appearance",
+  //       cardSubtext: "",
+  //
+  //       cardComponent: (
+  //         <div className="flex flex-col gap-2">
+  //           <Link href="#" variant="subtle">
+  //             A Subtle Link
+  //           </Link>
+  //         </div>
+  //       ),
+  //     },
+  //     {
+  //       cardHeader: "Inline",
+  //       cardSubtext: "",
+  //
+  //       cardComponent: (
+  //         <div className="flex flex-col gap-2">
+  //           <Link href="#">Link default</Link>
+  //           <Link href="#" variant="subtle">
+  //             <Link target={"_blank"} href={"https://youtube.com"}>
+  //               Youtube
+  //             </Link>
+  //           </Link>
+  //         </div>
+  //       ),
+  //     },
+  //     {
+  //       cardHeader: "Appearance",
+  //       cardSubtext: "",
+  //
+  //       cardComponent: (
+  //         <div className="flex flex-col gap-2">
+  //           <Link href="#">Link default</Link>
+  //           <Link href="#" variant="subtle">
+  //             <Link target={"_blank"} href={"https://youtube.com"}>
+  //               Youtube
+  //             </Link>
+  //           </Link>
+  //         </div>
+  //       ),
+  //     },
+  //     {
+  //       cardHeader: "As Button",
+  //       cardSubtext:
+  //         "When the href property is not provided, the component is rendered as a html  <button/>",
+  //
+  //       cardComponent: (
+  //         <div className="flex flex-col gap-2">
+  //           <Link href="#" variant="subtle">
+  //             A Subtle Link
+  //           </Link>
+  //         </div>
+  //       ),
+  //     },
+  //     {
+  //       cardHeader: "As Span",
+  //       cardSubtext:
+  //         'A Link can be rendered as an html <span>, in which case it will have role="button" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.',
+  //
+  //       cardComponent: (
+  //         <div className="flex flex-col gap-2">
+  //           <Link href="#" variant="subtle">
+  //             A Subtle Link
+  //           </Link>
+  //         </div>
+  //       ),
+  //     },
+  //   ],
+  // },
+] as ComponentsType
 
 export const sideBar = {
-
   Components: {
     icon: <List20Filled />,
+    // @ts-ignore
     items: components.map((component) => component.header).sort(),
   },
 } as const

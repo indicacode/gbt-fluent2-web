@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import {
   Close,
   Content,
@@ -11,6 +10,16 @@ import {
   Title,
   Trigger,
 } from "@radix-ui/react-dialog"
+import {
+  Children,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  HTMLAttributes,
+  ReactElement,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+} from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -19,11 +28,12 @@ function Dialog({
   nonModal,
   ...props
 }: {
-  children: React.ReactNode
+  children: ReactElement
+  nonModal: boolean
 }) {
-  const childrenWithProps = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, { nonModal })
+  const childrenWithProps = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      return cloneElement(child as ReactElement, { nonModal })
     }
     return child
   })
@@ -36,14 +46,14 @@ const DialogPortal = Portal
 
 const DialogClose = Close
 
-const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof Overlay>,
-  React.ComponentPropsWithoutRef<typeof Overlay>
+const DialogOverlay = forwardRef<
+  ElementRef<typeof Overlay>,
+  ComponentPropsWithoutRef<typeof Overlay>
 >(({ className, ...props }, ref) => (
   <Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-[#00000066]  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-[#00000066] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -53,9 +63,9 @@ DialogOverlay.displayName = Overlay.displayName
 ///////////////////////
 // TODO do nonModal //
 /////////////////////
-const DialogContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
+const DialogContent = forwardRef<
+  ElementRef<typeof Content>,
+  ComponentPropsWithoutRef<typeof Content> & { nonModal: boolean }
 >(({ className, onInteractOutside, nonModal, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
@@ -83,7 +93,7 @@ DialogContent.displayName = Content.displayName
 const DialogHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("flex", className)} {...props} />
 )
 DialogHeader.displayName = "DialogHeader"
@@ -91,7 +101,7 @@ DialogHeader.displayName = "DialogHeader"
 const DialogFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
@@ -102,9 +112,9 @@ const DialogFooter = ({
 )
 DialogFooter.displayName = "DialogFooter"
 
-const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof Title>,
-  React.ComponentPropsWithoutRef<typeof Title>
+const DialogTitle = forwardRef<
+  ElementRef<typeof Title>,
+  ComponentPropsWithoutRef<typeof Title>
 >(({ className, ...props }, ref) => (
   <Title
     ref={ref}
@@ -117,9 +127,9 @@ const DialogTitle = React.forwardRef<
 ))
 DialogTitle.displayName = Title.displayName
 
-const DialogDescription = React.forwardRef<
-  React.ElementRef<typeof Description>,
-  React.ComponentPropsWithoutRef<typeof Description>
+const DialogDescription = forwardRef<
+  ElementRef<typeof Description>,
+  ComponentPropsWithoutRef<typeof Description>
 >(({ className, ...props }, ref) => (
   <Description
     ref={ref}
@@ -131,13 +141,13 @@ DialogDescription.displayName = Description.displayName
 
 export {
   Dialog,
-  DialogPortal,
-  DialogOverlay,
-  DialogTrigger,
   DialogClose,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
 }

@@ -1,17 +1,18 @@
 "use client"
 
+import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import {
   Children,
-  cloneElement,
   ComponentPropsWithoutRef,
   ElementRef,
+  ReactElement,
+  Ref,
+  cloneElement,
   forwardRef,
   isValidElement,
-  Ref,
 } from "react"
-import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "react-icons/ci"
-import { tv, VariantProps } from "tailwind-variants"
+import { VariantProps, tv } from "tailwind-variants"
 
 import { StatusBadge } from "../reviewing"
 
@@ -79,10 +80,15 @@ const Avatar = forwardRef<ElementRef<typeof Root>, AvatarProps>(
   ) => {
     const childrenWithProps = Children.map(children, (child) => {
       if (isValidElement(child)) {
-        return cloneElement(child, { variant, size, status })
+        return cloneElement(child as ReactElement, {
+          variant,
+          size,
+          status,
+        })
       }
       return child
     })
+
     return (
       <div className={avatarActiveRing({ active })}>
         <Root
@@ -109,16 +115,15 @@ Avatar.displayName = Root.displayName
  * @param {string} className - Additional CSS classes provided by the user.
  */
 
-const AvatarImage = forwardRef<
-  ElementRef<typeof Image>,
-  ComponentPropsWithoutRef<typeof Image>
->(({ className, variant, size, status, ...props }, ref) => (
-  <Image
-    ref={ref}
-    className={avatar({ variant, size, className })}
-    {...props}
-  />
-))
+const AvatarImage = forwardRef<ElementRef<typeof Image>, AvatarProps>(
+  ({ className, variant, size, status, ...props }, ref) => (
+    <Image
+      ref={ref}
+      className={avatar({ variant, size, className })}
+      {...props}
+    />
+  )
+)
 AvatarImage.displayName = Image.displayName
 
 //--------------------------------------------//
@@ -171,7 +176,7 @@ function AvatarFallback(
       {
         <>
           {children === undefined ? (
-            <CiUser size={iconSize} className="text-2xl " />
+            <CiUser size={iconSize} className="text-2xl" />
           ) : (
             children?.split(" ").map((name) => name.slice(0, 1).toUpperCase())
           )}
@@ -186,4 +191,4 @@ ForwardedAvatarFallback.displayName = Fallback.displayName
 
 //--------------------------------------------//
 
-export { Avatar, AvatarImage, ForwardedAvatarFallback as AvatarFallback }
+export { Avatar, ForwardedAvatarFallback as AvatarFallback, AvatarImage }
