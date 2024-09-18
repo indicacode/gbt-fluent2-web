@@ -16,6 +16,7 @@ import {
   ElementRef,
   HTMLAttributes,
   ReactElement,
+  ReactNode,
   cloneElement,
   forwardRef,
   isValidElement,
@@ -28,8 +29,8 @@ function Dialog({
   nonModal,
   ...props
 }: {
-  children: ReactElement
-  nonModal: boolean
+  children: ReactNode
+  nonModal?: boolean
 }) {
   const childrenWithProps = Children.map(children, (child) => {
     if (isValidElement(child)) {
@@ -65,7 +66,7 @@ DialogOverlay.displayName = Overlay.displayName
 /////////////////////
 const DialogContent = forwardRef<
   ElementRef<typeof Content>,
-  ComponentPropsWithoutRef<typeof Content> & { nonModal: boolean }
+  ComponentPropsWithoutRef<typeof Content> & { nonModal?: boolean }
 >(({ className, onInteractOutside, nonModal, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />

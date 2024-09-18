@@ -1582,7 +1582,7 @@ export const components = [
                           // name={author.label}
                         >
                           <AvatarImage
-                            src="https://github.com/shadcn.pn"
+                            src="https://github.com/shadcn.png"
                             alt="@shadcn"
                           />
                           <AvatarFallback size="sm">

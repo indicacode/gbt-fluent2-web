@@ -115,15 +115,16 @@ Avatar.displayName = Root.displayName
  * @param {string} className - Additional CSS classes provided by the user.
  */
 
-const AvatarImage = forwardRef<ElementRef<typeof Image>, AvatarProps>(
-  ({ className, variant, size, status, ...props }, ref) => (
-    <Image
-      ref={ref}
-      className={avatar({ variant, size, className })}
-      {...props}
-    />
-  )
-)
+const AvatarImage = forwardRef<
+  ElementRef<typeof Image>,
+  ComponentPropsWithoutRef<typeof Image> & AvatarProps
+>(({ className, variant, size, status, ...props }, ref) => (
+  <Image
+    ref={ref}
+    className={avatar({ variant, size, className })}
+    {...props}
+  />
+))
 AvatarImage.displayName = Image.displayName
 
 //--------------------------------------------//
