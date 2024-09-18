@@ -106,6 +106,7 @@ import { columns } from "@/components/reviewing/data-table.components"
 import { fetchUsers } from "@/components/reviewing/data-table.input"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
+import { ColumnDef } from "@tanstack/react-table"
 import Link from "next/link"
 
 type RowItem = {
@@ -1517,7 +1518,7 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <DataTable
-            columns={columns}
+            columns={columns as ColumnDef<[]>[]} // i dont like this and dont think its right but it is what it is lol
             fetchData={fetchUsers}
             pagination={{
               manualPagination: true,

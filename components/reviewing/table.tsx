@@ -1,13 +1,12 @@
-import * as React from "react"
 import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
-import { tv } from "tailwind-variants" //--------------------------------styles------------------------------------//
+import { tv } from "tailwind-variants"
 
 //--------------------------------styles------------------------------------//
 const tableSlots = tv({
   slots: {
     // ---group--- //
-    tableRoot: "relative w-auto overflow-auto",
-    table: "w-full caption-bottom rounded text-sm",
+    tableRoot: "relative w-full overflow-x-auto",
+    table: "w-full min-w-[500px] caption-bottom rounded text-sm",
     // ---group--- //
 
     tableHeader: "[&_tr]:border-b-[2px]",
@@ -21,10 +20,10 @@ const tableSlots = tv({
       "border-b-[2px] border-zinc-600 transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-white/10 dark:data-[state=selected]:bg-slate-800",
 
     tableHead:
-      "h-10 max-w-fit px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-200 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-200 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCell:
-      "max-w-fit whitespace-nowrap p-2 py-1.5  [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "whitespace-nowrap p-2 py-1.5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCaption: "mt-4 text-sm text-slate-500 dark:text-slate-400",
   },
@@ -32,6 +31,7 @@ const tableSlots = tv({
     size: {},
   },
 })
+
 const {
   table,
   tableHeader,
@@ -97,15 +97,7 @@ function TableFooter(
   { className, ...props }: TableFooterProps,
   ref: Ref<HTMLTableSectionElement>
 ) {
-  return (
-    <tfoot
-      ref={ref}
-      className={tableFoot({
-        className,
-      })}
-      {...props}
-    />
-  )
+  return <tfoot ref={ref} className={tableFoot({ className })} {...props} />
 }
 
 const ForwardedTableFooter = forwardRef(TableFooter)
@@ -119,15 +111,7 @@ function TableRow(
   { className, ...props }: TableRowProps,
   ref: Ref<HTMLTableRowElement>
 ) {
-  return (
-    <tr
-      ref={ref}
-      className={tableRow({
-        className,
-      })}
-      {...props}
-    />
-  )
+  return <tr ref={ref} className={tableRow({ className })} {...props} />
 }
 
 const ForwardedTableRow = forwardRef(TableRow)
@@ -141,15 +125,7 @@ function TableHead(
   { className, ...props }: TableHeadProps,
   ref: Ref<HTMLTableCellElement>
 ) {
-  return (
-    <th
-      ref={ref}
-      className={tableHead({
-        className,
-      })}
-      {...props}
-    />
-  )
+  return <th ref={ref} className={tableHead({ className })} {...props} />
 }
 
 const ForwardedTableHead = forwardRef(TableHead)
@@ -163,15 +139,7 @@ function TableCell(
   { className, ...props }: TableCellProps,
   ref: Ref<HTMLTableCellElement>
 ) {
-  return (
-    <td
-      ref={ref}
-      className={tableCell({
-        className,
-      })}
-      {...props}
-    />
-  )
+  return <td ref={ref} className={tableCell({ className })} {...props} />
 }
 
 const ForwardedTableCell = forwardRef(TableCell)
@@ -194,12 +162,12 @@ const ForwardedTableCaption = forwardRef(TableCaption)
 ForwardedTableCaption.displayName = "TableCaption"
 
 export {
-  ForwardedTable as TableRoot,
-  ForwardedTableHeader as TableHeader,
   ForwardedTableBody as TableBody,
+  ForwardedTableCaption as TableCaption,
+  ForwardedTableCell as TableCell,
   ForwardedTableFooter as TableFooter,
   ForwardedTableHead as TableHead,
+  ForwardedTableHeader as TableHeader,
+  ForwardedTable as TableRoot,
   ForwardedTableRow as TableRow,
-  ForwardedTableCell as TableCell,
-  ForwardedTableCaption as TableCaption,
 }

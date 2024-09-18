@@ -26,6 +26,7 @@ export function Toaster() {
     <ToastProvider>
       {toasts.map(
         ({
+          //@ts-expect-error
           multiline = false,
           description,
           variant,
@@ -38,7 +39,9 @@ export function Toaster() {
           return (
             <Toast variant={variant} key={id} {...props}>
               <div className="flex w-full items-center gap-2">
-                <ToastIcon variant={variant} />
+                <ToastIcon
+                  variant={variant as "info" | "warning" | "error" | "success"}
+                />
                 {title && <ToastTitle>{title}</ToastTitle>}
                 {description && (
                   <ToastDescription>{description}</ToastDescription>

@@ -1,7 +1,8 @@
 "use client"
 
-import * as React from "react"
 import { Anchor, Content, Portal, Root, Trigger } from "@radix-ui/react-popover"
+import * as React from "react"
+import { ReactNode } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -17,7 +18,7 @@ const PopoverTrigger = Trigger
 // See
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
+  React.ComponentPropsWithoutRef<typeof Content> & { container?: ReactNode }
 >(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
   <Portal>
     <Content
@@ -40,4 +41,4 @@ PopoverContent.displayName = Content.displayName
 // const ForwardedPopoverContent = forwardRef(PopoverContent)
 // ForwardedPopoverContent.displayName = Content.displayName
 
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
+export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger }

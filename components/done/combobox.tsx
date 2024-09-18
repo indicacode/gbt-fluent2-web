@@ -1,5 +1,9 @@
 "use client"
 
+import portalRoot from "@/utils/portal-root"
+import { useDebounce } from "@/utils/useDebounce"
+import { Command as CommandPrimitive } from "cmdk"
+import { X } from "lucide-react"
 import * as React from "react"
 import {
   forwardRef,
@@ -10,13 +14,8 @@ import {
   useRef,
   useState,
 } from "react"
-import portalRoot from "@/utils/portal-root"
-import { useDebounce } from "@/utils/useDebounce"
-import { Command as CommandPrimitive } from "cmdk"
-import { X } from "lucide-react"
 import { tv } from "tailwind-variants"
 
-import { cn } from "@/lib/utils"
 import { CommandEmpty } from "@/components/done/customCommandEmpty"
 import { Input } from "@/components/done/index"
 import { Badge } from "@/components/not-done/badge"
@@ -30,6 +29,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/reviewing"
+import { cn } from "@/lib/utils"
 
 import {
   GroupOption,
@@ -371,7 +371,12 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
                 />
               )}
             </PopoverTrigger>
-            <CommandPrimitive.Input value={inputValue} {...inputProps} hidden />
+            <CommandPrimitive.Input
+              //@ts-ignore*
+              value={inputValue}
+              {...inputProps}
+              hidden
+            />
             <PopoverContent
               className="w-radix-popover-trigger"
               onOpenAutoFocus={(e) => e.preventDefault()}

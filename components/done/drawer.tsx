@@ -1,10 +1,13 @@
 "use client"
 
-import * as React from "react"
 import {
   Children,
   cloneElement,
   ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  HTMLAttributes,
   isValidElement,
   useEffect,
   useState,
@@ -26,9 +29,9 @@ const {
 
 const drawerSlots = tv({
   slots: {
-    drawerOverlay: " fixed inset-0 z-50 bg-black/80",
+    drawerOverlay: "fixed inset-0 z-50 bg-black/80",
     drawerContent:
-      " fixed z-50 flex h-full flex-col border  border-slate-200 bg-white p-4 text-white dark:border-slate-800 dark:bg-[#292929]",
+      "fixed z-50 flex h-full flex-col border border-slate-200 bg-white p-4 text-white dark:border-slate-800 dark:bg-[#292929]",
     drawerHeader: "gap-1.5text-center flex sm:text-left",
     drawerFooter: "mt-auto flex flex-col gap-2",
     drawerTitle: "text-lg font-semibold leading-none tracking-tight",
@@ -36,7 +39,7 @@ const drawerSlots = tv({
   },
   variants: {
     inline: {
-      true: " flex ",
+      true: "flex",
     },
     position: {
       left: {
@@ -55,17 +58,17 @@ const drawerSlots = tv({
       positionBottom: { drawerContent: "h-[320px] w-screen" },
     },
     divider: {
-      enabled: {
+      true: {
         drawerContent: "border-r-slate-600 dark:border-r-slate-400",
       },
-      positionBottom: {
+      false: {
         drawerContent: "border-t-slate-600 dark:border-t-slate-400",
       },
     },
   },
   defaultVariants: {
     position: "left",
-    divider: "true",
+    divider: true,
     size: "sm",
   },
 })
@@ -139,9 +142,9 @@ const DrawerClose = Close
 
 //-----------------------------//
 
-const DrawerOverlay = React.forwardRef<
-  React.ElementRef<typeof Overlay>,
-  React.ComponentPropsWithoutRef<typeof Overlay>
+const DrawerOverlay = forwardRef<
+  ElementRef<typeof Overlay>,
+  ComponentPropsWithoutRef<typeof Overlay>
 >(({ className, ...props }, ref) => (
   <Overlay ref={ref} className={drawerOverlay({ className })} {...props} />
 ))
@@ -149,16 +152,17 @@ DrawerOverlay.displayName = Overlay.displayName
 
 //-----------------------------//
 
-const DrawerContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content>
+const DrawerContent = forwardRef<
+  ElementRef<typeof Content>,
+  ComponentPropsWithoutRef<typeof Content> &
+    Pick<DrawerProps, "position" | "divider" | "size">
 >(({ className, children, position, divider, size, ...props }, ref) => (
   <DrawerPortal>
     <DrawerOverlay />
     <Content
       className={drawerContent({
         position,
-        divider: position === "bottom" ? "positionBottom" : divider,
+        divider: position !== "bottom",
         size: position === "bottom" ? "positionBottom" : size,
         className,
       })}
@@ -176,7 +180,7 @@ DrawerContent.displayName = "DrawerContent"
 const DrawerHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: HTMLAttributes<HTMLDivElement>) => (
   <div className={drawerHeader({ className })} {...props} />
 )
 DrawerHeader.displayName = "DrawerHeader"
@@ -185,16 +189,16 @@ DrawerHeader.displayName = "DrawerHeader"
 const DrawerFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: HTMLAttributes<HTMLDivElement>) => (
   <div className={drawerFooter({ className })} {...props} />
 )
 DrawerFooter.displayName = "DrawerFooter"
 
 //-----------------------------//
 
-const DrawerTitle = React.forwardRef<
-  React.ElementRef<typeof Title>,
-  React.ComponentPropsWithoutRef<typeof Title>
+const DrawerTitle = forwardRef<
+  ElementRef<typeof Title>,
+  ComponentPropsWithoutRef<typeof Title>
 >(({ className, ...props }, ref) => (
   <Title
     ref={ref}
@@ -208,9 +212,9 @@ DrawerTitle.displayName = Title.displayName
 
 //-----------------------------//
 
-const DrawerDescription = React.forwardRef<
-  React.ElementRef<typeof Description>,
-  React.ComponentPropsWithoutRef<typeof Description>
+const DrawerDescription = forwardRef<
+  ElementRef<typeof Description>,
+  ComponentPropsWithoutRef<typeof Description>
 >(({ className, ...props }, ref) => (
   <Description
     ref={ref}
@@ -224,13 +228,13 @@ DrawerDescription.displayName = Description.displayName
 
 export {
   Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
   DrawerClose,
   DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
-  DrawerTitle,
   DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTitle,
+  DrawerTrigger,
 }

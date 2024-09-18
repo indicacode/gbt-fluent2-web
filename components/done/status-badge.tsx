@@ -1,4 +1,3 @@
-import React from "react"
 import { tv, VariantProps } from "tailwind-variants" //--------------------types--------------------//
 
 //--------------------types--------------------//
@@ -55,7 +54,7 @@ export function StatusBadge({
   appearance = "filled",
   iconPosition = "before",
   shape = "circular",
-  size = "default",
+  size,
   variant = "default",
   className,
 }: StatusBadgeProps) {

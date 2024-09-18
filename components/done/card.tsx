@@ -31,10 +31,10 @@ const cardSlots = tv({
     },
     variant: {
       filled: {
-        card: "bg-white text-slate-950 hover:bg-zinc-200  dark:bg-slate-950 dark:text-slate-50",
+        card: "bg-white text-slate-950 hover:bg-zinc-200 dark:bg-slate-950 dark:text-slate-50",
       },
       "filled-alt": {
-        card: " bg-zinc-50 hover:bg-zinc-300 dark:hover:bg-slate-800",
+        card: "bg-zinc-50 hover:bg-zinc-300 dark:hover:bg-slate-800",
       },
       outline: {
         card: "border border-gray-300 shadow-none dark:border-zinc-200 dark:text-slate-50 dark:hover:bg-slate-950",
@@ -63,7 +63,7 @@ const cardSlots = tv({
     orientation: {
       horizontal: {
         card: "flex bg-transparent p-0",
-        cardSpacing: "flex flex-col ",
+        cardSpacing: "flex flex-col",
         cardHeader: "",
         cardTitle: "",
         cardDescription: "",
@@ -101,7 +101,7 @@ interface CardProps
   onSelectionChange?: () => void
   /** False is the default value */
   cardPreview?: string | false
-
+  image?: string
   size?: "sm" | "md" | "lg"
 }
 
@@ -322,11 +322,11 @@ CardFooter.displayName = "CardFooter"
 const ForwardedCardFooter = forwardRef(CardFooter)
 
 export {
-  FloatingAction,
   ForwardedCard as Card,
-  ForwardedCardHeader as CardHeader,
-  ForwardedCardFooter as CardFooter,
-  ForwardedCardTitle as CardTitle,
-  ForwardedCardDescription as CardDescription,
   ForwardedCardContent as CardContent,
+  ForwardedCardDescription as CardDescription,
+  ForwardedCardFooter as CardFooter,
+  ForwardedCardHeader as CardHeader,
+  ForwardedCardTitle as CardTitle,
+  FloatingAction,
 }
