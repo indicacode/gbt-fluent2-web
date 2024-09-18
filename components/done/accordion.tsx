@@ -5,19 +5,20 @@ import { ChevronRightIcon } from "@radix-ui/react-icons"
 import {
   ComponentPropsWithoutRef,
   ElementRef,
+  ElementType,
   Fragment,
   ReactNode,
   forwardRef,
 } from "react"
 import { VariantProps, tv } from "tailwind-variants"
+
 // Used in accordionTrigger
-const validTags = ["div", "h1", "h2", "h3", "h4", "h5", "h6"] as const
 
 interface AccordionTriggerProps
   extends ComponentPropsWithoutRef<typeof Trigger>,
     VariantProps<typeof accordionSlots> {
   icon?: ReactNode
-  as?: typeof validTags
+  as?: "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 }
 
 const accordionSlots = tv({
@@ -122,7 +123,9 @@ const AccordionTrigger = forwardRef<
     },
     ref
   ) => {
-    let Component = Fragment
+    let Component: ElementType = Fragment
+
+    const validTags = ["div", "h1", "h2", "h3", "h4", "h5", "h6"]
     const isValid = validTags.includes(as)
     if (isValid) {
       Component = as
