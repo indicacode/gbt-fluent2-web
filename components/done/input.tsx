@@ -45,7 +45,7 @@ const inputVariants = tv({
         inputContainer: " bg-white dark:bg-white/90",
       },
       filledDark: {
-        inputContainer: "dark:bg-dark/90 bg-neutral-100",
+        inputContainer: "bg-gray-800 ",
       },
     },
     size: {
