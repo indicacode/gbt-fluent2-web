@@ -1,14 +1,25 @@
 "use client"
 
+import { Content, Header, Item, Root, Trigger } from "@radix-ui/react-accordion"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
 import {
   ComponentPropsWithoutRef,
   ElementRef,
-  forwardRef,
+  ElementType,
   Fragment,
+  ReactNode,
+  forwardRef,
 } from "react"
-import { Content, Header, Item, Root, Trigger } from "@radix-ui/react-accordion"
-import { ChevronRightIcon } from "@radix-ui/react-icons"
-import { tv } from "tailwind-variants"
+import { VariantProps, tv } from "tailwind-variants"
+
+// Used in accordionTrigger
+
+interface AccordionTriggerProps
+  extends ComponentPropsWithoutRef<typeof Trigger>,
+    VariantProps<typeof accordionSlots> {
+  icon?: ReactNode
+  as?: "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+}
 
 const accordionSlots = tv({
   slots: {
@@ -97,7 +108,7 @@ AccordionItem.displayName = "AccordionItem"
 
 const AccordionTrigger = forwardRef<
   ElementRef<typeof Trigger>,
-  ComponentPropsWithoutRef<typeof Trigger>
+  AccordionTriggerProps
 >(
   (
     {
@@ -112,8 +123,9 @@ const AccordionTrigger = forwardRef<
     },
     ref
   ) => {
+    let Component: ElementType = Fragment
+
     const validTags = ["div", "h1", "h2", "h3", "h4", "h5", "h6"]
-    let Component = Fragment
     const isValid = validTags.includes(as)
     if (isValid) {
       Component = as
@@ -162,4 +174,4 @@ const AccordionContent = forwardRef<
 AccordionContent.displayName = Content.displayName
 //----------------------------------------//
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger }

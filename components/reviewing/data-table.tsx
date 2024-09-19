@@ -1,4 +1,3 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import {
   ColumnDef,
@@ -13,7 +12,7 @@ import {
   VisibilityState,
 } from "@tanstack/react-table"
 import { Table as TableType } from "@tanstack/table-core"
-import { useVirtual } from "react-virtual"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import useSWR from "swr"
 
 import { Button } from "@/components/done/button"
@@ -36,9 +35,21 @@ import {
 type PaginationProps<T> = {
   table: TableType<T>
   getData: (pageIndex: number) => { data: any; error: any; isLoading: boolean }
-  pageSize: number
+  dataLength: number
+  pagination: {
+    pageIndex: number
+    pageSize: number
+    rowCount: number
+    pageCount?: number | undefined
+    manualPagination: boolean
+  }
 }
-
+export type PagedResponse<T> = {
+  currentPage: number
+  pageSize: number
+  cacheKey: string
+  results: Array<T>
+}
 type DataTableProps<T> = {
   fetchData: ({
     pageIndex,
@@ -46,7 +57,7 @@ type DataTableProps<T> = {
   }: {
     pageIndex: number
     pageSize: number
-  }) => Promise<T[]>
+  }) => Promise<PagedResponse<T>>
   columns: Array<ColumnDef<T>>
   pagination: {
     pageIndex: number
@@ -91,6 +102,7 @@ export function DataTable<T>({
   const memoizedColumns = useMemo(() => columns, [columns])
 
   const table: TableType<T> = useReactTable({
+    //@ts-ignore
     data: !isLoading ? data?.results : [],
     columns: memoizedColumns,
     onSortingChange: setSorting,
@@ -124,9 +136,12 @@ export function DataTable<T>({
       )}
       <Table table={table} error={error} />
       <Pagination
-        pageSize={pagination.pageSize}
+        pagination={pagination}
+        //@ts-ignore
         getData={getData}
         table={table}
+        //@ts-ignore
+        dataLength={data?.results?.length}
       />
     </div>
   )
@@ -184,19 +199,9 @@ function FilterButton<T>({
 }
 
 function Table<T>({ table, error }: { table: TableType<T>; error: any }) {
-  const { rows } = table.getRowModel()
   const columns = table.getAllColumns()
 
   const tableContainerRef = useRef<HTMLDivElement>(null)
-  const rowVirtualizer = useVirtual({
-    parentRef: tableContainerRef,
-    size: rows.length,
-  })
-  const { virtualItems: virtualRows, totalSize } = rowVirtualizer
-
-  const paddingTop = virtualRows.length > 0 ? virtualRows[0].start || 0 : 0
-  const paddingBottom =
-    virtualRows.length > 0 ? totalSize - (virtualRows.at(-1)?.end || 0) : 0
 
   if (error) {
     return <div>Error: {error.message}</div>
@@ -207,66 +212,53 @@ function Table<T>({ table, error }: { table: TableType<T>; error: any }) {
       ref={tableContainerRef}
       className="max-h-[600px] overflow-auto rounded-md"
     >
-      <TableRoot>
+      <TableRoot className="overflow-x-auto rounded-lg">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow className="rounded-sm" key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <TableHead
-                  key={header.id}
-                  style={{
-                    width: header.column.getSize(),
-                    maxWidth: header.column.getSize(),
-                    minWidth: header.column.getSize(),
-                  }}
-                >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                </TableHead>
-              ))}
+            <TableRow
+              key={headerGroup.id}
+              className="border-slate-400 dark:border-slate-500"
+            >
+              {headerGroup.headers.map((header) => {
+                return (
+                  <TableHead
+                    key={header.id}
+                    className="min-w-fit"
+                    style={{ width: `${header.getSize()}px` }}
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                )
+              })}
             </TableRow>
           ))}
         </TableHeader>
         <TableBody>
-          {paddingTop > 0 && (
-            <tr>
-              <td style={{ height: paddingTop }} />
-            </tr>
-          )}
-          {virtualRows.length ? (
-            virtualRows.map((virtualRow) => {
-              const row = rows[virtualRow.index]
-              return (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              )
-            })
+          {table.getRowModel().rows?.length ? (
+            table.getRowModel().rows.map((row) => (
+              <TableRow
+                className="border-slate-300 dark:border-slate-600"
+                key={row.id}
+                data-state={row.getIsSelected() && "Selecionadas"}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id} className="py-2">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                Sem Resultados
               </TableCell>
             </TableRow>
-          )}
-          {paddingBottom > 0 && (
-            <tr>
-              <td style={{ height: paddingBottom }} />
-            </tr>
           )}
         </TableBody>
       </TableRoot>
@@ -274,53 +266,58 @@ function Table<T>({ table, error }: { table: TableType<T>; error: any }) {
   )
 }
 
-function Pagination<T>({ table, getData, pageSize }: PaginationProps<T>) {
+function Pagination<T>({
+  table,
+  getData,
+  dataLength,
+  pagination,
+}: PaginationProps<T>) {
   const [pageIndex, setPageIndex] = useState(0)
-  const [canNext, setCanNext] = useState(false)
-  const { data, error, isLoading } = getData(pageIndex)
+  const [canNext, setCanNext] = useState(true)
   const { data: nextPageData, isLoading: isNextPageLoading } = getData(
     pageIndex + 1
   )
 
   useEffect(() => {
-    if (!isLoading && data) {
-      setCanNext(data.results.length === pageSize)
+    if (dataLength < pagination.pageSize && canNext) {
+      setCanNext(false)
+    } else if (!isNextPageLoading && nextPageData?.results) {
+      setCanNext(nextPageData.results?.length > 0)
     }
-  }, [data, isLoading, pageSize])
+  }, [nextPageData, isNextPageLoading, dataLength])
 
-  useEffect(() => {
-    if (!isNextPageLoading && nextPageData) {
-      setCanNext(nextPageData.results.length > 0)
-    }
-  }, [nextPageData, isNextPageLoading])
+  if (dataLength < pagination.pageSize && pageIndex === 0) return null
 
   return (
-    <div className="flex w-full flex-row items-center justify-between py-4">
-      <div className="flex items-center space-x-2"></div>
-      <div className="flex items-center space-x-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => {
+    <div className="flex w-full flex-row items-center justify-end gap-2 py-4">
+      <Button
+        variant="outline"
+        size="sm"
+        aria-label="Página Anterior"
+        onClick={() => {
+          if (pageIndex !== 0) {
             table.previousPage()
             setPageIndex((prev) => prev - 1)
-          }}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => {
+          }
+        }}
+        disabled={pageIndex === 0}
+      >
+        Anterior
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        aria-label="Proxima Página"
+        onClick={() => {
+          if (canNext) {
             table.nextPage()
             setPageIndex((prev) => prev + 1)
-          }}
-          disabled={!canNext}
-        >
-          Next
-        </Button>
-      </div>
+          }
+        }}
+        disabled={!canNext}
+      >
+        Próxima
+      </Button>
     </div>
   )
 }

@@ -18,12 +18,12 @@ const config = withTV({
       },
       colors: {
         brand: {
-          primary: "#0F6CBD",
-          secondary: "#008bb1",
-          light: "#33b3d6",
-          dark: "#005f79",
-          disabled: "#a3a3a3",
-          subtle: "#0e63ad",
+          primary: "#1d67b3",
+          secondary: "#295899",
+          subtle: "#2c4a80",
+          disabled: "#86AFD9",
+          light: "#c5dbed",
+          dark: "#263052",
         },
       },
       keyframes: {

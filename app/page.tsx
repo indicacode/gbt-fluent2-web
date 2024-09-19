@@ -1,11 +1,10 @@
 "use client"
 
-import React, { Fragment, useCallback, useState } from "react"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import ThemeSwitch from "@/utils/themeSwitch"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { HamburgerMenuIcon } from "@radix-ui/react-icons"
-import {motion } from "framer-motion"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { Fragment, useCallback, useState } from "react"
 
 import {
   Accordion,
@@ -14,19 +13,15 @@ import {
   AccordionTrigger,
 } from "@/components/done"
 
+import { ArrowLeft16Regular } from "@fluentui/react-icons"
+import { PiFileTextThin } from "react-icons/pi"
 import { components, sideBar } from "./page.inputs"
-import {ArrowLeft16Regular, ArrowLeft20Regular, ArrowLeft24Regular, List20Filled} from "@fluentui/react-icons";
-import {FileArchive} from "lucide-react";
-import {FaFileAlt, FaRegFileAlt} from "react-icons/fa";
-import {PiFileTextThin} from "react-icons/pi";
 
 type SideBarType = keyof typeof sideBar
 
 type ItemsType = {
   [Key in SideBarType]: (typeof sideBar)[Key]["items"][number]
 }[SideBarType]
-
-
 
 export default function Page() {
   const [isCollapsed, setIsCollapsed] = useState(true)
@@ -51,17 +46,15 @@ export default function Page() {
   const currentDocs = searchParams.get("section")
   const currentAccordion = searchParams.get("accordion")
   return (
-    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-200  transition-colors dark:from-slate-950 dark:to-zinc-950">
-
+    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-200 transition-colors dark:from-slate-950 dark:to-zinc-950">
       <span
-        className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-48"}`}
+        className={`w-full ${isMobile && isCollapsed ? "max-w-14" : "max-w-44"}`}
       />
       <div
-        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-auto  bg-transparent   pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
-          isMobile && isCollapsed ? " max-w-14" : "max-w-48"
+        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-auto bg-transparent pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
+          isMobile && isCollapsed ? "max-w-14" : "max-w-44"
         }`}
       >
-
         <div className="flex h-fit flex-col gap-10">
           <div
             onClick={() => {
@@ -72,7 +65,7 @@ export default function Page() {
             className="flex h-[1.5rem] min-w-fit items-center justify-center gap-2 overflow-hidden pl-1 text-black dark:text-white"
           >
             <HamburgerMenuIcon
-              className={`font-4xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : " hidden"}`}
+              className={`font-4xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : "hidden"}`}
             />
             <h2
               className={`whitespace-nowrap text-2xl font-bold ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
@@ -82,9 +75,9 @@ export default function Page() {
           </div>
 
           <Accordion
-            className="flex h-full w-full flex-col bg-transparent  pt-4"
+            className="flex h-full w-full flex-col bg-transparent pt-4"
             type="multiple"
-            defaultValue={[currentAccordion]}
+            defaultValue={[currentAccordion!]}
           >
             {sideBarKeys.map((key, idx) => (
               <AccordionItem
@@ -101,7 +94,7 @@ export default function Page() {
                           createQueryString("accordion", "item" + idx)
                       )
                     }
-                    className="flex cursor-pointer gap-2 pl-2 pb-1 text-[1.2em]"
+                    className="flex cursor-pointer gap-2 pb-1 pl-2 text-[1.2em]"
                   >
                     {sideBar[key as SideBarType].icon}
                     {key}
@@ -112,7 +105,7 @@ export default function Page() {
                     (component: ItemsType, itemIdx: number) => (
                       <span
                         key={itemIdx}
-                        className="flex text-[14px] py-1 items-center w-full pl-3 h-fit hover:bg-brand-light focus:bg-brand-light active:bg-brand-light cursor-pointer font-normal"
+                        className="flex h-fit w-full cursor-pointer items-center py-1 pl-3 text-[14px] font-normal hover:bg-brand-light focus:bg-brand-light active:bg-brand-light"
                         onClick={() =>
                           router.push(
                             pathname +
@@ -122,7 +115,7 @@ export default function Page() {
                         }
                         aria-labelledby={`${key}-${itemIdx}`}
                       >
-                         <PiFileTextThin size={17}/>
+                        <PiFileTextThin size={17} />
                         {component}
                       </span>
                     )
@@ -135,11 +128,17 @@ export default function Page() {
 
         <ThemeSwitch className="self-center" />
       </div>
-        <div onClick={() => router.back()} className={"w-fit h-fit"}>
-        <div className={"rounded-full hover:bg-brand-light active:bg-brand-secondary z-40 flex ring-[1px] ring-black items-center justify-center mt-2 ml-2 w-8 h-8 "}><ArrowLeft16Regular/></div>
-            </div>
+      <div onClick={() => router.back()} className={"h-fit w-fit"}>
+        <div
+          className={
+            "z-40 ml-2 mt-2 flex h-8 w-8 items-center justify-center rounded-full ring-[1px] ring-black hover:bg-brand-light active:bg-brand-secondary"
+          }
+        >
+          <ArrowLeft16Regular />
+        </div>
+      </div>
       <main className="flex min-h-full w-full items-center justify-center py-12">
-        {components.map(({ header, subText, cards }, idx) => {
+        {components.map(({ header, subText, cards }, idx: number) => {
           return (
             currentDocs === header && (
               <div
@@ -153,7 +152,7 @@ export default function Page() {
                   {subText}
                 </div>
                 {cards.map(
-                  ({ cardHeader, cardSubtext, cardComponent }, idx) => (
+                  ({ cardHeader, cardSubtext, cardComponent }, idx: number) => (
                     <Fragment key={idx}>
                       {cardHeader && (
                         <>
@@ -163,10 +162,7 @@ export default function Page() {
                           {cardSubtext}
                         </>
                       )}
-                      <div
-                        className="relative flex min-w-fit
-                       overflow-hidden rounded border border-zinc-400 bg-[#fafafa] p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50"
-                      >
+                      <div className="relative flex min-w-fit overflow-hidden rounded border border-zinc-400 bg-[#fafafa] p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50">
                         {cardComponent}
                       </div>
                     </Fragment>

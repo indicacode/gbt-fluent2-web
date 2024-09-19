@@ -1,3 +1,5 @@
+import { PagedResponse } from "@/components/reviewing/data-table"
+
 export type User = {
   id: number
   firstName: string
@@ -12,16 +14,16 @@ type UserResponse = {
   users: User[]
 }
 
-export const fetchUsers = async ({
+export async function fetchUsers({
   pageIndex,
   pageSize,
 }: {
   pageIndex: number
   pageSize: number
-}) => {
+}): Promise<PagedResponse<[]>> {
   pageIndex *= 10
   const response = await fetch(
     `https://dummyjson.com/users?limit=${pageSize}&skip=${pageIndex}`
   ).then((r) => r.json())
-  return response.users
+  return { cacheKey: "", currentPage: 0, pageSize: 0, results: response.users }
 }
