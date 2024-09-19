@@ -11,7 +11,7 @@ import {
   VideoRegular,
 } from "@fluentui/react-icons"
 import { ClipboardPasteIcon, ScissorsIcon } from "lucide-react"
-import { AiFillCheckCircle } from "react-icons/ai"
+import {AiFillCheckCircle, AiOutlineQuestion} from "react-icons/ai"
 import { BsThreeDots } from "react-icons/bs"
 import {
   GiBanana,
@@ -1764,13 +1764,12 @@ export const components = [
         cardHeader: "Navigation",
         cardSubtext: "An accordion supports keyboard navigation.",
         cardComponent: (
-          <div>
             <Accordion
               defaultValue="item-2"
               type="multiple"
               size="md"
               collapsible={true}
-              className="w-full"
+              className=" min-w-full "
             >
               <AccordionItem value="item-1">
                 <AccordionTrigger>Is it easy to use?</AccordionTrigger>
@@ -1794,7 +1793,6 @@ export const components = [
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
         ),
       },
       {
@@ -1805,7 +1803,6 @@ export const components = [
           "              default, multiple will also be collapsed by default on the first\n" +
           "              render.",
         cardComponent: (
-          <div>
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1835,7 +1832,6 @@ export const components = [
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
         ),
       },
       {
@@ -1844,7 +1840,7 @@ export const components = [
           " An accordion can have defined open items. If no open item is\n" +
           "              present, all panels will be closed by default.",
         cardComponent: (
-          <div>
+
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1874,7 +1870,7 @@ export const components = [
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
+
         ),
       },
       {
@@ -1883,9 +1879,6 @@ export const components = [
           " An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
 
         cardComponent: (
-          <div>
-            <h2 className={"font-extrabold"}></h2>
-            <h2></h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1915,16 +1908,11 @@ export const components = [
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
         ),
       },
       {
         cardHeader: "With Icon",
         cardComponent: (
-          <div>
-            <h2>
-              An accordion header can contain an icon. <AiFillCheckCircle />
-            </h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1933,8 +1921,8 @@ export const components = [
               className="w-full"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger>Is it easy to use?</AccordionTrigger>
-                <AccordionContent>
+                <AccordionTrigger>Is it easy to use?  </AccordionTrigger>
+                  <AccordionContent>
                   Yes. Try it for yourself, with a few lines of code you get
                   beautiful UI!
                 </AccordionContent>
@@ -1954,15 +1942,12 @@ export const components = [
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
+
         ),
       },
       {
         cardHeader: "Collapsible",
         cardComponent: (
-          <div>
-            <h2 className={"font-extrabold"}></h2>
-            <h2>This is collapsible</h2>
             <Accordion
               defaultValue="item-2"
               type="multiple"
@@ -1992,7 +1977,6 @@ export const components = [
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </div>
         ),
       },
     ],
@@ -2448,48 +2432,6 @@ export const components = [
         ),
       },
     ],
-  },
-  {
-    cardHeader: "Avatar Icon",
-    cardSubtext:
-      "An avatar can display an image.\n" +
-      "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
-    cardComponent: (
-      <div className={"flex flex-row items-center"}>
-        <Avatar status={"away"}>
-          <AvatarFallback>Jordan Herrera</AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-        <Avatar status={"away"}>
-          <AvatarFallback>Kaio Pereira </AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-        <Avatar status={"online"}>
-          <AvatarFallback>Victoria Petes</AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-        <Avatar status={"online"}>
-          <AvatarFallback>Loucas Marquise</AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-      </div>
-    ),
   },
   {
     header: "Textarea",
@@ -3521,7 +3463,6 @@ export const components = [
       },
     ],
   },
-
   {
     header: "Toast",
     subText: (
@@ -4023,7 +3964,6 @@ export const components = [
       },
     ],
   },
-  ,
   {
     header: "Popover",
     subText: <>A popover displays content on top of other content.</>,

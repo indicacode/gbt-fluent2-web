@@ -10,7 +10,7 @@ const sliderVariants = tv({
     root: "relative flex w-full touch-none select-none items-center",
     range: "absolute h-full bg-brand-primary dark:bg-brand-primary",
     track:
-      "relative w-full grow overflow-hidden rounded-full dark:bg-slate-50/20",
+      "relative w-full grow overflow-hidden rounded-full bg-gray-200 dark:bg-slate-50/20",
     thumb:
       "relative block rounded-full  border-[1.5px] border-slate-900/50 bg-white shadow transition-colors before:absolute before:left-1/2 before:top-1/2 before:aspect-square before:translate-x-[-50%] before:translate-y-[-50%] before:rounded-full before:bg-brand-primary before:content-[''] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:pointer-events-none disabled:opacity-50 dark:border-slate-400 dark:bg-white dark:focus-visible:ring-transparent",
   },

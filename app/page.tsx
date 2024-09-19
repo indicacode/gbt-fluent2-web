@@ -54,11 +54,11 @@ export default function Page() {
     <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-200  transition-colors dark:from-slate-950 dark:to-zinc-950">
 
       <span
-        className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-44"}`}
+        className={`w-full ${isMobile && isCollapsed ? " max-w-14" : "max-w-48"}`}
       />
       <div
         className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-auto  bg-transparent   pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
-          isMobile && isCollapsed ? " max-w-14" : "max-w-44"
+          isMobile && isCollapsed ? " max-w-14" : "max-w-48"
         }`}
       >
 
