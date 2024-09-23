@@ -779,7 +779,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Drawer defaultOpen={false} position="bottom">
+          <Drawer defaultOpen={true} position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
