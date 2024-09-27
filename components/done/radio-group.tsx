@@ -1,7 +1,7 @@
 "use client"
 
-import * as React from "react"
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -33,7 +33,7 @@ const RadioGroupItem = React.forwardRef<
       {...props}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-        <div className="fill-primary h-2 w-2   rounded-full bg-brand-primary" />
+        <div className="fill-primary h-2 w-2 rounded-full bg-brand-primary" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

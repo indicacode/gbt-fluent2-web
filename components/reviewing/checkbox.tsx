@@ -1,10 +1,10 @@
 "use client"
 
 import { CheckedState, Indicator, Root } from "@radix-ui/react-checkbox"
+import { FaCheck } from "@react-icons/all-files/fa/FaCheck"
 import * as React from "react"
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
-import { FaCheck } from "react-icons/fa"
-import { VariantProps, tv } from "tailwind-variants"
+import { tv, VariantProps } from "tailwind-variants"
 
 const checkboxSlots = tv({
   slots: {

@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from "react"
+import { ComponentPropsWithoutRef } from "react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/done/avatar"
 import { StatusBadge } from "@/components/done/status-badge"

@@ -1,7 +1,7 @@
 "use client"
 
-import { ComponentPropsWithoutRef, forwardRef, LegacyRef } from "react"
 import { Root } from "@radix-ui/react-label"
+import { ComponentPropsWithoutRef, forwardRef, LegacyRef } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const label = tv({

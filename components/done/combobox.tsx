@@ -17,26 +17,24 @@ import {
 import { tv } from "tailwind-variants"
 
 import { CommandEmpty } from "@/components/done/customCommandEmpty"
-import { Input } from "@/components/done/index"
 import { Badge } from "@/components/not-done/badge"
+import { cn } from "@/lib/utils"
+
+import { Checkbox } from "@/components/reviewing/checkbox"
 import {
-  Checkbox,
   Command,
   CommandGroup,
   CommandItem,
   CommandList,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/reviewing"
-import { cn } from "@/lib/utils"
-
+} from "@/components/reviewing/command"
+import { Popover, PopoverContent, PopoverTrigger } from "../reviewing/popover"
 import {
   GroupOption,
   MultipleSelectorProps,
   MultipleSelectorRef,
   Option,
 } from "./combobox.types"
+import { Input } from "./input"
 
 function transferToGroupOption(options: Array<Option>, groupBy?: string) {
   if (options.length === 0) {

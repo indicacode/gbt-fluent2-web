@@ -1,7 +1,7 @@
 import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { ColumnDef, Row } from "@tanstack/react-table"
 
-import { Button } from "@/components/done"
+import { Button } from "@/components/done/button"
 import {
   DropdownMenu,
   DropdownMenuContent,

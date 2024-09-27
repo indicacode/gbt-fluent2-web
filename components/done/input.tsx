@@ -4,7 +4,6 @@ import * as React from "react"
 import {
   Children,
   cloneElement,
-  Fragment,
   InputHTMLAttributes,
   isValidElement,
   ReactNode,
@@ -29,7 +28,7 @@ const inputVariants = tv({
     root: "flex flex-col",
     label: "py-1 text-black dark:text-gray-400",
     inputContainer:
-      "relative flex w-full select-none items-center gap-1 overflow-hidden rounded-[4px] px-2  text-[#707070] shadow-sm outline-0 transition-all ",
+      "relative flex w-full select-none items-center gap-1 overflow-hidden rounded-[4px] px-2 text-[#707070] shadow-sm outline-0 transition-all",
     inputDecoration:
       "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-[1] bg-[#106CBD] text-white transition-all", // This is the line that appears under the input
     input:
@@ -42,10 +41,10 @@ const inputVariants = tv({
         inputContainer: "border-b border-gray-500 bg-transparent",
       },
       filledLight: {
-        inputContainer: " bg-white dark:bg-white/90",
+        inputContainer: "bg-white dark:bg-white/90",
       },
       filledDark: {
-        inputContainer: "bg-gray-800 ",
+        inputContainer: "bg-gray-800",
       },
     },
     size: {
@@ -228,4 +227,4 @@ function InputRightAddon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
 
-export { InputLeftAddon, InputRightAddon, Input, inputVariants }
+export { Input, InputLeftAddon, InputRightAddon, inputVariants }

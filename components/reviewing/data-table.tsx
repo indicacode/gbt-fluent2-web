@@ -30,7 +30,7 @@ import {
   TableHeader,
   TableRoot,
   TableRow,
-} from "@/components/reviewing/"
+} from "@/components/reviewing/table"
 
 type PaginationProps<T> = {
   table: TableType<T>

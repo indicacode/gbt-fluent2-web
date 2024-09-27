@@ -11,10 +11,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/done"
-
+} from "@/components/done/accordion"
 import { ArrowLeft16Regular } from "@fluentui/react-icons"
-import { PiFileTextThin } from "react-icons/pi"
+import { PiFileTextThin } from "@react-icons/all-files/pi/PiFileTextThin"
 import { components, sideBar } from "./page.inputs"
 
 type SideBarType = keyof typeof sideBar

@@ -1,6 +1,6 @@
+import { Command as CommandPrimitive, useCommandState } from "cmdk"
 import * as React from "react"
 import { forwardRef } from "react"
-import { Command as CommandPrimitive, useCommandState } from "cmdk"
 
 import { cn } from "@/lib/utils"
 
