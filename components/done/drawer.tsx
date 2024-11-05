@@ -114,15 +114,11 @@ function Drawer({
     setInternalOpen(open)
   }, [open])
 
-  useEffect(() => {
-    setInternalOpen(defaultOpen)
-  }, [defaultOpen])
-
   return (
     <Root
       shouldScaleBackground={shouldScaleBackground}
       direction={position}
-      open={internalOpen}
+      defaultOpen={defaultOpen}
       {...props}
     >
       {childrenWithProps}

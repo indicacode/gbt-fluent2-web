@@ -1,20 +1,19 @@
 "use client"
 
+import { StatusBadge } from "@/components/done/status-badge"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
+import { CiUser } from "@react-icons/all-files/ci/CiUser"
 import {
   Children,
+  cloneElement,
   ComponentPropsWithoutRef,
   ElementRef,
-  ReactElement,
-  Ref,
-  cloneElement,
   forwardRef,
   isValidElement,
+  ReactElement,
+  Ref,
 } from "react"
-import { CiUser } from "react-icons/ci"
-import { VariantProps, tv } from "tailwind-variants"
-
-import { StatusBadge } from "../reviewing"
+import { tv, VariantProps } from "tailwind-variants"
 
 //--------------------types--------------------//
 

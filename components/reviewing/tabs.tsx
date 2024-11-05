@@ -1,5 +1,5 @@
-import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -12,7 +12,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      "inline-flex h-9 items-center justify-center rounded-lg bg-transparent p-1 text-slate-500  dark:text-slate-400",
+      "inline-flex h-9 items-center justify-center rounded-lg bg-transparent p-1 text-slate-500 dark:text-slate-400",
       className
     )}
     {...props}
@@ -27,7 +27,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap px-3 py-1   text-sm font-medium transition-all focus-visible:outline-none  disabled:pointer-events-none disabled:opacity-50   data-[state=active]:border-b-2 data-[state=active]:border-b-slate-950  data-[state=active]:text-slate-950  dark:text-slate-400 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300 dark:data-[state=active]:border-b-2 dark:data-[state=active]:border-b-white  dark:data-[state=active]:text-slate-50",
+      "inline-flex items-center justify-center whitespace-nowrap px-3 py-1 text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-b-2 data-[state=active]:border-b-slate-950 data-[state=active]:text-slate-950 dark:text-slate-400 dark:ring-offset-slate-950 dark:focus-visible:ring-slate-300 dark:data-[state=active]:border-b-2 dark:data-[state=active]:border-b-white dark:data-[state=active]:text-slate-50",
       className
     )}
     {...props}
@@ -50,4 +50,4 @@ const TabsContent = React.forwardRef<
 ))
 TabsContent.displayName = TabsPrimitive.Content.displayName
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsContent, TabsList, TabsTrigger }

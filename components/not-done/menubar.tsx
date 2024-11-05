@@ -1,12 +1,5 @@
 "use client"
 
-import * as React from "react"
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  HTMLAttributes,
-} from "react"
 import {
   CheckIcon,
   ChevronRightIcon,
@@ -30,6 +23,12 @@ import {
   SubTrigger,
   Trigger,
 } from "@radix-ui/react-menubar"
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  forwardRef,
+  HTMLAttributes,
+} from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -50,7 +49,7 @@ const Menubar = forwardRef<
   <Root
     ref={ref}
     className={cn(
-      "flex h-9 space-x-1 rounded border border-[#d1d1d1] bg-white shadow-sm transition-colors dark:border-[#666666]  dark:bg-slate-950",
+      "flex h-9 space-x-1 rounded border border-[#d1d1d1] bg-white shadow-sm transition-colors dark:border-[#666666] dark:bg-slate-950",
       className
     )}
     {...props}
@@ -245,19 +244,19 @@ MenubarShortcut.displayname = "MenubarShortcut"
 
 export {
   Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-  MenubarContent,
-  MenubarItem,
-  MenubarSeparator,
-  MenubarLabel,
   MenubarCheckboxItem,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarLabel,
+  MenubarMenu,
+  MenubarPortal,
   MenubarRadioGroup,
   MenubarRadioItem,
-  MenubarPortal,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
-  MenubarGroup,
-  MenubarSub,
-  MenubarShortcut,
+  MenubarTrigger,
 }

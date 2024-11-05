@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
-import Image from "next/image"
 import { useTheme } from "next-themes"
-import { GoMoon, GoSun } from "react-icons/go"
+import Image from "next/image"
+import { useEffect, useState } from "react"
 
 import { cn } from "@/lib/utils"
+import { GoMoon } from "@react-icons/all-files/go/GoMoon"
+import { GoSun } from "@react-icons/all-files/go/GoSun"
 
 export default function ThemeSwitch({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false)

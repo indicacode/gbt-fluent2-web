@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ReactNode } from "react"
 
-import { Input } from "@/components/done/index"
+import { Input } from "@/components/done/input"
 import { Command } from "@/components/reviewing/command"
 
 export interface MultipleSelectorProps {

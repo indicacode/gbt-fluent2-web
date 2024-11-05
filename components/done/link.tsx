@@ -1,5 +1,5 @@
-import React, { forwardRef, PropsWithChildren, Ref } from "react"
 import { default as NextLink } from "next/link"
+import { forwardRef, PropsWithChildren, Ref } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const linkStyles = tv({
@@ -11,7 +11,7 @@ const linkStyles = tv({
       false: "decoration-none",
     },
     disabled: {
-      true: "cursor-not-allowed select-text text-gray-600  opacity-50 dark:text-gray-600/90",
+      true: "cursor-not-allowed select-text text-gray-600 opacity-50 dark:text-gray-600/90",
     },
     inline: "inline underline",
   },

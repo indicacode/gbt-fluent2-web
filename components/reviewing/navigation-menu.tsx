@@ -1,4 +1,3 @@
-import * as React from "react"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
 import {
   Content,
@@ -10,6 +9,7 @@ import {
   Trigger,
   Viewport,
 } from "@radix-ui/react-navigation-menu"
+import * as React from "react"
 import { tv } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
@@ -119,13 +119,13 @@ const NavigationMenuIndicator = React.forwardRef<
 NavigationMenuIndicator.displayName = Indicator.displayName
 
 export {
-  Trigger,
   NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
   NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
   NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
   NavigationMenuViewport,
+  Trigger,
 }

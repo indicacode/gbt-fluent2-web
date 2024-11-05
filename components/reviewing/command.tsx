@@ -1,8 +1,8 @@
-import * as React from "react"
-import { ComponentPropsWithoutRef, forwardRef, Ref } from "react"
 import { DialogProps } from "@radix-ui/react-dialog"
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 import { Command as CommandPrimitive } from "cmdk"
+import * as React from "react"
+import { ComponentPropsWithoutRef, forwardRef, Ref } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -202,11 +202,11 @@ CommandShortcut.displayName = "CommandShortcut"
 export {
   ForwardedCommand as Command,
   CommandDialog,
-  ForwardedCommandInput as CommandInput,
-  ForwardedCommandList as CommandList,
   ForwardedCommandEmpty as CommandEmpty,
   ForwardedCommandGroup as CommandGroup,
+  ForwardedCommandInput as CommandInput,
   ForwardedCommandItem as CommandItem,
-  CommandShortcut,
+  ForwardedCommandList as CommandList,
   ForwardedCommandSeparator as CommandSeparator,
+  CommandShortcut,
 }

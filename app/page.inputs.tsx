@@ -1,49 +1,38 @@
 import {
-  Copy16Filled,
-  DocumentPdfRegular,
-  DocumentRegular,
-  EditRegular,
-  FolderRegular,
-  List20Filled,
-  OpenRegular,
-  PeopleRegular,
-  VideoRegular,
-} from "@fluentui/react-icons"
-import { ClipboardPasteIcon, ScissorsIcon } from "lucide-react"
-import { ReactElement, ReactNode } from "react"
-import { AiFillCheckCircle } from "react-icons/ai"
-import { BsThreeDots } from "react-icons/bs"
-import {
-  GiBanana,
-  GiCarrot,
-  GiChickenLeg,
-  GiGarlic,
-  GiMeat,
-  GiOrange,
-  GiPumpkin,
-  GiRoastChicken,
-  GiShinyApple,
-} from "react-icons/gi"
-
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Button,
-  Divider,
-  Input,
-  InputLeftAddon,
-  InputRightAddon,
-  Slider,
-  Switch,
-  Textarea,
-} from "@/components/done"
+} from "@/components/done/accordion"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/done/avatar"
+import { Button } from "@/components/done/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  FloatingAction,
+} from "@/components/done/card"
 import Combobox from "@/components/done/combobox"
+import { Divider } from "@/components/done/divider"
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTrigger,
+} from "@/components/done/drawer"
 import InfoLabel from "@/components/done/infoLabel"
+import { Input, InputLeftAddon, InputRightAddon } from "@/components/done/input"
 import { Label } from "@/components/done/label"
 import Persona from "@/components/done/persona"
 import { RadioGroup, RadioGroupItem } from "@/components/done/radio-group"
+import { Slider } from "@/components/done/slider"
+import { Switch } from "@/components/done/switch"
+import { Textarea } from "@/components/done/textarea"
 import {
   Menubar,
   MenubarContent,
@@ -55,33 +44,23 @@ import {
 } from "@/components/not-done/menubar"
 import { Progress } from "@/components/not-done/progress"
 import { Skeleton } from "@/components/not-done/skeleton"
+import { Checkbox } from "@/components/reviewing/checkbox"
+import { DataTable } from "@/components/reviewing/data-table"
+import { columns } from "@/components/reviewing/data-table.components"
+import { fetchUsers } from "@/components/reviewing/data-table.input"
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Checkbox,
-  DataTable,
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTrigger,
-  FloatingAction,
+} from "@/components/reviewing/dialog"
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+} from "@/components/reviewing/popover"
+import {
   Select,
   SelectContent,
   SelectGroup,
@@ -89,6 +68,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
+} from "@/components/reviewing/select"
+import {
   TableBody,
   TableCaption,
   TableCell,
@@ -97,17 +78,37 @@ import {
   TableHeader,
   TableRoot,
   TableRow,
+} from "@/components/reviewing/table"
+import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/reviewing"
-import { columns } from "@/components/reviewing/data-table.components"
-import { fetchUsers } from "@/components/reviewing/data-table.input"
+} from "@/components/reviewing/tabs"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
+import {
+  Copy16Filled,
+  DocumentPdfRegular,
+  DocumentRegular,
+  EditRegular,
+  FolderRegular,
+  List20Filled,
+  OpenRegular,
+  PeopleRegular,
+  VideoRegular,
+} from "@fluentui/react-icons"
+import { AiFillCheckCircle } from "@react-icons/all-files/ai/AiFillCheckCircle"
+import { BsThreeDots } from "@react-icons/all-files/bs/BsThreeDots"
+import { GiBanana } from "@react-icons/all-files/gi/GiBanana"
+import { GiCarrot } from "@react-icons/all-files/gi/GiCarrot"
+import { GiMeat } from "@react-icons/all-files/gi/GiMeat"
+import { GiOrange } from "@react-icons/all-files/gi/GiOrange"
+import { GiShinyApple } from "@react-icons/all-files/gi/GiShinyApple"
 import { ColumnDef } from "@tanstack/react-table"
+import { ClipboardPasteIcon, ScissorsIcon } from "lucide-react"
 import Link from "next/link"
+import { ReactElement, ReactNode } from "react"
 
 type RowItem = {
   file: { icon: ReactElement; label: string }
@@ -212,6 +213,10 @@ export const frameworks = [
     label: "Astro",
   },
 ]
+
+function GiChickenLeg(props: { size: number }) {
+  return null
+}
 
 export const components = [
   {
@@ -779,7 +784,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <Drawer defaultOpen={false} position="bottom">
+          <Drawer defaultOpen={true} position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -1482,11 +1487,7 @@ export const components = [
             </TabsContent>
             <TabsContent value={"vegetables"}>
               <div className={"flex w-[20%] flex-row justify-between"}>
-                <GiGarlic className={"mr-1"} size={160} />
-                <GiPumpkin className={"mr-1"} size={160} />
                 <GiCarrot className={"mr-1"} size={160} />
-                <GiGarlic className={"mr-1"} size={160} />
-                <GiPumpkin className={"mr-1"} size={160} />
                 <GiCarrot className={"mr-1"} size={160} />
               </div>
             </TabsContent>
@@ -1494,10 +1495,7 @@ export const components = [
               <div className={"flex w-[20%] flex-row justify-between"}>
                 <GiMeat size={160} />
                 <GiChickenLeg size={160} />
-                <GiRoastChicken size={160} />
                 <GiMeat size={160} />
-                <GiChickenLeg size={160} />
-                <GiRoastChicken size={160} />
               </div>
             </TabsContent>
           </Tabs>
@@ -4263,101 +4261,6 @@ export const components = [
       },
     ],
   },
-  // {
-  //   header: "Link",
-  //   subText: (
-  //     <>
-  //       Links allow users to navigate between different locations. They can be
-  //       used as standalone controls or inline with text.
-  //     </>
-  //   ),
-  //   cards: [
-  //     {
-  //       cardHeader: "",
-  //       cardSubtext: "",
-  //       cardComponent: (
-  //         <div className="flex flex-col gap-2">
-  //           <Link href="#">Link default</Link>
-  //           <Link href="#" variant="subtle">
-  //             Link subtle
-  //           </Link>
-  //           <Link href="#" disabled>
-  //             disabled
-  //           </Link>
-  //         </div>
-  //       ),
-  //     },
-  //
-  //     {
-  //       cardHeader: "Appearance",
-  //       cardSubtext: "",
-  //
-  //       cardComponent: (
-  //         <div className="flex flex-col gap-2">
-  //           <Link href="#" variant="subtle">
-  //             A Subtle Link
-  //           </Link>
-  //         </div>
-  //       ),
-  //     },
-  //     {
-  //       cardHeader: "Inline",
-  //       cardSubtext: "",
-  //
-  //       cardComponent: (
-  //         <div className="flex flex-col gap-2">
-  //           <Link href="#">Link default</Link>
-  //           <Link href="#" variant="subtle">
-  //             <Link target={"_blank"} href={"https://youtube.com"}>
-  //               Youtube
-  //             </Link>
-  //           </Link>
-  //         </div>
-  //       ),
-  //     },
-  //     {
-  //       cardHeader: "Appearance",
-  //       cardSubtext: "",
-  //
-  //       cardComponent: (
-  //         <div className="flex flex-col gap-2">
-  //           <Link href="#">Link default</Link>
-  //           <Link href="#" variant="subtle">
-  //             <Link target={"_blank"} href={"https://youtube.com"}>
-  //               Youtube
-  //             </Link>
-  //           </Link>
-  //         </div>
-  //       ),
-  //     },
-  //     {
-  //       cardHeader: "As Button",
-  //       cardSubtext:
-  //         "When the href property is not provided, the component is rendered as a html  <button/>",
-  //
-  //       cardComponent: (
-  //         <div className="flex flex-col gap-2">
-  //           <Link href="#" variant="subtle">
-  //             A Subtle Link
-  //           </Link>
-  //         </div>
-  //       ),
-  //     },
-  //     {
-  //       cardHeader: "As Span",
-  //       cardSubtext:
-  //         'A Link can be rendered as an html <span>, in which case it will have role="button" set. Links that render as a span wrap correctly between lines, behaving as inline elements as opposed to links rendered as buttons, which always behave as inline-block elements that do not wrap correctly.',
-  //
-  //       cardComponent: (
-  //         <div className="flex flex-col gap-2">
-  //           <Link href="#" variant="subtle">
-  //             A Subtle Link
-  //           </Link>
-  //         </div>
-  //       ),
-  //     },
-  //   ],
-  // },
 ] as ComponentsType
 
 export const sideBar = {
