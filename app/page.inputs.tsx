@@ -823,7 +823,7 @@ export const components = [
         cardSubtext:
           "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content.",
         cardComponent: (
-          <Drawer defaultOpen={false} modal={false} position="bottom">
+          <Drawer defaultOpen={false}  position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -1244,11 +1244,19 @@ export const components = [
               <DialogHeader>
                 <DialogTitle>This is a dialog.</DialogTitle>
               </DialogHeader>
-              <h2>
+              <h2 className={"overflow-y-scroll max-h-20 "}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam exercitationem cumque repellendus eaque est dolor eius
                 expedita nulla ullam? Tenetur reprehenderit aut voluptatum
                 impedit voluptates in natus iure cumque eaque?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quisquam exercitationem cumque repellendus eaque est dolor eius
+                  expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                  impedit voluptates in natus iure cumque eaque?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quisquam exercitationem cumque repellendus eaque est dolor eius
+                  expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+                  impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
                 <DialogTrigger className="mr-2">
@@ -2413,48 +2421,6 @@ export const components = [
         ),
       },
     ],
-  },
-  {
-    cardHeader: "Avatar Icon",
-    cardSubtext:
-      "An avatar can display an image.\n" +
-      "It is recommended to also include a name in addition to the image: the initials from the name are displayed while the image is loading, and the name makes the Avatar accessible to screen readers.",
-    cardComponent: (
-      <div className={"flex flex-row items-center"}>
-        <Avatar status={"away"}>
-          <AvatarFallback>Jordan Herrera</AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/23961099/pexels-photo-23961099/free-photo-of-homem-casal-conjuges-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-        <Avatar status={"away"}>
-          <AvatarFallback>Kaio Pereira </AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/24279986/pexels-photo-24279986/free-photo-of-homem-terno-traje-amor.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-        <Avatar status={"online"}>
-          <AvatarFallback>Victoria Petes</AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/21327991/pexels-photo-21327991/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-        <Avatar status={"online"}>
-          <AvatarFallback>Loucas Marquise</AvatarFallback>
-          <AvatarImage
-            src={
-              "https://images.pexels.com/photos/23201952/pexels-photo-23201952/free-photo-of-comida-alimento-refeicao-restaurante.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-            }
-          />
-        </Avatar>
-      </div>
-    ),
   },
   {
     header: "Textarea",
@@ -4056,9 +4022,25 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"secondary"}>
-                      Action
-                    </Button>
+                 <Popover>
+                     <PopoverTrigger>
+                        <Button variant={"primary"}>Open Nested Popover</Button>
+                     </PopoverTrigger>
+                     <PopoverContent className={" rounded-md px-3 py-4"}
+
+                                     sideOffset={"-11"}>
+                                    <div className={"w-full h-full"}>
+                                        <h2>This is a nested popover placed in this</h2>
+
+                                    </div>
+                         <Popover>
+                             <PopoverTrigger>
+                                 <Button variant={"primary"} >Another nested popover!</Button>
+                             </PopoverTrigger>
+                             <PopoverContent sideOffset={"-11"}>No More Popovers from here on</PopoverContent>
+                         </Popover>
+                     </PopoverContent>
+                 </Popover>
                   </div>
                 </div>
               </PopoverContent>
