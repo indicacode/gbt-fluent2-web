@@ -1,5 +1,5 @@
 "use client"
-
+import React from 'react';
 import { Content, Header, Item, Root, Trigger } from "@radix-ui/react-accordion"
 import { ChevronRightIcon } from "@radix-ui/react-icons"
 import {
