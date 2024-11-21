@@ -1,6 +1,6 @@
 "use client"
-
-import { StatusBadge } from "@/components/done/status-badge"
+import React from 'react'
+import { StatusBadge } from "../done/status-badge"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "@react-icons/all-files/ci/CiUser"
 import {
@@ -117,9 +117,9 @@ Avatar.displayName = Root.displayName
 const AvatarImage = forwardRef<
   ElementRef<typeof Image>,
   ComponentPropsWithoutRef<typeof Image> & AvatarProps
->(({ className, variant, size, status, ...props }, ref) => (
-  <Image
-    ref={ref}
+>(({ className, variant, size, status, src, ...props }, ref) => (
+  <img
+    src={src}
     className={avatar({ variant, size, className })}
     {...props}
   />
@@ -145,11 +145,9 @@ type AvatarFallbackProps = ComponentPropsWithoutRef<typeof Fallback> & {
 type AvatarFallbackTypes = Ref<HTMLSpanElement> & Ref<typeof Fallback>
 
 function AvatarFallback(
-  { className, children, size, ...props }: AvatarFallbackProps,
+  { className, children, size, iconSize, ...props }: AvatarFallbackProps,
   ref: AvatarFallbackTypes
 ) {
-  let iconSize: "20" | "30" | "50"
-
   switch (size) {
     case "sm":
       iconSize = "20"
@@ -176,7 +174,7 @@ function AvatarFallback(
       {
         <>
           {children === undefined ? (
-            <CiUser size={iconSize} className="text-2xl" />
+            <CiUser size={size} data-size={iconSize} data-testid="fallback-icon" className="text-2xl" />
           ) : (
             children?.split(" ").map((name) => name.slice(0, 1).toUpperCase())
           )}
