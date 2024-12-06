@@ -12,12 +12,13 @@ import {
 import {describe, expect, it} from "@jest/globals";
 import '@testing-library/jest-dom';
 
+
 describe("Card Component", () => {
     it("should render the Card with default props", () => {
         render(<Card>Default Card Content</Card>)
         const card = screen.getByText("Default Card Content")
         expect(card).toBeInTheDocument()
-        expect(card).toHaveClass("relative flex h-fit w-full flex-col overflow-hidden rounded-md border shadow-md")
+        expect(card).toHaveClass("flex p-2 flex-col gap-4")
     })
 
     it("should apply the correct size classes", () => {

@@ -1,6 +1,5 @@
 "use client"
-
-import * as React from "react"
+import React from 'react'
 import {
   Children,
   cloneElement,
