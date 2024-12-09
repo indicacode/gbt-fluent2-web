@@ -1,8 +1,8 @@
 "use client"
 
-import { ReactNode } from "react"
 import StyleProvider from "@/context/styleProvider"
 import { ThemeProvider } from "next-themes"
+import { ReactNode } from "react"
 
 import { Toaster } from "@/components/reviewing/toaster"
 

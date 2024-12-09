@@ -43,14 +43,14 @@ export default function Page() {
   )
   const sideBarKeys = Object.keys(sideBar)
   const currentDocs = searchParams.get("section")
-  const currentAccordion = searchParams.get("accordion")
+
   return (
     <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-200 transition-colors dark:from-slate-950 dark:to-zinc-950">
       <span
         className={`w-full ${isMobile && isCollapsed ? "max-w-14" : "max-w-44"}`}
       />
       <div
-        className={`fixed z-50 flex max-h-screen min-h-screen  w-full flex-col justify-between overflow-y-auto bg-transparent pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
+        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-auto bg-transparent pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
           isMobile && isCollapsed ? "max-w-14" : "max-w-44"
         }`}
       >
@@ -67,7 +67,7 @@ export default function Page() {
               className={`font-4xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : "hidden"}`}
             />
             <h2
-              className={`whitespace-nowrap w-fit text-2xl pl-2 font-bold ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+              className={`w-fit whitespace-nowrap pl-2 text-2xl font-bold ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
             >
               Fluent2
             </h2>
@@ -76,7 +76,7 @@ export default function Page() {
           <Accordion
             className="flex h-full w-full flex-col bg-transparent pt-4"
             type="multiple"
-            defaultValue={[currentAccordion!]}
+            defaultValue={["item0"]}
           >
             {sideBarKeys.map((key, idx) => (
               <AccordionItem

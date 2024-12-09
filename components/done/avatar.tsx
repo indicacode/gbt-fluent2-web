@@ -1,6 +1,4 @@
 "use client"
-import React from 'react'
-import { StatusBadge } from "../done/status-badge"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "@react-icons/all-files/ci/CiUser"
 import {
@@ -14,6 +12,7 @@ import {
   Ref,
 } from "react"
 import { tv, VariantProps } from "tailwind-variants"
+import { StatusBadge } from "../done/status-badge"
 
 //--------------------types--------------------//
 
@@ -118,11 +117,7 @@ const AvatarImage = forwardRef<
   ElementRef<typeof Image>,
   ComponentPropsWithoutRef<typeof Image> & AvatarProps
 >(({ className, variant, size, status, src, ...props }, ref) => (
-  <img
-    src={src}
-    className={avatar({ variant, size, className })}
-    {...props}
-  />
+  <img src={src} className={avatar({ variant, size, className })} {...props} />
 ))
 AvatarImage.displayName = Image.displayName
 
@@ -174,7 +169,12 @@ function AvatarFallback(
       {
         <>
           {children === undefined ? (
-            <CiUser size={size} data-size={iconSize} data-testid="fallback-icon" className="text-2xl" />
+            <CiUser
+              size={size}
+              data-size={iconSize}
+              data-testid="fallback-icon"
+              className="text-2xl"
+            />
           ) : (
             children?.split(" ").map((name) => name.slice(0, 1).toUpperCase())
           )}

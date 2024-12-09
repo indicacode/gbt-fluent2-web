@@ -214,10 +214,6 @@ export const frameworks = [
   },
 ]
 
-function GiChickenLeg(props: { size: number }) {
-  return null
-}
-
 export const components = [
   {
     header: "Button",
@@ -828,7 +824,7 @@ export const components = [
         cardSubtext:
           "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content.",
         cardComponent: (
-          <Drawer defaultOpen={false}  position="bottom">
+          <Drawer defaultOpen={false} position="bottom">
             <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
@@ -1249,19 +1245,18 @@ export const components = [
               <DialogHeader>
                 <DialogTitle>This is a dialog.</DialogTitle>
               </DialogHeader>
-              <h2 className={"overflow-y-scroll max-h-20 "}>
+              <h2 className={"max-h-20 overflow-y-scroll"}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quisquam exercitationem cumque repellendus eaque est dolor eius
                 expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                impedit voluptates in natus iure cumque eaque?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quisquam exercitationem cumque repellendus eaque est dolor eius
-                  expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                  impedit voluptates in natus iure cumque eaque?
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quisquam exercitationem cumque repellendus eaque est dolor eius
-                  expedita nulla ullam? Tenetur reprehenderit aut voluptatum
-                  impedit voluptates in natus iure cumque eaque?
+                impedit voluptates in natus iure cumque eaque? Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Quisquam exercitationem
+                cumque repellendus eaque est dolor eius expedita nulla ullam?
+                Tenetur reprehenderit aut voluptatum impedit voluptates in natus
+                iure cumque eaque? Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Quisquam exercitationem cumque repellendus
+                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit
+                aut voluptatum impedit voluptates in natus iure cumque eaque?
               </h2>
               <div className="flex flex-row justify-end">
                 <DialogTrigger className="mr-2">
@@ -1494,7 +1489,6 @@ export const components = [
             <TabsContent value={"meat"}>
               <div className={"flex w-[20%] flex-row justify-between"}>
                 <GiMeat size={160} />
-                <GiChickenLeg size={160} />
                 <GiMeat size={160} />
               </div>
             </TabsContent>
@@ -4020,25 +4014,29 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
-                 <Popover>
-                     <PopoverTrigger>
+                    <Popover>
+                      <PopoverTrigger>
                         <Button variant={"primary"}>Open Nested Popover</Button>
-                     </PopoverTrigger>
-                     <PopoverContent className={" rounded-md px-3 py-4"}
-
-                                     sideOffset={"-11"}>
-                                    <div className={"w-full h-full"}>
-                                        <h2>This is a nested popover placed in this</h2>
-
-                                    </div>
-                         <Popover>
-                             <PopoverTrigger>
-                                 <Button variant={"primary"} >Another nested popover!</Button>
-                             </PopoverTrigger>
-                             <PopoverContent sideOffset={"-11"}>No More Popovers from here on</PopoverContent>
-                         </Popover>
-                     </PopoverContent>
-                 </Popover>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        className={"rounded-md px-3 py-4"}
+                        sideOffset={-11}
+                      >
+                        <div className={"h-full w-full"}>
+                          <h2>This is a nested popover placed in this</h2>
+                        </div>
+                        <Popover>
+                          <PopoverTrigger>
+                            <Button variant={"primary"}>
+                              Another nested popover!
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent sideOffset={-11}>
+                            No More Popovers from here on
+                          </PopoverContent>
+                        </Popover>
+                      </PopoverContent>
+                    </Popover>
                   </div>
                 </div>
               </PopoverContent>
