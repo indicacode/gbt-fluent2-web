@@ -1994,7 +1994,7 @@ export const components = [
             </Avatar>
             <Avatar status={"do-not-disturb"} size="sm">
               <AvatarFallback>Helen Pereira</AvatarFallback>
-              <AvatarImage src={""} />
+              <AvatarImage />
             </Avatar>
             <Avatar status={"busy"} size="sm">
               <AvatarFallback>Johnny Mans</AvatarFallback>
