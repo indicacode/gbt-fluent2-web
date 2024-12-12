@@ -3860,9 +3860,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"primary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -3887,9 +3885,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"primary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -3924,9 +3920,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"primary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -3959,9 +3953,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"primary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -3996,9 +3988,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"primary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -4015,9 +4005,7 @@ export const components = [
                       Action
                     </Button>
                     <Popover>
-                      <PopoverTrigger>
-                        <Button variant={"primary"}>Open Nested Popover</Button>
-                      </PopoverTrigger>
+                      <PopoverTrigger>Open Nested Popover</PopoverTrigger>
                       <PopoverContent
                         className={"rounded-md px-3 py-4"}
                         sideOffset={-11}
@@ -4051,9 +4039,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"secondary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -4086,9 +4072,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"secondary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -4120,9 +4104,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"secondary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
@@ -4155,9 +4137,7 @@ export const components = [
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
-              <PopoverTrigger>
-                <Button variant={"secondary"}>Popover Trigger</Button>
-              </PopoverTrigger>
+              <PopoverTrigger>Popover Trigger</PopoverTrigger>
               <PopoverContent
                 className={"rounded-md px-3 py-4"}
                 sideOffset={-11}
