@@ -1,27 +1,11 @@
 "use client"
-import { Fallback, Image, Root } from "@radix-ui/react-avatar"
+import { Fallback, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "@react-icons/all-files/ci/CiUser"
-import {
-  Children,
-  cloneElement,
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  isValidElement,
-  ReactElement,
-  Ref,
-} from "react"
+import { Children, cloneElement, isValidElement, Ref, useMemo } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 import { StatusBadge } from "../done/status-badge"
 
-//--------------------types--------------------//
-
-type AvatarProps = ComponentPropsWithoutRef<typeof Root> &
-  VariantProps<typeof avatar> & {
-    status?: "online" | "offline" | "away" | "busy" | "do-not-disturb"
-  }
-
-//-------------avatar-and-avatar-image-------------//
+// Avatar styles using Tailwind Variants
 const avatarSlots = tv({
   slots: {
     avatar:
@@ -37,9 +21,9 @@ const avatarSlots = tv({
       group: { avatar: "rounded-[5px]" },
     },
     size: {
-      sm: { avatar: "h-8 w-8" }, //32px
-      md: { avatar: "h-12 w-12" }, //48px
-      lg: { avatar: "h-[72px] w-[72px]" }, //72px
+      sm: { avatar: "h-8 w-8" },
+      md: { avatar: "h-12 w-12" },
+      lg: { avatar: "h-[72px] w-[72px]" },
     },
     active: {
       true: { avatarActiveRing: "border-opacity-100" },
@@ -51,142 +35,109 @@ const avatarSlots = tv({
   },
 })
 
-/** Root of the avatar component
- *
- * @remarks Inherits all properties from {@link HTMLSpanElement}.
- *
- * @param {AvatarProps} props
- * @property {string} size - Size of the avatar
- * @property {string?} variant - Style variants
- * @property {string} className - Additional user styles
- */
+const { avatar, avatarFallback, avatarActiveRing } = avatarSlots()
 
-const { avatar, avatarFallback, avatarActiveRing } = avatarSlots({})
-
-const Avatar = forwardRef<ElementRef<typeof Root>, AvatarProps>(
-  (
-    {
-      className,
-      variant,
-      active = false,
-      size = "md",
-      status = "offline",
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const childrenWithProps = Children.map(children, (child) => {
-      if (isValidElement(child)) {
-        return cloneElement(child as ReactElement, {
-          variant,
-          size,
-          status,
-        })
-      }
-      return child
-    })
-
-    return (
-      <div className={avatarActiveRing({ active })}>
-        <Root
-          className={avatar({ variant, size, className })}
-          ref={ref}
-          {...props}
-        >
-          {childrenWithProps}
-          <StatusBadge size={size} status={status} />
-        </Root>
-      </div>
-    )
+type AvatarProps = React.ComponentProps<typeof Root> &
+  VariantProps<typeof avatar> & {
+    status?: "online" | "offline" | "away" | "busy" | "do-not-disturb"
+    active?: boolean
+    size?: "sm" | "md" | "lg"
+    className?: string
+    ref?: React.Ref<HTMLSpanElement>
   }
-)
-Avatar.displayName = Root.displayName
 
-//--------------------------------------------//
+function Avatar({
+  className,
+  variant,
+  active = false,
+  size = "md",
+  status = "offline",
+  children,
+  ref,
+  ...props
+}: AvatarProps) {
+  const childrenWithProps = useMemo(
+    () =>
+      Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, { variant, size, status })
+        }
+        return child
+      }),
+    [children, variant, size, status]
+  )
 
-/**
- * The image to be rendered inside the avatar.
- * If the image fails to load, the {@link AvatarFallback} component will be displayed.
- *
- * @remarks Inherits all properties from {@link HTMLImageElement}.
- * @param {string} className - Additional CSS classes provided by the user.
- */
-
-const AvatarImage = forwardRef<
-  ElementRef<typeof Image>,
-  ComponentPropsWithoutRef<typeof Image> & AvatarProps
->(({ className, variant, size, status, src, ...props }, ref) => (
-  <img src={src} className={avatar({ variant, size, className })} {...props} />
-))
-AvatarImage.displayName = Image.displayName
-
-//--------------------------------------------//
-
-/**
- * Fallback component displayed when an image fails to load or isn't provided.
- *
- * Renders {@link CiUser} if no children are provided.
- *
- * @remarks Inherits all properties from {@link HTMLSpanElement}.
- * @param {string} children - The fallback content.
- * @param {string} className - Additional CSS classes provided by the user.
- */
-
-type AvatarFallbackProps = ComponentPropsWithoutRef<typeof Fallback> & {
-  children: string
-  size?: "sm" | "md" | "lg"
+  return (
+    <div className={avatarActiveRing({ active })}>
+      <Root
+        className={avatar({ variant, size, className })}
+        ref={ref}
+        {...props}
+      >
+        {childrenWithProps}
+        <StatusBadge size={size} status={status} />
+      </Root>
+    </div>
+  )
 }
-type AvatarFallbackTypes = Ref<HTMLSpanElement> & Ref<typeof Fallback>
 
-function AvatarFallback(
-  { className, children, size, iconSize, ...props }: AvatarFallbackProps,
-  ref: AvatarFallbackTypes
-) {
-  switch (size) {
-    case "sm":
-      iconSize = "20"
-      break
-    case "md":
-      iconSize = "30"
-      break
-    case "lg":
-      iconSize = "50"
-      break
-    default:
-      iconSize = "30"
+type AvatarImageProps = React.ImgHTMLAttributes<HTMLImageElement> &
+  VariantProps<typeof avatar> & {
+    src: string
   }
+
+function AvatarImage({
+  className,
+  variant,
+  size,
+  src,
+  ...props
+}: AvatarImageProps) {
+  return (
+    <img
+      src={src}
+      className={avatar({ variant, size, className })}
+      {...props}
+    />
+  )
+}
+
+type AvatarFallbackProps = typeof Fallback & {
+  children?: string
+  className?: string
+  size?: "sm" | "md" | "lg"
+  ref: Ref<HTMLSpanElement & typeof Fallback>
+}
+
+function AvatarFallback({
+  className,
+  children,
+  size = "md",
+  ref,
+  ...props
+}: AvatarFallbackProps) {
+  const iconSize = size === "sm" ? 20 : size === "lg" ? 50 : 30
 
   return (
     <Fallback
       ref={ref}
-      className={avatarFallback({
-        size,
-        className,
-      })}
+      className={avatarFallback({ size, className })}
       {...props}
     >
-      {
-        <>
-          {children === undefined ? (
-            <CiUser
-              size={size}
-              data-size={iconSize}
-              data-testid="fallback-icon"
-              className="text-2xl"
-            />
-          ) : (
-            children?.split(" ").map((name) => name.slice(0, 1).toUpperCase())
-          )}
-        </>
-      }
+      {children ? (
+        children
+          .split(" ")
+          .map((name) => name.charAt(0).toUpperCase())
+          .join("")
+      ) : (
+        <CiUser
+          size={iconSize}
+          data-testid="fallback-icon"
+          className="text-2xl"
+        />
+      )}
     </Fallback>
   )
 }
 
-const ForwardedAvatarFallback = forwardRef(AvatarFallback)
-ForwardedAvatarFallback.displayName = Fallback.displayName
-
-//--------------------------------------------//
-
-export { Avatar, ForwardedAvatarFallback as AvatarFallback, AvatarImage }
+export { Avatar, AvatarFallback, AvatarImage }
