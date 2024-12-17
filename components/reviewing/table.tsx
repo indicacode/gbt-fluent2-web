@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, Ref, TdHTMLAttributes } from "react"
+import { HTMLAttributes, TdHTMLAttributes } from "react"
 import { tv } from "tailwind-variants"
 
 //--------------------------------styles------------------------------------//
@@ -47,127 +47,77 @@ const {
 
 type TableProps = HTMLAttributes<HTMLTableElement>
 
-function TableRoot(
-  { className, ...props }: TableProps,
-  ref: Ref<HTMLTableElement>
-) {
+function Table({ className, ...props }: TableProps) {
   return (
     <div className={tableRoot()}>
-      <table ref={ref} className={table({ className })} {...props} />
+      <table className={table({ className })} {...props} />
     </div>
   )
 }
-
-const ForwardedTable = forwardRef(TableRoot)
-ForwardedTable.displayName = "Table"
 
 //-------------------------------------------------------------------------//
 
 type TableHeaderProps = HTMLAttributes<HTMLTableSectionElement>
 
-function TableHeader(
-  { className, ...props }: TableHeaderProps,
-  ref: Ref<HTMLTableSectionElement>
-) {
-  return <thead ref={ref} className={tableHeader({ className })} {...props} />
+function TableHeader({ className, ...props }: TableHeaderProps) {
+  return <thead className={tableHeader({ className })} {...props} />
 }
-
-const ForwardedTableHeader = forwardRef(TableHeader)
-ForwardedTableHeader.displayName = "TableHeader"
 
 //-------------------------------------------------------------------------//
 
 type TableBodyProps = HTMLAttributes<HTMLTableSectionElement>
 
-function TableBody(
-  { className, ...props }: TableBodyProps,
-  ref: Ref<HTMLTableSectionElement>
-) {
-  return <tbody ref={ref} className={tableBody({ className })} {...props} />
+function TableBody({ className, ...props }: TableBodyProps) {
+  return <tbody className={tableBody({ className })} {...props} />
 }
-
-const ForwardedTableBody = forwardRef(TableBody)
-ForwardedTableBody.displayName = "TableBody"
 
 //-------------------------------------------------------------------------//
 
 type TableFooterProps = HTMLAttributes<HTMLTableSectionElement>
 
-function TableFooter(
-  { className, ...props }: TableFooterProps,
-  ref: Ref<HTMLTableSectionElement>
-) {
-  return <tfoot ref={ref} className={tableFoot({ className })} {...props} />
+function TableFooter({ className, ...props }: TableFooterProps) {
+  return <tfoot className={tableFoot({ className })} {...props} />
 }
-
-const ForwardedTableFooter = forwardRef(TableFooter)
-ForwardedTableFooter.displayName = "TableFooter"
 
 //-------------------------------------------------------------------------//
 
 type TableRowProps = HTMLAttributes<HTMLTableRowElement>
 
-function TableRow(
-  { className, ...props }: TableRowProps,
-  ref: Ref<HTMLTableRowElement>
-) {
-  return <tr ref={ref} className={tableRow({ className })} {...props} />
+function TableRow({ className, ...props }: TableRowProps) {
+  return <tr className={tableRow({ className })} {...props} />
 }
-
-const ForwardedTableRow = forwardRef(TableRow)
-ForwardedTableRow.displayName = "TableRow"
 
 //-------------------------------------------------------------------------//
 
 type TableHeadProps = HTMLAttributes<HTMLTableCellElement>
 
-function TableHead(
-  { className, ...props }: TableHeadProps,
-  ref: Ref<HTMLTableCellElement>
-) {
-  return <th ref={ref} className={tableHead({ className })} {...props} />
+function TableHead({ className, ...props }: TableHeadProps) {
+  return <th className={tableHead({ className })} {...props} />
 }
-
-const ForwardedTableHead = forwardRef(TableHead)
-ForwardedTableHead.displayName = "TableHead"
 
 //-------------------------------------------------------------------------//
 
 type TableCellProps = TdHTMLAttributes<HTMLTableCellElement>
 
-function TableCell(
-  { className, ...props }: TableCellProps,
-  ref: Ref<HTMLTableCellElement>
-) {
-  return <td ref={ref} className={tableCell({ className })} {...props} />
+function TableCell({ className, ...props }: TableCellProps) {
+  return <td className={tableCell({ className })} {...props} />
 }
-
-const ForwardedTableCell = forwardRef(TableCell)
-ForwardedTableCell.displayName = "TableCell"
 
 //-------------------------------------------------------------------------//
 
 type TableCaptionProps = HTMLAttributes<HTMLTableCaptionElement>
 
-function TableCaption(
-  { className, ...props }: TableCaptionProps,
-  ref: Ref<HTMLTableCaptionElement>
-) {
-  return (
-    <caption ref={ref} className={tableCaption({ className })} {...props} />
-  )
+function TableCaption({ className, ...props }: TableCaptionProps) {
+  return <caption className={tableCaption({ className })} {...props} />
 }
 
-const ForwardedTableCaption = forwardRef(TableCaption)
-ForwardedTableCaption.displayName = "TableCaption"
-
 export {
-  ForwardedTableBody as TableBody,
-  ForwardedTableCaption as TableCaption,
-  ForwardedTableCell as TableCell,
-  ForwardedTableFooter as TableFooter,
-  ForwardedTableHead as TableHead,
-  ForwardedTableHeader as TableHeader,
-  ForwardedTable as TableRoot,
-  ForwardedTableRow as TableRow,
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
 }

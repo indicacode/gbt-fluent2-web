@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Table, flexRender } from "@tanstack/react-table"
+import { TableBody, TableCell, TableRow } from "./table"
 
 interface DataTableBodyProps<TData> {
   table: Table<TData>
@@ -35,42 +36,42 @@ export function DataTableBody<TData>({
 
   if (!hasRows) {
     return (
-      <tbody>
-        <tr>
-          <td
+      <TableBody>
+        <TableRow>
+          <TableCell
             colSpan={table.getAllColumns().length}
             className="h-24 text-center"
           >
             {noResults}
-          </td>
-        </tr>
-      </tbody>
+          </TableCell>
+        </TableRow>
+      </TableBody>
     )
   }
 
   return (
-    <tbody>
+    <TableBody>
       {rows.map((row) => (
-        <tr
+        <TableRow
           key={row.id}
           data-state={row.getIsSelected() && "selected"}
           onClick={() => onRowClick?.(row.original)}
           className={cn(
-            "hover:bg-muted/50 transition-colors",
+            "hover:bg-muted/50  transition-colors",
             row.getIsSelected() && "bg-muted",
             getRowClass(row.original)
           )}
         >
           {row.getVisibleCells().map((cell) => (
-            <td
+            <TableCell
               key={cell.id}
-              className={cn("p-4", getCellClass(cell, row.original))}
+              className={getCellClass(cell, row.original)}
             >
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
-            </td>
+            </TableCell>
           ))}
-        </tr>
+        </TableRow>
       ))}
-    </tbody>
+    </TableBody>
   )
 }

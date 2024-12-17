@@ -56,7 +56,6 @@ export const columns: Array<ColumnDef<User>> = [
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
-        className="text-white mx-auto"
       />
     ),
     cell: ({ row }) => (
@@ -64,7 +63,6 @@ export const columns: Array<ColumnDef<User>> = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
-        className="border-white"
       />
     ),
     enableSorting: false,
@@ -75,7 +73,9 @@ export const columns: Array<ColumnDef<User>> = [
   },
   {
     accessorKey: "firstName",
-    header: () => renderCell("First Name"),
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="First Name" />
+    ),
     cell: ({ row }) => renderCell("firstName", row),
     maxSize: 100,
     minSize: 100,
@@ -93,12 +93,19 @@ export const columns: Array<ColumnDef<User>> = [
   },
   {
     accessorKey: "age",
-    header: () => renderCell("Age"),
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Age" />
+    ),
+
     cell: ({ row }) => renderCell("age", row),
     size: 10,
   },
   {
     id: "actions",
+    accessorKey: "actions",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Actions" />
+    ),
     enableHiding: false,
     cell: ({ row }) => renderActions(row),
     maxSize: 10,

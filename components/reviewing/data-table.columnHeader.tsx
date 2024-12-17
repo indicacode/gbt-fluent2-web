@@ -1,7 +1,6 @@
 import { Column } from "@tanstack/react-table"
 import { ArrowDown, ArrowUp, ChevronsUpDown } from "lucide-react"
 
-import { Button } from "@/components/done/button"
 import { cn } from "@/lib/utils"
 
 interface DataTableColumnHeaderProps<TData, TValue>
@@ -20,21 +19,24 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
-      <Button
-        variant="ghost"
-        size="sm"
-        className="data-[state=open]:bg-accent flex gap-1 text-lg font-bold"
+      <div
+        className={cn("group min-w-fit whitespace-nowrap gap-0.5 flex items-center", className)}
+        onClick={() => {
+          const isSorted = column.getIsSorted() === "desc"
+
+          column.toggleSorting(isSorted ? false : true)
+        }}
       >
-        <span>{title}</span>
-        {column.getIsSorted() === "desc" ? (
-          <ArrowDown />
-        ) : column.getIsSorted() === "asc" ? (
-          <ArrowUp />
-        ) : (
-          <ChevronsUpDown />
-        )}
-      </Button>
+        <span className="text-lg">{title}</span>
+        <div className="opacity-0 group-hover:opacity-100">
+          {column.getIsSorted() === "desc" ? (
+            <ArrowUp size={20} />
+          ) : column.getIsSorted() === "asc" ? (
+            <ArrowDown size={20} />
+          ) : (
+            <ChevronsUpDown size={20} />
+          )}
+        </div>
     </div>
   )
 }

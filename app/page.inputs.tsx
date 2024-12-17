@@ -1,3 +1,5 @@
+import { FaListUl } from "react-icons/fa6"
+
 import {
   Accordion,
   AccordionContent,
@@ -70,13 +72,13 @@ import {
   SelectValue,
 } from "@/components/reviewing/select"
 import {
+  Table,
   TableBody,
   TableCaption,
   TableCell,
   TableFooter,
   TableHead,
   TableHeader,
-  TableRoot,
   TableRow,
 } from "@/components/reviewing/table"
 import {
@@ -93,7 +95,6 @@ import {
   DocumentRegular,
   EditRegular,
   FolderRegular,
-  List20Filled,
   OpenRegular,
   PeopleRegular,
   VideoRegular,
@@ -1554,7 +1555,7 @@ export const components = [
         cardHeader: "",
         cardSubtext: "",
         cardComponent: (
-          <TableRoot>
+          <Table>
             <TableCaption>A list of your recent invoices.</TableCaption>
             <TableHeader>
               <TableRow>
@@ -1613,7 +1614,7 @@ export const components = [
                 <TableCell>1</TableCell>
               </TableRow>
             </TableFooter>
-          </TableRoot>
+          </Table>
         ),
       },
     ],
@@ -4238,8 +4239,7 @@ export const components = [
 
 export const sideBar = {
   Components: {
-    icon: <List20Filled />,
-    // @ts-ignore
+    icon: <FaListUl />,
     items: components.map((component) => component.header).sort(),
   },
 } as const

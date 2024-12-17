@@ -3,6 +3,7 @@ import { DataTableBody } from "./data-table.body"
 import { DataTableFilter } from "./data-table.filter"
 import { DataTablePagination } from "./data-table.pagination"
 import { DataTableViewOptions } from "./data-table.view-options"
+import { Table, TableHead, TableHeader, TableRow } from "./table"
 import { useDataTable } from "./useDataTable"
 
 interface DataTableProps<TData, TValue> {
@@ -41,31 +42,30 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className="w-full rounded-md border">
+    <div className="flex w-full flex-col">
       <div className="flex items-center justify-between py-4">
         {features.filtering && <DataTableFilter table={table} />}
         {features.viewOptions && <DataTableViewOptions table={table} />}
       </div>
-      <span className="text-red-700 text-6xl">not styled</span>
-      <table className="w-full">
-        <thead>
+      <Table className="my-4">
+        <TableHeader >
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <TableRow  key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <th key={header.id}>
+                <TableHead key={header.id}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                </th>
+                </TableHead>
               ))}
-            </tr>
+            </TableRow>
           ))}
-        </thead>
+        </TableHeader>
         <DataTableBody table={table} />
-      </table>
+      </Table>
 
       {features.pagination && <DataTablePagination table={table} />}
     </div>

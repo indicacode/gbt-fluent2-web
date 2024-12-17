@@ -1,19 +1,17 @@
 "use client"
 
-import ThemeSwitch from "@/utils/themeSwitch"
-import { useMediaQuery } from "@/utils/use-media-query"
-import { HamburgerMenuIcon } from "@radix-ui/react-icons"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { Fragment, useCallback, useState } from "react"
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/done/accordion"
-import { ArrowLeft16Regular } from "@fluentui/react-icons"
-import { PiFileTextThin } from "@react-icons/all-files/pi/PiFileTextThin"
+import ThemeSwitch from "@/utils/themeSwitch"
+import { useMediaQuery } from "@/utils/use-media-query"
+import { HamburgerMenuIcon } from "@radix-ui/react-icons"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { Fragment, useCallback, useState } from "react"
+import { FaRegFileAlt } from "react-icons/fa"
 import { components, sideBar } from "./page.inputs"
 
 type SideBarType = keyof typeof sideBar
@@ -50,7 +48,7 @@ export default function Page() {
         className={`w-full ${isMobile && isCollapsed ? "max-w-14" : "max-w-44"}`}
       />
       <div
-        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-auto bg-transparent pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
+        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-scroll bg-transparent pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
           isMobile && isCollapsed ? "max-w-14" : "max-w-44"
         }`}
       >
@@ -74,7 +72,7 @@ export default function Page() {
           </div>
 
           <Accordion
-            className="flex h-full w-full flex-col bg-transparent pt-4"
+            className="flex h-full w-full flex-col bg-transparent pt-4 pr-4"
             type="multiple"
             defaultValue={["item0"]}
           >
@@ -93,7 +91,7 @@ export default function Page() {
                           createQueryString("accordion", "item" + idx)
                       )
                     }
-                    className="flex cursor-pointer gap-2 pb-1 pl-2 text-[1.2em]"
+                    className="flex cursor-pointer gap-2 px-2 py-1 text-[1.2em] font-semibold"
                   >
                     {sideBar[key as SideBarType].icon}
                     {key}
@@ -104,7 +102,7 @@ export default function Page() {
                     (component: ItemsType, itemIdx: number) => (
                       <span
                         key={itemIdx}
-                        className="flex h-fit w-full cursor-pointer items-center py-1 pl-3 text-[14px] font-normal hover:bg-brand-light focus:bg-brand-light active:bg-brand-light"
+                        className="group flex h-fit w-full cursor-pointer items-center gap-2 px-2 py-2 text-[14px] font-semibold hover:bg-slate-700 focus:bg-slate-300 active:bg-brand-light"
                         onClick={() =>
                           router.push(
                             pathname +
@@ -112,9 +110,8 @@ export default function Page() {
                               createQueryString("section", component)
                           )
                         }
-                        aria-labelledby={`${key}-${itemIdx}`}
                       >
-                        <PiFileTextThin size={17} />
+                        <FaRegFileAlt size={16} />
                         {component}
                       </span>
                     )
@@ -126,15 +123,6 @@ export default function Page() {
         </div>
 
         <ThemeSwitch className="self-center" />
-      </div>
-      <div onClick={() => router.back()} className={"h-fit w-fit"}>
-        <div
-          className={
-            "z-40 ml-2 mt-2 flex h-8 w-8 items-center justify-center rounded-full ring-[1px] ring-black hover:bg-brand-light active:bg-brand-secondary"
-          }
-        >
-          <ArrowLeft16Regular />
-        </div>
       </div>
       <main className="flex min-h-full w-full items-center justify-center py-12">
         {components.map(({ header, subText, cards }, idx: number) => {
