@@ -1,4 +1,4 @@
-import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
+import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { ColumnDef, Row } from "@tanstack/react-table"
 
 import { Button } from "@/components/done/button"
@@ -12,6 +12,7 @@ import {
 } from "@/components/not-done/dropdown-menu"
 import { Checkbox } from "@/components/reviewing/checkbox"
 import { User } from "@/components/reviewing/data-table.input"
+import { DataTableColumnHeader } from "./data-table.columnHeader"
 
 function renderCell(key: string, row?: Row<User>) {
   if (row) {
@@ -55,7 +56,7 @@ export const columns: Array<ColumnDef<User>> = [
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
-        className="text-white"
+        className="text-white mx-auto"
       />
     ),
     cell: ({ row }) => (
@@ -82,17 +83,9 @@ export const columns: Array<ColumnDef<User>> = [
   },
   {
     accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="subtle"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Email" />
+    ),
     cell: ({ row }) => renderCell("email", row),
     maxSize: 300,
     minSize: 300,

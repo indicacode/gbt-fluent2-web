@@ -47,7 +47,7 @@ import { Skeleton } from "@/components/not-done/skeleton"
 import { Checkbox } from "@/components/reviewing/checkbox"
 import { DataTable } from "@/components/reviewing/data-table"
 import { columns } from "@/components/reviewing/data-table.components"
-import { fetchUsers } from "@/components/reviewing/data-table.input"
+import { dataTableData } from "@/components/reviewing/data-table.input"
 import {
   Dialog,
   DialogContent,
@@ -105,7 +105,6 @@ import { GiCarrot } from "@react-icons/all-files/gi/GiCarrot"
 import { GiMeat } from "@react-icons/all-files/gi/GiMeat"
 import { GiOrange } from "@react-icons/all-files/gi/GiOrange"
 import { GiShinyApple } from "@react-icons/all-files/gi/GiShinyApple"
-import { ColumnDef } from "@tanstack/react-table"
 import { ClipboardPasteIcon, ScissorsIcon } from "lucide-react"
 import Link from "next/link"
 import { ReactElement, ReactNode } from "react"
@@ -1518,14 +1517,15 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <DataTable
-            columns={columns as ColumnDef<[]>[]} // i dont like this and dont think its right but it is what it is lol
-            fetchData={fetchUsers}
-            pagination={{
-              manualPagination: true,
-              pageIndex: 0,
-              pageCount: 10,
-              pageSize: 10,
-              rowCount: 100,
+            data={dataTableData}
+            columns={columns}
+            features={{
+              sorting: true,
+              viewOptions: true,
+              filtering: true,
+              pagination: true,
+              columnVisibility: false,
+              rowSelection: true,
             }}
           />
         ),
@@ -1994,21 +1994,16 @@ export const components = [
             </Avatar>
             <Avatar status={"do-not-disturb"} size="sm">
               <AvatarFallback>Helen Pereira</AvatarFallback>
-              <AvatarImage />
             </Avatar>
-            <Avatar status={"busy"} size="sm">
+            <Avatar status="busy" size="sm">
               <AvatarFallback>Johnny Mans</AvatarFallback>
-              <AvatarImage
-                src={
-                  "https://images.pexels.com/photos/23909935/pexels-photo-23909935/free-photo-of-moda-tendencia-amor-mulher.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-                }
-              />
+              <AvatarImage src="https://images.pexels.com/photos/23909935/pexels-photo-23909935/free-photo-of-moda-tendencia-amor-mulher.jpeg" />
             </Avatar>
             <Avatar status={"online"} size="sm">
               <AvatarFallback>Jordan Terrence</AvatarFallback>
               <AvatarImage
                 src={
-                  "https://images.pexels.com/photos/22884699/pexels-photo-22884699/free-photo-of-cafeina-cafe-copo-taca.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                  "https://images.pexels.com/photos/22884699/pexels-photo-22884699/free-photo-of-cafeina-cafe-copo-taca.jpeg"
                 }
               />
             </Avatar>
@@ -2016,7 +2011,7 @@ export const components = [
               <AvatarFallback>Fernanda Almeida</AvatarFallback>
               <AvatarImage
                 src={
-                  "https://images.pexels.com/photos/22814807/pexels-photo-22814807/free-photo-of-moda-tendencia-mulher-modelo.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                  "https://images.pexels.com/photos/22814807/pexels-photo-22814807/free-photo-of-moda-tendencia-mulher-modelo.jpeg"
                 }
               />
             </Avatar>
