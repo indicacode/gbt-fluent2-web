@@ -16,7 +16,7 @@ export default function Navbar() {
       {/*    <NavigationMenuList>*/}
       {/*        <NavigationMenuLink asChild>*/}
       {/*            <Link*/}
-      {/*                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                href="#"*/}
       {/*            >*/}
       {/*                Dashboard*/}
@@ -28,7 +28,7 @@ export default function Navbar() {
       {/*                <div className="grid w-[400px] grid-cols-2 p-2">*/}
       {/*                    <NavigationMenuLink asChild>*/}
       {/*                        <Link*/}
-      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                            href="#"*/}
       {/*                        >*/}
       {/*                            <div className="text-sm font-medium leading-none group-hover:underline">Button*/}
@@ -41,7 +41,7 @@ export default function Navbar() {
       {/*                    </NavigationMenuLink>*/}
       {/*                    <NavigationMenuLink asChild>*/}
       {/*                        <Link*/}
-      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                            href="#"*/}
       {/*                        >*/}
       {/*                            <div className="text-sm font-medium leading-none group-hover:underline">Input*/}
@@ -54,7 +54,7 @@ export default function Navbar() {
       {/*                    </NavigationMenuLink>*/}
       {/*                    <NavigationMenuLink asChild>*/}
       {/*                        <Link*/}
-      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                            href="#"*/}
       {/*                        >*/}
       {/*                            <div*/}
@@ -68,7 +68,7 @@ export default function Navbar() {
       {/*                    </NavigationMenuLink>*/}
       {/*                    <NavigationMenuLink asChild>*/}
       {/*                        <Link*/}
-      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                            href="#"*/}
       {/*                        >*/}
       {/*                            <div className="text-sm font-medium leading-none group-hover:underline">Modal*/}
@@ -81,7 +81,7 @@ export default function Navbar() {
       {/*                    </NavigationMenuLink>*/}
       {/*                    <NavigationMenuLink asChild>*/}
       {/*                        <Link*/}
-      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                            className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-white p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                            href="#"*/}
       {/*                        >*/}
       {/*                            <div className="text-sm font-medium leading-none group-hover:underline">Card*/}
@@ -97,7 +97,7 @@ export default function Navbar() {
       {/*        </NavigationMenuItem>*/}
       {/*        <NavigationMenuLink asChild>*/}
       {/*            <Link*/}
-      {/*                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                href="/layout"*/}
       {/*            >*/}
       {/*                Layouts*/}
@@ -105,7 +105,7 @@ export default function Navbar() {
       {/*        </NavigationMenuLink>*/}
       {/*        <NavigationMenuLink asChild>*/}
       {/*            <Link*/}
-      {/*                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
+      {/*                className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-active:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"*/}
       {/*                href="#"*/}
       {/*            >*/}
       {/*                Forms*/}

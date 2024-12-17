@@ -43,7 +43,7 @@ export default function Page() {
   const currentDocs = searchParams.get("section")
 
   return (
-    <div className="flex h-[100%] min-h-screen w-full flex-grow flex-row bg-gradient-to-r from-white to-slate-200 transition-colors dark:from-slate-950 dark:to-zinc-950">
+    <div className="flex h-[100%] min-h-screen w-full grow flex-row bg-linear-to-r from-white to-slate-200 transition-colors dark:from-slate-950 dark:to-zinc-950">
       <span
         className={`w-full ${isMobile && isCollapsed ? "max-w-14" : "max-w-44"}`}
       />
@@ -149,7 +149,7 @@ export default function Page() {
                           {cardSubtext}
                         </>
                       )}
-                      <div className="relative flex min-w-fit overflow-hidden rounded border border-zinc-400 bg-[#fafafa] p-4 text-slate-950 shadow dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50">
+                      <div className="relative flex min-w-fit overflow-hidden rounded-sm border border-zinc-400 bg-[#fafafa] p-4 text-slate-950 shadow-sm dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50">
                         {cardComponent}
                       </div>
                     </Fragment>

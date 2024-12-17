@@ -73,7 +73,7 @@ const cardSlots = tv({
       vertical: {
         card: "flex flex-col",
         cardSpacing: "flex-col gap-4",
-        cardHeaderImage: "rounded",
+        cardHeaderImage: "rounded-sm",
       },
     },
   },

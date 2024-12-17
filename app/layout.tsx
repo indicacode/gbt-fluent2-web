@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html suppressHydrationWarning>
-      <body className="bg-gr font-Segoe dark:bg-gradient-to-r dark:from-slate-950 dark:to-zinc-950">
+      <body className="bg-gr font-Segoe dark:bg-linear-to-r dark:from-slate-950 dark:to-zinc-950">
         <Providers>
           <Suspense>
             <div id="root">{children}</div>

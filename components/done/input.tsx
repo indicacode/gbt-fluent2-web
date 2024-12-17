@@ -26,11 +26,11 @@ const inputVariants = tv({
     root: "flex flex-col",
     label: "py-1 text-black dark:text-gray-400",
     inputContainer:
-      "relative flex w-full select-none items-center gap-1 overflow-hidden rounded-[4px] px-2 text-[#707070] shadow-sm outline-0 transition-all",
+      "relative flex w-full select-none items-center gap-1 overflow-hidden rounded-[4px] px-2 text-[#707070] shadow-xs outline-0 transition-all",
     inputDecoration:
-      "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-[1] bg-[#106CBD] text-white transition-all", // This is the line that appears under the input
+      "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-1 bg-[#106CBD] text-white transition-all", // This is the line that appears under the input
     input:
-      "h-full w-full select-text border-none bg-transparent placeholder-[#707070] outline-none dark:text-gray-600",
+      "h-full w-full select-text border-none bg-transparent placeholder-[#707070] outline-hidden dark:text-gray-600",
   },
   variants: {
     variant: {

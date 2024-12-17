@@ -23,7 +23,7 @@ describe("Avatar Component", () => {
     expect(avatar).toHaveClass("h-[72px] w-[72px]") // lg size
   })
 
-  it("should apply active ring when active prop is true", () => {
+  it("should apply active ring-3 when active prop is true", () => {
     render(<Avatar active>Active Avatar</Avatar>)
     const avatarWrapper = screen.getByText("Active Avatar").parentElement
     expect(avatarWrapper).toHaveClass("border-opacity-100") // Active ring class

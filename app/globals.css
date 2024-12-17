@@ -1,6 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@variant dark (&:is(.dark *));
+
+@theme {
+  --font-montserrat: Montserrat;
+  --font-Segoe: Segoe, sans-serif;
+
+  --color-brand-primary: #1d67b3;
+  --color-brand-secondary: #295899;
+  --color-brand-subtle: #2c4a80;
+  --color-brand-disabled: #86afd9;
+  --color-brand-light: #c5dbed;
+  --color-brand-dark: #263052;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   @font-face {
@@ -30,7 +80,7 @@
   }
 
   code {
-    @apply m-[0.2em] rounded bg-[#fff1] px-[0.1em] py-[0.4em] text-sm italic;
+    @apply m-[0.2em] rounded-sm bg-[#fff1] px-[0.1em] py-[0.4em] text-sm italic;
   }
 
   blockquote {

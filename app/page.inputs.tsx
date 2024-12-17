@@ -3583,9 +3583,9 @@ export const components = [
       {
         cardHeader: "Shape",
         cardSubtext:
-          "MessageBar can have either rounded or square corners, please follow the usage guidance for these shapes:\n" +
+          "MessageBar can have either rounded-sm or square corners, please follow the usage guidance for these shapes:\n" +
           "\n" +
-          "    rounded used for component level message bars\n" +
+          "    rounded-sm used for component level message bars\n" +
           "    square used for page/app level message bars",
         cardComponent: (
           <div className="flex flex-col gap-2">

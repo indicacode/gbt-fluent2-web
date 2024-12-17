@@ -8,10 +8,10 @@ import { tv, VariantProps } from "tailwind-variants"
 
 const checkboxSlots = tv({
   slots: {
-    checkbox: `peer flex aspect-square shrink-0 overflow-hidden rounded-sm border border-gray-500 text-slate-50 shadow transition-colors hover:border-neutral-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-brand-primary data-[state=indeterminate]:border-brand-primary data-[state=checked]:bg-brand-primary dark:border-slate-200 dark:border-slate-50 dark:focus-visible:ring-slate-300 dark:data-[state=checked]:bg-slate-50 dark:data-[state=checked]:text-slate-900`,
+    checkbox: `peer flex aspect-square shrink-0 overflow-hidden rounded-xs border border-gray-500 text-slate-50 shadow-sm transition-colors hover:border-neutral-700 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-brand-primary data-[state=indeterminate]:border-brand-primary data-[state=checked]:bg-brand-primary dark:border-slate-200 dark:border-slate-50 dark:focus-visible:ring-slate-300 dark:data-[state=checked]:bg-slate-50 dark:data-[state=checked]:text-slate-900`,
     indicator: "flex h-full w-full items-center justify-center text-current",
     indeterminate:
-      "aspect-square min-h-[50%] min-w-[50%] rounded-sm bg-brand-primary",
+      "aspect-square min-h-[50%] min-w-[50%] rounded-xs bg-brand-primary",
     indeterminateContainer: "flex items-center justify-center",
   },
 
