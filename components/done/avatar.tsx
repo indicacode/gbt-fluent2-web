@@ -1,7 +1,7 @@
 "use client"
-import { Fallback, Root } from "@radix-ui/react-avatar"
+import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "@react-icons/all-files/ci/CiUser"
-import { Children, cloneElement, isValidElement, Ref, useMemo } from "react"
+import { Children, cloneElement, isValidElement, useMemo } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 import { StatusBadge } from "../done/status-badge"
 
@@ -94,7 +94,7 @@ function AvatarImage({
   ...props
 }: AvatarImageProps) {
   return (
-    <img
+    <Image
       src={src}
       className={avatar({ variant, size, className })}
       {...props}
@@ -102,11 +102,11 @@ function AvatarImage({
   )
 }
 
-type AvatarFallbackProps = typeof Fallback & {
+type AvatarFallbackProps = {
   children?: string
   className?: string
   size?: "sm" | "md" | "lg"
-  ref: Ref<HTMLSpanElement & typeof Fallback>
+  ref?: React.Ref<HTMLSpanElement>
 }
 
 function AvatarFallback({
