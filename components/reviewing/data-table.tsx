@@ -2,7 +2,7 @@ import { ColumnDef, flexRender } from "@tanstack/react-table"
 import { DataTableBody } from "./data-table.body"
 import { DataTableFilter } from "./data-table.filter"
 import { DataTablePagination } from "./data-table.pagination"
-import { DataTableViewOptions } from "./data-table.view-options"
+import { DataTableViewOptions } from "./data-table.columnToggle"
 import { Table, TableHead, TableHeader, TableRow } from "./table"
 import { useDataTable } from "./useDataTable"
 

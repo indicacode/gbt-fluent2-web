@@ -1,5 +1,5 @@
 import * as React from "react"
-import { forwardRef, Ref, useCallback, useId, useState } from "react"
+import { useCallback, useId, useState } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 export interface TextareaProps
@@ -16,9 +16,9 @@ const inputVariants = tv({
       " before:w-full before:translate-x-[-50%] before:bg-[#106CBD] before:transition-all before:content-['']",
     label: "text-lg font-bold dark:text-slate-200",
     textarea:
-      "flex w-full resize-none text-clip rounded-md border bg-transparent px-4 py-2 " +
+      "flex w-full resize-none rounded-md border bg-transparent px-4 py-2 text-clip " +
       " text-sm shadow-xs transition-colors duration-200 placeholder:text-slate-500 focus:border-b-blue-400" +
-      " focus-visible:outline-hidden focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50" +
+      " focus-visible:ring-slate-950 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50" +
       " dark:text-slate-200 dark:placeholder:text-slate-400 dark:focus-visible:ring-slate-300",
   },
   variants: {
@@ -56,17 +56,14 @@ const inputVariants = tv({
 })
 const { textarea, label, root } = inputVariants()
 
-function Textarea(
-  {
-    className,
-    labelText,
-    variant,
-    size,
-    error = false,
-    ...props
-  }: TextareaProps,
-  ref: Ref<HTMLTextAreaElement>
-) {
+export function Textarea({
+  className,
+  labelText,
+  variant,
+  size,
+  error = false,
+  ...props
+}: TextareaProps) {
   const [focus, setFocus] = useState(false)
   const [active, setActive] = useState(false)
 
@@ -109,14 +106,8 @@ function Textarea(
           focus,
           active,
         })}
-        ref={ref}
         {...props}
       />
     </div>
   )
 }
-
-const ForwardedTextarea = forwardRef(Textarea)
-Textarea.displayName = "Textarea"
-
-export { ForwardedTextarea as Textarea }

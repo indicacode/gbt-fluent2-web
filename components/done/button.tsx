@@ -1,10 +1,4 @@
-import {
-  ButtonHTMLAttributes,
-  ReactNode,
-  Ref,
-  forwardRef,
-  type MouseEvent,
-} from "react"
+import { ButtonHTMLAttributes, ReactNode, type MouseEvent } from "react"
 import { VariantProps, tv } from "tailwind-variants"
 
 export interface ButtonProps
@@ -70,21 +64,18 @@ function handleToggle(
   }
 }
 
-function Button(
-  {
-    disabled = false,
-    onClick = () => {},
-    toggle = false,
-    icon = false,
-    className,
-    children,
-    variant,
-    shape,
-    size,
-    ...props
-  }: ButtonProps,
-  ref: Ref<HTMLButtonElement>
-) {
+export function Button({
+  disabled = false,
+  onClick = () => {},
+  toggle = false,
+  icon = false,
+  className,
+  children,
+  variant,
+  shape,
+  size,
+  ...props
+}: ButtonProps) {
   console.assert(
     !(toggle && children !== undefined),
     "You cannot pass children to a toggle button. Children:" + children
@@ -92,7 +83,6 @@ function Button(
 
   return (
     <button
-      ref={ref}
       aria-disabled={disabled}
       data-disabled={disabled.toString()}
       data-selected="false"
@@ -118,9 +108,3 @@ function Button(
     </button>
   )
 }
-
-Button.displayName = "Button"
-
-const ForwardedButton = forwardRef(Button)
-
-export { ForwardedButton as Button }

@@ -238,7 +238,7 @@ export const components = [
         ),
         cardComponent: (
           <div className="flex gap-4">
-            <Button shape="square" variant="primary">
+            <Button shape="" variant="primary">
               Primary
             </Button>
             <Button variant="secondary">Secondary</Button>
@@ -781,7 +781,7 @@ export const components = [
         cardSubtext: "",
         cardComponent: (
           <Drawer defaultOpen={true} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
 
@@ -803,7 +803,7 @@ export const components = [
           "OverlayDrawer contains supplementary content and is used for complex creation, edit, or management experiences. For example, viewing details about an item in a list or editing settings. By default, drawer is blocking and signifies that the user's full attention is required when making configurations.",
         cardComponent: (
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
 
@@ -825,7 +825,7 @@ export const components = [
           "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content.",
         cardComponent: (
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
 
@@ -847,7 +847,7 @@ export const components = [
           "InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as the main surface, users can still interact with other UI elements. This could be useful for swapping between different items in the main surface.",
         cardComponent: (
           <Drawer defaultOpen={false} inline={true} position="left">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer
             </DrawerTrigger>
 
@@ -870,7 +870,7 @@ export const components = [
         cardComponent: (
           <div>
             <Drawer defaultOpen={false} position="bottom">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open drawer from the bottom
               </DrawerTrigger>
 
@@ -885,7 +885,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open drawer from the right
               </DrawerTrigger>
 
@@ -900,7 +900,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} position="left">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 mt-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary mt-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open drawer from the left
               </DrawerTrigger>
 
@@ -924,7 +924,7 @@ export const components = [
         cardComponent: (
           <div>
             <Drawer defaultOpen={false} size="sm" position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -939,7 +939,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} position="bottom">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
 
@@ -954,7 +954,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} size={"lg"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
 
@@ -978,7 +978,7 @@ export const components = [
         cardComponent: (
           <div className={""}>
             <Drawer defaultOpen={false} size={"sm"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -993,7 +993,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} position="bottom">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
 
@@ -1008,7 +1008,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} size={"lg"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
 
@@ -1032,7 +1032,7 @@ export const components = [
         cardComponent: (
           <div>
             <Drawer defaultOpen={false} size={"sm"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -1047,7 +1047,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} position="bottom">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
 
@@ -1062,7 +1062,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} size={"lg"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
 
@@ -1087,7 +1087,7 @@ export const components = [
         cardComponent: (
           <div>
             <Drawer defaultOpen={false} size={"sm"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -1102,7 +1102,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} position="bottom">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
 
@@ -1117,7 +1117,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} size={"lg"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
 
@@ -1143,7 +1143,7 @@ export const components = [
         cardComponent: (
           <div className={""}>
             <Drawer defaultOpen={false} size={"sm"} position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open small drawer
               </DrawerTrigger>
 
@@ -1158,7 +1158,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} position="bottom">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open medium drawer
               </DrawerTrigger>
 
@@ -1173,7 +1173,7 @@ export const components = [
               </DrawerContent>
             </Drawer>
             <Drawer defaultOpen={false} size="lg" position="right">
-              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 duration-400 ml-2 rounded-md bg-brand-primary px-4 py-1 text-white hover:bg-[#115EA3] active:border-brand-secondary active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+              <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
                 Open large drawer
               </DrawerTrigger>
 
@@ -2239,21 +2239,21 @@ export const components = [
           <div className={"flex w-full flex-col"}>
             <div className={"flex flex-row items-center"}>
               <Skeleton className={"mt-2 h-8 w-8 animate-pulse rounded-full"} />
-              <Skeleton className={"ml-2 mt-2 h-8 w-full"}></Skeleton>
+              <Skeleton className={"mt-2 ml-2 h-8 w-full"}></Skeleton>
             </div>
             <div className={"flex w-full flex-row items-center"}>
               <Skeleton className={"mt-3 h-8 w-8 animate-pulse rounded-full"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
             </div>
             <div className={"flex w-full flex-row items-center"}>
               <Skeleton className={"mt-3 h-8 w-8 animate-pulse"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
-              <Skeleton className={"ml-2 mt-3 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
+              <Skeleton className={"mt-3 ml-2 h-8 w-[25%]"} />
             </div>
           </div>
         ),
@@ -2290,7 +2290,7 @@ export const components = [
             </div>
             <div className={"mt-5 flex w-full flex-row items-center"}>
               <h2>24</h2>
-              <Skeleton className={"ml-2 mt-5 h-24 w-full"} />
+              <Skeleton className={"mt-5 ml-2 h-24 w-full"} />
             </div>
             <div className={"flex w-full flex-row items-center"}>
               <h2>32</h2>
@@ -2311,9 +2311,9 @@ export const components = [
           <div className={"flex w-full items-center justify-between"}>
             <div className={"flex w-full flex-row"}>
               <Skeleton className={"ml-2 h-20 w-20"} />
-              <Skeleton className={"ml-6 mt-2 h-20 w-20 rounded-full"} />
+              <Skeleton className={"mt-2 ml-6 h-20 w-20 rounded-full"} />
             </div>
-            <Skeleton className={"rounded-ml ml-2 mt-2 h-12 w-full"} />
+            <Skeleton className={"rounded-ml mt-2 ml-2 h-12 w-full"} />
           </div>
         ),
       },
@@ -3897,7 +3897,7 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"secondary"}>
+                    <Button className={"mt-1 ml-2"} variant={"secondary"}>
                       Action
                     </Button>
                   </div>
@@ -3932,7 +3932,7 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"secondary"}>
+                    <Button className={"mt-1 ml-2"} variant={"secondary"}>
                       Action
                     </Button>
                   </div>
@@ -3965,7 +3965,7 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"secondary"}>
+                    <Button className={"mt-1 ml-2"} variant={"secondary"}>
                       Action
                     </Button>
                   </div>
@@ -4051,7 +4051,7 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action 1{" "}
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                    <Button className={"mt-1 ml-2"} variant={"primary"}>
                       Action 2
                     </Button>
                   </div>
@@ -4084,7 +4084,7 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action 1{" "}
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                    <Button className={"mt-1 ml-2"} variant={"primary"}>
                       Action 2
                     </Button>
                   </div>
@@ -4116,7 +4116,7 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action 1{" "}
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                    <Button className={"mt-1 ml-2"} variant={"primary"}>
                       Action 2
                     </Button>
                   </div>
@@ -4149,7 +4149,7 @@ export const components = [
                     <Button className={"mt-1"} variant={"secondary"}>
                       Action 1{" "}
                     </Button>
-                    <Button className={"ml-2 mt-1"} variant={"primary"}>
+                    <Button className={"mt-1 ml-2"} variant={"primary"}>
                       Action 2
                     </Button>
                   </div>

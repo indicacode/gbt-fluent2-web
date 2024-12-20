@@ -1,36 +1,19 @@
 "use client"
-import React, {
-  Children,
-  cloneElement,
-  InputHTMLAttributes,
-  isValidElement,
-  ReactNode,
-  useCallback,
-  useId,
-  useRef,
-  useState,
-} from "react"
-import { tv, VariantProps } from "tailwind-variants"
 
-export interface InputPropsType
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">,
-    VariantProps<typeof inputVariants> {
-  containerClassName?: string
-  helperText?: string
-  labelText?: string
-  iconOnly?: boolean
-}
+import * as React from "react"
+import { type InputHTMLAttributes, type ReactNode } from "react"
+import { tv, type VariantProps } from "tailwind-variants"
 
 const inputVariants = tv({
   slots: {
     root: "flex flex-col",
     label: "py-1 text-black dark:text-gray-400",
     inputContainer:
-      "relative flex w-full select-none items-center gap-1 overflow-hidden rounded-[4px] px-2 text-[#707070] shadow-xs outline-0 transition-all",
+      "relative flex w-full items-center gap-1 overflow-hidden rounded-[4px] px-2 text-[#707070] shadow-xs outline-0 transition-all select-none",
     inputDecoration:
-      "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-1 bg-[#106CBD] text-white transition-all", // This is the line that appears under the input
+      "absolute bottom-0 left-[50%] z-10 h-full max-h-[0px] w-full max-w-[0px] translate-x-[-50%] scale-y-1 bg-[#106CBD] text-white transition-all",
     input:
-      "h-full w-full select-text border-none bg-transparent placeholder-[#707070] outline-hidden dark:text-gray-600",
+      "h-full w-full border-none bg-transparent placeholder-[#707070] outline-hidden select-text dark:text-gray-600",
   },
   variants: {
     variant: {
@@ -93,129 +76,24 @@ const inputVariants = tv({
       },
     },
   },
-
   defaultVariants: {
     variant: "outline",
     size: "md",
+    state: "neutral",
   },
 })
 
-const { input, root, inputContainer, inputDecoration, label } = inputVariants()
-
-const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
-  (
-    {
-      variant = "outline",
-      containerClassName,
-      state = "neutral",
-      iconOnly = false,
-      size = "md",
-      helperText,
-      labelText,
-      className,
-      children,
-      disabled,
-      onFocus = () => "",
-      onBlur = () => "",
-      ...rest
-    },
-    ref
-  ) => {
-    ref = useRef(null)
-    const [focus, setFocus] = useState(false)
-    const [active, setActive] = useState(false)
-
-    const inputId = useId()
-
-    // By using useCallback the function doesn't get recreated on a new
-    // memory reference every time the component re-renders.
-
-    const handleMouseDown = useCallback(() => {
-      setActive(true)
-    }, [])
-
-    const handleMouseUp = useCallback(() => {
-      setActive(false)
-    }, [])
-    //-------------------------------------------------------------//
-
-    const RightAddon = Children.map(children, (child) => {
-      if (isValidElement(child) && child.type === InputRightAddon) {
-        return cloneElement(child)
-      }
-    })
-    const LeftAddon = Children.map(children, (child) => {
-      if (isValidElement(child) && child.type === InputLeftAddon) {
-        return cloneElement(child)
-      }
-    })
-
-    if (RightAddon || LeftAddon) {
-      console.assert(
-        RightAddon?.length! <= 1,
-        "Only one right addon is allowed"
-      )
-      console.assert(LeftAddon?.length! <= 1, "Only one left addon is allowed")
-    }
-    return (
-      <div className={root()}>
-        {labelText && (
-          <label htmlFor={"input_id" + inputId} className={label({ state })}>
-            {labelText}
-          </label>
-        )}
-        <div
-          className={inputContainer({
-            className: containerClassName,
-            state,
-            variant,
-            disabled,
-            active,
-            focus,
-            size,
-          })}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onClick={() => ref?.current?.focus()}
-        >
-          {LeftAddon?.[0]}
-          <div className={inputDecoration({ focus, active })} />
-          <input
-            id={"input_id-" + inputId}
-            onFocus={(event) => {
-              setFocus(true)
-              onFocus(event)
-            }}
-            onBlur={(event) => {
-              setFocus(false)
-              onBlur(event)
-            }}
-            disabled={disabled}
-            className={input({
-              className,
-              variant,
-              disabled,
-              size,
-            })}
-            ref={ref}
-            {...rest}
-          />
-          {RightAddon?.[0]}
-        </div>
-        {helperText && (
-          <p
-            className={`text-xs text-gray-500 dark:text-gray-400 ${
-              state === "fail" ? "text-red-500 dark:text-red-500" : ""
-            }`}
-          >
-            {helperText}
-          </p>
-        )}
-      </div>
-    )
+type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> &
+  VariantProps<typeof inputVariants> & {
+    containerClassName?: string
+    helperText?: ReactNode
+    labelText?: ReactNode
+    iconOnly?: boolean
+    error?: boolean
+    children?: ReactNode
   }
-)
-Input.displayName = "Input"
+
+const { input, root, inputContainer, inputDecoration, label } = inputVariants()
 
 function InputLeftAddon({ children }: { children: ReactNode }) {
   return <>{children}</>
@@ -225,4 +103,123 @@ function InputRightAddon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
 
-export { Input, InputLeftAddon, InputRightAddon, inputVariants }
+function Input({
+  variant = "outline",
+  containerClassName,
+  state = "neutral",
+  iconOnly = false,
+  size = "md",
+  helperText,
+  labelText,
+  className,
+  disabled,
+  error,
+  children,
+  onFocus,
+  onBlur,
+  ...props
+}: InputProps) {
+  const [focus, setFocus] = React.useState(false)
+  const [active, setActive] = React.useState(false)
+  const inputId = React.useId()
+
+  const handleMouseDown = React.useCallback(() => {
+    setActive(true)
+  }, [])
+
+  const handleMouseUp = React.useCallback(() => {
+    setActive(false)
+  }, [])
+
+  const handleFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLInputElement>) => {
+      setFocus(true)
+      onFocus?.(event)
+    },
+    [onFocus]
+  )
+
+  const handleBlur = React.useCallback(
+    (event: React.FocusEvent<HTMLInputElement>) => {
+      setFocus(false)
+      onBlur?.(event)
+    },
+    [onBlur]
+  )
+
+  const RightAddon = React.Children.map(children, (child) => {
+    if (React.isValidElement(child) && child.type === InputRightAddon) {
+      return React.cloneElement(child)
+    }
+  })
+
+  const LeftAddon = React.Children.map(children, (child) => {
+    if (React.isValidElement(child) && child.type === InputLeftAddon) {
+      return React.cloneElement(child)
+    }
+  })
+
+  const inputState = error ? "fail" : state
+
+  return (
+    <div className={root()}>
+      {labelText && (
+        <label
+          htmlFor={`input-${inputId}`}
+          className={label({ state: inputState })}
+        >
+          {labelText}
+        </label>
+      )}
+      <div
+        className={inputContainer({
+          className: containerClassName,
+          state: inputState,
+          variant,
+          disabled,
+          active,
+          focus,
+          size,
+        })}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+      >
+        {LeftAddon?.[0]}
+        <div className={inputDecoration({ focus, active })} />
+        <input
+          {...props}
+          id={`input-${inputId}`}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          disabled={disabled}
+          className={input({
+            className,
+            variant,
+            disabled,
+            size,
+          })}
+        />
+        {RightAddon?.[0]}
+      </div>
+      {helperText && (
+        <p
+          className={`text-xs text-gray-500 dark:text-gray-400 ${
+            inputState === "fail" ? "text-red-500 dark:text-red-500" : ""
+          }`}
+        >
+          {helperText}
+        </p>
+      )}
+    </div>
+  )
+}
+
+Input.displayName = "Input"
+
+export {
+  Input,
+  InputLeftAddon,
+  InputRightAddon,
+  inputVariants,
+  type InputProps,
+}

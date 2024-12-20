@@ -1,7 +1,6 @@
 "use client"
 
-import { Root } from "@radix-ui/react-separator"
-import { ComponentPropsWithoutRef, forwardRef } from "react"
+import { Root, SeparatorProps } from "@radix-ui/react-separator"
 import { tv } from "tailwind-variants"
 
 type AlignOrientationReturn =
@@ -12,12 +11,13 @@ type AlignOrientationReturn =
   | "vertical_start"
   | "vertical_end"
 
-interface DividerProps extends ComponentPropsWithoutRef<typeof Root> {
-  variant?: "primary" | "subtle" | "brand" | "strong"
-  orientation?: "horizontal" | "vertical"
-  align?: "center" | "start" | "end"
-  dashed?: boolean
-}
+type DividerProps = SeparatorProps &
+  React.HTMLAttributes<HTMLDivElement> & {
+    variant?: "primary" | "subtle" | "brand" | "strong"
+    orientation?: "horizontal" | "vertical"
+    align?: "center" | "start" | "end"
+    dashed?: boolean
+  }
 
 const dividerSlots = tv({
   slots: {
@@ -81,9 +81,9 @@ const dividerSlots = tv({
         after: "max-h-[1px] min-h-[1px]",
       },
       vertical: {
-        root: "h-full min-w-[1px] max-w-fit flex-col justify-center",
-        before: "min-w-[1px] max-w-[1px]",
-        after: "min-w-[1px] max-w-[1px]",
+        root: "h-full max-w-fit min-w-[1px] flex-col justify-center",
+        before: "max-w-[1px] min-w-[1px]",
+        after: "max-w-[1px] min-w-[1px]",
       },
     },
   },
@@ -103,38 +103,29 @@ function alignOrientation(
 
 const { root, before, after } = dividerSlots()
 
-const Divider = forwardRef<HTMLDivElement, DividerProps>(
-  (
-    {
-      orientation = "horizontal",
-      variant = "primary",
-      align = "center",
-      dashed = false,
-      className,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const alignment = alignOrientation(align, orientation)
+export function Divider({
+  orientation = "horizontal",
+  variant = "primary",
+  align = "center",
+  dashed = false,
+  className,
+  children,
+  ...props
+}: DividerProps) {
+  const alignment = alignOrientation(align, orientation)
 
-    return (
-      <Root
-        ref={ref}
-        className={root({ align: alignment, orientation, variant, className })}
-        {...props}
-      >
-        <span
-          className={before({ align: alignment, orientation, dashed, variant })}
-        />
-        <div className="flex shrink-0">{children}</div>
-        <span
-          className={after({ align: alignment, orientation, dashed, variant })}
-        />
-      </Root>
-    )
-  }
-)
-
-Divider.displayName = "Divider"
-export { Divider }
+  return (
+    <Root
+      className={root({ align: alignment, orientation, variant, className })}
+      {...props}
+    >
+      <span
+        className={before({ align: alignment, orientation, dashed, variant })}
+      />
+      <div className="flex shrink-0">{children}</div>
+      <span
+        className={after({ align: alignment, orientation, dashed, variant })}
+      />
+    </Root>
+  )
+}

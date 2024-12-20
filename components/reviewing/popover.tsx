@@ -1,44 +1,43 @@
-"use client"
-
-import { Anchor, Content, Portal, Root, Trigger } from "@radix-ui/react-popover"
-import * as React from "react"
-import { ReactNode } from "react"
-
 import { cn } from "@/lib/utils"
 
-const Popover = Root
+import {
+  Anchor,
+  Content,
+  Portal,
+  Root,
+  Trigger,
+  type PopoverContentProps as RadixPopoverContentProps,
+} from "@radix-ui/react-popover"
+type PopoverContentProps = Omit<RadixPopoverContentProps, "className"> & {
+  className?: string
+}
 
-const PopoverAnchor = Anchor
+export const Popover = Root
 
-const PopoverTrigger = Trigger
+export const PopoverAnchor = Anchor
 
-// React.ElementRef<typeof Content>,
-// React.ComponentPropsWithoutRef<typeof Content>
+export const PopoverTrigger = Trigger
 
-// See
-const PopoverContent = React.forwardRef<
-  React.ElementRef<typeof Content>,
-  React.ComponentPropsWithoutRef<typeof Content> & { container?: ReactNode }
->(({ className, align = "center", sideOffset = 4, ...props }, ref) => (
-  <Portal>
-    <Content
-      ref={ref}
-      align={align}
-      sideOffset={sideOffset}
-      className={cn(
-        "rounded-sm bg-slate-100 p-2 text-xs shadow-xl will-change-[transform,opacity] focus:outline-hidden dark:bg-slate-800" +
-          " focus:ring-0 radix-state-closed:animate-out radix-state-closed:fade-out-0 radix-state-open:animate-in" +
-          " data-[side=bottom]:slide-in-from-top-2 radix-state-closed:zoom-out-95 radix-state-open:fade-in-0 radix-state-open:zoom-in-95" +
-          " data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-        className
-      )}
-      {...props}
-    />
-  </Portal>
-))
-PopoverContent.displayName = Content.displayName
-
-// const ForwardedPopoverContent = forwardRef(PopoverContent)
-// ForwardedPopoverContent.displayName = Content.displayName
-
-export { Popover, PopoverAnchor, PopoverContent, PopoverTrigger }
+export function PopoverContent({
+  className,
+  align = "center",
+  sideOffset = 4,
+  ...props
+}: PopoverContentProps) {
+  return (
+    <Portal>
+      <Content
+        align={align}
+        sideOffset={sideOffset}
+        className={cn(
+          "rounded-sm bg-slate-100 p-2 text-xs shadow-xl will-change-[transform,opacity] focus:outline-hidden dark:bg-slate-800" +
+            " radix-state-closed:animate-out radix-state-closed:fade-out-0 radix-state-open:animate-in focus:ring-0" +
+            " data-[side=bottom]:slide-in-from-top-2 radix-state-closed:zoom-out-95 radix-state-open:fade-in-0 radix-state-open:zoom-in-95" +
+            " data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          className
+        )}
+        {...props}
+      />
+    </Portal>
+  )
+}

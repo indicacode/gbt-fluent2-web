@@ -2,19 +2,17 @@
 
 import { CheckedState, Indicator, Root } from "@radix-ui/react-checkbox"
 import { FaCheck } from "@react-icons/all-files/fa/FaCheck"
-import * as React from "react"
-import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react"
+import { ComponentPropsWithoutRef, useEffect, useState } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const checkboxSlots = tv({
   slots: {
-    checkbox: `peer flex aspect-square shrink-0 overflow-hidden rounded-xs border border-gray-500 text-slate-50 shadow-sm transition-colors hover:border-neutral-700 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-slate-950 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-brand-primary data-[state=indeterminate]:border-brand-primary data-[state=checked]:bg-brand-primary dark:border-slate-200 dark:border-slate-50 dark:focus-visible:ring-slate-300 dark:data-[state=checked]:bg-slate-50 dark:data-[state=checked]:text-slate-900`,
+    checkbox: `peer data-[state=checked]:border-brand-primary data-[state=indeterminate]:border-brand-primary data-[state=checked]:bg-brand-primary flex aspect-square shrink-0 overflow-hidden rounded-xs border border-gray-500 text-slate-50 shadow-sm transition-colors hover:border-neutral-700 focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-200 dark:focus-visible:ring-slate-300 dark:data-[state=checked]:bg-slate-50 dark:data-[state=checked]:text-slate-900`,
     indicator: "flex h-full w-full items-center justify-center text-current",
     indeterminate:
-      "aspect-square min-h-[50%] min-w-[50%] rounded-xs bg-brand-primary",
+      "bg-brand-primary aspect-square min-h-[50%] min-w-[50%] rounded-xs",
     indeterminateContainer: "flex items-center justify-center",
   },
-
   variants: {
     rounded: {
       true: {
@@ -24,11 +22,11 @@ const checkboxSlots = tv({
     },
     size: {
       medium: {
-        checkbox: "max-h-4 min-h-4 min-w-4 max-w-4",
+        checkbox: "max-h-4 min-h-4 max-w-4 min-w-4",
         indeterminateContainer: "min-h-4 min-w-4",
       },
       large: {
-        checkbox: "max-h-5 min-h-5 min-w-5 max-w-5",
+        checkbox: "max-h-5 min-h-5 max-w-5 min-w-5",
         indeterminateContainer: "min-h-5 min-w-5",
       },
     },
@@ -38,76 +36,58 @@ const checkboxSlots = tv({
   },
 })
 
-const { checkbox, indicator, indeterminate, indeterminateContainer } =
-  checkboxSlots({})
-
 interface CheckboxProps
-  extends Omit<ComponentPropsWithoutRef<typeof Root>, "onChange">,
+  extends Omit<ComponentPropsWithoutRef<typeof Root>, "onChange" | "checked">,
     VariantProps<typeof checkboxSlots> {
-  /** Runs whenever the value change
-   * @param {CheckedState} checked  */
+  checked?: CheckedState
   onChange?: (checked: CheckedState) => void
 }
 
-const Checkbox = React.forwardRef<React.ElementRef<typeof Root>, CheckboxProps>(
-  (
-    {
-      onChange = (checked: CheckedState) => {},
-      defaultChecked = false,
-      onClick = () => {},
-      rounded = false,
-      size = "medium",
-      className,
-      checked,
-      ...rest
-    },
-    ref
-  ) => {
-    type State = boolean | "indeterminate"
+export function Checkbox({
+  onChange,
+  defaultChecked = false,
+  onClick,
+  rounded = false,
+  size = "medium",
+  className,
+  checked,
+  ...props
+}: CheckboxProps) {
+  const [internalState, setInternalState] =
+    useState<CheckedState>(defaultChecked)
+  const styles = checkboxSlots({ rounded, size })
 
-    const [internalState, setInternalState] = useState<State | undefined>(
-      undefined
-    )
-    ref = useRef(null)
-
-    useEffect(() => {
-      if (checked !== undefined) {
-        setInternalState(checked)
-      }
-    }, [checked])
-
-    function handleOnClick() {
-      if (checked === undefined) {
-        setInternalState((prev) => !prev)
-      }
+  useEffect(() => {
+    if (checked !== undefined) {
+      setInternalState(checked)
     }
+  }, [checked])
 
-    return (
-      <Root
-        ref={ref}
-        checked={checked}
-        defaultChecked={defaultChecked}
-        onCheckedChange={(checked) => onChange(checked)}
-        onClick={(event) => {
-          handleOnClick()
-          onClick(event)
-        }}
-        className={checkbox({ rounded, size, className })}
-        {...rest}
-      >
-        <Indicator className={indicator({})}>
-          {internalState === "indeterminate" ? (
-            <div className={indeterminateContainer({})}>
-              <span className={indeterminate({ rounded, size })} />
-            </div>
-          ) : (
-            internalState && <FaCheck size="8" />
-          )}
-        </Indicator>
-      </Root>
-    )
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (checked === undefined) {
+      setInternalState((prev) => !prev)
+    }
+    onClick?.(event)
   }
-)
-Checkbox.displayName = Root.displayName
 
-export { Checkbox }
+  return (
+    <Root
+      checked={checked}
+      defaultChecked={defaultChecked}
+      onCheckedChange={onChange}
+      onClick={handleClick}
+      className={styles.checkbox({ className })}
+      {...props}
+    >
+      <Indicator className={styles.indicator()}>
+        {internalState === "indeterminate" ? (
+          <div className={styles.indeterminateContainer()}>
+            <span className={styles.indeterminate()} />
+          </div>
+        ) : (
+          internalState && <FaCheck size="8" />
+        )}
+      </Indicator>
+    </Root>
+  )
+}

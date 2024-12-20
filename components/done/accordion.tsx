@@ -1,24 +1,28 @@
 "use client"
-import { Content, Header, Item, Root, Trigger } from "@radix-ui/react-accordion"
-import { ChevronRightIcon } from "@radix-ui/react-icons"
 import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  ElementType,
-  Fragment,
-  ReactNode,
-  forwardRef,
-} from "react"
+  AccordionContentProps,
+  AccordionMultipleProps,
+  AccordionSingleProps,
+  Content,
+  Header,
+  Item,
+  Root,
+  Trigger,
+  type AccordionItemProps as RadixAccordionItemProps,
+  type AccordionTriggerProps as RadixAccordionTriggerProps,
+} from "@radix-ui/react-accordion"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { ElementType, Fragment, HTMLAttributes, ReactNode } from "react"
 import { VariantProps, tv } from "tailwind-variants"
 
 // Used in accordionTrigger
 
-interface AccordionTriggerProps
-  extends ComponentPropsWithoutRef<typeof Trigger>,
-    VariantProps<typeof accordionSlots> {
-  icon?: ReactNode
-  as?: "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-}
+type AccordionTriggerProps = RadixAccordionTriggerProps &
+  HTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof accordionSlots> & {
+    icon?: ReactNode
+    as?: "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+  }
 
 const accordionSlots = tv({
   slots: {
@@ -33,7 +37,7 @@ const accordionSlots = tv({
     // ---group--- //
 
     contentStyles:
-      "overflow-hidden bg-transparent text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down dark:text-white",
+      "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden bg-transparent text-sm dark:text-white",
   },
   variants: {
     position: {
@@ -79,98 +83,72 @@ const {
 } = accordionSlots({
   // size,
 })
-
-const Accordion = forwardRef<
-  ElementRef<typeof Root>,
-  ComponentPropsWithoutRef<typeof Root>
->(({ className, children, ...props }, ref) => (
-  <Root {...props} ref={ref} className={className + " flex flex-col gap-3"}>
-    {children}
-  </Root>
-))
-
-Accordion.displayName = "Accordion"
-//----------------------------------------//
-
-const AccordionItem = forwardRef<
-  ElementRef<typeof Item>,
-  ComponentPropsWithoutRef<typeof Item>
->(({ className, ...props }, ref) => {
-  // const [size] = getcontext()
+type AccordionProps = (AccordionSingleProps | AccordionMultipleProps) &
+  HTMLAttributes<HTMLDivElement>
+function Accordion({ className, children, ...props }: AccordionProps) {
   return (
-    <Item ref={ref} className={accordionItemStyles({ className })} {...props} />
+    <Root {...props} className={className + " flex flex-col gap-3"}>
+      {children}
+    </Root>
   )
-})
+}
 
-AccordionItem.displayName = "AccordionItem"
-//----------------------------------------//
+type AccordionItemProps = RadixAccordionItemProps &
+  HTMLAttributes<HTMLDivElement>
 
-const AccordionTrigger = forwardRef<
-  ElementRef<typeof Trigger>,
-  AccordionTriggerProps
->(
-  (
-    {
-      className,
-      as = "div",
-      inline = false,
-      icon,
-      position,
-      size,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    let Component: ElementType = Fragment
+function AccordionItem({ className, ...props }: AccordionItemProps) {
+  // const [size] = getcontext()
+  return <Item className={accordionItemStyles({ className })} {...props} />
+}
 
-    const validTags = ["div", "h1", "h2", "h3", "h4", "h5", "h6"]
-    const isValid = validTags.includes(as)
-    if (isValid) {
-      Component = as
-    }
-    console.assert(
-      isValid,
-      'Invalid "as" prop. Must be ' + validTags.join(", ")
-    )
+function AccordionTrigger({
+  className,
+  as = "div",
+  inline = false,
+  icon,
+  position,
+  size,
+  children,
+  ...props
+}: AccordionTriggerProps) {
+  let Component: ElementType = Fragment
 
-    return (
-      <Header asChild={isValid} className={headerStyles({ inline })}>
-        <Component>
-          <Trigger
-            ref={ref}
-            className={triggerStyles({
-              className,
-              size,
-              position,
-            })}
-            {...props}
-          >
-            {icon ? (
-              icon
-            ) : (
-              <ChevronRightIcon className={iconStyles({ size })} />
-            )}
-            {children}
-          </Trigger>
-        </Component>
-      </Header>
-    )
+  const validTags = ["div", "h1", "h2", "h3", "h4", "h5", "h6"]
+  const isValid = validTags.includes(as)
+  if (isValid) {
+    Component = as
   }
-)
+  console.assert(isValid, 'Invalid "as" prop. Must be ' + validTags.join(", "))
 
-AccordionTrigger.displayName = Trigger.displayName
-//----------------------------------------//
+  return (
+    <Header asChild={isValid} className={headerStyles({ inline })}>
+      <Component>
+        <Trigger
+          className={triggerStyles({
+            className,
+            size,
+            position,
+          })}
+          {...props}
+        >
+          {icon ? icon : <ChevronRightIcon className={iconStyles({ size })} />}
+          {children}
+        </Trigger>
+      </Component>
+    </Header>
+  )
+}
 
-const AccordionContent = forwardRef<
-  ElementRef<typeof Content>,
-  ComponentPropsWithoutRef<typeof Content>
->(({ className, children, ...props }, ref) => (
-  <Content ref={ref} className={contentStyles({ className })} {...props}>
-    <div className={contentStyles({ className })}>{children}</div>
-  </Content>
-))
-AccordionContent.displayName = Content.displayName
-//----------------------------------------//
+function AccordionContent({
+  className,
+  children,
+  ...props
+}: AccordionContentProps & HTMLAttributes<HTMLDivElement>) {
+  return (
+    <Content className={contentStyles({ className })} {...props}>
+      <div className={contentStyles({ className })}>{children}</div>
+    </Content>
+  )
+}
 
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger }

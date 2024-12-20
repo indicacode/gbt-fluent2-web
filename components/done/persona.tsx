@@ -1,12 +1,7 @@
-import { ComponentPropsWithoutRef } from "react"
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/done/avatar"
 import { StatusBadge } from "@/components/done/status-badge"
 
-type PersonaProps = Omit<
-  ComponentPropsWithoutRef<typeof Avatar>,
-  "children"
-> & {
+type PersonaProps = Omit<typeof Avatar, "children"> & {
   avatar: {
     src: string
     name: string
@@ -66,7 +61,7 @@ export default function Persona({
           className={"relative aspect-square rounded-full bg-red-500 " + size}
         >
           <StatusBadge
-            className={"bottom-0 right-0"}
+            className={"right-0 bottom-0"}
             size={avatar?.size}
             status={avatar?.status}
           />

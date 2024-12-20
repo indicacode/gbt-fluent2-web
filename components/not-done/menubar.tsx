@@ -23,12 +23,7 @@ import {
   SubTrigger,
   Trigger,
 } from "@radix-ui/react-menubar"
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  HTMLAttributes,
-} from "react"
+import { HTMLAttributes } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -42,194 +37,152 @@ const MenubarSub = Sub
 
 const MenubarRadioGroup = RadioGroup
 
-const Menubar = forwardRef<
-  ElementRef<typeof Root>,
-  ComponentPropsWithoutRef<typeof Root>
->(({ className, ...props }, ref) => (
-  <Root
-    ref={ref}
-    className={cn(
-      "flex h-9 space-x-1 rounded-sm border border-[#d1d1d1] bg-white shadow-xs transition-colors dark:border-[#666666] dark:bg-slate-950",
-      className
-    )}
-    {...props}
-  />
-))
-Menubar.displayName = Root.displayName
-
-const MenubarTrigger = forwardRef<
-  ElementRef<typeof Trigger>,
-  ComponentPropsWithoutRef<typeof Trigger>
->(({ className, ...props }, ref) => (
-  <Trigger
-    ref={ref}
-    className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-3 py-1 text-sm font-medium outline-hidden transition-colors focus:bg-slate-100 focus:text-slate-900 data-[state=open]:bg-slate-100 data-[state=open]:text-slate-900 dark:focus:bg-[#282828] dark:focus:text-[#d6d6d6] dark:data-[state=open]:bg-[#282828] dark:data-[state=open]:text-[#d6d6d6]",
-      className
-    )}
-    {...props}
-  />
-))
-MenubarTrigger.displayName = Trigger.displayName
-
-const MenubarSubTrigger = forwardRef<
-  ElementRef<typeof SubTrigger>,
-  ComponentPropsWithoutRef<typeof SubTrigger> & {
-    inset?: boolean
-  }
->(({ className, inset, children, ...props }, ref) => (
-  <SubTrigger
-    ref={ref}
-    className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden focus:bg-slate-100 focus:text-slate-900 data-[state=open]:bg-slate-100 data-[state=open]:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50 dark:data-[state=open]:bg-slate-800 dark:data-[state=open]:text-slate-50",
-      inset && "pl-8",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <ChevronRightIcon className="ml-auto h-4 w-4" />
-  </SubTrigger>
-))
-MenubarSubTrigger.displayName = SubTrigger.displayName
-
-const MenubarSubContent = forwardRef<
-  ElementRef<typeof SubContent>,
-  ComponentPropsWithoutRef<typeof SubContent>
->(({ className, ...props }, ref) => (
-  <SubContent
-    ref={ref}
-    className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-sm border border-slate-200 bg-white p-1 text-slate-950 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:border-[#202020] dark:bg-[#282828] dark:text-[#d6d6d6]",
-      className
-    )}
-    {...props}
-  />
-))
-MenubarSubContent.displayName = SubContent.displayName
-
-const MenubarContent = forwardRef<
-  ElementRef<typeof Content>,
-  ComponentPropsWithoutRef<typeof Content>
->(
-  (
-    { className, align = "start", alignOffset = -4, sideOffset = 3, ...props },
-    ref
-  ) => (
+function Menubar({ className, ...props }) {
+  return (
+    <Root
+      className={cn(
+        "flex h-9 space-x-1 rounded-sm border border-[#d1d1d1] bg-white shadow-xs transition-colors dark:border-[#666666] dark:bg-slate-950",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function MenubarTrigger({ className, ...props }) {
+  return (
+    <Trigger
+      className={cn(
+        "flex cursor-default items-center rounded-sm px-3 py-1 text-sm font-medium outline-hidden transition-colors select-none focus:bg-slate-100 focus:text-slate-900 data-[state=open]:bg-slate-100 data-[state=open]:text-slate-900 dark:focus:bg-[#282828] dark:focus:text-[#d6d6d6] dark:data-[state=open]:bg-[#282828] dark:data-[state=open]:text-[#d6d6d6]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function MenubarSubTrigger({ className, inset, children, ...props }) {
+  return (
+    <SubTrigger
+      className={cn(
+        "flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-slate-100 focus:text-slate-900 data-[state=open]:bg-slate-100 data-[state=open]:text-slate-900 dark:focus:bg-slate-800 dark:focus:text-slate-50 dark:data-[state=open]:bg-slate-800 dark:data-[state=open]:text-slate-50",
+        inset && "pl-8",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronRightIcon className="ml-auto h-4 w-4" />
+    </SubTrigger>
+  )
+}
+function MenubarSubContent({ className, ...props }) {
+  return (
+    <SubContent
+      className={cn(
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-sm border border-slate-200 bg-white p-1 text-slate-950 shadow-lg dark:border-[#202020] dark:bg-[#282828] dark:text-[#d6d6d6]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function MenubarContent({
+  className,
+  align = "start",
+  alignOffset = -4,
+  sideOffset = 3,
+  ...props
+}) {
+  return (
     <Portal>
       <Content
-        ref={ref}
         align={align}
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] overflow-hidden rounded-md border border-slate-200 bg-white p-1 text-slate-950 shadow-md data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:border-[#202020] dark:bg-[#282828] dark:text-[#d6d6d6]",
+          "data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] overflow-hidden rounded-md border border-slate-200 bg-white p-1 text-slate-950 shadow-md dark:border-[#202020] dark:bg-[#282828] dark:text-[#d6d6d6]",
           className
         )}
         {...props}
       />
     </Portal>
   )
-)
-MenubarContent.displayName = Content.displayName
-
-const MenubarItem = forwardRef<
-  ElementRef<typeof Item>,
-  ComponentPropsWithoutRef<typeof Item> & {
-    inset?: boolean
-  }
->(({ className, inset, ...props }, ref) => (
-  <Item
-    ref={ref}
-    className={cn(
-      "relative flex cursor-default select-none items-center rounded-xs px-2 py-1.5 text-sm outline-hidden focus:bg-[#f5f5f5] focus:text-slate-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-[#3d3d3d] dark:focus:text-slate-50",
-      inset && "pl-8",
-      className
-    )}
-    {...props}
-  />
-))
-MenubarItem.displayName = Item.displayName
-
-const MenubarCheckboxItem = forwardRef<
-  ElementRef<typeof CheckboxItem>,
-  ComponentPropsWithoutRef<typeof CheckboxItem>
->(({ className, children, checked, ...props }, ref) => (
-  <CheckboxItem
-    ref={ref}
-    className={cn(
-      "relative flex cursor-default select-none items-center rounded-xs py-1.5 pl-8 pr-2 text-sm outline-hidden focus:bg-slate-100 focus:text-slate-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
-      className
-    )}
-    checked={checked}
-    {...props}
-  >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <ItemIndicator>
-        <CheckIcon className="h-4 w-4" />
-      </ItemIndicator>
-    </span>
-    {children}
-  </CheckboxItem>
-))
-MenubarCheckboxItem.displayName = CheckboxItem.displayName
-
-const MenubarRadioItem = forwardRef<
-  ElementRef<typeof RadioItem>,
-  ComponentPropsWithoutRef<typeof RadioItem>
->(({ className, children, ...props }, ref) => (
-  <RadioItem
-    ref={ref}
-    className={cn(
-      "relative flex cursor-default select-none items-center rounded-xs py-1.5 pl-8 pr-2 text-sm outline-hidden focus:bg-slate-100 focus:text-slate-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
-      className
-    )}
-    {...props}
-  >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <ItemIndicator>
-        <DotFilledIcon className="h-4 w-4 fill-current" />
-      </ItemIndicator>
-    </span>
-    {children}
-  </RadioItem>
-))
-MenubarRadioItem.displayName = RadioItem.displayName
-
-const MenubarLabel = forwardRef<
-  ElementRef<typeof Label>,
-  ComponentPropsWithoutRef<typeof Label> & {
-    inset?: boolean
-  }
->(({ className, inset, ...props }, ref) => (
-  <Label
-    ref={ref}
-    className={cn(
-      "px-2 py-1.5 text-sm font-semibold",
-      inset && "pl-8",
-      className
-    )}
-    {...props}
-  />
-))
-MenubarLabel.displayName = Label.displayName
-
-const MenubarSeparator = forwardRef<
-  ElementRef<typeof Separator>,
-  ComponentPropsWithoutRef<typeof Separator>
->(({ className, ...props }, ref) => (
-  <Separator
-    ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-slate-100 dark:bg-[#202020]", className)}
-    {...props}
-  />
-))
-MenubarSeparator.displayName = Separator.displayName
-
-const MenubarShortcut = ({
+}
+function MenubarItem({ className, inset, ...props }) {
+  return (
+    <Item
+      className={cn(
+        "relative flex cursor-default items-center rounded-xs px-2 py-1.5 text-sm outline-hidden select-none focus:bg-[#f5f5f5] focus:text-slate-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-[#3d3d3d] dark:focus:text-slate-50",
+        inset && "pl-8",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function MenubarCheckboxItem({ className, children, checked, ...props }) {
+  return (
+    <CheckboxItem
+      className={cn(
+        "relative flex cursor-default items-center rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden select-none focus:bg-slate-100 focus:text-slate-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
+        className
+      )}
+      checked={checked}
+      {...props}
+    >
+      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+        <ItemIndicator>
+          <CheckIcon className="h-4 w-4" />
+        </ItemIndicator>
+      </span>
+      {children}
+    </CheckboxItem>
+  )
+}
+function MenubarRadioItem({ className, children, ...props }) {
+  return (
+    <RadioItem
+      className={cn(
+        "relative flex cursor-default items-center rounded-xs py-1.5 pr-2 pl-8 text-sm outline-hidden select-none focus:bg-slate-100 focus:text-slate-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:bg-slate-800 dark:focus:text-slate-50",
+        className
+      )}
+      {...props}
+    >
+      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+        <ItemIndicator>
+          <DotFilledIcon className="h-4 w-4 fill-current" />
+        </ItemIndicator>
+      </span>
+      {children}
+    </RadioItem>
+  )
+}
+function MenubarLabel({ className, inset, ...props }) {
+  return (
+    <Label
+      className={cn(
+        "px-2 py-1.5 text-sm font-semibold",
+        inset && "pl-8",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function MenubarSeparator({ className, ...props }) {
+  return (
+    <Separator
+      className={cn(
+        "-mx-1 my-1 h-px bg-slate-100 dark:bg-[#202020]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function MenubarShortcut({
   className,
   ...props
-}: HTMLAttributes<HTMLSpanElement>) => {
+}: HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={cn(

@@ -26,7 +26,6 @@ export function Toaster() {
     <ToastProvider>
       {toasts.map(
         ({
-          //@ts-expect-error
           multiline = false,
           description,
           variant,

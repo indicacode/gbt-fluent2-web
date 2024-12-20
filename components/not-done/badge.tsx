@@ -4,7 +4,7 @@ import { tv, VariantProps } from "tailwind-variants"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = tv({
-  base: "inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-hidden focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 dark:border-slate-800 dark:focus:ring-slate-300",
+  base: "inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 focus:outline-hidden dark:border-slate-800 dark:focus:ring-slate-300",
   variants: {
     variant: {
       default:
@@ -24,7 +24,7 @@ const badgeVariants = tv({
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
-
+// TODO !NOT GOOD! (talking about the className. remove the cn from it)
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props} />
