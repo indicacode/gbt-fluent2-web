@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @variant dark (&:is(.dark *));
 
@@ -84,6 +84,6 @@
   }
 
   blockquote {
-    @apply mx-[1em] my-0.5 border-l-4 border-[#333] pl-[0.8em] text-[0.95em] italic leading-relaxed dark:border-[#ddd];
+    @apply mx-[1em] my-0.5 border-l-4 border-[#333] pl-[0.8em] text-[0.95em] leading-relaxed italic dark:border-[#ddd];
   }
 }

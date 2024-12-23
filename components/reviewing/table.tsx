@@ -23,7 +23,7 @@ const tableSlots = tv({
       "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-200 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCell:
-      "whitespace-nowrap p-2 py-1.5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "p-2 py-1.5 whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCaption: "mt-4 text-sm text-slate-500 dark:text-slate-400",
   },

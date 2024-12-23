@@ -65,7 +65,7 @@ export default function Page() {
               className={`font-4xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : "hidden"}`}
             />
             <h2
-              className={`w-fit whitespace-nowrap pl-2 text-2xl font-bold ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+              className={`w-fit pl-2 text-2xl font-bold whitespace-nowrap ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
             >
               Fluent2
             </h2>
@@ -102,7 +102,7 @@ export default function Page() {
                     (component: ItemsType, itemIdx: number) => (
                       <span
                         key={itemIdx}
-                        className="group flex h-fit w-full cursor-pointer items-center gap-2 px-2 py-2 text-[14px] font-semibold hover:bg-slate-700 focus:bg-slate-300 active:bg-brand-light"
+                        className="group active:bg-brand-light flex h-fit w-full cursor-pointer items-center gap-2 px-2 py-2 text-[14px] font-semibold hover:bg-slate-700 focus:bg-slate-300"
                         onClick={() =>
                           router.push(
                             pathname +

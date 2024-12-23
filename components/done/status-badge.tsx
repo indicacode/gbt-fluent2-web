@@ -8,7 +8,7 @@ type StatusBadgeProps = VariantProps<typeof statusBadge> & {
 //--------------------------------------------//
 
 const statusBadge = tv({
-  base: "absolute bottom-0 right-0 aspect-square rounded-full",
+  base: "absolute right-0 bottom-0 aspect-square rounded-full",
   variants: {
     variant: {
       default: "rounded-full",
@@ -16,7 +16,7 @@ const statusBadge = tv({
     size: {
       sm: "h-2 w-2", // 12px
       md: "h-3 w-3", // 16px
-      lg: "bottom-0.5 right-0.5 h-4 w-4", // 20px
+      lg: "right-0.5 bottom-0.5 h-4 w-4", // 20px
       // icon: "h-1 w-1",
     },
     status: {
