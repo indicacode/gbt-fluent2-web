@@ -1,7 +1,7 @@
 import * as React from "react"
-import { tv, VariantProps } from "tailwind-variants"
+import {tv, VariantProps} from "tailwind-variants"
 
-import { cn } from "@/lib/utils"
+import {JSX, ReactNode} from "react";
 
 const badgeVariants = tv({
   base: "inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 focus:outline-hidden dark:border-slate-800 dark:focus:ring-slate-300",
@@ -31,4 +31,12 @@ function Badge({ className, variant, ...props }: BadgeProps) {
   )
 }
 
-export { Badge, badgeVariants }
+export {Badge, badgeVariants}
+
+export function BadgeRightIcon({children}: { children: ReactNode }) {
+    return <>{children}</>
+}
+
+export function BadgeLeftIcon({children}: { children: ReactNode }) {
+    return <>{children}</>
+}
