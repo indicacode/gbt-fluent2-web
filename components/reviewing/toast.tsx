@@ -117,8 +117,14 @@ function ToastViewport({ className, ...props }) {
   return <Viewport className={toastViewport({ className })} {...props} />
 }
 
-function ToastAction({ className, ...props }) {
-  return <Action className={toastAction({ className })} {...props} />
+function ToastAction({ className, altText, ...props }) {
+  return (
+    <Action
+      altText={altText}
+      className={toastAction({ className })}
+      {...props}
+    />
+  )
 }
 
 function ToastClose({ className, ...props }) {

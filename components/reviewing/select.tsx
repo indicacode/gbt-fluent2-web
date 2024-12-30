@@ -98,9 +98,10 @@ function SelectLabel({ className, ...props }) {
   )
 }
 
-function SelectItem({ className, children, ...props }) {
+function SelectItem({ className, value, children, ...props }) {
   return (
     <SelectPrimitive.Item
+      value={value}
       className={cn(
         "focus:bg-brand-light dark:focus:bg-brand-primary relative flex w-full cursor-default items-center rounded-xs py-[0.5px] pr-8 pl-4 text-sm outline-hidden select-none focus:text-slate-900 data-disabled:pointer-events-none data-disabled:opacity-50 dark:focus:text-slate-50",
         className
