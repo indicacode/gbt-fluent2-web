@@ -6,7 +6,7 @@ const tableSlots = tv({
   slots: {
     // ---group--- //
     tableRoot: "relative w-full overflow-x-auto",
-    table: "w-full min-w-[500px] caption-bottom rounded text-sm",
+    table: "w-full min-w-[500px] caption-bottom rounded-sm text-sm",
     // ---group--- //
 
     tableHeader: "[&_tr]:border-b-[2px]",
@@ -14,7 +14,7 @@ const tableSlots = tv({
     tableBody: "py-1 [&_tr:last-child]:border-0",
 
     tableFoot:
-      "border-t-[2px] border-zinc-600 py-1 font-medium hover:bg-slate-100/50 dark:hover:bg-white/10 [&>tr]:last:border-b-0",
+      "border-t-[2px] border-zinc-600 py-1 font-medium hover:bg-slate-100/50 dark:hover:bg-white/10 last:[&>tr]:border-b-0",
 
     tableRow:
       "border-b-[2px] border-zinc-600 transition-colors hover:bg-slate-100/50 data-[state=selected]:bg-slate-100 dark:hover:bg-white/10 dark:data-[state=selected]:bg-slate-800",
@@ -23,7 +23,7 @@ const tableSlots = tv({
       "h-10 px-2 text-left align-middle font-medium text-slate-500 dark:text-slate-200 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCell:
-      "whitespace-nowrap p-2 py-1.5 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+      "p-2 py-1.5 whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
 
     tableCaption: "mt-4 text-sm text-slate-500 dark:text-slate-400",
   },

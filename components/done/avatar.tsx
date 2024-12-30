@@ -13,7 +13,7 @@ const avatarSlots = tv({
     avatarFallback:
       "bg-muted flex h-full w-full items-center justify-center rounded-full text-white",
     avatarActiveRing:
-      "h-fit max-h-fit w-fit max-w-fit rounded-full border-2 border-blue-500 border-opacity-0 p-0.5",
+      "border-opacity-0 h-fit max-h-fit w-fit max-w-fit rounded-full border-2 border-blue-500 p-0.5",
   },
   variants: {
     variant: {

@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import {
   Close,
   Content,
@@ -9,146 +10,157 @@ import {
   Root,
   Title,
   Trigger,
+  type DialogDescriptionProps,
+  type DialogOverlayProps,
+  type DialogTitleProps,
+  type DialogContentProps as RadixDialogContentProps,
+  type DialogProps as RadixDialogProps,
 } from "@radix-ui/react-dialog"
 import {
   Children,
-  ComponentPropsWithoutRef,
-  ElementRef,
-  HTMLAttributes,
-  ReactElement,
-  ReactNode,
   cloneElement,
-  forwardRef,
   isValidElement,
+  type HTMLAttributes,
+  type ReactElement,
+  type ReactNode,
 } from "react"
 
-import { cn } from "@/lib/utils"
-
-function Dialog({
-  children,
-  nonModal,
-  ...props
-}: {
+interface DialogProps extends RadixDialogProps {
   children: ReactNode
-  nonModal?: boolean
-}) {
-  const childrenWithProps = Children.map(children, (child) => {
-    if (isValidElement(child)) {
-      return cloneElement(child as ReactElement, { nonModal })
-    }
-    return child
-  })
-  return <Root {...props}>{childrenWithProps}</Root>
+  nonmodal?: boolean
 }
 
-const DialogTrigger = Trigger
+interface DialogContentProps extends RadixDialogContentProps {
+  nonmodal?: boolean
+  className?: string
+}
 
-const DialogPortal = Portal
+export const DialogTrigger = Trigger
+export const DialogPortal = Portal
+export const DialogClose = Close
 
-const DialogClose = Close
-
-const DialogOverlay = forwardRef<
-  ElementRef<typeof Overlay>,
-  ComponentPropsWithoutRef<typeof Overlay>
->(({ className, ...props }, ref) => (
-  <Overlay
-    ref={ref}
-    className={cn(
-      "fixed inset-0 z-50 bg-[#00000066] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
-    )}
-    {...props}
-  />
-))
-DialogOverlay.displayName = Overlay.displayName
-///////////////////////
-// TODO do nonModal //
-/////////////////////
-const DialogContent = forwardRef<
-  ElementRef<typeof Content>,
-  ComponentPropsWithoutRef<typeof Content> & { nonModal?: boolean }
->(({ className, onInteractOutside, nonModal, children, ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay />
-    <Content
-      onInteractOutside={(e) => {
-        if (nonModal) {
-          e.preventDefault()
-          e.stopPropagation()
+export function Dialog({ children, nonmodal, ...props }: DialogProps) {
+  return (
+    <Root {...props}>
+      {Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child as ReactElement<DialogContentProps>, {
+            nonmodal,
+          })
         }
-        onInteractOutside?.(e)
-      }}
-      ref={ref}
+        return child
+      })}
+    </Root>
+  )
+}
+
+export function DialogOverlay({ className, ...props }: DialogOverlayProps) {
+  return (
+    <Overlay
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-slate-200 bg-white p-6 text-sm text-black shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] dark:border-slate-800 dark:bg-gray-800 dark:text-white sm:rounded-lg",
+        "fixed inset-0 z-50 bg-[#00000066]",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out",
+        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         className
       )}
       {...props}
-    >
-      {children}
-    </Content>
-  </DialogPortal>
-))
-DialogContent.displayName = Content.displayName
+    />
+  )
+}
 
-const DialogHeader = ({
+export function DialogContent({
+  className,
+  onInteractOutside,
+  nonmodal,
+  children,
+  ...props
+}: DialogContentProps) {
+  return (
+    <DialogPortal>
+      <DialogOverlay />
+      <Content
+        onInteractOutside={(e) => {
+          if (nonmodal) {
+            e.preventDefault()
+            e.stopPropagation()
+          }
+          onInteractOutside?.(e)
+        }}
+        className={cn(
+          // Base styles
+          "fixed top-[50%] left-[50%] z-50 grid w-full max-w-lg",
+          "translate-x-[-50%] translate-y-[-50%] gap-4",
+          "border border-slate-200 bg-white p-6",
+          "text-sm text-black shadow-lg duration-200",
+          "sm:rounded-lg",
+          // Dark mode
+          "dark:border-slate-800 dark:bg-gray-800 dark:text-white",
+          // Animations
+          "data-[state=open]:animate-in data-[state=closed]:animate-out",
+          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+          "data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
+          "data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </Content>
+    </DialogPortal>
+  )
+}
+
+export function DialogHeader({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("flex", className)} {...props} />
-)
-DialogHeader.displayName = "DialogHeader"
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col space-y-2 text-center sm:text-left",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-const DialogFooter = ({
+export function DialogFooter({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
-      className
-    )}
-    {...props}
-  />
-)
-DialogFooter.displayName = "DialogFooter"
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-const DialogTitle = forwardRef<
-  ElementRef<typeof Title>,
-  ComponentPropsWithoutRef<typeof Title>
->(({ className, ...props }, ref) => (
-  <Title
-    ref={ref}
-    className={cn(
-      "text-xl font-semibold leading-none tracking-tight",
-      className
-    )}
-    {...props}
-  />
-))
-DialogTitle.displayName = Title.displayName
+export function DialogTitle({ className, ...props }: DialogTitleProps) {
+  return (
+    <Title
+      className={cn(
+        "text-xl leading-none font-semibold tracking-tight",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-const DialogDescription = forwardRef<
-  ElementRef<typeof Description>,
-  ComponentPropsWithoutRef<typeof Description>
->(({ className, ...props }, ref) => (
-  <Description
-    ref={ref}
-    className={cn("text-sm text-slate-400 dark:text-slate-300", className)}
-    {...props}
-  />
-))
-DialogDescription.displayName = Description.displayName
-
-export {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
+export function DialogDescription({
+  className,
+  ...props
+}: DialogDescriptionProps) {
+  return (
+    <Description
+      className={cn("text-sm text-slate-400 dark:text-slate-300", className)}
+      {...props}
+    />
+  )
 }

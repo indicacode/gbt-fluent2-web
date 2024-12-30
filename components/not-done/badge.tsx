@@ -4,47 +4,31 @@ import {tv, VariantProps} from "tailwind-variants"
 import {JSX, ReactNode} from "react";
 
 const badgeVariants = tv({
-    base: "inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 dark:border-slate-800 dark:focus:ring-slate-300",
-    slots: {
-        badgeContainer: "rounded-[999px] px-[6px] inline-flex items-center " +
-            "text-xs font-bold text-center",
+  base: "inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 focus:outline-hidden dark:border-slate-800 dark:focus:ring-slate-300",
+  variants: {
+    variant: {
+      default:
+        "border-transparent bg-slate-900 text-slate-50 shadow-sm hover:bg-slate-900/80 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/80",
+      secondary:
+        "border-transparent bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+      destructive:
+        "border-transparent bg-red-500 text-slate-50 shadow-sm hover:bg-red-500/80 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/80",
+      outline: "text-slate-950 dark:text-slate-50",
     },
-    variants: {
-        variant: {
-            default:
-                "border-transparent bg-slate-900 text-slate-50 shadow hover:bg-slate-900/80 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/80",
-            brandFilled: {
-                badgeContainer: "bg-[#0F6CBD] dark:bg-[#115EA3] text-[#FFFFFF] dark:text-[#62ABF5]",
-            },
-            brandTint: {
-                badgeContainer: "bg-[#EBF3FC] dark:bg-[#082338] text-[#115EA3] dark:text-[#62ABF5]",
-            },
-            secondary:
-                "border-transparent bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
-            destructive:
-                "border-transparent bg-red-500 text-slate-50 shadow hover:bg-red-500/80 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/80",
-            outline: "text-slate-950 dark:text-slate-50",
-        },
-    },
-    defaultVariants: {
-        variant: "default",
-    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
 })
 
 export interface BadgeProps
-    extends React.HTMLAttributes<HTMLDivElement>,
-        VariantProps<typeof badgeVariants> {
-}
-
-const {badgeContainer} = badgeVariants();
-
-function Badge({className, variant, ...props}: BadgeProps) {
-    return (
-        // <div className={cn(badgeVariants({ variant }), className)} {...props} />
-        <div className={badgeContainer({variant, className})} {...props} >
-            {props.children}
-        </div>
-    )
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {}
+// TODO !NOT GOOD! (talking about the className. remove the cn from it)
+function Badge({ className, variant, ...props }: BadgeProps) {
+  return (
+    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+  )
 }
 
 export {Badge, badgeVariants}

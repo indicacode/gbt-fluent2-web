@@ -1,11 +1,11 @@
 "use client"
 
-import { Root } from "@radix-ui/react-label"
-import { ComponentPropsWithoutRef, forwardRef, LegacyRef } from "react"
+import { Root, type LabelProps as RadixLabelProps } from "@radix-ui/react-label"
+import { ReactNode } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const label = tv({
-  base: "flex justify-center gap-0.5 align-middle text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+  base: "flex justify-center gap-0.5 align-middle text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
   variants: {
     disabled: {
       true: "cursor-not-allowed opacity-50",
@@ -18,25 +18,25 @@ const label = tv({
   },
 })
 
-export interface LabelProps
-  extends VariantProps<typeof label>,
-    ComponentPropsWithoutRef<typeof Root> {
-  required?: boolean
-}
+export type LabelProps = VariantProps<typeof label> &
+  Omit<RadixLabelProps, "disabled"> & {
+    required?: boolean
+    disabled?: boolean
+    children: ReactNode
+  }
 
-function Label(
-  { className, required, children, disabled, size, ...props }: LabelProps,
-  ref: LegacyRef<HTMLLabelElement>
-) {
+export function Label({
+  className,
+  required,
+  children,
+  disabled,
+  size,
+  ...props
+}: LabelProps) {
   return (
-    <Root ref={ref} className={label({ className, size, disabled })} {...props}>
+    <Root className={label({ className, size, disabled })} {...props}>
       {children}
       {required && <span className="text-red-500">*</span>}
     </Root>
   )
 }
-
-const ForwardedLabel = forwardRef(Label)
-ForwardedLabel.displayName = Root.displayName
-
-export { ForwardedLabel as Label }

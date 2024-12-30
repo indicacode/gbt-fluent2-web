@@ -1,11 +1,9 @@
 import {
   Children,
   cloneElement,
-  forwardRef,
   HTMLAttributes,
   isValidElement,
   ReactNode,
-  Ref,
   useEffect,
   useState,
 } from "react"
@@ -73,7 +71,7 @@ const cardSlots = tv({
       vertical: {
         card: "flex flex-col",
         cardSpacing: "flex-col gap-4",
-        cardHeaderImage: "rounded",
+        cardHeaderImage: "rounded-sm",
       },
     },
   },
@@ -105,22 +103,19 @@ interface CardProps
   size?: "sm" | "md" | "lg"
 }
 
-function Card(
-  {
-    onSelectionChange = () => {},
-    orientation = "vertical",
-    defaultChecked = false,
-    selectable = false,
-    cardPreview = false,
-    size,
-    className,
-    children,
-    variant,
-    image,
-    ...props
-  }: CardProps,
-  ref: Ref<HTMLDivElement>
-) {
+function Card({
+  onSelectionChange = () => {},
+  orientation = "vertical",
+  defaultChecked = false,
+  selectable = false,
+  cardPreview = false,
+  size,
+  className,
+  children,
+  variant,
+  image,
+  ...props
+}: CardProps) {
   const [pressed, setPressed] = useState<boolean>(false)
   const [checked, setChecked] = useState<boolean>(defaultChecked)
 
@@ -148,7 +143,6 @@ function Card(
       onMouseUp={() => variant === "outline" && setPressed(false)}
       onMouseDown={() => variant === "outline" && setPressed(true)}
       onClick={() => selectable && setChecked((prevState) => !prevState)}
-      ref={ref}
       className={card({
         variant,
         orientation,
@@ -167,17 +161,13 @@ function Card(
   )
 }
 
-Card.displayName = "Card"
-
 function FloatingAction({ children }: { children: ReactNode }) {
   return (
-    <div className="absolute right-3 top-2 max-h-fit max-w-fit cursor-pointer">
+    <div className="absolute top-2 right-3 max-h-fit max-w-fit cursor-pointer">
       {children}
     </div>
   )
 }
-
-const ForwardedCard = forwardRef(Card)
 
 interface OrientationOnlyCardProps
   extends HTMLAttributes<HTMLDivElement>,
@@ -185,16 +175,13 @@ interface OrientationOnlyCardProps
   image?: string
 }
 
-function CardHeader(
-  {
-    className,
-    orientation,
-    children,
-    image,
-    ...props
-  }: OrientationOnlyCardProps,
-  ref: Ref<HTMLDivElement>
-) {
+function CardHeader({
+  className,
+  orientation,
+  children,
+  image,
+  ...props
+}: OrientationOnlyCardProps) {
   const childrenWithProps = Children.map(children, (child) => {
     if (isValidElement(child)) {
       return cloneElement(child, { orientation } as {
@@ -204,11 +191,7 @@ function CardHeader(
     return child
   })
   return (
-    <div
-      ref={ref}
-      className={cardHeader({ className, orientation })}
-      {...props}
-    >
+    <div className={cardHeader({ className, orientation })} {...props}>
       {image && (
         <div className="h-16 w-16">
           <img
@@ -223,21 +206,13 @@ function CardHeader(
   )
 }
 
-CardHeader.displayName = "CardHeader"
-
-const ForwardedCardHeader = forwardRef(CardHeader)
-
 interface CardTitleProps
   extends HTMLAttributes<HTMLHeadingElement>,
     Pick<VariantProps<typeof cardSlots>, "orientation"> {}
 
-function CardTitle(
-  { className, orientation, ...props }: CardTitleProps,
-  ref: Ref<HTMLHeadingElement>
-) {
+function CardTitle({ className, orientation, ...props }: CardTitleProps) {
   return (
     <h3
-      ref={ref}
       className={cardTitle({
         orientation,
         className,
@@ -247,21 +222,17 @@ function CardTitle(
   )
 }
 
-CardTitle.displayName = "CardTitle"
-
-const ForwardedCardTitle = forwardRef(CardTitle)
-
 interface CardDescriptionProps
   extends HTMLAttributes<HTMLParagraphElement>,
     Pick<VariantProps<typeof cardSlots>, "orientation"> {}
 
-function CardDescription(
-  { className, orientation, ...props }: CardDescriptionProps,
-  ref: Ref<HTMLParagraphElement>
-) {
+function CardDescription({
+  className,
+  orientation,
+  ...props
+}: CardDescriptionProps) {
   return (
     <p
-      ref={ref}
       className={cardDescription({
         className,
         orientation,
@@ -271,20 +242,16 @@ function CardDescription(
   )
 }
 
-CardDescription.displayName = "CardDescription"
-
-const ForwardedCardDescription = forwardRef(CardDescription)
-
-function CardContent(
-  { className, orientation, ...props }: OrientationOnlyCardProps,
-  ref: Ref<HTMLDivElement>
-) {
+function CardContent({
+  className,
+  orientation,
+  ...props
+}: OrientationOnlyCardProps) {
   if (orientation === "horizontal") {
     return null
   }
   return (
     <div
-      ref={ref}
       className={cardContent({
         className,
         orientation,
@@ -294,20 +261,16 @@ function CardContent(
   )
 }
 
-CardContent.displayName = "CardContent"
-
-const ForwardedCardContent = forwardRef(CardContent)
-
-function CardFooter(
-  { className, orientation, ...props }: OrientationOnlyCardProps,
-  ref: Ref<HTMLDivElement>
-) {
+function CardFooter({
+  className,
+  orientation,
+  ...props
+}: OrientationOnlyCardProps) {
   if (orientation === "horizontal") {
     return null
   }
   return (
     <div
-      ref={ref}
       className={cardFooter({
         className,
         orientation,
@@ -317,16 +280,12 @@ function CardFooter(
   )
 }
 
-CardFooter.displayName = "CardFooter"
-
-const ForwardedCardFooter = forwardRef(CardFooter)
-
 export {
-  ForwardedCard as Card,
-  ForwardedCardContent as CardContent,
-  ForwardedCardDescription as CardDescription,
-  ForwardedCardFooter as CardFooter,
-  ForwardedCardHeader as CardHeader,
-  ForwardedCardTitle as CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
   FloatingAction,
 }

@@ -18,7 +18,7 @@ function renderCell(key: string, row?: Row<User>) {
   if (row) {
     return <div className="lowercase">{row.getValue(key)}</div>
   }
-  return <div className="capitalize text-white">{key}</div>
+  return <div className="text-white capitalize">{key}</div>
 }
 
 function renderActions(row: Row<User>) {

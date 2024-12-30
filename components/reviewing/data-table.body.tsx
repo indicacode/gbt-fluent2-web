@@ -57,7 +57,7 @@ export function DataTableBody<TData>({
           data-state={row.getIsSelected() && "selected"}
           onClick={() => onRowClick?.(row.original)}
           className={cn(
-            "hover:bg-muted/50  transition-colors",
+            "hover:bg-muted/50 transition-colors",
             row.getIsSelected() && "bg-muted",
             getRowClass(row.original)
           )}

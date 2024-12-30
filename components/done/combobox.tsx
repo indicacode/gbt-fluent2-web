@@ -61,13 +61,13 @@ function transferToGroupOption(options: Array<Option>, groupBy?: string) {
 const combobox = tv({
   slots: {
     badge:
-      "data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled]:hover:bg-muted-foreground data-[fixed]:bg-muted-foreground data-[fixed]:text-muted data-[fixed]:hover:bg-muted-foreground flex cursor-pointer items-center justify-center gap-1 rounded-full bg-brand-primary py-1",
+      "data-disabled:bg-muted-foreground data-disabled:text-muted data-disabled:hover:bg-muted-foreground data-fixed:bg-muted-foreground data-fixed:text-muted data-fixed:hover:bg-muted-foreground bg-brand-primary flex cursor-pointer items-center justify-center gap-1 rounded-full py-1",
     badgeIcon: "text-muted-foreground hover:text-foreground h-3 w-3",
     commandList:
-      "flex w-56 justify-start rounded-md border p-0.5 shadow-md outline-none animate-in",
+      "animate-in flex w-56 justify-start rounded-md border p-0.5 shadow-md outline-hidden",
     commandItem: "flex w-full cursor-pointer gap-1.5 rounded-none",
     input: "min-w-56 px-2",
-    inputClearable: "absolute right-1 top-1/2 -translate-y-1/2",
+    inputClearable: "absolute top-1/2 right-1 -translate-y-1/2",
   },
   variants: {
     disabled: {

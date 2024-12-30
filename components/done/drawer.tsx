@@ -34,7 +34,7 @@ const drawerSlots = tv({
       "fixed z-50 flex h-full flex-col border border-slate-200 bg-white p-4 text-white dark:border-slate-800 dark:bg-[#292929]",
     drawerHeader: "gap-1.5text-center flex sm:text-left",
     drawerFooter: "mt-auto flex flex-col gap-2",
-    drawerTitle: "text-lg font-semibold leading-none tracking-tight",
+    drawerTitle: "text-lg leading-none font-semibold tracking-tight",
     drawerDescription: "text-sm text-slate-500 dark:text-slate-400",
   },
   variants: {
@@ -43,10 +43,10 @@ const drawerSlots = tv({
     },
     position: {
       left: {
-        drawerContent: "left-0 top-0 h-full",
+        drawerContent: "top-0 left-0 h-full",
       },
       right: {
-        drawerContent: "right-0 top-0 h-full",
+        drawerContent: "top-0 right-0 h-full",
       },
       bottom: { drawerContent: "bottom-0 h-48 w-screen" },
     },

@@ -1,8 +1,8 @@
 import { ColumnDef, flexRender } from "@tanstack/react-table"
 import { DataTableBody } from "./data-table.body"
+import { DataTableViewOptions } from "./data-table.columnToggle"
 import { DataTableFilter } from "./data-table.filter"
 import { DataTablePagination } from "./data-table.pagination"
-import { DataTableViewOptions } from "./data-table.view-options"
 import { Table, TableHead, TableHeader, TableRow } from "./table"
 import { useDataTable } from "./useDataTable"
 
@@ -48,9 +48,9 @@ export function DataTable<TData, TValue>({
         {features.viewOptions && <DataTableViewOptions table={table} />}
       </div>
       <Table className="my-4">
-        <TableHeader >
+        <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow  key={headerGroup.id}>
+            <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <TableHead key={header.id}>
                   {header.isPlaceholder

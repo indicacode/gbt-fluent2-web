@@ -19,24 +19,27 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   return (
-      <div
-        className={cn("group min-w-fit whitespace-nowrap gap-0.5 flex items-center", className)}
-        onClick={() => {
-          const isSorted = column.getIsSorted() === "desc"
+    <div
+      className={cn(
+        "group flex min-w-fit items-center gap-0.5 whitespace-nowrap",
+        className
+      )}
+      onClick={() => {
+        const isSorted = column.getIsSorted() === "desc"
 
-          column.toggleSorting(isSorted ? false : true)
-        }}
-      >
-        <span className="text-lg">{title}</span>
-        <div className="opacity-0 group-hover:opacity-100">
-          {column.getIsSorted() === "desc" ? (
-            <ArrowUp size={20} />
-          ) : column.getIsSorted() === "asc" ? (
-            <ArrowDown size={20} />
-          ) : (
-            <ChevronsUpDown size={20} />
-          )}
-        </div>
+        column.toggleSorting(isSorted ? false : true)
+      }}
+    >
+      <span className="text-lg">{title}</span>
+      <div className="opacity-0 group-hover:opacity-100">
+        {column.getIsSorted() === "desc" ? (
+          <ArrowUp size={20} />
+        ) : column.getIsSorted() === "asc" ? (
+          <ArrowDown size={20} />
+        ) : (
+          <ChevronsUpDown size={20} />
+        )}
+      </div>
     </div>
   )
 }

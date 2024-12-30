@@ -1,17 +1,17 @@
 import { default as NextLink } from "next/link"
-import { forwardRef, PropsWithChildren, Ref } from "react"
+import { PropsWithChildren } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const linkStyles = tv({
   base: "text-black dark:text-slate-100",
   variants: {
     variant: {
-      default: "text-brand-primary hover:underline dark:text-brand-primary",
+      default: "text-brand-primary dark:text-brand-primary hover:underline",
       subtle: "hover:underline",
       false: "decoration-none",
     },
     disabled: {
-      true: "cursor-not-allowed select-text text-gray-600 opacity-50 dark:text-gray-600/90",
+      true: "cursor-not-allowed text-gray-600 opacity-50 select-text dark:text-gray-600/90",
     },
     inline: "inline underline",
   },
@@ -25,14 +25,16 @@ interface LinkProps
     PropsWithChildren,
     VariantProps<typeof linkStyles> {}
 
-function Link(
-  { children, href, variant, disabled, ...props }: LinkProps,
-  ref: Ref<HTMLAnchorElement>
-) {
+export function Link({
+  children,
+  href,
+  variant,
+  disabled,
+  ...props
+}: LinkProps) {
   return (
     <NextLink
       href={href}
-      ref={ref}
       className={linkStyles({
         variant: disabled ? !disabled : variant,
         disabled,
@@ -42,6 +44,3 @@ function Link(
     </NextLink>
   )
 }
-
-const ForwardedLink = forwardRef(Link)
-export { ForwardedLink as Link }
