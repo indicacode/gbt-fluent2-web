@@ -1,0 +1,54 @@
+@layer base {
+    :root{
+        /* DANGER */
+        --color-status-danger-background1: #FDF3F4;
+        --color-status-danger-background3: #C50F1F;
+        --color-status-danger-foreground1: #B10E1C;
+        --color-status-danger-foreground3: #C50F1F;
+        --color-status-danger-stroke1: #C50F1F;
+        --color-status-danger-stroke2: #C50F1F;
+
+        /* WARNING */
+        --color-status-warning-background1: #FFF9F5;
+        --color-status-warning-background3: #F7630C;
+        --color-status-warning-foreground1: #BC4B09;
+        --color-status-warning-foreground2: #8A3707;
+        --color-status-warning-stroke1: #FDCFB4;
+
+        /* SUCCESS */
+        --color-status-success-background1: #F1FAF1;
+        --color-status-success-background3: #107C10;
+        --color-status-success-foreground1: #0E700E;
+        --color-status-success-foreground3: #107C10;
+        --color-status-success-stroke1: #9FD89F;
+        --color-status-success-stroke2: #107C10;
+
+        /* IMPORTANT */
+
+    }
+    .dark {
+        /* DANGER */
+        --color-status-danger-background1: #3B0509;
+        --color-status-danger-background3: #C50F1F;
+        --color-status-danger-foreground1: #DC626D;
+        --color-status-danger-foreground3: #EEACB2;
+        --color-status-danger-stroke1: #C50F1F;
+        --color-status-danger-stroke2: #DC626D;
+
+        /* WARNING */
+        --color-status-warning-background1: #4A1E04;
+        --color-status-warning-background3: #F7630C;
+        --color-status-warning-foreground1: #F98845;
+        --color-status-warning-foreground2: #FDCFB4;
+        --color-status-warning-stroke1: #DE590B;
+
+        /* SUCCESS */
+        --color-status-success-background1: #052505;
+        --color-status-success-background3: #107C10;
+        --color-status-success-foreground1: #54B054;
+        --color-status-success-foreground3: #9FD89F;
+        --color-status-success-stroke1: #107C10;
+        --color-status-success-stroke2: #9FD89F;
+    }
+}
+

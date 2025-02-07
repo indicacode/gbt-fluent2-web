@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 const Tabs = TabsPrimitive.Root
 
-function TabsList({ className, ...props }) {
+function TabsList({ className, ...props }: TabsPrimitive.TabsListProps) {
   return (
     <TabsPrimitive.List
       className={cn(
@@ -16,7 +16,7 @@ function TabsList({ className, ...props }) {
   )
 }
 
-function TabsTrigger({ className, value, ...props }) {
+function TabsTrigger({ className, value, ...props }: TabsPrimitive.TabsTriggerProps) {
   return (
     <TabsPrimitive.Trigger
       value={value}
@@ -29,7 +29,7 @@ function TabsTrigger({ className, value, ...props }) {
   )
 }
 
-function TabsContent({ className, value, ...props }) {
+function TabsContent({ className, value, ...props }: TabsPrimitive.TabsContentProps) {
   return (
     <TabsPrimitive.Content
       value={value}

@@ -4,7 +4,7 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
 
 import { cn } from "@/lib/utils"
 
-function RadioGroup({ className, ...props }) {
+function RadioGroup({ className, ...props }: RadioGroupPrimitive.RadioGroupProps) {
   return (
     <RadioGroupPrimitive.Root
       className={cn("grid gap-2", className)}
@@ -13,7 +13,7 @@ function RadioGroup({ className, ...props }) {
   )
 }
 
-function RadioGroupItem({ className, value, ...props }) {
+function RadioGroupItem({ className, value, ...props }: RadioGroupPrimitive.RadioGroupItemProps) {
   return (
     <RadioGroupPrimitive.Item
       value={value}

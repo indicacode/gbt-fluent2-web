@@ -4,7 +4,7 @@ import * as SwitchPrimitives from "@radix-ui/react-switch"
 
 import { cn } from "@/lib/utils"
 
-export function Switch({ className, ...props }) {
+export function Switch({ className, ...props }: SwitchPrimitives.SwitchProps) {
   return (
     <SwitchPrimitives.Root
       className={cn(

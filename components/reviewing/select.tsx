@@ -8,6 +8,7 @@ import {
 import * as SelectPrimitive from "@radix-ui/react-select"
 
 import { cn } from "@/lib/utils"
+import {ComponentProps} from "react";
 
 const Select = SelectPrimitive.Root
 
@@ -15,7 +16,7 @@ const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
 
-function SelectTrigger({ className, children, ...props }) {
+function SelectTrigger({ className, children, ...props }: SelectPrimitive.SelectTriggerProps) {
   return (
     <SelectPrimitive.Trigger
       className={cn(
@@ -32,7 +33,7 @@ function SelectTrigger({ className, children, ...props }) {
   )
 }
 
-function SelectScrollUpButton({ className, ...props }) {
+function SelectScrollUpButton({ className, ...props }: SelectPrimitive.SelectScrollUpButtonProps) {
   return (
     <SelectPrimitive.ScrollUpButton
       className={cn(
@@ -46,7 +47,7 @@ function SelectScrollUpButton({ className, ...props }) {
   )
 }
 
-function SelectScrollDownButton({ className, ...props }) {
+function SelectScrollDownButton({ className, ...props }: SelectPrimitive.SelectScrollDownButtonProps) {
   return (
     <SelectPrimitive.ScrollDownButton
       className={cn(
@@ -60,7 +61,7 @@ function SelectScrollDownButton({ className, ...props }) {
   )
 }
 
-function SelectContent({ className, children, position = "popper", ...props }) {
+function SelectContent({ className, children, position = "popper", ...props }: SelectPrimitive.SelectContentProps) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -89,7 +90,12 @@ function SelectContent({ className, children, position = "popper", ...props }) {
   )
 }
 
-function SelectLabel({ className, ...props }) {
+interface SelectLabelProps extends ComponentProps<"label"> {
+  className?: string;
+}
+
+function SelectLabel({ className, ...props }: SelectPrimitive.SelectLabelProps) {
+
   return (
     <SelectPrimitive.Label
       className={cn("px-2 py-1.5 text-sm font-semibold", className)}
@@ -98,7 +104,7 @@ function SelectLabel({ className, ...props }) {
   )
 }
 
-function SelectItem({ className, value, children, ...props }) {
+function SelectItem({ className, value, children, ...props }: SelectPrimitive.SelectItemProps) {
   return (
     <SelectPrimitive.Item
       value={value}
@@ -118,7 +124,7 @@ function SelectItem({ className, value, children, ...props }) {
   )
 }
 
-function SelectSeparator({ className, ...props }) {
+function SelectSeparator({ className, ...props }: SelectPrimitive.SelectSeparatorProps) {
   return (
     <SelectPrimitive.Separator
       className={cn(

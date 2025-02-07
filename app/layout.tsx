@@ -1,4 +1,4 @@
-import "./globals.css"
+import "./styles/globals.css"
 
 import Providers from "@/utils/providers"
 import { ReactNode, Suspense } from "react"

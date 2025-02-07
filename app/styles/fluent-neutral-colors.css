@@ -1,0 +1,129 @@
+
+
+
+@layer base {
+    :root{
+        /*  Colors  */
+        --color-neutral-foreground-onBrand: #FFFFFF;
+        --color-neutral-background-static: #3D3D3D;
+        --color-neutral-background1-rest: #FFFFFF;
+        --color-neutral-background1-hover: #F5F5F5;
+        --color-neutral-background1-pressed: #E0E0E0;
+        --color-neutral-background1-selected: #E0E0E0;
+
+        /* Neutral Background 2 */
+        --color-neutral-background2-rest: #FAFAFA;
+        --color-neutral-background2-hover: #F0F0F0;
+        --color-neutral-background2-pressed: #DBDBDB;
+        --color-neutral-background2-selected: #E6E6E6;
+
+        /* Neutral Background 3 */
+        --color-neutral-background3-rest: #F5F5F5;
+        --color-neutral-background3-hover: #EBEBEB;
+        --color-neutral-background3-pressed: #D6D6D6;
+        --color-neutral-background3-selected: #E0E0E0;
+
+        /* Neutral Background 4 */
+        --color-neutral-background4-rest: #F0F0F0;
+        --color-neutral-background4-hover: #FAFAFA;
+        --color-neutral-background4-pressed: #F5F5F5;
+        --color-neutral-background4-selected: #FFFFFF;
+
+        /* Neutral Background 5 */
+        --color-neutral-background5-rest: #F0F0F0;
+        --color-neutral-background5-hover: #F5F5F5;
+        --color-neutral-background5-pressed: #F0F0F0;
+        --color-neutral-background5-selected: #FAFAFA;
+
+        /* Neutral Background 6 */
+        --color-neutral-background6-rest: #E6E6E6;
+
+        /* Neutral Foreground 1 - The color remains the same in all states: rest, hover, pressed e selected */
+        --color-neutral-foreground1: #242424;
+
+        /* Neutral Foreground 2 */
+        --color-neutral-foreground2-rest: #424242;
+        --color-neutral-foreground2-hover: #242424;
+        --color-neutral-foreground2-pressed: #242424;
+        --color-neutral-foreground2-selected: #242424;
+
+        /* Neutral Foreground 3 */
+        --color-neutral-foreground3-rest: #616161;
+        --color-neutral-foreground3-hover: #424242;
+        --color-neutral-foreground3-pressed: #424242;
+        --color-neutral-foreground3-selected: #424242;
+
+        /* Neutral Foreground 3 */
+        --color-neutral-foreground4-rest: #707070;
+
+        /* Neutral Foreground Disabled */
+        --color-neutral-foreground-disabled: #BDBDBD;
+
+        /* Neutral Stroke 1 */
+        --color-neutral-stroke1-rest: #D1D1D1;
+        --color-neutral-stroke1-hover: #C7C7C7;
+        --color-neutral-stroke1-pressed: #B3B3B3;
+        --color-neutral-stroke1-selected: #BDBDBD;
+
+        /* Neutral Stroke 2 */
+        --color-neutral-stroke2: #E0E0E0;
+
+        /* Neutral Stroke 3 */
+        --color-neutral-stroke3: #F0F0F0;
+    }
+    .dark {
+        /*  Colors  */
+        --color-neutral-background1-rest: #292929;
+        --color-neutral-background1-hover: #3D3D3D;
+        --color-neutral-background1-pressed: #1F1F1F;
+        --color-neutral-background1-selected: #383838;
+        /* Neutral Background 2 */
+        --color-neutral-background2-rest: #1F1F1F;
+        --color-neutral-background2-hover: #333333;
+        --color-neutral-background2-pressed: #141414;
+        --color-neutral-background2-selected: #2E2E2E;
+        /* Neutral Background 3 */
+        --color-neutral-background3-rest: #141414;
+        --color-neutral-background3-hover: #292929;
+        --color-neutral-background3-pressed: #0A0A0A;
+        --color-neutral-background3-selected: #242424;
+        /* Neutral Background 4 */
+        --color-neutral-background4-rest: #0A0A0A;
+        --color-neutral-background4-hover: #1F1F1F;
+        --color-neutral-background4-pressed: #000000;
+        --color-neutral-background4-selected: #1A1A1A;
+        /* Neutral Background 5 */
+        --color-neutral-background5-rest: #000000;
+        --color-neutral-background5-hover: #141414;
+        --color-neutral-background5-pressed: #050505;
+        --color-neutral-background5-selected: #0F0F0F;
+        /* Neutral Background 6 */
+        --color-neutral-background6-rest: #333333;
+        /* Neutral Foreground 1 - The color remains the same in all states: rest, hover, pressed e selected */
+        --color-neutral-foreground1: #FFFFFF;
+        /* Neutral Foreground 2 */
+        --color-neutral-foreground2-rest: #D6D6D6;
+        --color-neutral-foreground2-hover: #FFFFFF;
+        --color-neutral-foreground2-pressed: #FFFFFF;
+        --color-neutral-foreground2-selected: #FFFFFF;
+        /* Neutral Foreground 3 */
+        --color-neutral-foreground3-rest: #ADADAD;
+        --color-neutral-foreground3-hover: #D6D6D6;
+        --color-neutral-foreground3-pressed: #D6D6D6;
+        --color-neutral-foreground3-selected: #D6D6D6;
+        /* Neutral Foreground 4 */
+        --color-neutral-foreground4-rest: #999999;
+        /* Neutral Foreground Disabled */
+        --color-neutral-foreground-disabled: #5C5C5C;
+        /* Neutral Stroke 1 */
+        --color-neutral-stroke1-rest: #666666;
+        --color-neutral-stroke1-hover: #757575;
+        --color-neutral-stroke1-pressed: #6B6B6B;
+        --color-neutral-stroke1-selected: #707070;
+        /* Neutral Stroke 2 */
+        --color-neutral-stroke2: #525252;
+        /* Neutral Stroke 3 */
+        --color-neutral-stroke3: #3D3D3D;
+    }
+}
+

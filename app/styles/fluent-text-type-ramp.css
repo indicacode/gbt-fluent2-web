@@ -1,0 +1,64 @@
+
+
+
+@theme{
+    --text-caption2: 10px;
+    --text-caption2--line-height: 14px;
+    --text-caption2--font-weight: normal;
+
+    --text-caption2-strong: 10px;
+    --text-caption2-strong--line-height: 14px;
+    --text-caption2-strong--font-weight: normal;
+
+    --text-caption1: 12px;
+    --text-caption1--line-height: 16px;
+    --text-caption1--font-weight: normal;
+
+    --text-caption1-strong: 12px;
+    --text-caption1-strong--line-height: 16px;
+    --text-caption1-strong--font-weight: 600;
+
+    --text-caption1-stronger: 12px;
+    --text-caption1-stronger--line-height: 16px;
+    --text-caption1-stronger--font-weight: bold;
+
+    --text-body1: 14px;
+    --text-body1--line-height: 20px;
+    --text-body1--font-weight: normal;
+
+    --text-body1-strong: 14px;
+    --text-body1-strong--line-height: 20px;
+    --text-body1-strong--font-weight: 600;
+
+    --text-body1-stronger: 14px;
+    --text-body1-stronger--line-height: 20px;
+    --text-body1-stronger--font-weight: bold;
+
+    --text-subtitle2: 16px;
+    --text-subtitle2--line-height: 22px;
+    --text-subtitle2--font-weight: 600;
+
+    --text-subtitle2-stronger: 16px;
+    --text-subtitle2-stronger--line-height: 22px;
+    --text-subtitle2-stronger--font-weight: bold;
+
+    --text-subtitle1: 20px;
+    --text-subtitle1--line-height: 26px;
+    --text-subtitle1--font-weight: 600;
+
+    --text-title3: 24px;
+    --text-title3--line-height: 32px;
+    --text-title3--font-weight: 600;
+
+    --text-title2: 28px;
+    --text-title2--line-height: 36px;
+    --text-title2--font-weight: 600;
+
+    --text-title1: 32px;
+    --text-title1--line-height: 40px;
+    --text-title1--font-weight: 600;
+
+    --text-display: 68px;
+    --text-display--line-height: 92px;
+    --text-display--font-weight: 600;
+}

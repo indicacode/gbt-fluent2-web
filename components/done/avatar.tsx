@@ -43,7 +43,7 @@ type AvatarProps = React.ComponentProps<typeof Root> &
     active?: boolean
     size?: "sm" | "md" | "lg"
     className?: string
-    ref?: React.Ref<HTMLSpanElement>
+    ref?: React.Ref<HTMLSpanElement>,
   }
 
 function Avatar({

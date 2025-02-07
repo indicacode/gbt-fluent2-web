@@ -1,0 +1,62 @@
+
+
+
+@layer base {
+    :root{
+        /*  Colors  */
+        --color-brand-background1-rest: #0F6CBD;
+        --color-brand-background1-hover: #115EA3;
+        --color-brand-background1-pressed: #0C3B5E;
+        --color-brand-background1-selected: #0F548C;
+
+        /* Brand Background 2 */
+        --color-brand-background2-rest: #EBF3FC;
+        --color-brand-background2-hover: #CFE4FA;
+        --color-brand-background2-pressed: #96C6FA;
+
+        /* Brand Foreground 1 - The color remains the same in all states: rest, hover, pressed e selected */
+        --color-brand-foreground1: #0F6CBD;
+
+        /* Brand Foreground 2 */
+        --color-brand-foreground2-rest: #115EA3;
+        --color-brand-foreground2-hover: #0F548C;
+        --color-brand-foreground2-pressed: #0A2E4A;
+
+        /* Brand Stroke 1 */
+        --color-brand-stroke1-rest: #0F6CBD;
+
+        /* Brand Stroke 2 */
+        --color-brand-stroke2: #B4D6FA;
+        --color-brand-stroke2-hover: #77B7F7;
+        --color-brand-stroke2-pressed: #0F6CBD;
+    }
+    .dark {
+        /*  Colors  */
+        --color-brand-background1-rest: #115EA3;
+        --color-brand-background1-hover: #0F6CBD;
+        --color-brand-background1-pressed: #0C3B5E;
+        --color-brand-background1-selected: #0F548C;
+
+        /* Brand Background 2 */
+        --color-brand-background2-rest: #082338;
+        --color-brand-background2-hover: #0C3B5E;
+        --color-brand-background2-pressed: #061724;
+
+        /* Brand Foreground 1 - The color remains the same in all states: rest, hover, pressed e selected */
+        --color-brand-foreground1: #479EF5;
+
+        /* Brand Foreground 2 */
+        --color-brand-foreground2-rest: #62ABF5;
+        --color-brand-foreground2-hover: #96C6FA;
+        --color-brand-foreground2-pressed: #479EF5;
+
+        /* Brand Stroke 1 */
+        --color-brand-stroke1-rest: #479EF5;
+
+        /* Brand Stroke 2 */
+        --color-brand-stroke2: #0E4775;
+        --color-brand-stroke2-hover: #2886DE;
+        --color-brand-stroke2-pressed: #115EA3;
+    }
+}
+
