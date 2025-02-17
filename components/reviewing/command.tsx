@@ -1,18 +1,18 @@
-import { DialogProps } from "@radix-ui/react-dialog"
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 import { Command as CommandPrimitive } from "cmdk"
 import * as React from "react"
-import { Ref } from "react"
+import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
 import { Dialog, DialogContent } from "./dialog"
 
-type CommandProps = typeof CommandPrimitive & {}
+type CommandProps = ComponentProps<typeof CommandPrimitive> & {}
 
 export function Command({ className, ...props }: CommandProps) {
   return (
     <CommandPrimitive
+      data-slot="command"
       className={cn(
         "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
         className
@@ -22,7 +22,7 @@ export function Command({ className, ...props }: CommandProps) {
   )
 }
 
-type CommandDialogProps = DialogProps & {}
+type CommandDialogProps = ComponentProps<typeof Dialog> & {}
 
 export function CommandDialog({ children, ...props }: CommandDialogProps) {
   return (
@@ -36,7 +36,7 @@ export function CommandDialog({ children, ...props }: CommandDialogProps) {
   )
 }
 
-type CommandInputProps = typeof CommandPrimitive.Input & {
+type CommandInputProps = ComponentProps<typeof CommandPrimitive.Input> & {
   rootClassName?: string
 }
 
@@ -47,11 +47,13 @@ export function CommandInput({
 }: CommandInputProps) {
   return (
     <div
+      data-slot="command-input-wrapper"
       className={cn("flex items-center border-b px-3", rootClassName)}
       cmdk-input-wrapper=""
     >
       <MagnifyingGlassIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" />
       <CommandPrimitive.Input
+        data-slot="command-input"
         className={cn(
           "placeholder:text-muted-foreground flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
           className
@@ -62,11 +64,12 @@ export function CommandInput({
   )
 }
 
-type CommandListProps = typeof CommandPrimitive.List & {}
+type CommandListProps = ComponentProps<typeof CommandPrimitive.List> & {}
 
 export function CommandList({ className, ...props }: CommandListProps) {
   return (
     <CommandPrimitive.List
+      data-slot="command-list"
       className={cn(
         "max-h-[300px] overflow-x-hidden overflow-y-auto",
         className
@@ -76,33 +79,32 @@ export function CommandList({ className, ...props }: CommandListProps) {
   )
 }
 
-type CommandEmptyProps = typeof CommandPrimitive.Empty & {}
+type CommandEmptyProps = ComponentProps<typeof CommandPrimitive.Empty> & {}
 
 export function CommandEmpty(
   props: CommandEmptyProps,
-  ref: Ref<HTMLDivElement>
+
 ) {
   return (
     <CommandPrimitive.Empty
-      ref={ref}
+      data-slot="command-empty"
       className="py-6 text-center text-sm"
       {...props}
     />
   )
 }
 
-type CommandGroupProps = typeof CommandPrimitive.Group & {}
+type CommandGroupProps = ComponentProps<typeof CommandPrimitive.Group> & {}
 
 export function CommandGroup(
   { className, ...props }: CommandGroupProps,
-  ref: Ref<HTMLDivElement>
+
 ) {
   return (
     <CommandPrimitive.Group
-      ref={ref}
+      data-slot="command-group"
       className={cn(
-        "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 " +
-          "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
+        "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
         className
       )}
       {...props}
@@ -110,7 +112,7 @@ export function CommandGroup(
   )
 }
 
-type CommandSeparatorProps = typeof CommandPrimitive.Separator & {}
+type CommandSeparatorProps = ComponentProps<typeof CommandPrimitive.Separator> & {}
 
 export function CommandSeparator({
   className,
@@ -118,17 +120,19 @@ export function CommandSeparator({
 }: CommandSeparatorProps) {
   return (
     <CommandPrimitive.Separator
+      data-slot="command-separator"
       className={cn("bg-border -mx-1 h-px", className)}
       {...props}
     />
   )
 }
 
-type CommandItemProps = typeof CommandPrimitive.Item
+type CommandItemProps = ComponentProps<typeof CommandPrimitive.Item>
 
 export function CommandItem({ className, ...props }: CommandItemProps) {
   return (
     <CommandPrimitive.Item
+      data-slot="command-item"
       className={cn(
         "aria-selected:bg-accent aria-selected:text-accent-foreground relative flex cursor-default items-center rounded-xs px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50",
         className
@@ -138,11 +142,12 @@ export function CommandItem({ className, ...props }: CommandItemProps) {
   )
 }
 
-interface ComandShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {}
+interface ComandShortcutProps extends ComponentProps<"span"> {}
 
 export function CommandShortcut({ className, ...props }: ComandShortcutProps) {
   return (
     <span
+      data-slot="command-shortcut"
       className={cn(
         "text-muted-foreground ml-auto text-xs tracking-widest",
         className

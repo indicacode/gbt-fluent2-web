@@ -1,17 +1,6 @@
 "use client"
 
-import {
-  Children,
-  cloneElement,
-  ComponentProps,
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  HTMLAttributes,
-  isValidElement,
-  useEffect,
-  useState,
-} from "react"
+import { Children, cloneElement, ComponentProps, HTMLAttributes, isValidElement, useEffect, useState } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 import { Drawer as DrawerPrimitive } from "vaul"
 
@@ -116,6 +105,7 @@ function Drawer({
 
   return (
     <Root
+      data-slot="drawer"
       shouldScaleBackground={shouldScaleBackground}
       direction={position}
       defaultOpen={defaultOpen}
@@ -126,101 +116,92 @@ function Drawer({
   )
 }
 
-Drawer.displayName = "Drawer"
+function DrawerTrigger({ ...props }: ComponentProps<typeof Trigger>) {
+  return <Trigger data-slot="drawer-trigger" {...props} />
+}
 
-//-----------------------------//
+function DrawerPortal({ ...props }: ComponentProps<typeof Portal>) {
+  return <Portal data-slot="drawer-portal" {...props} />
+}
 
-const DrawerTrigger = Trigger
+function DrawerClose({ ...props }: ComponentProps<typeof Close>) {
+  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
+}
 
-const DrawerPortal = Portal
-
-const DrawerClose = Close
-
-//-----------------------------//
-
-const DrawerOverlay = forwardRef<
-  ElementRef<typeof Overlay>,
-  ComponentPropsWithoutRef<typeof Overlay>
->(({ className, ...props }, ref) => (
-  <Overlay ref={ref} className={drawerOverlay({ className })} {...props} />
-))
-DrawerOverlay.displayName = Overlay.displayName
-
-//-----------------------------//
-
-const DrawerContent = forwardRef<
-  ElementRef<typeof Content>,
-  ComponentPropsWithoutRef<typeof Content> &
-    Pick<DrawerProps, "position" | "divider" | "size">
->(({ className, children, position, divider, size, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay />
-    <Content
-      className={drawerContent({
-        position,
-        divider: position !== "bottom",
-        size: position === "bottom" ? "positionBottom" : size,
-        className,
-      })}
-      ref={ref}
+function DrawerOverlay({
+  className,
+  ...props
+}: ComponentProps<typeof Overlay>) {
+  return (
+    <Overlay
+      data-slot="drawer-overlay"
+      className={drawerOverlay({ className })}
       {...props}
-    >
-      {children}
-    </Content>
-  </DrawerPortal>
-))
-DrawerContent.displayName = "DrawerContent"
+    />
+  )
+}
 
-//-----------------------------//
+function DrawerContent({
+  className,
+  children,
+  position,
+  divider,
+  size,
+  ...props
+}: ComponentProps<typeof Content> & Pick<DrawerProps, "position" | "divider" | "size">) {
+  return (
+    <DrawerPortal data-slot="drawer-portal">
+      <DrawerOverlay />
+      <Content
+        className={drawerContent({
+          position,
+          divider: position !== "bottom",
+          size: position === "bottom" ? "positionBottom" : size,
+          className,
+        })}
+        {...props}
+      >
+        {children}
+      </Content>
+    </DrawerPortal>
+  )
+}
 
-const DrawerHeader = ({
+function DrawerHeader  ({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div className={drawerHeader({ className })} {...props} />
-)
-DrawerHeader.displayName = "DrawerHeader"
-//-----------------------------//
+}: HTMLAttributes<HTMLDivElement>) {return(
+  <div
+    data-slot="drawer-header"
+    className={drawerHeader({ className })} {...props} />
+)}
 
-const DrawerFooter = ({
+function DrawerFooter  ({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div className={drawerFooter({ className })} {...props} />
-)
-DrawerFooter.displayName = "DrawerFooter"
+}: HTMLAttributes<HTMLDivElement>) {return(
+  <div
+    data-slot="drawer-footer"
+    className={drawerFooter({ className })} {...props} />
+)}
 
-//-----------------------------//
-
-const DrawerTitle = forwardRef<
-  ElementRef<typeof Title>,
-  ComponentPropsWithoutRef<typeof Title>
->(({ className, ...props }, ref) => (
+function DrawerTitle({ className, ...props }:ComponentProps<typeof Title>) {return(
   <Title
-    ref={ref}
+    data-slot="drawer-title"
     className={drawerTitle({
       className,
     })}
     {...props}
   />
-))
-DrawerTitle.displayName = Title.displayName
+)}
 
-//-----------------------------//
-
-const DrawerDescription = forwardRef<
-  ElementRef<typeof Description>,
-  ComponentPropsWithoutRef<typeof Description>
->(({ className, ...props }, ref) => (
+function DrawerDescription ({ className, ...props }:ComponentProps<typeof Description>) {return (
   <Description
-    ref={ref}
+    data-slot="drawer-description"
     className={drawerDescription({ className })}
     {...props}
   />
-))
-DrawerDescription.displayName = Description.displayName
-
-//-----------------------------//
+)}
 
 export {
   Drawer,

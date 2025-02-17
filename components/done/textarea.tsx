@@ -1,9 +1,9 @@
 import * as React from "react"
-import { useCallback, useId, useState } from "react"
+import { ComponentProps, useId, useState } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  extends ComponentProps<"textarea">,
     VariantProps<typeof textarea> {
   labelText: string
   error: boolean
@@ -67,24 +67,11 @@ export function Textarea({
   const [focus, setFocus] = useState(false)
   const [active, setActive] = useState(false)
 
-  // By using useCallback the function doesn't get recreated on a new
-  // memory reference every time the component re-renders.
-  const handleFocus = useCallback(() => {
-    setFocus(true)
-  }, [])
+  const handleFocus = () => setFocus(true)
+  const handleBlur = () => setFocus(false)
+  const handleMouseDown = () => setActive(true)
+  const handleMouseUp = () => setActive(false)
 
-  const handleBlur = useCallback(() => {
-    setFocus(false)
-  }, [])
-
-  const handleMouseDown = useCallback(() => {
-    setActive(true)
-  }, [])
-
-  const handleMouseUp = useCallback(() => {
-    setActive(false)
-  }, [])
-  //-------------------------------------------------------------//
   const uid = useId()
 
   return (
@@ -93,6 +80,7 @@ export function Textarea({
         {labelText}
       </label>
       <textarea
+        data-slot="textarea"
         id={uid}
         onFocus={handleFocus}
         onBlur={handleBlur}

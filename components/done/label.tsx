@@ -1,7 +1,7 @@
 "use client"
 
-import { Root, type LabelProps as RadixLabelProps } from "@radix-ui/react-label"
-import { ReactNode } from "react"
+import { Root } from "@radix-ui/react-label"
+import { ComponentProps, ReactNode } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const label = tv({
@@ -19,7 +19,7 @@ const label = tv({
 })
 
 export type LabelProps = VariantProps<typeof label> &
-  Omit<RadixLabelProps, "disabled"> & {
+  Omit<ComponentProps<typeof Root>, "disabled"> & {
     required?: boolean
     disabled?: boolean
     children: ReactNode
@@ -34,7 +34,9 @@ export function Label({
   ...props
 }: LabelProps) {
   return (
-    <Root className={label({ className, size, disabled })} {...props}>
+    <Root
+      data-slot="label"
+      className={label({ className, size, disabled })} {...props}>
       {children}
       {required && <span className="text-red-500">*</span>}
     </Root>

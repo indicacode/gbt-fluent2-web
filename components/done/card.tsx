@@ -1,12 +1,4 @@
-import {
-  Children,
-  cloneElement,
-  HTMLAttributes,
-  isValidElement,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react"
+import { Children, cloneElement, ComponentProps, isValidElement, ReactNode, useEffect, useState } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const cardSlots = tv({
@@ -94,7 +86,7 @@ const {
 } = cardSlots({})
 
 interface CardProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends ComponentProps<"div">,
     VariantProps<typeof cardSlots> {
   onSelectionChange?: () => void
   /** False is the default value */
@@ -140,6 +132,7 @@ function Card({
 
   return (
     <div
+      data-slot="card"
       onMouseUp={() => variant === "outline" && setPressed(false)}
       onMouseDown={() => variant === "outline" && setPressed(true)}
       onClick={() => selectable && setChecked((prevState) => !prevState)}
@@ -170,7 +163,7 @@ function FloatingAction({ children }: { children: ReactNode }) {
 }
 
 interface OrientationOnlyCardProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends ComponentProps<"div">,
     Pick<VariantProps<typeof cardSlots>, "orientation"> {
   image?: string
 }
@@ -191,7 +184,9 @@ function CardHeader({
     return child
   })
   return (
-    <div className={cardHeader({ className, orientation })} {...props}>
+    <div
+      data-slot="card-header"
+      className={cardHeader({ className, orientation })} {...props}>
       {image && (
         <div className="h-16 w-16">
           <img
@@ -207,12 +202,13 @@ function CardHeader({
 }
 
 interface CardTitleProps
-  extends HTMLAttributes<HTMLHeadingElement>,
+  extends ComponentProps<"div">,
     Pick<VariantProps<typeof cardSlots>, "orientation"> {}
 
 function CardTitle({ className, orientation, ...props }: CardTitleProps) {
   return (
     <h3
+      data-slot="card-title"
       className={cardTitle({
         orientation,
         className,
@@ -223,7 +219,7 @@ function CardTitle({ className, orientation, ...props }: CardTitleProps) {
 }
 
 interface CardDescriptionProps
-  extends HTMLAttributes<HTMLParagraphElement>,
+  extends ComponentProps<"div">,
     Pick<VariantProps<typeof cardSlots>, "orientation"> {}
 
 function CardDescription({
@@ -233,6 +229,7 @@ function CardDescription({
 }: CardDescriptionProps) {
   return (
     <p
+      data-slot="card-description"
       className={cardDescription({
         className,
         orientation,
@@ -252,6 +249,7 @@ function CardContent({
   }
   return (
     <div
+      data-slot="card-content"
       className={cardContent({
         className,
         orientation,
@@ -271,6 +269,7 @@ function CardFooter({
   }
   return (
     <div
+      data-slot="card-footer"
       className={cardFooter({
         className,
         orientation,

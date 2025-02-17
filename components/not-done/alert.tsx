@@ -1,14 +1,15 @@
-import { tv } from "tailwind-variants"
+import { tv, VariantProps } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
+import { ComponentProps } from "react"
 
 const alertVariants = tv({
-  base: "relative w-full rounded-lg border border-slate-200 px-4 py-3 text-sm dark:border-slate-800 [&>svg]:absolute [&>svg]:top-4 [&>svg]:left-4 [&>svg]:text-slate-950 dark:[&>svg]:text-slate-50 [&>svg+div]:translate-y-[-3px] [&>svg~*]:pl-7",
+  base: "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
   variants: {
     variant: {
-      default: "bg-white text-slate-950 dark:bg-slate-950 dark:text-slate-50",
+      default: "bg-background text-foreground",
       destructive:
-        "border-red-500/50 text-red-500 dark:border-red-500 dark:border-red-900/50 dark:dark:border-red-900 dark:text-red-900 [&>svg]:text-red-500 dark:[&>svg]:text-red-900",
+        "border-destructive/50 text-destructive dark:text-destructive-foreground/80 dark:border-destructive dark:bg-destructive/50 [&>svg]:text-current",
     },
   },
   defaultVariants: {
@@ -16,9 +17,14 @@ const alertVariants = tv({
   },
 })
 
-function Alert({ className, variant, ...props }) {
+function Alert({
+  className,
+  variant,
+  ...props
+}: ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
   return (
     <div
+      data-slot="alert"
       role="alert"
       className={alertVariants({ variant, className })}
       {...props}
@@ -26,11 +32,12 @@ function Alert({ className, variant, ...props }) {
   )
 }
 
-function AlertTitle({ className, ...props }) {
+function AlertTitle({ className, ...props }: ComponentProps<"div">) {
   return (
     <h5
+      data-slot="alert-title"
       className={cn(
-        "mb-1 leading-none font-bold font-medium tracking-tight",
+        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
         className
       )}
       {...props}
@@ -38,10 +45,14 @@ function AlertTitle({ className, ...props }) {
   )
 }
 
-function AlertDescription({ className, ...props }) {
+function AlertDescription({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={cn("text-sm [&_p]:leading-relaxed", className)}
+      data-slot="alert-description"
+      className={cn(
+        "col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+        className
+      )}
       {...props}
     />
   )

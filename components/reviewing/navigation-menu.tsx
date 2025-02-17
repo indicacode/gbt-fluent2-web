@@ -1,21 +1,7 @@
 import { cn } from "@/lib/utils"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
-import {
-  Content,
-  Indicator,
-  Item,
-  Link,
-  List,
-  Root,
-  Trigger,
-  Viewport,
-  type NavigationMenuContentProps as RadixNavigationMenuContentProps,
-  type NavigationMenuIndicatorProps as RadixNavigationMenuIndicatorProps,
-  type NavigationMenuListProps as RadixNavigationMenuListProps,
-  type NavigationMenuProps as RadixNavigationMenuProps,
-  type NavigationMenuTriggerProps as RadixNavigationMenuTriggerProps,
-  type NavigationMenuViewportProps as RadixNavigationMenuViewportProps,
-} from "@radix-ui/react-navigation-menu"
+import { Content, Indicator, Item, Link, List, Root, Trigger, Viewport } from "@radix-ui/react-navigation-menu"
+import { ComponentProps } from "react"
 import { tv } from "tailwind-variants"
 
 const trigger = tv({
@@ -32,17 +18,21 @@ const trigger = tv({
   ],
 })
 
-interface NavigationMenuComponentProps extends RadixNavigationMenuProps {
+interface NavigationMenuComponentProps extends ComponentProps<typeof Root> {
   className?: string
+  viewport?: boolean
 }
 
 export function NavigationMenu({
   className,
   children,
+  viewport = true,
   ...props
 }: NavigationMenuComponentProps) {
   return (
     <Root
+      data-slot="navigation-menu"
+      data-viewport={viewport}
       className={cn(
         "relative z-10 flex max-w-max flex-1 items-center justify-center",
         className
@@ -55,8 +45,7 @@ export function NavigationMenu({
   )
 }
 
-interface NavigationMenuListComponentProps
-  extends RadixNavigationMenuListProps {
+interface NavigationMenuListComponentProps extends ComponentProps<typeof List> {
   className?: string
 }
 
@@ -66,6 +55,7 @@ export function NavigationMenuList({
 }: NavigationMenuListComponentProps) {
   return (
     <List
+      data-slot="navigation-menu-list"
       className={cn(
         "group flex flex-1 list-none items-center justify-center space-x-1",
         className
@@ -74,10 +64,22 @@ export function NavigationMenuList({
     />
   )
 }
-const NavigationMenuItem = Item
+
+function NavigationMenuItem({
+  className,
+  ...props
+}: React.ComponentProps<typeof Item>) {
+  return (
+    <Item
+      data-slot="navigation-menu-item"
+      className={cn("relative", className)}
+      {...props}
+    />
+  )
+}
 
 interface NavigationMenuTriggerComponentProps
-  extends RadixNavigationMenuTriggerProps {
+  extends ComponentProps<typeof Trigger> {
   className?: string
 }
 
@@ -87,7 +89,11 @@ export function NavigationMenuTrigger({
   ...props
 }: NavigationMenuTriggerComponentProps) {
   return (
-    <Trigger className={cn(trigger(), "group", className)} {...props}>
+    <Trigger
+      data-slot="navigation-menu-trigger"
+      className={cn(trigger(), "group", className)}
+      {...props}
+    >
       {children}
       <ChevronDownIcon
         className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -98,7 +104,7 @@ export function NavigationMenuTrigger({
 }
 
 interface NavigationMenuContentComponentProps
-  extends RadixNavigationMenuContentProps {
+  extends ComponentProps<typeof Content> {
   className?: string
 }
 
@@ -108,6 +114,7 @@ export function NavigationMenuContent({
 }: NavigationMenuContentComponentProps) {
   return (
     <Content
+      data-slot="navigation-menu-content"
       className={cn(
         "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out",
         "data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out",
@@ -122,10 +129,25 @@ export function NavigationMenuContent({
     />
   )
 }
-const NavigationMenuLink = Link
+
+function NavigationMenuLink({
+  className,
+  ...props
+}: ComponentProps<typeof Link>) {
+  return (
+    <Link
+      data-slot="navigation-menu-link"
+      className={cn(
+        "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 interface NavigationMenuViewportComponentProps
-  extends RadixNavigationMenuViewportProps {
+  extends ComponentProps<typeof Viewport> {
   className?: string
 }
 
@@ -154,7 +176,7 @@ export function NavigationMenuViewport({
 }
 
 interface NavigationMenuIndicatorComponentProps
-  extends RadixNavigationMenuIndicatorProps {
+  extends ComponentProps<typeof Indicator> {
   className?: string
 }
 
@@ -164,6 +186,7 @@ export function NavigationMenuIndicator({
 }: NavigationMenuIndicatorComponentProps) {
   return (
     <Indicator
+      data-slot="navigation-menu-indicator"
       className={cn(
         "data-[state=visible]:animate-in data-[state=hidden]:animate-out",
         "data-[state=hidden]:fade-out data-[state=visible]:fade-in",

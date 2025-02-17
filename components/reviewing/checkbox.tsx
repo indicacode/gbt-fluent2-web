@@ -2,7 +2,7 @@
 
 import { CheckedState, Indicator, Root } from "@radix-ui/react-checkbox"
 import { FaCheck } from "@react-icons/all-files/fa/FaCheck"
-import { ComponentPropsWithoutRef, useEffect, useState } from "react"
+import { ComponentProps, useEffect, useState } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const checkboxSlots = tv({
@@ -37,7 +37,7 @@ const checkboxSlots = tv({
 })
 
 interface CheckboxProps
-  extends Omit<ComponentPropsWithoutRef<typeof Root>, "onChange" | "checked">,
+  extends Omit<ComponentProps<typeof Root>, "onChange" | "checked">,
     VariantProps<typeof checkboxSlots> {
   checked?: CheckedState
   onChange?: (checked: CheckedState) => void
@@ -72,6 +72,8 @@ export function Checkbox({
 
   return (
     <Root
+      data-slot="checkbox"
+
       checked={checked}
       defaultChecked={defaultChecked}
       onCheckedChange={onChange}
@@ -79,7 +81,9 @@ export function Checkbox({
       className={styles.checkbox({ className })}
       {...props}
     >
-      <Indicator className={styles.indicator()}>
+      <Indicator
+        data-slot="checkbox-indicator"
+        className={styles.indicator()}>
         {internalState === "indeterminate" ? (
           <div className={styles.indeterminateContainer()}>
             <span className={styles.indeterminate()} />

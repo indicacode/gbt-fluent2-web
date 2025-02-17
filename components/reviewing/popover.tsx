@@ -3,20 +3,28 @@ import { cn } from "@/lib/utils"
 import {
   Anchor,
   Content,
+  type PopoverContentProps as RadixPopoverContentProps,
   Portal,
   Root,
   Trigger,
-  type PopoverContentProps as RadixPopoverContentProps,
 } from "@radix-ui/react-popover"
+import { ComponentProps } from "react"
+
 type PopoverContentProps = Omit<RadixPopoverContentProps, "className"> & {
   className?: string
 }
 
-export const Popover = Root
+function Popover({ ...props }: ComponentProps<typeof Root>) {
+  return <Root data-slot="popover" {...props} />
+}
 
-export const PopoverAnchor = Anchor
+function PopoverTrigger({ ...props }: ComponentProps<typeof Trigger>) {
+  return <Trigger data-slot="popover-trigger" {...props} />
+}
 
-export const PopoverTrigger = Trigger
+function PopoverAnchor({ ...props }: ComponentProps<typeof Anchor>) {
+  return <Anchor data-slot="popover-anchor" {...props} />
+}
 
 export function PopoverContent({
   className,

@@ -1,4 +1,4 @@
-import { HTMLAttributes, TdHTMLAttributes } from "react"
+import { ComponentProps } from "react"
 import { tv } from "tailwind-variants"
 
 //--------------------------------styles------------------------------------//
@@ -45,70 +45,86 @@ const {
 } = tableSlots()
 //--------------------------------styles------------------------------------//
 
-type TableProps = HTMLAttributes<HTMLTableElement>
+type TableProps = ComponentProps<"table">
 
 function Table({ className, ...props }: TableProps) {
   return (
     <div className={tableRoot()}>
-      <table className={table({ className })} {...props} />
+      <table
+        data-slot="table"
+        className={table({ className })} {...props} />
     </div>
   )
 }
 
 //-------------------------------------------------------------------------//
 
-type TableHeaderProps = HTMLAttributes<HTMLTableSectionElement>
+type TableHeaderProps = ComponentProps<"thead">
 
 function TableHeader({ className, ...props }: TableHeaderProps) {
-  return <thead className={tableHeader({ className })} {...props} />
+  return <thead
+    data-slot="table-header"
+    className={tableHeader({ className })} {...props} />
 }
 
 //-------------------------------------------------------------------------//
 
-type TableBodyProps = HTMLAttributes<HTMLTableSectionElement>
+type TableBodyProps = ComponentProps<"tbody">
 
 function TableBody({ className, ...props }: TableBodyProps) {
-  return <tbody className={tableBody({ className })} {...props} />
+  return <tbody
+    data-slot="table-body"
+    className={tableBody({ className })} {...props} />
 }
 
 //-------------------------------------------------------------------------//
 
-type TableFooterProps = HTMLAttributes<HTMLTableSectionElement>
+type TableFooterProps = ComponentProps<"tfoot">
 
 function TableFooter({ className, ...props }: TableFooterProps) {
-  return <tfoot className={tableFoot({ className })} {...props} />
+  return <tfoot
+    data-slot="table-footer"
+    className={tableFoot({ className })} {...props} />
 }
 
 //-------------------------------------------------------------------------//
 
-type TableRowProps = HTMLAttributes<HTMLTableRowElement>
+type TableRowProps = ComponentProps<"tr">
 
 function TableRow({ className, ...props }: TableRowProps) {
-  return <tr className={tableRow({ className })} {...props} />
+  return <tr
+    data-slot="table-row"
+    className={tableRow({ className })} {...props} />
 }
 
 //-------------------------------------------------------------------------//
 
-type TableHeadProps = HTMLAttributes<HTMLTableCellElement>
+type TableHeadProps = ComponentProps<"th">
 
 function TableHead({ className, ...props }: TableHeadProps) {
-  return <th className={tableHead({ className })} {...props} />
+  return <th
+    data-slot="table-head"
+    className={tableHead({ className })} {...props} />
 }
 
 //-------------------------------------------------------------------------//
 
-type TableCellProps = TdHTMLAttributes<HTMLTableCellElement>
+type TableCellProps = ComponentProps<"td">
 
 function TableCell({ className, ...props }: TableCellProps) {
-  return <td className={tableCell({ className })} {...props} />
+  return <td
+    data-slot="table-cell"
+    className={tableCell({ className })} {...props} />
 }
 
 //-------------------------------------------------------------------------//
 
-type TableCaptionProps = HTMLAttributes<HTMLTableCaptionElement>
+type TableCaptionProps = ComponentProps<"caption">
 
 function TableCaption({ className, ...props }: TableCaptionProps) {
-  return <caption className={tableCaption({ className })} {...props} />
+  return <caption
+    data-slot="table-caption"
+    className={tableCaption({ className })} {...props} />
 }
 
 export {

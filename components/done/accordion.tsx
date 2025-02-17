@@ -1,24 +1,12 @@
 "use client"
-import {
-  AccordionContentProps,
-  AccordionMultipleProps,
-  AccordionSingleProps,
-  Content,
-  Header,
-  Item,
-  Root,
-  Trigger,
-  type AccordionItemProps as RadixAccordionItemProps,
-  type AccordionTriggerProps as RadixAccordionTriggerProps,
-} from "@radix-ui/react-accordion"
+import { Content, Header, Item, Root, Trigger } from "@radix-ui/react-accordion"
 import { ChevronRightIcon } from "@radix-ui/react-icons"
-import { ElementType, Fragment, HTMLAttributes, ReactNode } from "react"
-import { VariantProps, tv } from "tailwind-variants"
+import { ComponentProps, ElementType, Fragment, ReactNode } from "react"
+import { tv, VariantProps } from "tailwind-variants"
 
 // Used in accordionTrigger
 
-type AccordionTriggerProps = RadixAccordionTriggerProps &
-  HTMLAttributes<HTMLButtonElement> &
+type AccordionTriggerProps = ComponentProps<typeof Trigger> &
   VariantProps<typeof accordionSlots> & {
     icon?: ReactNode
     as?: "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
@@ -83,9 +71,7 @@ const {
 } = accordionSlots({
   // size,
 })
-type AccordionProps = (AccordionSingleProps | AccordionMultipleProps) &
-  HTMLAttributes<HTMLDivElement>
-function Accordion({ className, children, ...props }: AccordionProps) {
+function Accordion({ className, children, ...props }: ComponentProps<typeof Root>) {
   return (
     <Root {...props} className={className + " flex flex-col gap-3"}>
       {children}
@@ -93,10 +79,7 @@ function Accordion({ className, children, ...props }: AccordionProps) {
   )
 }
 
-type AccordionItemProps = RadixAccordionItemProps &
-  HTMLAttributes<HTMLDivElement>
-
-function AccordionItem({ className, ...props }: AccordionItemProps) {
+function AccordionItem({ className, ...props }: ComponentProps<typeof Item>) {
   // const [size] = getcontext()
   return <Item className={accordionItemStyles({ className })} {...props} />
 }
@@ -143,7 +126,7 @@ function AccordionContent({
   className,
   children,
   ...props
-}: AccordionContentProps & HTMLAttributes<HTMLDivElement>) {
+}: ComponentProps<typeof Content>) {
   return (
     <Content className={contentStyles({ className })} {...props}>
       <div className={contentStyles({ className })}>{children}</div>

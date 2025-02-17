@@ -1,12 +1,7 @@
-import { ButtonHTMLAttributes, ReactNode, type MouseEvent } from "react"
-import { VariantProps, tv } from "tailwind-variants"
+import { ComponentProps, type MouseEvent, ReactNode } from "react"
+import { tv, VariantProps } from "tailwind-variants"
+import { Slot } from "@radix-ui/react-slot"
 
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  icon?: ReactNode
-  isDisabled?: boolean
-}
 
 export const buttonVariants = tv({
   base: "text-md flex cursor-pointer items-center justify-center px-3 py-1 font-medium transition-colors data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50 data-[disabled=true]:active:border-inherit",
@@ -53,6 +48,14 @@ export const buttonVariants = tv({
   },
 })
 
+export interface ButtonProps
+  extends ComponentProps<"button">,
+    VariantProps<typeof buttonVariants> {
+  icon?: ReactNode
+  isDisabled?: boolean
+  asChild?: boolean
+}
+
 function handleToggle(
   event: MouseEvent<HTMLButtonElement>,
   disabled: boolean | undefined
@@ -67,6 +70,7 @@ function handleToggle(
 export function Button({
   disabled = false,
   onClick = () => {},
+  asChild = false,
   toggle = false,
   icon = false,
   className,
@@ -80,9 +84,11 @@ export function Button({
     !(toggle && children !== undefined),
     "You cannot pass children to a toggle button. Children:" + children
   )
+  const Comp = asChild ? Slot : "button"
 
   return (
-    <button
+    <Comp
+      data-slot="button"
       aria-disabled={disabled}
       data-disabled={disabled.toString()}
       data-selected="false"
@@ -105,6 +111,6 @@ export function Button({
       {/* Render icon if provided and button is not toggle */}
       {!toggle && !!icon && <span>{icon}</span>}
       {!toggle && children}
-    </button>
+    </Comp>
   )
 }

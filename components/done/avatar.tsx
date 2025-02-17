@@ -1,7 +1,7 @@
 "use client"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "@react-icons/all-files/ci/CiUser"
-import { Children, cloneElement, isValidElement, useMemo } from "react"
+import { Children, cloneElement, ComponentProps, isValidElement, useMemo } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 import { StatusBadge } from "../done/status-badge"
 
@@ -37,13 +37,12 @@ const avatarSlots = tv({
 
 const { avatar, avatarFallback, avatarActiveRing } = avatarSlots()
 
-type AvatarProps = React.ComponentProps<typeof Root> &
+type AvatarProps = ComponentProps<typeof Root> &
   VariantProps<typeof avatar> & {
     status?: "online" | "offline" | "away" | "busy" | "do-not-disturb"
     active?: boolean
     size?: "sm" | "md" | "lg"
     className?: string
-    ref?: React.Ref<HTMLSpanElement>,
   }
 
 function Avatar({
@@ -53,7 +52,6 @@ function Avatar({
   size = "md",
   status = "offline",
   children,
-  ref,
   ...props
 }: AvatarProps) {
   const childrenWithProps = useMemo(
@@ -70,8 +68,8 @@ function Avatar({
   return (
     <div className={avatarActiveRing({ active })}>
       <Root
+        data-slot="avatar"
         className={avatar({ variant, size, className })}
-        ref={ref}
         {...props}
       >
         {childrenWithProps}
@@ -81,7 +79,7 @@ function Avatar({
   )
 }
 
-type AvatarImageProps = React.ImgHTMLAttributes<HTMLImageElement> &
+type AvatarImageProps = ComponentProps<typeof Image> &
   VariantProps<typeof avatar> & {
     src: string
   }
@@ -95,6 +93,7 @@ function AvatarImage({
 }: AvatarImageProps) {
   return (
     <Image
+      data-slot="avatar-image"
       src={src}
       className={avatar({ variant, size, className })}
       {...props}
@@ -102,11 +101,10 @@ function AvatarImage({
   )
 }
 
-type AvatarFallbackProps = {
+type AvatarFallbackProps = ComponentProps<typeof Fallback>&{
   children?: string
   className?: string
   size?: "sm" | "md" | "lg"
-  ref?: React.Ref<HTMLSpanElement>
 }
 
 function AvatarFallback({
@@ -120,7 +118,7 @@ function AvatarFallback({
 
   return (
     <Fallback
-      ref={ref}
+      data-slot="avatar-fallback"
       className={avatarFallback({ size, className })}
       {...props}
     >
