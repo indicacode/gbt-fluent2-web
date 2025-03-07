@@ -1,6 +1,15 @@
 import { cn } from "@/lib/utils"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
-import { Content, Indicator, Item, Link, List, Root, Trigger, Viewport } from "@radix-ui/react-navigation-menu"
+import {
+  Content,
+  Indicator,
+  Item,
+  Link,
+  List,
+  Root,
+  Trigger,
+  Viewport,
+} from "@radix-ui/react-navigation-menu"
 import { ComponentProps } from "react"
 import { tv } from "tailwind-variants"
 
@@ -18,9 +27,24 @@ const trigger = tv({
   ],
 })
 
-interface NavigationMenuComponentProps extends ComponentProps<typeof Root> {
+type NavigationMenuProps = ComponentProps<typeof Root> & {
   className?: string
   viewport?: boolean
+}
+type NavigationMenuListProps = ComponentProps<typeof List> & {
+  className?: string
+}
+type NavigationMenuTriggerProps = ComponentProps<typeof Trigger> & {
+  className?: string
+}
+type NavigationMenuContentProps = ComponentProps<typeof Content> & {
+  className?: string
+}
+type NavigationMenuViewportProps = ComponentProps<typeof Viewport> & {
+  className?: string
+}
+type NavigationMenuIndicatorProps = ComponentProps<typeof Indicator> & {
+  className?: string
 }
 
 export function NavigationMenu({
@@ -28,7 +52,7 @@ export function NavigationMenu({
   children,
   viewport = true,
   ...props
-}: NavigationMenuComponentProps) {
+}: NavigationMenuProps) {
   return (
     <Root
       data-slot="navigation-menu"
@@ -45,14 +69,10 @@ export function NavigationMenu({
   )
 }
 
-interface NavigationMenuListComponentProps extends ComponentProps<typeof List> {
-  className?: string
-}
-
 export function NavigationMenuList({
   className,
   ...props
-}: NavigationMenuListComponentProps) {
+}: NavigationMenuListProps) {
   return (
     <List
       data-slot="navigation-menu-list"
@@ -78,16 +98,11 @@ function NavigationMenuItem({
   )
 }
 
-interface NavigationMenuTriggerComponentProps
-  extends ComponentProps<typeof Trigger> {
-  className?: string
-}
-
 export function NavigationMenuTrigger({
   className,
   children,
   ...props
-}: NavigationMenuTriggerComponentProps) {
+}: NavigationMenuTriggerProps) {
   return (
     <Trigger
       data-slot="navigation-menu-trigger"
@@ -103,15 +118,10 @@ export function NavigationMenuTrigger({
   )
 }
 
-interface NavigationMenuContentComponentProps
-  extends ComponentProps<typeof Content> {
-  className?: string
-}
-
 export function NavigationMenuContent({
   className,
   ...props
-}: NavigationMenuContentComponentProps) {
+}: NavigationMenuContentProps) {
   return (
     <Content
       data-slot="navigation-menu-content"
@@ -146,15 +156,10 @@ function NavigationMenuLink({
   )
 }
 
-interface NavigationMenuViewportComponentProps
-  extends ComponentProps<typeof Viewport> {
-  className?: string
-}
-
 export function NavigationMenuViewport({
   className,
   ...props
-}: NavigationMenuViewportComponentProps) {
+}: NavigationMenuViewportProps) {
   return (
     <div className={cn("absolute top-full left-0 flex justify-center")}>
       <Viewport
@@ -175,15 +180,10 @@ export function NavigationMenuViewport({
   )
 }
 
-interface NavigationMenuIndicatorComponentProps
-  extends ComponentProps<typeof Indicator> {
-  className?: string
-}
-
 export function NavigationMenuIndicator({
   className,
   ...props
-}: NavigationMenuIndicatorComponentProps) {
+}: NavigationMenuIndicatorProps) {
   return (
     <Indicator
       data-slot="navigation-menu-indicator"

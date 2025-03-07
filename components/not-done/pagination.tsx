@@ -8,7 +8,10 @@ import * as React from "react"
 import { ButtonProps, buttonVariants } from "@/components/done/button"
 import { cn } from "@/lib/utils"
 
-const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
+export const Pagination = ({
+  className,
+  ...props
+}: React.ComponentProps<"nav">) => (
   <nav
     role="navigation"
     aria-label="pagination"
@@ -17,7 +20,7 @@ const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   />
 )
 
-function PaginationContent({ className, ...props }) {
+export function PaginationContent({ className, ...props }) {
   return (
     <ul
       className={cn("flex flex-row items-center gap-1", className)}
@@ -26,7 +29,7 @@ function PaginationContent({ className, ...props }) {
   )
 }
 
-function PaginationItem({ className, ...props }) {
+export function PaginationItem({ className, ...props }) {
   return <li className={cn("", className)} {...props} />
 }
 
@@ -35,7 +38,7 @@ type PaginationLinkProps = {
 } & Pick<ButtonProps, "size"> &
   React.ComponentProps<"a">
 
-const PaginationLink = ({
+export const PaginationLink = ({
   className,
   isActive,
   size = "icon",
@@ -54,7 +57,7 @@ const PaginationLink = ({
   />
 )
 
-const PaginationPrevious = ({
+export const PaginationPrevious = ({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
@@ -69,7 +72,7 @@ const PaginationPrevious = ({
   </PaginationLink>
 )
 
-const PaginationNext = ({
+export const PaginationNext = ({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
@@ -84,7 +87,7 @@ const PaginationNext = ({
   </PaginationLink>
 )
 
-const PaginationEllipsis = ({
+export const PaginationEllipsis = ({
   className,
   ...props
 }: React.ComponentProps<"span">) => (
@@ -97,13 +100,3 @@ const PaginationEllipsis = ({
     <span className="sr-only">More pages</span>
   </span>
 )
-
-export {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-}

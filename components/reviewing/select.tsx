@@ -1,28 +1,34 @@
 "use client"
 
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons"
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from "@radix-ui/react-icons"
 import * as SelectPrimitive from "@radix-ui/react-select"
 
 import { cn } from "@/lib/utils"
 import { ComponentProps } from "react"
 
-function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
+export function Select({
+  ...props
+}: ComponentProps<typeof SelectPrimitive.Root>) {
   return <SelectPrimitive.Root data-slot="select" {...props} />
 }
 
-function SelectGroup({
+export function SelectGroup({
   ...props
 }: ComponentProps<typeof SelectPrimitive.Group>) {
   return <SelectPrimitive.Group data-slot="select-group" {...props} />
 }
 
-function SelectValue({
+export function SelectValue({
   ...props
 }: ComponentProps<typeof SelectPrimitive.Value>) {
   return <SelectPrimitive.Value data-slot="select-value" {...props} />
 }
 
-function SelectTrigger({
+export function SelectTrigger({
   className,
   children,
   ...props
@@ -44,7 +50,7 @@ function SelectTrigger({
   )
 }
 
-function SelectContent({
+export function SelectContent({
   className,
   children,
   position = "popper",
@@ -79,7 +85,7 @@ function SelectContent({
   )
 }
 
-function SelectLabel({
+export function SelectLabel({
   className,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Label>) {
@@ -92,7 +98,7 @@ function SelectLabel({
   )
 }
 
-function SelectItem({
+export function SelectItem({
   className,
   value,
   children,
@@ -118,7 +124,7 @@ function SelectItem({
   )
 }
 
-function SelectSeparator({
+export function SelectSeparator({
   className,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Separator>) {
@@ -134,7 +140,7 @@ function SelectSeparator({
   )
 }
 
-function SelectScrollUpButton({
+export function SelectScrollUpButton({
   className,
   ...props
 }: ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
@@ -152,7 +158,7 @@ function SelectScrollUpButton({
   )
 }
 
-function SelectScrollDownButton({
+export function SelectScrollDownButton({
   className,
   ...props
 }: ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
@@ -168,17 +174,4 @@ function SelectScrollDownButton({
       <ChevronDownIcon />
     </SelectPrimitive.ScrollDownButton>
   )
-}
-
-export {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
 }

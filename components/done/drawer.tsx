@@ -1,6 +1,14 @@
 "use client"
 
-import { Children, cloneElement, ComponentProps, HTMLAttributes, isValidElement, useEffect, useState } from "react"
+import {
+  Children,
+  cloneElement,
+  ComponentProps,
+  HTMLAttributes,
+  isValidElement,
+  useEffect,
+  useState,
+} from "react"
 import { tv, VariantProps } from "tailwind-variants"
 import { Drawer as DrawerPrimitive } from "vaul"
 
@@ -76,7 +84,7 @@ type DrawerProps = ComponentProps<typeof Root> &
     defaultOpen: boolean
   }
 
-function Drawer({
+export function Drawer({
   shouldScaleBackground = true,
   position = "left",
   divider = true,
@@ -116,19 +124,19 @@ function Drawer({
   )
 }
 
-function DrawerTrigger({ ...props }: ComponentProps<typeof Trigger>) {
+export function DrawerTrigger({ ...props }: ComponentProps<typeof Trigger>) {
   return <Trigger data-slot="drawer-trigger" {...props} />
 }
 
-function DrawerPortal({ ...props }: ComponentProps<typeof Portal>) {
+export function DrawerPortal({ ...props }: ComponentProps<typeof Portal>) {
   return <Portal data-slot="drawer-portal" {...props} />
 }
 
-function DrawerClose({ ...props }: ComponentProps<typeof Close>) {
+export function DrawerClose({ ...props }: ComponentProps<typeof Close>) {
   return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
 }
 
-function DrawerOverlay({
+export function DrawerOverlay({
   className,
   ...props
 }: ComponentProps<typeof Overlay>) {
@@ -141,14 +149,15 @@ function DrawerOverlay({
   )
 }
 
-function DrawerContent({
+export function DrawerContent({
   className,
   children,
   position,
   divider,
   size,
   ...props
-}: ComponentProps<typeof Content> & Pick<DrawerProps, "position" | "divider" | "size">) {
+}: ComponentProps<typeof Content> &
+  Pick<DrawerProps, "position" | "divider" | "size">) {
   return (
     <DrawerPortal data-slot="drawer-portal">
       <DrawerOverlay />
@@ -167,51 +176,56 @@ function DrawerContent({
   )
 }
 
-function DrawerHeader  ({
+export function DrawerHeader({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) {return(
-  <div
-    data-slot="drawer-header"
-    className={drawerHeader({ className })} {...props} />
-)}
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      data-slot="drawer-header"
+      className={drawerHeader({ className })}
+      {...props}
+    />
+  )
+}
 
-function DrawerFooter  ({
+export function DrawerFooter({
   className,
   ...props
-}: HTMLAttributes<HTMLDivElement>) {return(
-  <div
-    data-slot="drawer-footer"
-    className={drawerFooter({ className })} {...props} />
-)}
+}: HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      data-slot="drawer-footer"
+      className={drawerFooter({ className })}
+      {...props}
+    />
+  )
+}
 
-function DrawerTitle({ className, ...props }:ComponentProps<typeof Title>) {return(
-  <Title
-    data-slot="drawer-title"
-    className={drawerTitle({
-      className,
-    })}
-    {...props}
-  />
-)}
+export function DrawerTitle({
+  className,
+  ...props
+}: ComponentProps<typeof Title>) {
+  return (
+    <Title
+      data-slot="drawer-title"
+      className={drawerTitle({
+        className,
+      })}
+      {...props}
+    />
+  )
+}
 
-function DrawerDescription ({ className, ...props }:ComponentProps<typeof Description>) {return (
-  <Description
-    data-slot="drawer-description"
-    className={drawerDescription({ className })}
-    {...props}
-  />
-)}
-
-export {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerPortal,
-  DrawerTitle,
-  DrawerTrigger,
+export function DrawerDescription({
+  className,
+  ...props
+}: ComponentProps<typeof Description>) {
+  return (
+    <Description
+      data-slot="drawer-description"
+      className={drawerDescription({ className })}
+      {...props}
+    />
+  )
 }

@@ -7,15 +7,15 @@ import { tv, VariantProps } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
 
-const Sheet = SheetPrimitive.Root
+export const Sheet = SheetPrimitive.Root
 
-const SheetTrigger = SheetPrimitive.Trigger
+export const SheetTrigger = SheetPrimitive.Trigger
 
-const SheetClose = SheetPrimitive.Close
+export const SheetClose = SheetPrimitive.Close
 
-const SheetPortal = SheetPrimitive.Portal
+export const SheetPortal = SheetPrimitive.Portal
 
-function SheetOverlay({ className, ...props }) {
+export function SheetOverlay({ className, ...props }) {
   return (
     <SheetPrimitive.Overlay
       className={cn(
@@ -27,7 +27,7 @@ function SheetOverlay({ className, ...props }) {
   )
 }
 
-const sheetVariants = tv({
+export const sheetVariants = tv({
   base: "data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-slate-950",
   variants: {
     side: {
@@ -48,7 +48,12 @@ interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {}
 
-function SheetContent({ side = "right", className, children, ...props }) {
+export function SheetContent({
+  side = "right",
+  className,
+  children,
+  ...props
+}) {
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -66,7 +71,7 @@ function SheetContent({ side = "right", className, children, ...props }) {
   )
 }
 
-const SheetHeader = ({
+export const SheetHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -79,7 +84,7 @@ const SheetHeader = ({
   />
 )
 
-const SheetFooter = ({
+export const SheetFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -92,7 +97,7 @@ const SheetFooter = ({
   />
 )
 
-function SheetTitle({ className, ...props }) {
+export function SheetTitle({ className, ...props }) {
   return (
     <SheetPrimitive.Title
       className={cn(
@@ -104,24 +109,11 @@ function SheetTitle({ className, ...props }) {
   )
 }
 
-function SheetDescription({ className, ...props }) {
+export function SheetDescription({ className, ...props }) {
   return (
     <SheetPrimitive.Description
       className={cn("text-sm text-slate-500 dark:text-slate-400", className)}
       {...props}
     />
   )
-}
-
-export {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetOverlay,
-  SheetPortal,
-  SheetTitle,
-  SheetTrigger,
 }

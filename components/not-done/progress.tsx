@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils"
 import * as ProgressPrimitive from "@radix-ui/react-progress"
 
-function Progress({ className, value, ...props }) {
+export function Progress({ className, value, ...props }) {
   return (
     <ProgressPrimitive.Root
       className={cn(
@@ -19,4 +19,3 @@ function Progress({ className, value, ...props }) {
     </ProgressPrimitive.Root>
   )
 }
-export { Progress }

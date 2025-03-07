@@ -1,4 +1,12 @@
-import { Children, cloneElement, ComponentProps, isValidElement, ReactNode, useEffect, useState } from "react"
+import {
+  Children,
+  cloneElement,
+  ComponentProps,
+  isValidElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const cardSlots = tv({
@@ -95,7 +103,7 @@ interface CardProps
   size?: "sm" | "md" | "lg"
 }
 
-function Card({
+export function Card({
   onSelectionChange = () => {},
   orientation = "vertical",
   defaultChecked = false,
@@ -154,7 +162,7 @@ function Card({
   )
 }
 
-function FloatingAction({ children }: { children: ReactNode }) {
+export function FloatingAction({ children }: { children: ReactNode }) {
   return (
     <div className="absolute top-2 right-3 max-h-fit max-w-fit cursor-pointer">
       {children}
@@ -168,7 +176,7 @@ interface OrientationOnlyCardProps
   image?: string
 }
 
-function CardHeader({
+export function CardHeader({
   className,
   orientation,
   children,
@@ -186,7 +194,9 @@ function CardHeader({
   return (
     <div
       data-slot="card-header"
-      className={cardHeader({ className, orientation })} {...props}>
+      className={cardHeader({ className, orientation })}
+      {...props}
+    >
       {image && (
         <div className="h-16 w-16">
           <img
@@ -205,7 +215,11 @@ interface CardTitleProps
   extends ComponentProps<"div">,
     Pick<VariantProps<typeof cardSlots>, "orientation"> {}
 
-function CardTitle({ className, orientation, ...props }: CardTitleProps) {
+export function CardTitle({
+  className,
+  orientation,
+  ...props
+}: CardTitleProps) {
   return (
     <h3
       data-slot="card-title"
@@ -222,7 +236,7 @@ interface CardDescriptionProps
   extends ComponentProps<"div">,
     Pick<VariantProps<typeof cardSlots>, "orientation"> {}
 
-function CardDescription({
+export function CardDescription({
   className,
   orientation,
   ...props
@@ -239,7 +253,7 @@ function CardDescription({
   )
 }
 
-function CardContent({
+export function CardContent({
   className,
   orientation,
   ...props
@@ -259,7 +273,7 @@ function CardContent({
   )
 }
 
-function CardFooter({
+export function CardFooter({
   className,
   orientation,
   ...props
@@ -277,14 +291,4 @@ function CardFooter({
       {...props}
     />
   )
-}
-
-export {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  FloatingAction,
 }

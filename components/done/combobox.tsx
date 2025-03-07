@@ -35,6 +35,7 @@ import {
 } from "./combobox.types"
 import { Input } from "./input"
 
+//TODO ! Broken !
 function transferToGroupOption(options: Array<Option>, groupBy?: string) {
   if (options.length === 0) {
     return {}

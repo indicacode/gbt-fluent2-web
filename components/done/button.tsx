@@ -1,7 +1,6 @@
+import { Slot } from "@radix-ui/react-slot"
 import { ComponentProps, type MouseEvent, ReactNode } from "react"
 import { tv, VariantProps } from "tailwind-variants"
-import { Slot } from "@radix-ui/react-slot"
-
 
 export const buttonVariants = tv({
   base: "text-md flex cursor-pointer items-center justify-center px-3 py-1 font-medium transition-colors data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50 data-[disabled=true]:active:border-inherit",

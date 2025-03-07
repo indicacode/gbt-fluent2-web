@@ -71,7 +71,12 @@ const {
 } = accordionSlots({
   // size,
 })
-function Accordion({ className, children, ...props }: ComponentProps<typeof Root>) {
+
+export function Accordion({
+  className,
+  children,
+  ...props
+}: ComponentProps<typeof Root>) {
   return (
     <Root {...props} className={className + " flex flex-col gap-3"}>
       {children}
@@ -79,12 +84,15 @@ function Accordion({ className, children, ...props }: ComponentProps<typeof Root
   )
 }
 
-function AccordionItem({ className, ...props }: ComponentProps<typeof Item>) {
+export function AccordionItem({
+  className,
+  ...props
+}: ComponentProps<typeof Item>) {
   // const [size] = getcontext()
   return <Item className={accordionItemStyles({ className })} {...props} />
 }
 
-function AccordionTrigger({
+export function AccordionTrigger({
   className,
   as = "div",
   inline = false,
@@ -122,7 +130,7 @@ function AccordionTrigger({
   )
 }
 
-function AccordionContent({
+export function AccordionContent({
   className,
   children,
   ...props
@@ -133,5 +141,3 @@ function AccordionContent({
     </Content>
   )
 }
-
-export { Accordion, AccordionContent, AccordionItem, AccordionTrigger }

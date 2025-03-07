@@ -10,19 +10,24 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-const DropdownMenu = DropdownMenuPrimitive.Root
+export const DropdownMenu = DropdownMenuPrimitive.Root
 
-const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
+export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
 
-const DropdownMenuGroup = DropdownMenuPrimitive.Group
+export const DropdownMenuGroup = DropdownMenuPrimitive.Group
 
-const DropdownMenuPortal = DropdownMenuPrimitive.Portal
+export const DropdownMenuPortal = DropdownMenuPrimitive.Portal
 
-const DropdownMenuSub = DropdownMenuPrimitive.Sub
+export const DropdownMenuSub = DropdownMenuPrimitive.Sub
 
-const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
+export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup
 
-function DropdownMenuSubTrigger({ className, inset, children, ...props }) {
+export function DropdownMenuSubTrigger({
+  className,
+  inset,
+  children,
+  ...props
+}) {
   return (
     <DropdownMenuPrimitive.SubTrigger
       className={cn(
@@ -38,7 +43,7 @@ function DropdownMenuSubTrigger({ className, inset, children, ...props }) {
   )
 }
 
-function DropdownMenuSubContent({ className, ...props }) {
+export function DropdownMenuSubContent({ className, ...props }) {
   return (
     <DropdownMenuPrimitive.SubContent
       className={cn(
@@ -50,7 +55,7 @@ function DropdownMenuSubContent({ className, ...props }) {
   )
 }
 
-function DropdownMenuContent({ className, sideOffset = 4, ...props }) {
+export function DropdownMenuContent({ className, sideOffset = 4, ...props }) {
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
@@ -66,7 +71,7 @@ function DropdownMenuContent({ className, sideOffset = 4, ...props }) {
   )
 }
 
-function DropdownMenuItem({ className, inset, ...props }) {
+export function DropdownMenuItem({ className, inset, ...props }) {
   return (
     <DropdownMenuPrimitive.Item
       className={cn(
@@ -79,7 +84,12 @@ function DropdownMenuItem({ className, inset, ...props }) {
   )
 }
 
-function DropdownMenuCheckboxItem({ className, children, checked, ...props }) {
+export function DropdownMenuCheckboxItem({
+  className,
+  children,
+  checked,
+  ...props
+}) {
   return (
     <DropdownMenuPrimitive.CheckboxItem
       className={cn(
@@ -99,7 +109,7 @@ function DropdownMenuCheckboxItem({ className, children, checked, ...props }) {
   )
 }
 
-function DropdownMenuRadioItem({ className, children, ...props }) {
+export function DropdownMenuRadioItem({ className, children, ...props }) {
   return (
     <DropdownMenuPrimitive.RadioItem
       className={cn(
@@ -118,7 +128,7 @@ function DropdownMenuRadioItem({ className, children, ...props }) {
   )
 }
 
-function DropdownMenuLabel({ className, inset, ...props }) {
+export function DropdownMenuLabel({ className, inset, ...props }) {
   return (
     <DropdownMenuPrimitive.Label
       className={cn(
@@ -131,7 +141,7 @@ function DropdownMenuLabel({ className, inset, ...props }) {
   )
 }
 
-function DropdownMenuSeparator({ className, ...props }) {
+export function DropdownMenuSeparator({ className, ...props }) {
   return (
     <DropdownMenuPrimitive.Separator
       className={cn(
@@ -153,22 +163,4 @@ const DropdownMenuShortcut = ({
       {...props}
     />
   )
-}
-
-export {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
 }

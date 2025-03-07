@@ -20,7 +20,7 @@ import { tv } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
 
-const ToastProvider = Provider
+export const ToastProvider = Provider
 
 const toastVariants = tv({
   slots: {
@@ -87,7 +87,7 @@ const toastVariants = tv({
 const { toast, toastViewport, toastAction, toastClose, toastIcon } =
   toastVariants({})
 
-const ToastIcon = ({
+export const ToastIcon = ({
   variant,
 }: {
   variant: "info" | "warning" | "error" | "success"
@@ -107,17 +107,17 @@ const ToastIcon = ({
   return <span className={toastIcon({ variant })}> {currentIcon(variant)}</span>
 }
 
-function Toast({ className, variant, messageBar, ...props }) {
+export function Toast({ className, variant, messageBar, ...props }) {
   return (
     <Root className={toast({ variant, messageBar, className })} {...props} />
   )
 }
 
-function ToastViewport({ className, ...props }) {
+export function ToastViewport({ className, ...props }) {
   return <Viewport className={toastViewport({ className })} {...props} />
 }
 
-function ToastAction({ className, altText, ...props }) {
+export function ToastAction({ className, altText, ...props }) {
   return (
     <Action
       altText={altText}
@@ -127,7 +127,7 @@ function ToastAction({ className, altText, ...props }) {
   )
 }
 
-function ToastClose({ className, ...props }) {
+export function ToastClose({ className, ...props }) {
   return (
     <Close
       className={toastClose({
@@ -141,7 +141,7 @@ function ToastClose({ className, ...props }) {
   )
 }
 
-function ToastTitle({ className, ...props }) {
+export function ToastTitle({ className, ...props }) {
   return (
     <Title
       className={cn("text-sm font-semibold text-[#272727]", className)}
@@ -150,7 +150,7 @@ function ToastTitle({ className, ...props }) {
   )
 }
 
-function ToastDescription({ className, ...props }) {
+export function ToastDescription({ className, ...props }) {
   return (
     <Description
       className={cn("text-sm text-[#242424] opacity-90", className)}
@@ -159,19 +159,6 @@ function ToastDescription({ className, ...props }) {
   )
 }
 
-type ToastProps = ComponentPropsWithoutRef<typeof Toast>
+export type ToastProps = ComponentPropsWithoutRef<typeof Toast>
 
-type ToastActionElement = ReactElement<typeof ToastAction>
-
-export {
-  Toast,
-  ToastAction,
-  ToastClose,
-  ToastDescription,
-  ToastIcon,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-  type ToastActionElement,
-  type ToastProps,
-}
+export type ToastActionElement = ReactElement<typeof ToastAction>

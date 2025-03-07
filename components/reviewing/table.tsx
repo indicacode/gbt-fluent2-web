@@ -1,7 +1,6 @@
 import { ComponentProps } from "react"
 import { tv } from "tailwind-variants"
 
-//--------------------------------styles------------------------------------//
 const tableSlots = tv({
   slots: {
     // ---group--- //
@@ -43,97 +42,80 @@ const {
   tableCaption,
   tableRoot,
 } = tableSlots()
-//--------------------------------styles------------------------------------//
 
-type TableProps = ComponentProps<"table">
-
-function Table({ className, ...props }: TableProps) {
+export function Table({ className, ...props }: ComponentProps<"table">) {
   return (
     <div className={tableRoot()}>
-      <table
-        data-slot="table"
-        className={table({ className })} {...props} />
+      <table data-slot="table" className={table({ className })} {...props} />
     </div>
   )
 }
 
-//-------------------------------------------------------------------------//
-
-type TableHeaderProps = ComponentProps<"thead">
-
-function TableHeader({ className, ...props }: TableHeaderProps) {
-  return <thead
-    data-slot="table-header"
-    className={tableHeader({ className })} {...props} />
+export function TableHeader({ className, ...props }: ComponentProps<"thead">) {
+  return (
+    <thead
+      data-slot="table-header"
+      className={tableHeader({ className })}
+      {...props}
+    />
+  )
 }
 
-//-------------------------------------------------------------------------//
-
-type TableBodyProps = ComponentProps<"tbody">
-
-function TableBody({ className, ...props }: TableBodyProps) {
-  return <tbody
-    data-slot="table-body"
-    className={tableBody({ className })} {...props} />
+export function TableBody({ className, ...props }: ComponentProps<"tbody">) {
+  return (
+    <tbody
+      data-slot="table-body"
+      className={tableBody({ className })}
+      {...props}
+    />
+  )
 }
 
-//-------------------------------------------------------------------------//
-
-type TableFooterProps = ComponentProps<"tfoot">
-
-function TableFooter({ className, ...props }: TableFooterProps) {
-  return <tfoot
-    data-slot="table-footer"
-    className={tableFoot({ className })} {...props} />
+export function TableFooter({ className, ...props }: ComponentProps<"tfoot">) {
+  return (
+    <tfoot
+      data-slot="table-footer"
+      className={tableFoot({ className })}
+      {...props}
+    />
+  )
 }
 
-//-------------------------------------------------------------------------//
-
-type TableRowProps = ComponentProps<"tr">
-
-function TableRow({ className, ...props }: TableRowProps) {
-  return <tr
-    data-slot="table-row"
-    className={tableRow({ className })} {...props} />
+export function TableRow({ className, ...props }: ComponentProps<"tr">) {
+  return (
+    <tr data-slot="table-row" className={tableRow({ className })} {...props} />
+  )
 }
 
-//-------------------------------------------------------------------------//
-
-type TableHeadProps = ComponentProps<"th">
-
-function TableHead({ className, ...props }: TableHeadProps) {
-  return <th
-    data-slot="table-head"
-    className={tableHead({ className })} {...props} />
+export function TableHead({ className, ...props }: ComponentProps<"th">) {
+  return (
+    <th
+      data-slot="table-head"
+      className={tableHead({ className })}
+      {...props}
+    />
+  )
 }
 
-//-------------------------------------------------------------------------//
-
-type TableCellProps = ComponentProps<"td">
-
-function TableCell({ className, ...props }: TableCellProps) {
-  return <td
-    data-slot="table-cell"
-    className={tableCell({ className })} {...props} />
+export function TableCell({ className, ...props }: ComponentProps<"td">) {
+  return (
+    <td
+      data-slot="table-cell"
+      className={tableCell({ className })}
+      {...props}
+    />
+  )
 }
 
-//-------------------------------------------------------------------------//
-
-type TableCaptionProps = ComponentProps<"caption">
-
-function TableCaption({ className, ...props }: TableCaptionProps) {
-  return <caption
-    data-slot="table-caption"
-    className={tableCaption({ className })} {...props} />
-}
-
-export {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
+export function TableCaption({
+  className,
+  ...props
+}: ComponentProps<"caption">) {
+  return (
+    <caption
+      data-slot="table-caption"
+      className={tableCaption({ className })}
+      {...props}
+    />
+  )
 }

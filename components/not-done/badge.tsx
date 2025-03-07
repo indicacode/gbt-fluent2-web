@@ -4,7 +4,7 @@ import { tv, VariantProps } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
 
-const badgeVariants = tv({
+export const badgeVariants = tv({
   base: "inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 focus:outline-hidden dark:border-slate-800 dark:focus:ring-slate-300",
   variants: {
     variant: {
@@ -26,7 +26,12 @@ export type BadgeProps = ComponentProps<"span"> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }
 
 // TODO !NOT GOOD! (talking about the className. remove the cn from it)
-function Badge({ className, variant, asChild = false, ...props }: BadgeProps) {
+export function Badge({
+  className,
+  variant,
+  asChild = false,
+  ...props
+}: BadgeProps) {
   const Comp = asChild ? Slot : "span"
 
   return (
@@ -38,7 +43,6 @@ function Badge({ className, variant, asChild = false, ...props }: BadgeProps) {
   )
 }
 
-
 export function BadgeRightIcon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
@@ -46,5 +50,3 @@ export function BadgeRightIcon({ children }: { children: ReactNode }) {
 export function BadgeLeftIcon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
-
-export { Badge, badgeVariants }
