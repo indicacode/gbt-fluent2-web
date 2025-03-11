@@ -36,7 +36,9 @@ export function Label({
   return (
     <Root
       data-slot="label"
-      className={label({ className, size, disabled })} {...props}>
+      className={label({ className, size, disabled })}
+      {...props}
+    >
       {children}
       {required && <span className="text-red-500">*</span>}
     </Root>

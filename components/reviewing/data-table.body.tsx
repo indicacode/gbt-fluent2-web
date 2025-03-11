@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils"
-import { Table, flexRender } from "@tanstack/react-table"
+import { flexRender, Table } from "@tanstack/react-table"
 import { TableBody, TableCell, TableRow } from "./table"
 
 interface DataTableBodyProps<TData> {

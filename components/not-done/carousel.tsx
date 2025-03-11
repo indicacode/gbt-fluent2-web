@@ -9,19 +9,19 @@ import * as React from "react"
 import { Button } from "@/components/done/button"
 import { cn } from "@/lib/utils"
 
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
+export type CarouselApi = UseEmblaCarouselType[1]
+export type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
+export type CarouselOptions = UseCarouselParameters[0]
+export type CarouselPlugin = UseCarouselParameters[1]
 
-type CarouselProps = {
+export type CarouselProps = {
   opts?: CarouselOptions
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
 }
 
-type CarouselContextProps = {
+export type CarouselContextProps = {
   carouselRef: ReturnType<typeof useEmblaCarousel>[0]
   api: ReturnType<typeof useEmblaCarousel>[1]
   scrollPrev: () => void
@@ -32,7 +32,7 @@ type CarouselContextProps = {
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
 
-function useCarousel() {
+export function useCarousel() {
   const context = React.useContext(CarouselContext)
 
   if (!context) {
@@ -42,7 +42,7 @@ function useCarousel() {
   return context
 }
 
-function Carousel({
+export function Carousel({
   orientation = "horizontal",
   opts,
   setApi,
@@ -140,7 +140,7 @@ function Carousel({
   )
 }
 
-function CarouselContent({ className, ...props }) {
+export function CarouselContent({ className, ...props }) {
   const { carouselRef, orientation } = useCarousel()
 
   return (
@@ -157,7 +157,7 @@ function CarouselContent({ className, ...props }) {
   )
 }
 
-function CarouselItem({ className, ...props }) {
+export function CarouselItem({ className, ...props }) {
   const { orientation } = useCarousel()
 
   return (
@@ -174,7 +174,7 @@ function CarouselItem({ className, ...props }) {
   )
 }
 
-function CarouselPrevious({
+export function CarouselPrevious({
   className,
   variant = "outline",
   size = "icon",
@@ -203,7 +203,7 @@ function CarouselPrevious({
   )
 }
 
-function CarouselNext({
+export function CarouselNext({
   className,
   variant = "outline",
   size = "icon",
@@ -230,13 +230,4 @@ function CarouselNext({
       <span className="sr-only">Next slide</span>
     </Button>
   )
-}
-
-export {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
 }

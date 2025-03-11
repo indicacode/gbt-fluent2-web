@@ -34,7 +34,6 @@ export function Slider({
   max = 100,
   ...props
 }: SliderProps) {
-
   const _values = useMemo(
     () =>
       Array.isArray(value)

@@ -1,7 +1,13 @@
 "use client"
 import { Fallback, Image, Root } from "@radix-ui/react-avatar"
 import { CiUser } from "@react-icons/all-files/ci/CiUser"
-import { Children, cloneElement, ComponentProps, isValidElement, useMemo } from "react"
+import {
+  Children,
+  cloneElement,
+  ComponentProps,
+  isValidElement,
+  useMemo,
+} from "react"
 import { tv, VariantProps } from "tailwind-variants"
 import { StatusBadge } from "../done/status-badge"
 
@@ -45,7 +51,7 @@ type AvatarProps = ComponentProps<typeof Root> &
     className?: string
   }
 
-function Avatar({
+export function Avatar({
   className,
   variant,
   active = false,
@@ -84,7 +90,7 @@ type AvatarImageProps = ComponentProps<typeof Image> &
     src: string
   }
 
-function AvatarImage({
+export function AvatarImage({
   className,
   variant,
   size,
@@ -101,13 +107,13 @@ function AvatarImage({
   )
 }
 
-type AvatarFallbackProps = ComponentProps<typeof Fallback>&{
+type AvatarFallbackProps = ComponentProps<typeof Fallback> & {
   children?: string
   className?: string
   size?: "sm" | "md" | "lg"
 }
 
-function AvatarFallback({
+export function AvatarFallback({
   className,
   children,
   size = "md",
@@ -137,5 +143,3 @@ function AvatarFallback({
     </Fallback>
   )
 }
-
-export { Avatar, AvatarFallback, AvatarImage }

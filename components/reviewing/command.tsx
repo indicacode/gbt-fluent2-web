@@ -1,6 +1,5 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 import { Command as CommandPrimitive } from "cmdk"
-import * as React from "react"
 import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
@@ -8,6 +7,18 @@ import { cn } from "@/lib/utils"
 import { Dialog, DialogContent } from "./dialog"
 
 type CommandProps = ComponentProps<typeof CommandPrimitive> & {}
+type CommandDialogProps = ComponentProps<typeof Dialog> & {}
+type CommandInputProps = ComponentProps<typeof CommandPrimitive.Input> & {
+  rootClassName?: string
+}
+type CommandListProps = ComponentProps<typeof CommandPrimitive.List> & {}
+type CommandEmptyProps = ComponentProps<typeof CommandPrimitive.Empty> & {}
+type CommandGroupProps = ComponentProps<typeof CommandPrimitive.Group> & {}
+type CommandSeparatorProps = ComponentProps<
+  typeof CommandPrimitive.Separator
+> & {}
+type CommandItemProps = ComponentProps<typeof CommandPrimitive.Item> & {}
+type CommandShortcutProps = ComponentProps<"span"> & {}
 
 export function Command({ className, ...props }: CommandProps) {
   return (
@@ -22,8 +33,6 @@ export function Command({ className, ...props }: CommandProps) {
   )
 }
 
-type CommandDialogProps = ComponentProps<typeof Dialog> & {}
-
 export function CommandDialog({ children, ...props }: CommandDialogProps) {
   return (
     <Dialog {...props}>
@@ -34,10 +43,6 @@ export function CommandDialog({ children, ...props }: CommandDialogProps) {
       </DialogContent>
     </Dialog>
   )
-}
-
-type CommandInputProps = ComponentProps<typeof CommandPrimitive.Input> & {
-  rootClassName?: string
 }
 
 export function CommandInput({
@@ -64,8 +69,6 @@ export function CommandInput({
   )
 }
 
-type CommandListProps = ComponentProps<typeof CommandPrimitive.List> & {}
-
 export function CommandList({ className, ...props }: CommandListProps) {
   return (
     <CommandPrimitive.List
@@ -79,12 +82,7 @@ export function CommandList({ className, ...props }: CommandListProps) {
   )
 }
 
-type CommandEmptyProps = ComponentProps<typeof CommandPrimitive.Empty> & {}
-
-export function CommandEmpty(
-  props: CommandEmptyProps,
-
-) {
+export function CommandEmpty(props: CommandEmptyProps) {
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
@@ -94,12 +92,7 @@ export function CommandEmpty(
   )
 }
 
-type CommandGroupProps = ComponentProps<typeof CommandPrimitive.Group> & {}
-
-export function CommandGroup(
-  { className, ...props }: CommandGroupProps,
-
-) {
+export function CommandGroup({ className, ...props }: CommandGroupProps) {
   return (
     <CommandPrimitive.Group
       data-slot="command-group"
@@ -111,8 +104,6 @@ export function CommandGroup(
     />
   )
 }
-
-type CommandSeparatorProps = ComponentProps<typeof CommandPrimitive.Separator> & {}
 
 export function CommandSeparator({
   className,
@@ -127,8 +118,6 @@ export function CommandSeparator({
   )
 }
 
-type CommandItemProps = ComponentProps<typeof CommandPrimitive.Item>
-
 export function CommandItem({ className, ...props }: CommandItemProps) {
   return (
     <CommandPrimitive.Item
@@ -142,9 +131,7 @@ export function CommandItem({ className, ...props }: CommandItemProps) {
   )
 }
 
-interface ComandShortcutProps extends ComponentProps<"span"> {}
-
-export function CommandShortcut({ className, ...props }: ComandShortcutProps) {
+export function CommandShortcut({ className, ...props }: CommandShortcutProps) {
   return (
     <span
       data-slot="command-shortcut"

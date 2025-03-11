@@ -4,7 +4,7 @@ import * as React from "react"
 import { ComponentProps, type ReactNode } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
 
-const inputVariants = tv({
+export const inputVariants = tv({
   slots: {
     root: "flex flex-col",
     label: "py-1 text-black dark:text-gray-400",
@@ -83,7 +83,7 @@ const inputVariants = tv({
   },
 })
 
-type InputProps = Omit<ComponentProps<"input">, "size"> &
+export type InputProps = Omit<ComponentProps<"input">, "size"> &
   VariantProps<typeof inputVariants> & {
     containerClassName?: string
     helperText?: ReactNode
@@ -95,15 +95,15 @@ type InputProps = Omit<ComponentProps<"input">, "size"> &
 
 const { input, root, inputContainer, inputDecoration, label } = inputVariants()
 
-function InputLeftAddon({ children }: { children: ReactNode }) {
+export function InputLeftAddon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
 
-function InputRightAddon({ children }: { children: ReactNode }) {
+export function InputRightAddon({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
 
-function Input({
+export function Input({
   variant = "outline",
   containerClassName,
   state = "neutral",
@@ -213,14 +213,4 @@ function Input({
       )}
     </div>
   )
-}
-
-Input.displayName = "Input"
-
-export {
-  Input,
-  InputLeftAddon,
-  InputRightAddon,
-  inputVariants,
-  type InputProps,
 }

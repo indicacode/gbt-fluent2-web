@@ -27,17 +27,17 @@ import { HTMLAttributes } from "react"
 
 import { cn } from "@/lib/utils"
 
-const MenubarMenu = Menu
+export const MenubarMenu = Menu
 
-const MenubarGroup = Group
+export const MenubarGroup = Group
 
-const MenubarPortal = Portal
+export const MenubarPortal = Portal
 
-const MenubarSub = Sub
+export const MenubarSub = Sub
 
-const MenubarRadioGroup = RadioGroup
+export const MenubarRadioGroup = RadioGroup
 
-function Menubar({ className, ...props }) {
+export function Menubar({ className, ...props }) {
   return (
     <Root
       className={cn(
@@ -48,7 +48,8 @@ function Menubar({ className, ...props }) {
     />
   )
 }
-function MenubarTrigger({ className, ...props }) {
+
+export function MenubarTrigger({ className, ...props }) {
   return (
     <Trigger
       className={cn(
@@ -59,7 +60,8 @@ function MenubarTrigger({ className, ...props }) {
     />
   )
 }
-function MenubarSubTrigger({ className, inset, children, ...props }) {
+
+export function MenubarSubTrigger({ className, inset, children, ...props }) {
   return (
     <SubTrigger
       className={cn(
@@ -74,7 +76,8 @@ function MenubarSubTrigger({ className, inset, children, ...props }) {
     </SubTrigger>
   )
 }
-function MenubarSubContent({ className, ...props }) {
+
+export function MenubarSubContent({ className, ...props }) {
   return (
     <SubContent
       className={cn(
@@ -85,7 +88,8 @@ function MenubarSubContent({ className, ...props }) {
     />
   )
 }
-function MenubarContent({
+
+export function MenubarContent({
   className,
   align = "start",
   alignOffset = -4,
@@ -107,7 +111,8 @@ function MenubarContent({
     </Portal>
   )
 }
-function MenubarItem({ className, inset, ...props }) {
+
+export function MenubarItem({ className, inset, ...props }) {
   return (
     <Item
       className={cn(
@@ -119,7 +124,13 @@ function MenubarItem({ className, inset, ...props }) {
     />
   )
 }
-function MenubarCheckboxItem({ className, children, checked, ...props }) {
+
+export function MenubarCheckboxItem({
+  className,
+  children,
+  checked,
+  ...props
+}) {
   return (
     <CheckboxItem
       className={cn(
@@ -138,7 +149,8 @@ function MenubarCheckboxItem({ className, children, checked, ...props }) {
     </CheckboxItem>
   )
 }
-function MenubarRadioItem({ className, children, ...props }) {
+
+export function MenubarRadioItem({ className, children, ...props }) {
   return (
     <RadioItem
       className={cn(
@@ -156,7 +168,8 @@ function MenubarRadioItem({ className, children, ...props }) {
     </RadioItem>
   )
 }
-function MenubarLabel({ className, inset, ...props }) {
+
+export function MenubarLabel({ className, inset, ...props }) {
   return (
     <Label
       className={cn(
@@ -168,7 +181,8 @@ function MenubarLabel({ className, inset, ...props }) {
     />
   )
 }
-function MenubarSeparator({ className, ...props }) {
+
+export function MenubarSeparator({ className, ...props }) {
   return (
     <Separator
       className={cn(
@@ -179,7 +193,8 @@ function MenubarSeparator({ className, ...props }) {
     />
   )
 }
-function MenubarShortcut({
+
+export function MenubarShortcut({
   className,
   ...props
 }: HTMLAttributes<HTMLSpanElement>) {
@@ -193,23 +208,5 @@ function MenubarShortcut({
     />
   )
 }
-MenubarShortcut.displayname = "MenubarShortcut"
 
-export {
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarGroup,
-  MenubarItem,
-  MenubarLabel,
-  MenubarMenu,
-  MenubarPortal,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-}
+MenubarShortcut.displayname = "MenubarShortcut"

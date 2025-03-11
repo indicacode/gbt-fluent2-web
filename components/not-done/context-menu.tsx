@@ -10,19 +10,24 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-const ContextMenu = ContextMenuPrimitive.Root
+export const ContextMenu = ContextMenuPrimitive.Root
 
-const ContextMenuTrigger = ContextMenuPrimitive.Trigger
+export const ContextMenuTrigger = ContextMenuPrimitive.Trigger
 
-const ContextMenuGroup = ContextMenuPrimitive.Group
+export const ContextMenuGroup = ContextMenuPrimitive.Group
 
-const ContextMenuPortal = ContextMenuPrimitive.Portal
+export const ContextMenuPortal = ContextMenuPrimitive.Portal
 
-const ContextMenuSub = ContextMenuPrimitive.Sub
+export const ContextMenuSub = ContextMenuPrimitive.Sub
 
-const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
+export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
 
-function ContextMenuSubTrigger({ className, inset, children, ...props }) {
+export function ContextMenuSubTrigger({
+  className,
+  inset,
+  children,
+  ...props
+}) {
   return (
     <ContextMenuPrimitive.SubTrigger
       className={cn(
@@ -38,7 +43,7 @@ function ContextMenuSubTrigger({ className, inset, children, ...props }) {
   )
 }
 
-function ContextMenuSubContent({ className, ...props }) {
+export function ContextMenuSubContent({ className, ...props }) {
   return (
     <ContextMenuPrimitive.SubContent
       className={cn(
@@ -50,7 +55,7 @@ function ContextMenuSubContent({ className, ...props }) {
   )
 }
 
-function ContextMenuContent({ className, ...props }) {
+export function ContextMenuContent({ className, ...props }) {
   return (
     <ContextMenuPrimitive.Portal>
       <ContextMenuPrimitive.Content
@@ -64,7 +69,7 @@ function ContextMenuContent({ className, ...props }) {
   )
 }
 
-function ContextMenuItem({ className, inset, ...props }) {
+export function ContextMenuItem({ className, inset, ...props }) {
   return (
     <ContextMenuPrimitive.Item
       className={cn(
@@ -77,7 +82,12 @@ function ContextMenuItem({ className, inset, ...props }) {
   )
 }
 
-function ContextMenuCheckboxItem({ className, children, checked, ...props }) {
+export function ContextMenuCheckboxItem({
+  className,
+  children,
+  checked,
+  ...props
+}) {
   return (
     <ContextMenuPrimitive.CheckboxItem
       className={cn(
@@ -97,7 +107,7 @@ function ContextMenuCheckboxItem({ className, children, checked, ...props }) {
   )
 }
 
-function ContextMenuRadioItem({ className, children, ...props }) {
+export function ContextMenuRadioItem({ className, children, ...props }) {
   return (
     <ContextMenuPrimitive.RadioItem
       className={cn(
@@ -116,7 +126,7 @@ function ContextMenuRadioItem({ className, children, ...props }) {
   )
 }
 
-function ContextMenuLabel({ className, inset, ...props }) {
+export function ContextMenuLabel({ className, inset, ...props }) {
   return (
     <ContextMenuPrimitive.Label
       className={cn(
@@ -129,7 +139,7 @@ function ContextMenuLabel({ className, inset, ...props }) {
   )
 }
 
-function ContextMenuSeparator({ className, ...props }) {
+export function ContextMenuSeparator({ className, ...props }) {
   return (
     <ContextMenuPrimitive.Separator
       className={cn(
@@ -141,7 +151,7 @@ function ContextMenuSeparator({ className, ...props }) {
   )
 }
 
-const ContextMenuShortcut = ({
+export const ContextMenuShortcut = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
@@ -154,22 +164,4 @@ const ContextMenuShortcut = ({
       {...props}
     />
   )
-}
-
-export {
-  ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuPortal,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuTrigger,
 }

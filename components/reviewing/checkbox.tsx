@@ -73,7 +73,6 @@ export function Checkbox({
   return (
     <Root
       data-slot="checkbox"
-
       checked={checked}
       defaultChecked={defaultChecked}
       onCheckedChange={onChange}
@@ -81,9 +80,7 @@ export function Checkbox({
       className={styles.checkbox({ className })}
       {...props}
     >
-      <Indicator
-        data-slot="checkbox-indicator"
-        className={styles.indicator()}>
+      <Indicator data-slot="checkbox-indicator" className={styles.indicator()}>
         {internalState === "indeterminate" ? (
           <div className={styles.indeterminateContainer()}>
             <span className={styles.indeterminate()} />

@@ -35,7 +35,7 @@ import {RadioGroup, RadioGroupItem} from "@/components/done/radio-group"
 import {Slider} from "@/components/done/slider"
 import {Switch} from "@/components/done/switch"
 import {Textarea} from "@/components/done/textarea"
-import {Badge, BadgeCenterIcon, BadgeLeftIcon, BadgeRightIcon} from "@/components/not-done/badge"
+import {Badge, BadgeLeftIcon, BadgeRightIcon} from "@/components/not-done/badge"
 import {
     Menubar,
     MenubarContent,
@@ -375,7 +375,7 @@ export const components = [
                                 Danger Subtle
                             </Badge>
                             <Badge variant={"brandDangerFilled"}>
-                                <BadgeCenterIcon icon={FaCodepen} />
+                                {/*<BadgeCenterIcon icon={FaCodepen} />*/}
                             </Badge>
                         </div>
 
@@ -400,7 +400,7 @@ export const components = [
                                 Danger Subtle
                             </Badge>
                             <Badge variant={"brandWarningFilled"}>
-                                <BadgeCenterIcon icon={FaCodepen} />
+                                {/*<BadgeCenterIcon icon={FaCodepen} />*/}
                             </Badge>
                         </div>
 
@@ -425,7 +425,7 @@ export const components = [
                                 Danger Subtle
                             </Badge>
                             <Badge variant={"brandSuccessFilled"}>
-                                <BadgeCenterIcon icon={FaCodepen} />
+                                {/*<BadgeCenterIcon icon={FaCodepen} />*/}
                             </Badge>
                         </div>
 
@@ -450,7 +450,7 @@ export const components = [
                                 Danger Subtle
                             </Badge>
                             <Badge variant={"brandImportantFilled"}>
-                                <BadgeCenterIcon icon={FaCodepen} />
+                                {/*<BadgeCenterIcon icon={FaCodepen} />*/}
                             </Badge>
                         </div>
                         <Divider variant="subtle" orientation="horizontal" align="start"
@@ -474,7 +474,7 @@ export const components = [
                                 Danger Subtle
                             </Badge>
                             <Badge variant={"brandInformativeFilled"}>
-                                <BadgeCenterIcon icon={FaCodepen} />
+                                {/*<BadgeCenterIcon icon={FaCodepen} />*/}
                             </Badge>
                         </div>
 
@@ -499,7 +499,7 @@ export const components = [
                                 Danger Subtle
                             </Badge>
                             <Badge variant={"brandSubtleFilled"}>
-                                <BadgeCenterIcon icon={FaCodepen} />
+                                {/*<BadgeCenterIcon icon={FaCodepen} />*/}
                             </Badge>
                         </div>
                     </div>
