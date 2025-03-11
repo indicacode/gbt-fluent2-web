@@ -2773,6 +2773,20 @@ export const components = [
                 ),
             },
             {
+                cardHeader: "Controlled",
+                cardSubtext: "",
+                cardComponent: (
+                    <div className={"w-full"}>
+                        <Textarea
+                            error={false}
+                            className="font-bold text-black dark:text-white"
+                            labelText="TextArea"
+                            placeholder={"This is a controlled textarea (50 char. max.)"}
+                        />
+                    </div>
+                ),
+            },
+            {
                 cardHeader: "Resize",
                 cardSubtext:
                     " When typing inside of a textarea, if you run out of space for your entire message, the TextArea component will automatically grow expand the typing area vertically so you can finish your message.",

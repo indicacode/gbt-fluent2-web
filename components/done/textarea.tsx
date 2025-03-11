@@ -82,6 +82,7 @@ export function Textarea({
       <textarea
         data-slot="textarea"
         id={uid}
+        maxLength={50}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onMouseDown={handleMouseDown}
