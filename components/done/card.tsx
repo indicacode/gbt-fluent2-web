@@ -1,7 +1,7 @@
 import {
   Children,
   cloneElement,
-  HTMLAttributes,
+  ComponentProps,
   isValidElement,
   ReactNode,
   useEffect,
@@ -93,15 +93,14 @@ const {
   cardFooter,
 } = cardSlots({})
 
-interface CardProps
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardSlots> {
-  onSelectionChange?: () => void
-  /** False is the default value */
-  cardPreview?: string | false
-  image?: string
-  size?: "sm" | "md" | "lg"
-}
+type CardProps = ComponentProps<"div"> &
+  VariantProps<typeof cardSlots> & {
+    onSelectionChange?: () => void
+    /** False is the default value */
+    cardPreview?: string | false
+    image?: string
+    size?: "sm" | "md" | "lg"
+  }
 
 function Card({
   onSelectionChange = () => {},
@@ -140,6 +139,7 @@ function Card({
 
   return (
     <div
+      data-slot="card"
       onMouseUp={() => variant === "outline" && setPressed(false)}
       onMouseDown={() => variant === "outline" && setPressed(true)}
       onClick={() => selectable && setChecked((prevState) => !prevState)}
@@ -169,11 +169,10 @@ function FloatingAction({ children }: { children: ReactNode }) {
   )
 }
 
-interface OrientationOnlyCardProps
-  extends HTMLAttributes<HTMLDivElement>,
-    Pick<VariantProps<typeof cardSlots>, "orientation"> {
-  image?: string
-}
+type OrientationOnlyCardProps = ComponentProps<"div"> &
+  Pick<VariantProps<typeof cardSlots>, "orientation"> & {
+    image?: string
+  }
 
 function CardHeader({
   className,
@@ -191,7 +190,11 @@ function CardHeader({
     return child
   })
   return (
-    <div className={cardHeader({ className, orientation })} {...props}>
+    <div
+      data-slot="card-header"
+      className={cardHeader({ className, orientation })}
+      {...props}
+    >
       {image && (
         <div className="h-16 w-16">
           <img
@@ -206,13 +209,13 @@ function CardHeader({
   )
 }
 
-interface CardTitleProps
-  extends HTMLAttributes<HTMLHeadingElement>,
-    Pick<VariantProps<typeof cardSlots>, "orientation"> {}
+type CardTitleProps = ComponentProps<"h3"> &
+  Pick<VariantProps<typeof cardSlots>, "orientation"> & {}
 
 function CardTitle({ className, orientation, ...props }: CardTitleProps) {
   return (
     <h3
+      data-slot="card-title"
       className={cardTitle({
         orientation,
         className,
@@ -222,9 +225,8 @@ function CardTitle({ className, orientation, ...props }: CardTitleProps) {
   )
 }
 
-interface CardDescriptionProps
-  extends HTMLAttributes<HTMLParagraphElement>,
-    Pick<VariantProps<typeof cardSlots>, "orientation"> {}
+type CardDescriptionProps = ComponentProps<"p"> &
+  Pick<VariantProps<typeof cardSlots>, "orientation"> & {}
 
 function CardDescription({
   className,
@@ -233,10 +235,23 @@ function CardDescription({
 }: CardDescriptionProps) {
   return (
     <p
+      data-slot="card-description"
       className={cardDescription({
         className,
         orientation,
       })}
+      {...props}
+    />
+  )
+}
+
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end"
+      }
       {...props}
     />
   )
@@ -252,6 +267,7 @@ function CardContent({
   }
   return (
     <div
+      data-slot="card-content"
       className={cardContent({
         className,
         orientation,
@@ -271,6 +287,7 @@ function CardFooter({
   }
   return (
     <div
+      data-slot="card-footer"
       className={cardFooter({
         className,
         orientation,
@@ -282,6 +299,7 @@ function CardFooter({
 
 export {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,

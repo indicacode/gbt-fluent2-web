@@ -2,6 +2,7 @@ import * as React from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
+import { Slot } from "@radix-ui/react-slot"
 
 const badgeVariants = tv({
   base: "inline-flex items-center rounded-md border border-slate-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 focus:outline-hidden dark:border-slate-800 dark:focus:ring-slate-300",
@@ -21,13 +22,21 @@ const badgeVariants = tv({
   },
 })
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
-// TODO !NOT GOOD! (talking about the className. remove the cn from it)
-function Badge({ className, variant, ...props }: BadgeProps) {
+function Badge({
+  className,
+  variant,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot : "span"
+
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <Comp
+      data-slot="badge"
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
   )
 }
 

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { type InputHTMLAttributes, type ReactNode } from "react"
+import { ComponentProps, type ReactNode } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
 
 const inputVariants = tv({
@@ -83,7 +83,7 @@ const inputVariants = tv({
   },
 })
 
-type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> &
+type InputProps = Omit<ComponentProps<"input">, "size"> &
   VariantProps<typeof inputVariants> & {
     containerClassName?: string
     helperText?: ReactNode
@@ -187,7 +187,7 @@ function Input({
         {LeftAddon?.[0]}
         <div className={inputDecoration({ focus, active })} />
         <input
-          {...props}
+          data-slot="input"
           id={`input-${inputId}`}
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -198,6 +198,7 @@ function Input({
             disabled,
             size,
           })}
+          {...props}
         />
         {RightAddon?.[0]}
       </div>

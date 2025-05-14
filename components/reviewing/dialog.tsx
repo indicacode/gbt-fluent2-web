@@ -5,43 +5,47 @@ import {
   Close,
   Content,
   Description,
+  type DialogOverlayProps,
   Overlay,
   Portal,
   Root,
   Title,
   Trigger,
-  type DialogDescriptionProps,
-  type DialogOverlayProps,
-  type DialogTitleProps,
-  type DialogContentProps as RadixDialogContentProps,
-  type DialogProps as RadixDialogProps,
 } from "@radix-ui/react-dialog"
 import {
   Children,
   cloneElement,
+  ComponentProps,
   isValidElement,
-  type HTMLAttributes,
   type ReactElement,
   type ReactNode,
 } from "react"
 
-interface DialogProps extends RadixDialogProps {
+type DialogProps = ComponentProps<typeof Root> & {
   children: ReactNode
   nonmodal?: boolean
 }
 
-interface DialogContentProps extends RadixDialogContentProps {
+type DialogContentProps = ComponentProps<typeof Content> & {
   nonmodal?: boolean
   className?: string
 }
 
-export const DialogTrigger = Trigger
-export const DialogPortal = Portal
-export const DialogClose = Close
+export function DialogTrigger({ ...props }: ComponentProps<typeof Trigger>) {
+  return <Trigger data-slot="dialog-trigger" {...props} />
+}
+
+export function DialogPortal({ ...props }: ComponentProps<typeof Portal>) {
+  return <Portal data-slot="dialog-portal" {...props} />
+}
+
+export function DialogClose({ ...props }: ComponentProps<typeof Close>) {
+  return <Close data-slot="dialog-close" {...props} />
+}
 
 export function Dialog({ children, nonmodal, ...props }: DialogProps) {
   return (
-    <Root {...props}>
+    <Root data-slot="dialog" {...props}>
       {Children.map(children, (child) => {
         if (isValidElement(child)) {
           return cloneElement(child as ReactElement<DialogContentProps>, {
@@ -57,6 +61,7 @@ export function Dialog({ children, nonmodal, ...props }: DialogProps) {
 export function DialogOverlay({ className, ...props }: DialogOverlayProps) {
   return (
     <Overlay
+      data-slot="dialog-overlay"
       className={cn(
         "fixed inset-0 z-50 bg-[#00000066]",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
@@ -76,9 +81,10 @@ export function DialogContent({
   ...props
 }: DialogContentProps) {
   return (
-    <DialogPortal>
+    <DialogPortal data-slot="dialog-portal">
       <DialogOverlay />
       <Content
+        data-slot="dialog-content"
         onInteractOutside={(e) => {
           if (nonmodal) {
             e.preventDefault()
@@ -111,12 +117,10 @@ export function DialogContent({
   )
 }
 
-export function DialogHeader({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
+export function DialogHeader({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
+      data-slot="dialog-header"
       className={cn(
         "flex flex-col space-y-2 text-center sm:text-left",
         className
@@ -126,12 +130,10 @@ export function DialogHeader({
   )
 }
 
-export function DialogFooter({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) {
+export function DialogFooter({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
+      data-slot="dialog-footer"
       className={cn(
         "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
         className
@@ -141,9 +143,13 @@ export function DialogFooter({
   )
 }
 
-export function DialogTitle({ className, ...props }: DialogTitleProps) {
+export function DialogTitle({
+  className,
+  ...props
+}: ComponentProps<typeof Title>) {
   return (
     <Title
+      data-slot="dialog-title"
       className={cn(
         "text-xl leading-none font-semibold tracking-tight",
         className
@@ -156,9 +162,10 @@ export function DialogTitle({ className, ...props }: DialogTitleProps) {
 export function DialogDescription({
   className,
   ...props
-}: DialogDescriptionProps) {
+}: ComponentProps<typeof Description>) {
   return (
     <Description
+      data-slot="dialog-description"
       className={cn("text-sm text-slate-400 dark:text-slate-300", className)}
       {...props}
     />

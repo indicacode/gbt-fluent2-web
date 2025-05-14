@@ -2,7 +2,6 @@ import { DialogProps } from "@radix-ui/react-dialog"
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 import { Command as CommandPrimitive } from "cmdk"
 import * as React from "react"
-import { Ref } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -78,28 +77,17 @@ export function CommandList({ className, ...props }: CommandListProps) {
 
 type CommandEmptyProps = typeof CommandPrimitive.Empty & {}
 
-export function CommandEmpty(
-  props: CommandEmptyProps,
-  ref: Ref<HTMLDivElement>
-) {
+export function CommandEmpty(props: CommandEmptyProps) {
   return (
-    <CommandPrimitive.Empty
-      ref={ref}
-      className="py-6 text-center text-sm"
-      {...props}
-    />
+    <CommandPrimitive.Empty className="py-6 text-center text-sm" {...props} />
   )
 }
 
 type CommandGroupProps = typeof CommandPrimitive.Group & {}
 
-export function CommandGroup(
-  { className, ...props }: CommandGroupProps,
-  ref: Ref<HTMLDivElement>
-) {
+export function CommandGroup({ className, ...props }: CommandGroupProps) {
   return (
     <CommandPrimitive.Group
-      ref={ref}
       className={cn(
         "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
         className
