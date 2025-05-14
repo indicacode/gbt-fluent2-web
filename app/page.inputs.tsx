@@ -25,6 +25,7 @@ import {
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from "@/components/done/drawer"
 import InfoLabel from "@/components/done/infoLabel"
@@ -238,7 +239,7 @@ export const components = [
         ),
         cardComponent: (
           <div className="flex gap-4">
-            <Button shape="" variant="primary">
+            <Button shape="rounded" variant="primary">
               Primary
             </Button>
             <Button variant="secondary">Secondary</Button>
@@ -251,7 +252,7 @@ export const components = [
         ),
       },
       {
-        cardHeader: "Toogle",
+        cardHeader: "Toggle",
         cardSubtext:
           "Button has an icon slot that, if specified, renders an icon either before or after the children, as specified by the iconPosition prop.",
         cardComponent: (
@@ -351,12 +352,12 @@ export const components = [
               after the entered text. These elements are displayed inside the
               input border.
             </h2>
-            <h2>heres an input with a left addon</h2>
+            <h2>here is an input with a left addon</h2>
             <Input
               variant={"filledLight"}
               labelText={"Left Addon"}
               placeholder={
-                "The Addon is on the left! this addon is a dollar sign , for a money ammount input"
+                "The Addon is on the left! this addon is a dollar sign , for a money amount input"
               }
             >
               <InputLeftAddon>$</InputLeftAddon>
@@ -479,7 +480,7 @@ export const components = [
       {
         cardHeader: "Multiselect With Value Strings",
         cardSubtext:
-          "Multiselect Combobox supports using a controlled value todisplay selected options when not in focus, similar to v8 behavior.We recommend using tags rather than the value string when possible,since they have better UX and accessibility.s",
+          "Multiselect Combobox supports using a controlled value to display selected options when not in focus, similar to v8 behavior.We recommend using tags rather than the value string when possible,since they have better UX and accessibility.s",
         cardComponent: (
           <Combobox
             emptyIndicator="uo"
@@ -769,7 +770,7 @@ export const components = [
           </li>
           <li>
             <code>Drawer</code>: A combination of OverlayDrawer and
-            InlineDrawer. Used when togglin g between the two modes is
+            InlineDrawer. Used when toggling g between the two modes is
             necessary. Often used for responsiveness.
           </li>
         </ul>
@@ -787,7 +788,7 @@ export const components = [
 
             <DrawerContent>
               <DrawerHeader className="flex flex-col items-center">
-                Im the header!
+                <DrawerTitle>Im the header!</DrawerTitle>
               </DrawerHeader>
               <DrawerDescription className={"text-slate-50"}>
                 And i the content
@@ -809,7 +810,7 @@ export const components = [
 
             <DrawerContent>
               <DrawerHeader className="flex flex-col items-center">
-                Im the header!
+                <DrawerTitle>Im the header!</DrawerTitle>
               </DrawerHeader>
               <DrawerDescription className={"text-slate-50"}>
                 And i the content
@@ -831,7 +832,7 @@ export const components = [
 
             <DrawerContent>
               <DrawerHeader className="flex flex-col items-center">
-                Im the header!
+                <DrawerTitle>Im the header!</DrawerTitle>
               </DrawerHeader>
               <DrawerDescription className={"text-slate-50"}>
                 And i the content
@@ -853,7 +854,7 @@ export const components = [
 
             <DrawerContent>
               <DrawerHeader className="flex flex-col items-center">
-                Im the header!
+                <DrawerTitle>Im the header!</DrawerTitle>
               </DrawerHeader>
               <DrawerDescription className={"text-slate-50"}>
                 And i the content
@@ -876,7 +877,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -891,7 +892,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -906,7 +907,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -930,7 +931,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -945,7 +946,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -960,7 +961,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -984,7 +985,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -999,7 +1000,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1014,7 +1015,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1038,7 +1039,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1053,7 +1054,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1068,7 +1069,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1093,7 +1094,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1108,7 +1109,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1123,7 +1124,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1149,7 +1150,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1164,7 +1165,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1179,7 +1180,7 @@ export const components = [
 
               <DrawerContent>
                 <DrawerHeader className="flex flex-col items-center">
-                  Im the header!
+                  <DrawerTitle>Im the header!</DrawerTitle>
                 </DrawerHeader>
                 <DrawerDescription className={"text-slate-50"}>
                   And i the content
@@ -1850,7 +1851,7 @@ export const components = [
       {
         cardHeader: "Expand Icon Position",
         cardSubtext:
-          " An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened bydefault, multiple will also be collapsed by default on the first render",
+          " An accordion supports multiple panels expanded simultaneously. Since it's not simple to determine which panel will be opened by default, multiple will also be collapsed by default on the first render",
 
         cardComponent: (
           <div>
@@ -2066,7 +2067,7 @@ export const components = [
           "An avatar can have a badge to indicate presence status. See the status prop inside of the avatar component for more info.\n" +
           "\n",
         cardComponent: (
-          <div className={"items-centerflex-row flex"}>
+          <div className={"flex flex-row items-center"}>
             <Avatar status={"away"}>
               <AvatarFallback>Jordan Cummings</AvatarFallback>
               <AvatarImage
@@ -2549,7 +2550,7 @@ export const components = [
       {
         cardHeader: "Default",
         cardSubtext:
-          "This is the default radiogroup component provided by fluent2",
+          "This is the default Radio Group component provided by fluent2",
         cardComponent: (
           <RadioGroup defaultValue="1">
             <div className="flex items-center space-x-2">
@@ -3393,7 +3394,7 @@ export const components = [
       {
         cardHeader: "Default Toast Options",
         cardSubtext:
-          "Default options for all toasts can be configured on the Toaster. These options are only defaults and can be overriden using dispatchToast",
+          "Default options for all toasts can be configured on the Toaster. These options are only defaults and can be overridden using dispatchToast",
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Button
@@ -3877,7 +3878,7 @@ export const components = [
       {
         cardHeader: "Trapping Focus",
         cardSubtext:
-          "When a Popover contains focusable elements, the modal dialog pattern will apply. By using the trapFocus prop, the component sets aria-hiddenappropriately to parent elements in the document so that elements not contained in the focus trap are hidden to screen reader users. This focus trap is automatically removed when the Popover is closed.",
+          "When a Popover contains focusable elements, the modal dialog pattern will apply. By using the trapFocus prop, the component sets aria-hidden appropriately to parent elements in the document so that elements not contained in the focus trap are hidden to screen reader users. This focus trap is automatically removed when the Popover is closed.",
         cardComponent: (
           <div className="flex flex-col gap-2">
             <Popover>
