@@ -6,11 +6,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/done/accordion"
-import ThemeSwitch from "@/utils/themeSwitch"
 import { useMediaQuery } from "@/utils/use-media-query"
 import { HamburgerMenuIcon } from "@radix-ui/react-icons"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { Fragment, useCallback, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { FaRegFileAlt } from "react-icons/fa"
 import { components, sideBar } from "./page.inputs"
 
@@ -30,129 +29,162 @@ export default function Page() {
     fallback: [false],
   })[0]
 
+  // Memoize these values to prevent unnecessary recalculations
+  const sideBarKeys = useMemo(() => Object.keys(sideBar), [])
+  const currentDocs = searchParams.get("section")
+  const currentAccordion = searchParams.get("accordion") || "item0"
+
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString())
       params.set(name, value)
-
       return params.toString()
     },
     [searchParams]
   )
-  const sideBarKeys = Object.keys(sideBar)
-  const currentDocs = searchParams.get("section")
+
+  const handleNavigate = useCallback(
+    (paramName: string, value: string) => {
+      router.push(`${pathname}?${createQueryString(paramName, value)}`)
+    },
+    [router, pathname, createQueryString]
+  )
+
+  const handleSidebarToggle = useCallback(() => {
+    if (isMobile) {
+      setIsCollapsed((prev) => !prev)
+    }
+  }, [isMobile])
+
+  const isCollapsedClass = isMobile && isCollapsed ? "max-w-14" : "max-w-44"
+  const isContentHidden = isMobile && isCollapsed ? "opacity-0" : "opacity-100"
 
   return (
-    <div className="flex h-[100%] min-h-screen w-full grow flex-row bg-linear-to-r from-white to-slate-200 transition-colors dark:from-slate-950 dark:to-zinc-950">
-      <span
-        className={`w-full ${isMobile && isCollapsed ? "max-w-14" : "max-w-44"}`}
-      />
-      <div
-        className={`fixed z-50 flex max-h-screen min-h-screen w-full flex-col justify-between overflow-y-scroll bg-transparent pt-4 shadow-2xl transition-all dark:border-zinc-700 dark:bg-transparent ${
-          isMobile && isCollapsed ? "max-w-14" : "max-w-44"
-        }`}
-      >
-        <div className="flex h-fit flex-col gap-10">
-          <div
-            onClick={() => {
-              if (isMobile) {
-                setIsCollapsed((p) => !p)
-              }
-            }}
-            className="flex h-[1.5rem] min-w-fit items-center justify-center gap-2 overflow-hidden pl-1 text-black dark:text-white"
-          >
-            <HamburgerMenuIcon
-              className={`font-4xl flex w-fit font-extrabold text-black dark:text-white ${isMobile ? "" : "hidden"}`}
-            />
-            <h2
-              className={`w-fit pl-2 text-2xl font-bold whitespace-nowrap ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
-            >
-              Fluent2
-            </h2>
-          </div>
+    <div className="flex h-[100%] min-h-screen w-full flex-row bg-gradient-to-r from-white to-slate-200 transition-colors dark:from-slate-950 dark:to-zinc-950">
+      {/* Spacer div that reserves the width of the sidebar */}
+      <span className={`w-full ${isCollapsedClass}`} />
 
+      {/* Sidebar */}
+      <aside
+        className={`fixed z-50 flex h-full min-h-screen w-full flex-col border-r border-slate-200 bg-white shadow-lg transition-all dark:border-zinc-700 dark:bg-slate-900 ${isCollapsedClass}`}
+        aria-label="Sidebar navigation"
+      >
+        {/* Header */}
+        <div
+          onClick={handleSidebarToggle}
+          className="flex h-16 w-full items-center justify-start gap-2 overflow-hidden border-b border-slate-200 px-4 dark:border-zinc-700"
+        >
+          <HamburgerMenuIcon
+            className={`text-2xl text-slate-800 dark:text-white ${isMobile ? "cursor-pointer" : "hidden"}`}
+            aria-hidden={!isMobile}
+            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          />
+          <h2
+            className={`text-2xl font-bold whitespace-nowrap text-slate-800 transition-opacity duration-200 dark:text-white ${isContentHidden}`}
+          >
+            Fluent2
+          </h2>
+        </div>
+
+        {/* Navigation */}
+        <nav className="overflow-y-auto py-4">
           <Accordion
-            className="flex h-full w-full flex-col bg-transparent pt-4 pr-4"
+            className="flex w-full flex-col bg-transparent"
             type="multiple"
-            defaultValue={["item0"]}
+            defaultValue={[currentAccordion]}
           >
             {sideBarKeys.map((key, idx) => (
               <AccordionItem
                 key={idx}
-                className={`bg-transparent font-bold transition-all ${isMobile && isCollapsed ? "opacity-0" : "opacity-100"}`}
+                className={`border-b-0 bg-transparent font-bold transition-opacity duration-200 ${isContentHidden}`}
                 value={"item" + idx}
               >
-                <AccordionTrigger>
+                <AccordionTrigger className="mx-1 py-2 hover:bg-slate-100 dark:hover:bg-slate-800">
                   <span
-                    onClick={() =>
-                      router.push(
-                        pathname +
-                          "?" +
-                          createQueryString("accordion", "item" + idx)
-                      )
-                    }
-                    className="flex cursor-pointer gap-2 px-2 py-1 text-[1.2em] font-semibold"
+                    onClick={() => handleNavigate("accordion", "item" + idx)}
+                    className="flex cursor-pointer items-center gap-2 text-base font-semibold text-slate-800 dark:text-slate-200"
                   >
                     {sideBar[key as SideBarType].icon}
                     {key}
                   </span>
                 </AccordionTrigger>
                 <AccordionContent>
-                  {sideBar[key as SideBarType].items.map(
-                    (component: ItemsType, itemIdx: number) => (
-                      <span
-                        key={itemIdx}
-                        className="group active:bg-brand-light flex h-fit w-full cursor-pointer items-center gap-2 px-2 py-2 text-[14px] font-semibold hover:bg-slate-700 focus:bg-slate-300"
-                        onClick={() =>
-                          router.push(
-                            pathname +
-                              "?" +
-                              createQueryString("section", component)
-                          )
-                        }
-                      >
-                        <FaRegFileAlt size={16} />
-                        {component}
-                      </span>
-                    )
-                  )}
+                  <ul className="mx-1 space-y-1">
+                    {sideBar[key as SideBarType].items.map(
+                      (component: ItemsType, itemIdx: number) => (
+                        <li key={itemIdx}>
+                          <button
+                            className={`group flex h-10 w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 focus:ring-2 focus:ring-slate-500 focus:outline-none dark:text-slate-300 dark:hover:bg-slate-800 ${
+                              currentDocs === component
+                                ? "bg-slate-100 text-slate-900 dark:bg-slate-800 dark:text-white"
+                                : ""
+                            }`}
+                            onClick={() => handleNavigate("section", component)}
+                            aria-current={
+                              currentDocs === component ? "page" : undefined
+                            }
+                          >
+                            <FaRegFileAlt
+                              size={16}
+                              className="text-slate-500 dark:text-slate-400"
+                            />
+                            <span className="truncate">{component}</span>
+                          </button>
+                        </li>
+                      )
+                    )}
+                  </ul>
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
+        </nav>
 
-        <ThemeSwitch className="self-center" />
-      </div>
-      <main className="flex min-h-full w-full items-center justify-center py-12">
+        {/* Theme Toggle - Positioned at bottom */}
+        <div className="mt-auto border-t border-slate-200 p-4 dark:border-zinc-700">
+          {/* Placeholder for theme toggle */}
+          {/* <ThemeSwitch /> */}
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex min-h-full w-full items-start justify-center px-6 py-12">
         {components.map(({ header, subText, cards }, idx: number) => {
           return (
             currentDocs === header && (
               <div
                 key={idx}
-                className="flex w-[60%] flex-col gap-12 dark:text-white"
+                className="flex w-full max-w-4xl flex-col gap-12 dark:text-white"
               >
-                <div className="flex flex-col">
-                  <h1 className="text-3xl font-semibold dark:text-white">
+                <header className="flex flex-col space-y-2">
+                  <h1 className="text-3xl font-semibold text-slate-900 dark:text-white">
                     {header}
                   </h1>
-                  {subText}
-                </div>
+                  <div className="text-slate-700 dark:text-slate-300">
+                    {subText}
+                  </div>
+                </header>
+
                 {cards.map(
-                  ({ cardHeader, cardSubtext, cardComponent }, idx: number) => (
-                    <Fragment key={idx}>
+                  (
+                    { cardHeader, cardSubtext, cardComponent },
+                    cardIdx: number
+                  ) => (
+                    <section key={cardIdx} className="space-y-4">
                       {cardHeader && (
-                        <>
-                          <h2 className="text-2xl font-semibold dark:text-white">
+                        <div className="space-y-2">
+                          <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
                             {cardHeader}
                           </h2>
-                          {cardSubtext}
-                        </>
+                          <div className="text-slate-700 dark:text-slate-300">
+                            {cardSubtext}
+                          </div>
+                        </div>
                       )}
-                      <div className="relative flex min-w-fit overflow-hidden rounded-sm border border-zinc-400 bg-[#fafafa] p-4 text-slate-950 shadow-sm dark:border-zinc-200 dark:bg-slate-950 dark:text-slate-50">
+                      <div className="relative overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-slate-900">
                         {cardComponent}
                       </div>
-                    </Fragment>
+                    </section>
                   )
                 )}
               </div>
