@@ -10,13 +10,19 @@ import {
   Close,
   Description,
   Provider,
+  ToastProps as RadixToastProps,
   Root,
   Title,
+  ToastActionProps,
+  ToastCloseProps,
+  ToastDescriptionProps,
+  ToastTitleProps,
+  ToastViewportProps,
   Viewport,
 } from "@radix-ui/react-toast"
 import { X } from "lucide-react"
-import { ComponentPropsWithoutRef, ReactElement } from "react"
-import { tv } from "tailwind-variants"
+import { HTMLAttributes, ReactElement } from "react"
+import { tv, VariantProps } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
 
@@ -87,12 +93,8 @@ const toastVariants = tv({
 const { toast, toastViewport, toastAction, toastClose, toastIcon } =
   toastVariants({})
 
-const ToastIcon = ({
-  variant,
-}: {
-  variant: "info" | "warning" | "error" | "success"
-}) => {
-  function currentIcon(variant: string) {
+const ToastIcon = ({ variant }: VariantProps<typeof toastIcon>) => {
+  function currentIcon(variant?: string) {
     if (variant === "info") {
       return <Info24Regular />
     }
@@ -107,17 +109,21 @@ const ToastIcon = ({
   return <span className={toastIcon({ variant })}> {currentIcon(variant)}</span>
 }
 
-function Toast({ className, variant, messageBar, ...props }) {
+type ToastProps = VariantProps<typeof toast> &
+  RadixToastProps &
+  HTMLAttributes<HTMLLIElement>
+
+function Toast({ className, variant, messageBar, ...props }: ToastProps) {
   return (
     <Root className={toast({ variant, messageBar, className })} {...props} />
   )
 }
 
-function ToastViewport({ className, ...props }) {
+function ToastViewport({ className, ...props }: ToastViewportProps) {
   return <Viewport className={toastViewport({ className })} {...props} />
 }
 
-function ToastAction({ className, altText, ...props }) {
+function ToastAction({ className, altText, ...props }: ToastActionProps) {
   return (
     <Action
       altText={altText}
@@ -127,7 +133,7 @@ function ToastAction({ className, altText, ...props }) {
   )
 }
 
-function ToastClose({ className, ...props }) {
+function ToastClose({ className, ...props }: ToastCloseProps) {
   return (
     <Close
       className={toastClose({
@@ -141,7 +147,7 @@ function ToastClose({ className, ...props }) {
   )
 }
 
-function ToastTitle({ className, ...props }) {
+function ToastTitle({ className, ...props }: ToastTitleProps) {
   return (
     <Title
       className={cn("text-sm font-semibold text-[#272727]", className)}
@@ -150,7 +156,7 @@ function ToastTitle({ className, ...props }) {
   )
 }
 
-function ToastDescription({ className, ...props }) {
+function ToastDescription({ className, ...props }: ToastDescriptionProps) {
   return (
     <Description
       className={cn("text-sm text-[#242424] opacity-90", className)}
@@ -158,8 +164,6 @@ function ToastDescription({ className, ...props }) {
     />
   )
 }
-
-type ToastProps = ComponentPropsWithoutRef<typeof Toast>
 
 type ToastActionElement = ReactElement<typeof ToastAction>
 

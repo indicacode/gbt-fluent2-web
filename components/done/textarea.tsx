@@ -1,13 +1,11 @@
-import * as React from "react"
-import { useCallback, useId, useState } from "react"
+import { ComponentProps, useCallback, useId, useState } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
-export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-    VariantProps<typeof textarea> {
-  labelText: string
-  error: boolean
-}
+export type TextareaProps = ComponentProps<"textarea"> &
+  VariantProps<typeof textarea> & {
+    labelText: string
+    error: boolean
+  }
 
 const inputVariants = tv({
   slots: {
@@ -93,6 +91,7 @@ export function Textarea({
         {labelText}
       </label>
       <textarea
+        data-slot="textarea"
         id={uid}
         onFocus={handleFocus}
         onBlur={handleBlur}

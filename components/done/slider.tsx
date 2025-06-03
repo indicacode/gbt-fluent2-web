@@ -1,13 +1,7 @@
 "use client"
 
-import {
-  Range,
-  Root,
-  Thumb,
-  Track,
-  type SliderProps as RadixSliderProps,
-} from "@radix-ui/react-slider"
-import { HTMLAttributes } from "react"
+import { Range, Root, Thumb, Track } from "@radix-ui/react-slider"
+import { ComponentProps, useMemo } from "react"
 import { tv, VariantProps } from "tailwind-variants"
 
 const sliderVariants = tv({
@@ -28,18 +22,44 @@ const sliderVariants = tv({
   },
 })
 
-type SliderProps = RadixSliderProps &
-  HTMLAttributes<HTMLSpanElement> &
+type SliderProps = ComponentProps<typeof Root> &
   VariantProps<typeof sliderVariants> & {}
 
-export function Slider({ className, size, ...props }: SliderProps) {
+export function Slider({
+  className,
+  size,
+  defaultValue,
+  value,
+  min = 0,
+  max = 100,
+  ...props
+}: SliderProps) {
+  const _values = useMemo(
+    () =>
+      Array.isArray(value)
+        ? value
+        : Array.isArray(defaultValue)
+          ? defaultValue
+          : [min, max],
+    [value, defaultValue, min, max]
+  )
   const { root, track, range, thumb } = sliderVariants({ size })
   return (
-    <Root className={root({ className })} {...props}>
+    <Root
+      data-slot="slider"
+      defaultValue={defaultValue}
+      value={value}
+      min={min}
+      max={max}
+      className={root({ className })}
+      {...props}
+    >
       <Track className={track()}>
         <Range className={range()} />
       </Track>
-      <Thumb className={thumb()} />
+      {Array.from({ length: _values.length }, (_, index) => (
+        <Thumb key={index} className={thumb()} />
+      ))}
     </Root>
   )
 }
