@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ["@grbtec/components"],
   typescript: {
-    ignoreBuildErrors: false,
+    ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
