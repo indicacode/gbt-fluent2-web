@@ -1,10 +1,31 @@
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/not-done/carousel"
 export const carousel_card = {
   header: "Carousel",
   subText:
     "A Carousel component is a sliding window of elements controlled by previous, next, and direct pagination buttons.",
   cards: [
     {
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="flex h-full w-full items-center justify-center">
+          <Carousel className="">
+            <CarouselPrevious />
+            <CarouselContent className="">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem className="flex justify-center items-center" key={index}>
+                  <div className="p-1">{index + 1}</div>
+                </CarouselItem>
+              ))}
+            </CarouselContent >
+            <CarouselNext />
+          </Carousel>
+        </div>
+      ),
     },
     {
       cardHeader: "Responsive",
