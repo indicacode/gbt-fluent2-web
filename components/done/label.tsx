@@ -10,10 +10,14 @@ const label = tv({
     disabled: {
       true: "cursor-not-allowed opacity-50",
     },
+    weight: {
+      semibold: "font-semibold",
+      regular: "font-normal",
+    },
     size: {
-      sm: "text-sm",
-      md: "text-md",
-      lg: "text-lg",
+      small: "text-sm",
+      medium: "text-md",
+      large: "text-lg",
     },
   },
 })
@@ -30,13 +34,14 @@ export function Label({
   required,
   children,
   disabled,
+  weight,
   size,
   ...props
 }: LabelProps) {
   return (
     <Root
       data-slot="label"
-      className={label({ className, size, disabled })}
+      className={label({ className, size, disabled, weight })}
       {...props}
     >
       {children}

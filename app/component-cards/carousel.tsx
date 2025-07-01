@@ -5,6 +5,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/not-done/carousel"
+import Autoplay from "embla-carousel-autoplay"
+import React from "react"
+
+const plugin = Autoplay({ delay: 2000, stopOnInteraction: true })
+
 export const carousel_card = {
   header: "Carousel",
   subText:
@@ -17,11 +22,16 @@ export const carousel_card = {
             <CarouselPrevious />
             <CarouselContent className="">
               {Array.from({ length: 5 }).map((_, index) => (
-                <CarouselItem className="flex justify-center items-center" key={index}>
-                  <div className="p-1">{index + 1}</div>
+                <CarouselItem
+                  className="flex items-center justify-center"
+                  key={index}
+                >
+                  <div className="flex h-40 w-full items-center justify-center rounded-xl border-2 border-[#115EA3] bg-white p-1 text-center text-black">
+                    {index + 1}
+                  </div>
                 </CarouselItem>
               ))}
-            </CarouselContent >
+            </CarouselContent>
             <CarouselNext />
           </Carousel>
         </div>
@@ -31,41 +41,51 @@ export const carousel_card = {
       cardHeader: "Responsive",
       cardSubtext:
         "Carousel can have responsive cards that adjust their size based on the content, using autoSize prop on CarouselCard.",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "Controlled",
-      cardSubtext:
-        "Carousel can be controlled by setting activeIndex and onActiveIndexChange props.",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "Image Slideshow",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "Alignment And Whitespace",
-      cardSubtext:
-        "Carousel can have slides aligned relative to the carousel viewport, use the align prop to set the alignment. Note, the whitespace prop could be used to clear leading and trailing empty space that causes excessive scrolling.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="flex h-full w-full items-center justify-center">
+          <Carousel className="">
+            <CarouselPrevious />
+            <CarouselContent className="">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem
+                  className="flex basis-1/2 items-center justify-center"
+                  key={index}
+                >
+                  <div className="flex h-40 w-full items-center justify-center rounded-xl border-2 border-[#115EA3] bg-white p-1 text-center text-black">
+                    {index + 1}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselNext />
+          </Carousel>
+        </div>
+      ),
     },
     {
       cardHeader: "Autoplay",
       cardSubtext:
         "The Autoplay button must be present to enable autoplay as it is an accessibility requirement. To enable, any valid prop (recommended ariaLabel) must be passed in, while setting the autoplay prop in CarouselNav to undefined will disable and remove it.",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "First Run Experience",
-      cardSubtext:
-        "Carousel can be used in a Dialog to create a first-run experience.",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "Eventing",
-      cardSubtext:
-        "Carousel provides callbacks on index change with a multitude of event types.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="flex h-full w-full items-center justify-center">
+          <Carousel plugins={[plugin]} className="">
+            <CarouselPrevious />
+            <CarouselContent className="">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem
+                  className="flex items-center justify-center"
+                  key={index}
+                >
+                  <div className="flex h-40 w-full items-center justify-center rounded-xl border-2 border-[#115EA3] bg-white p-1 text-center text-black">
+                    {index + 1}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselNext />
+          </Carousel>
+        </div>
+      ),
     },
   ],
 }

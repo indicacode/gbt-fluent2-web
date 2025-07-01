@@ -30,7 +30,7 @@ export const divider_card = {
       cardHeader: "Vertical",
       cardSubtext: "",
       cardComponent: (
-        <div className="flex h-fit w-full flex-row gap-10">
+        <div className="flex h-80 w-full flex-row gap-10">
           <Divider orientation="vertical" align="center">
             1
           </Divider>

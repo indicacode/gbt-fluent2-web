@@ -3,8 +3,8 @@
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
-import { FaArrowLeft, FaArrowRight  } from "react-icons/fa";
 import * as React from "react"
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
 
 import { Button } from "@/components/done/button"
 import { cn } from "@/lib/utils"
@@ -179,7 +179,7 @@ function CarouselPrevious({
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
-  return (<>
+  return (
     <Button
       data-slot="carousel-previous"
       variant={variant}
@@ -195,9 +195,11 @@ function CarouselPrevious({
       onClick={scrollPrev}
       {...props}
     >
-      <FaArrowLeft className="text-9xl"/>
+      <p>
+        <FaArrowLeft className="text-xs"/>
+      </p>
       <span className="sr-only">Previous slide</span>
-    </Button></>
+    </Button>
   )
 }
 
@@ -225,7 +227,9 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <FaArrowRight />
+      <p>
+        <FaArrowRight className="text-xs"/>
+      </p>
       <span className="sr-only">Next slide</span>
     </Button>
   )

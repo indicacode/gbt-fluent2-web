@@ -1,10 +1,11 @@
+import { Progress } from "@/components/not-done/progress";
 export const progressbar_card = {
   header: "ProgressBar",
   subText:
     "A ProgressBar provides a visual representation of content being loaded or processed.",
   cards: [
     {
-      cardComponent: <div></div>,
+      cardComponent: <Progress value={10} className=""></Progress>,
     },
     {
       cardHeader: "Color",

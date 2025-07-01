@@ -1,10 +1,26 @@
+import { Button } from "@/components/done/button"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/done/tooltip"
 export const tooltip_card = {
   header: "Tooltip",
   subText:
     "A tooltip displays additional information about another component. The information is displayed above and near the target component. Tooltip is not expected to handle interactive content.",
   cards: [
     {
-      cardComponent: <div></div>,
+      cardComponent: (
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button>aaaa</Button>
+            </TooltipTrigger>
+            <TooltipContent>wadwad</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      ),
     },
     {
       cardHeader: "Relationship: label",
