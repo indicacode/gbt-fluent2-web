@@ -193,7 +193,7 @@ export const image_card = {
             ></Image>
           </div>
           <p>Cover</p>
-          <div className="flex h-[200px] w-[450px] items-center justify-center overflow-hidden border border-black">
+          <div className="flex h-[200px] w-[400px] items-center justify-center overflow-hidden border border-black">
             <Image
               fit="cover"
               src={

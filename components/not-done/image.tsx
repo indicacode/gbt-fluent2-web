@@ -1,8 +1,8 @@
 "use client"
 import { tv } from "tailwind-variants"
 
-type ImageProps = React.HTMLAttributes<HTMLImageElement> & {
-  as?: React.ComponentProps<"img">
+type ImageProps = React.ComponentPropsWithRef<"img"> & {
+  ref?: React.Ref<HTMLImageElement>
   block?: boolean
   bordered?: boolean
   fit?: "none" | "center" | "contain" | "cover" | "default"
@@ -42,7 +42,7 @@ const imageVariants = tv({
 })
 
 export default function Image({
-  as,
+  ref,
   block,
   bordered,
   fit,
@@ -60,6 +60,7 @@ export default function Image({
       alt={alt}
       width={width}
       height={height}
+      ref={ref}
       className={imageVariants({
         shape,
         bordered,
