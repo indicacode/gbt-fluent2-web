@@ -1,4 +1,4 @@
-import Image from "@/components/not-done/image"
+import Image from "@/components/reviewing/image"
 
 export const image_card = {
   header: "Image",
