@@ -107,7 +107,7 @@ type PolymorphicProps<T extends React.ElementType> = {
 } & TextProps &
   Omit<React.ComponentPropsWithoutRef<T>, keyof TextProps | "as">
 
-function TextComponent<T extends Tags = "p">({
+function Text<T extends Tags = "p">({
   as,
   align,
   block,
@@ -145,8 +145,5 @@ function TextComponent<T extends Tags = "p">({
     </Component>
   )
 }
-
-const Text = <T extends Tags = "p">(props: PolymorphicProps<T>) =>
-  TextComponent<T>(props)
 
 export default Text

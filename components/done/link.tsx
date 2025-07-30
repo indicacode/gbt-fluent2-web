@@ -1,46 +1,73 @@
-import { default as NextLink } from "next/link"
-import { PropsWithChildren } from "react"
-import { tv, VariantProps } from "tailwind-variants"
+import React from "react"
+import { tv } from "tailwind-variants"
 
-const linkStyles = tv({
+const linkVariants = tv({
   base: "text-black dark:text-slate-100",
   variants: {
-    variant: {
-      default: "text-brand-primary dark:text-brand-primary hover:underline",
-      subtle: "hover:underline",
-      false: "decoration-none",
+    appearance: {
+      default: "text-brand-primary dark:text-brand-primary",
+      subtle: "",
     },
     disabled: {
-      true: "cursor-not-allowed text-gray-600 opacity-50 select-text dark:text-gray-600/90",
+      true: "cursor-not-allowed text-gray-600 opacity-50 dark:text-gray-600/90",
+      false: "hover:underline",
     },
-    inline: "inline underline",
+    disabledFocusable: {
+      true: "focus:ring-0 focus:outline-none",
+      false: "",
+    },
+    inline: { true: "inline underline", false: "" },
   },
   defaultVariants: {
-    variant: "default",
+    appearance: "default",
+    disabled: false,
+    disabledFocusable: false,
   },
 })
 
-interface LinkProps
-  extends Omit<HTMLAnchorElement, "children">,
-    PropsWithChildren,
-    VariantProps<typeof linkStyles> {}
+type Tags = "a" | "button" | "span"
 
-export function Link({
-  children,
-  href,
-  variant,
+type PolymorphicProps<T extends React.ElementType> = {
+  as?: T
+} & LinkProps &
+  Omit<React.ComponentPropsWithoutRef<T>, keyof LinkProps | "as">
+
+type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
+  appearance?: "default" | "subtle"
+  disabled?: boolean
+  disabledFocusable?: boolean
+  inline?: boolean
+  href?: string | undefined
+}
+
+function Link({
+  as,
+  appearance,
   disabled,
+  disabledFocusable,
+  inline,
+  href,
+  children,
+  className,
   ...props
-}: LinkProps) {
+}: PolymorphicProps<Tags>) {
+  disabled = disabled || disabledFocusable
+  const Component = (disabled && "p") || as || "a"
   return (
-    <NextLink
+    <Component
       href={href}
-      className={linkStyles({
-        variant: disabled ? !disabled : variant,
+      className={linkVariants({
+        appearance,
         disabled,
+        disabledFocusable,
+        inline,
+        className,
       })}
+      {...(props as any)}
     >
       {children}
-    </NextLink>
+    </Component>
   )
 }
+
+export default Link
