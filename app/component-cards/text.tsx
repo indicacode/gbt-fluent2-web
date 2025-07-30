@@ -1,4 +1,4 @@
-import Text from "@/components/not-done/text"
+import Text from "@/components/done/text"
 
 export const text_card = {
   header: "Text",
@@ -16,7 +16,7 @@ export const text_card = {
         "Presets are a set of components with predefined styles for typography, based in our Theme Tokens. They are used to create and share a consistent look and feel.",
       cardComponent: (
         <div className="flex flex-col gap-2">
-          <Text as="div" size={100}>Caption2</Text>
+          <Text size={100}>Caption2</Text>
           <Text size={100} weight="semibold">Caption2Strong</Text>
           <Text size={200}>Caption1</Text>
           <Text size={200} weight="semibold">Caption1Strong</Text>

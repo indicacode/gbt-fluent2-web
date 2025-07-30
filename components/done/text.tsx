@@ -1,20 +1,7 @@
+import React from "react"
 import { tv } from "tailwind-variants"
 
-type TextProps<T extends React.ElementType> = {
-    as?: T
-    align?: "start" | "center" | "end" | "justify"
-    block?: boolean
-    font?: "base" | "numeric" | "monospace"
-    italic?: boolean
-    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000
-    strikethrough?: boolean
-    truncate?: boolean
-    underline?: boolean
-    weight?: "regular" | "medium" | "semibold" | "bold"
-    wrap?: boolean
-  }
-
-const text = tv({
+const textVariants = tv({
   variants: {
     align: {
       start: "text-start",
@@ -36,16 +23,16 @@ const text = tv({
       false: "",
     },
     size: {
-      100: "text-xs",
-      200: "text-sm",
-      300: "text-base",
-      400: "text-lg",
-      500: "text-xl",
-      600: "text-2xl",
-      700: "text-3xl",
-      800: "text-4xl",
-      900: "text-5xl",
-      1000: "text-6xl",
+      100: "text-[10px]",
+      200: "text-[12px]",
+      300: "text-[15px]",
+      400: "text-[18px]",
+      500: "text-[21px]",
+      600: "text-[24px]",
+      700: "text-[28px]",
+      800: "text-[32px]",
+      900: "text-[42px]",
+      1000: "text-[64px]",
     },
     strikethrough: {
       true: "line-through",
@@ -84,7 +71,43 @@ const text = tv({
   },
 })
 
-function Text<T extends React.ElementType = "p">({
+type TextProps = {
+  align?: "start" | "center" | "end" | "justify"
+  block?: boolean
+  font?: "base" | "numeric" | "monospace"
+  italic?: boolean
+  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000
+  strikethrough?: boolean
+  truncate?: boolean
+  underline?: boolean
+  weight?: "regular" | "medium" | "semibold" | "bold"
+  wrap?: boolean
+  className?: string
+  children?: React.ReactNode
+}
+
+type Tags =
+  | "p"
+  | "span"
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "b"
+  | "em"
+  | "i"
+  | "strong"
+  | "pre"
+
+
+type PolymorphicProps<T extends React.ElementType> = {
+  as?: T
+} & TextProps &
+  Omit<React.ComponentPropsWithoutRef<T>, keyof TextProps | "as">
+
+function TextComponent<T extends Tags = "p">({
   as,
   align,
   block,
@@ -99,11 +122,11 @@ function Text<T extends React.ElementType = "p">({
   children,
   className,
   ...props
-}: TextProps<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof TextProps<T>>) {
-  const TextTag = as || "p"
+}: PolymorphicProps<T>) {
+  const Component = as || "p"
   return (
-    <TextTag
-      className={text({
+    <Component
+      className={textVariants({
         align,
         block,
         font,
@@ -114,11 +137,16 @@ function Text<T extends React.ElementType = "p">({
         underline,
         weight,
         wrap,
+        className,
       })}
-      {...props}
+      {...(props as any)}
     >
       {children}
-    </TextTag>
+    </Component>
   )
 }
+
+const Text = <T extends Tags = "p">(props: PolymorphicProps<T>) =>
+  TextComponent<T>(props)
+
 export default Text
