@@ -65,7 +65,7 @@ function handleToggle(
   }
 }
 
-export function Button({
+export default function Button({
   disabled = false,
   onClick = () => {},
   asChild = false,
@@ -98,13 +98,15 @@ export function Button({
           onClick(event) // Only call onClick when not disabled
         }
       }}
-      className={buttonVariants({
-        variant,
-        shape,
-        toggle,
-        size,
-        className,
-      })}
+      className={
+        buttonVariants({
+          variant,
+          shape,
+          toggle,
+          size,
+          className,
+        }) + " gap-2"
+      }
       {...props}
     >
       {/* Render icon if provided and button is not toggle */}

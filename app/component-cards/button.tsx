@@ -1,4 +1,4 @@
-import { Button } from "@/components/done/button"
+import Button from "@/components/done/button"
 
 export const button_card = {
   header: "Button",

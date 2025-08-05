@@ -1,7 +1,7 @@
 import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { ColumnDef, Row } from "@tanstack/react-table"
 
-import { Button } from "@/components/done/button"
+import Button from "@/components/done/button"
 import {
   DropdownMenu,
   DropdownMenuContent,

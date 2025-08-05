@@ -1,61 +1,95 @@
 "use client"
 
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import { ComponentProps, ReactNode } from "react"
+import { tv } from "tailwind-variants"
 
-import { cn } from "@/lib/utils"
-import { ComponentProps } from "react"
+type TooltipProps = ComponentProps<typeof TooltipPrimitive.Root> &
+  React.HtmlHTMLAttributes<"div"> & {
+    content: ReactNode
+    appearance?: "normal" | "inverted"
+    hideDelay?: number
+    onVisibleChange?: (visible: boolean) => void
+    positioning?: ComponentProps<typeof TooltipPrimitive.Content>["side"]
+    relationship: "label" | "description" | "inaccessible"
+    showDelay?: number
+    visible?: boolean
+    withArrow?: boolean
+  }
 
-function TooltipProvider({
-  delayDuration = 0,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
-  return (
-    <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
-      delayDuration={delayDuration}
-      {...props}
-    />
-  )
-}
+const tooltipSlots = tv({
+  slots: {
+    tooltipContent:
+      "z-50 overflow-hidden rounded-md px-3 py-1.5 text-xs shadow-md",
+    tooltipArrow: "shadow-md",
+  },
+  variants: {
+    appearance: {
+      normal: {
+        tooltipContent:
+          "bg-slate-900 text-white dark:bg-slate-50 dark:text-black",
+        tooltipArrow: "fill-slate-900 dark:fill-slate-50",
+      },
+      inverted: {
+        tooltipContent:
+          "bg-slate-50 text-black dark:bg-slate-900 dark:text-white",
+        tooltipArrow: "fill-slate-50 dark:fill-slate-900",
+      },
+    },
+  },
+  defaultVariants: { appearance: "normal" },
+})
+
+const { tooltipContent, tooltipArrow } = tooltipSlots({})
 
 function Tooltip({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return (
-    <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipProvider>
-  )
-}
-
-function TooltipTrigger({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
-}
-
-function TooltipContent({
+  content,
+  appearance = "normal",
+  positioning = "top",
+  relationship = "label",
+  showDelay = 250,
+  hideDelay = 250,
+  withArrow = false,
+  onVisibleChange,
   className,
   children,
-  sideOffset = 4,
   ...props
-}: ComponentProps<typeof TooltipPrimitive.Content>) {
+}: TooltipProps) {
   return (
-    <TooltipPrimitive.Portal>
-      <TooltipPrimitive.Content
-        data-slot="tooltip-content"
-        sideOffset={sideOffset}
-        className={cn(
-          "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 overflow-hidden rounded-md px-3 py-1.5 text-xs text-slate-50 dark:bg-slate-50 dark:text-slate-900 dark:active:bg-slate-900",
-          className
-        )}
-        {...props}
-      >
-        {children}
-        <TooltipPrimitive.Arrow className="bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>
+    <TooltipPrimitive.Provider
+      delayDuration={showDelay}
+      skipDelayDuration={hideDelay}
+    >
+      <TooltipPrimitive.Root onOpenChange={onVisibleChange} {...props}>
+        <TooltipPrimitive.Trigger
+          aria-label={
+            relationship === "label" ? content?.toString() : undefined
+          }
+          aria-description={
+            relationship === "description" ? content?.toString() : undefined
+          }
+          asChild
+        >
+          {children}
+        </TooltipPrimitive.Trigger>
+
+        <TooltipPrimitive.Portal>
+          <TooltipPrimitive.Content
+            side={positioning}
+            sideOffset={4}
+            className={tooltipContent({ appearance, className })}
+          >
+            {content}
+            {withArrow && (
+              <TooltipPrimitive.Arrow
+                className={tooltipArrow({ appearance, className })}
+              />
+            )}
+          </TooltipPrimitive.Content>
+        </TooltipPrimitive.Portal>
+      </TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   )
 }
 
-export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger }
+export default Tooltip
