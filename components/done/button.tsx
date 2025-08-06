@@ -105,7 +105,7 @@ export default function Button({
           toggle,
           size,
           className,
-        }) + " gap-2"
+        })
       }
       {...props}
     >

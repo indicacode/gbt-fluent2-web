@@ -17,7 +17,7 @@ import {
 const labelInfo = tv({
   slots: {
     container:
-      "relative flex h-fit max-h-fit w-fit max-w-fit justify-center gap-0.5 align-middle",
+      "relative flex h-fit max-h-fit w-fit max-w-fit justify-center gap-1 align-middle",
   },
   variants: {
     size: {
