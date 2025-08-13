@@ -1,10 +1,14 @@
+"use client"
+
+import { SearchBox } from "@/components/not-done/searchbox"
+
 export const searchbox_card = {
   header: "SearchBox",
   subText:
     "The SearchBox component allows the users to access information with ease, providing flexibility and the ability to clear and filter the search.",
   cards: [
     {
-      cardComponent: <div></div>,
+      cardComponent: <SearchBox></SearchBox>,
     },
     {
       cardHeader: "Appearance",

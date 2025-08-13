@@ -26,7 +26,7 @@ const inputVariants = tv({
       },
       filledDark: {
         inputContainer: "bg-gray-800",
-      }, 
+      },
     },
     orientation: {
       horizontal: { root: "flex-row gap-2" },
@@ -94,7 +94,7 @@ type InputProps = Omit<ComponentProps<"input">, "size"> &
     helperText?: ReactNode
     labelText?: ReactNode
     iconOnly?: boolean
-    required?:boolean
+    required?: boolean
     error?: boolean
     children?: ReactNode
     orientation?: "horizontal" | "vertical"
@@ -177,7 +177,7 @@ function Input({
           htmlFor={`input-${inputId}`}
           className={label({ state: inputState })}
         >
-          {labelText}       {required && <span className="text-red-500">*</span>}
+          {labelText} {required && <span className="text-red-500">*</span>}
         </label>
       )}
       <div>
