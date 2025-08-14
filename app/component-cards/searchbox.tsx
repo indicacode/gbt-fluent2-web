@@ -8,13 +8,20 @@ export const searchbox_card = {
     "The SearchBox component allows the users to access information with ease, providing flexibility and the ability to clear and filter the search.",
   cards: [
     {
-      cardComponent: <SearchBox onChange={() => console.log("aloo")}></SearchBox>,
+      cardComponent: <SearchBox />,
     },
     {
       cardHeader: "Appearance",
       cardSubtext:
         "A SearchBox can have different appearances. The colors adjacent to the SearchBox should have a sufficient contrast.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="flex flex-col gap-4">
+          <SearchBox />
+          <SearchBox />
+          <SearchBox />
+          <SearchBox />
+        </div>
+      ),
     },
     {
       cardHeader: "Content before/after",
