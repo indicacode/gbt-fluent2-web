@@ -8,7 +8,12 @@ export const searchbox_card = {
     "The SearchBox component allows the users to access information with ease, providing flexibility and the ability to clear and filter the search.",
   cards: [
     {
-      cardComponent: <SearchBox />,
+      cardComponent: (
+        <div className="w-[500px]">
+          <p>Sample SearchBox</p>
+          <SearchBox className="mt-2" />
+        </div>
+      ),
     },
     {
       cardHeader: "Appearance",
@@ -16,10 +21,26 @@ export const searchbox_card = {
         "A SearchBox can have different appearances. The colors adjacent to the SearchBox should have a sufficient contrast.",
       cardComponent: (
         <div className="flex flex-col gap-4">
-          <SearchBox />
-          <SearchBox />
-          <SearchBox />
-          <SearchBox />
+          <div className="w-[500px] p-2">
+            <div>
+              <p>Outline appearance (default)</p>
+              <SearchBox className="mt-2" appearance="outline" />
+            </div>
+            <div className="mt-4">
+              <p>Underline appearance</p>
+              <SearchBox className="mt-2" appearance="underline" />
+            </div>
+          </div>
+          <div className="w-[500px] bg-neutral-800 p-2 text-white">
+            <div>
+              <p>Filled lighter appearance</p>
+              <SearchBox className="mt-2" appearance="filled-lighter" />
+            </div>
+            <div className="mt-4">
+              <p>Filled darker appearance</p>
+              <SearchBox className="mt-2" appearance="filled-darker" />
+            </div>
+          </div>
         </div>
       ),
     },

@@ -6,12 +6,12 @@ const searchboxVariants = tv({
   variants: {
     size: { small: "", medium: "", large: "" },
     appearance: {
-      outline: "",
+      outline: "border border-gray-500",
       underline: "",
-      "filled-darker": "",
-      "filled-lighter": "",
-      "filled-darker-shadow": "",
-      "filled-lighter-shadow": "",
+      "filled-darker": "bg-neutral-100",
+      "filled-lighter": "bg-white",
+      "filled-darker-shadow": "bg-neutral-100 shadow-2xl",
+      "filled-lighter-shadow": "bg-white shadow-2xl",
     },
   },
   defaultVariants: { size: "medium", appearance: "outline" },
@@ -20,6 +20,13 @@ const searchboxVariants = tv({
 type SearchBoxProps = React.InputHTMLAttributes<HTMLInputElement> & {
   value?: string
   showMode?: "selecting" | "focusAndValue"
+  appearance?:
+    | "outline"
+    | "underline"
+    | "filled-darker"
+    | "filled-lighter"
+    | "filled-darker-shadow"
+    | "filled-lighter-shadow"
 }
 
 export function SearchBox({
@@ -27,6 +34,7 @@ export function SearchBox({
   onChange,
   showMode = "selecting",
   className,
+  appearance,
   ...props
 }: SearchBoxProps) {
   const [string, setString] = useState(value.toString())
@@ -38,8 +46,9 @@ export function SearchBox({
     <div
       tabIndex={-1}
       className={
-        className +
-        " relative flex items-center justify-between gap-2 overflow-hidden rounded-md border border-gray-500 px-3 py-2 text-black"
+        searchboxVariants({ appearance }) +
+        " relative flex items-center justify-between gap-2 overflow-hidden rounded-md px-3 py-2 text-black " +
+        className
       }
     >
       <PiMagnifyingGlassLight />
@@ -61,7 +70,7 @@ export function SearchBox({
           ref={inputRef}
           value={string}
           type="text"
-          className={searchboxVariants({}) + " w-full outline-0"}
+          className={"w-full outline-0"}
           {...props}
         />
         {focused && (
