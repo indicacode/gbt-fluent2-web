@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { PiMagnifyingGlassLight, PiXLight } from "react-icons/pi"
 import { tv } from "tailwind-variants"
 
 const searchboxVariants = tv({
   variants: {
-    size: { small: "", medium: "", large: "" },
+    size: { small: "text-xs", medium: "text-base", large: "text-xl" },
+    disabled: { true: "cursor-not-allowed opacity-50" },
     appearance: {
       outline: "border border-gray-500",
       underline: "",
@@ -17,41 +18,61 @@ const searchboxVariants = tv({
   defaultVariants: { size: "medium", appearance: "outline" },
 })
 
-type SearchBoxProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  value?: string
-  showMode?: "selecting" | "focusAndValue"
-  appearance?:
-    | "outline"
-    | "underline"
-    | "filled-darker"
-    | "filled-lighter"
-    | "filled-darker-shadow"
-    | "filled-lighter-shadow"
-}
+type SearchBoxVariantProps = Parameters<typeof searchboxVariants>[0]
+
+type SearchBoxProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> &
+  SearchBoxVariantProps & {
+    value?: string
+    defaultValue?: string
+    beforeContent?: React.ReactNode
+    afterContent?: React.ReactNode
+    placeholder?: string
+  }
 
 export function SearchBox({
-  value = "",
+  value,
+  defaultValue = "",
   onChange,
-  showMode = "selecting",
   className,
+  beforeContent,
+  afterContent,
   appearance,
+  placeholder,
+  disabled = false,
+  type = "text",
+  size,
   ...props
 }: SearchBoxProps) {
-  const [string, setString] = useState(value.toString())
+  const [string, setString] = useState(value?.toString())
   const [focused, setFocused] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    setString(value?.toString())
+  }, [value])
+
+  const handleClear = () => {
+    if (disabled) return
+    setString("")
+    inputRef.current?.focus()
+    onChange?.({ target: { value: "" } } as React.ChangeEvent<HTMLInputElement>)
+  }
 
   return (
     <div
       tabIndex={-1}
       className={
-        searchboxVariants({ appearance }) +
-        " relative flex items-center justify-between gap-2 overflow-hidden rounded-md px-3 py-2 text-black " +
+        searchboxVariants({ appearance, disabled, size }) +
+        " relative flex items-center justify-between gap-2 overflow-hidden rounded-md px-3 py-2 text-neutral-700" +
+        " " +
         className
       }
     >
-      <PiMagnifyingGlassLight />
+      {beforeContent ?? <PiMagnifyingGlassLight />}
       <div
         ref={containerRef}
         onFocus={() => setFocused(true)}
@@ -67,23 +88,35 @@ export function SearchBox({
             setString(e.target.value)
             onChange?.(e)
           }}
+          disabled={disabled}
           ref={inputRef}
-          value={string}
-          type="text"
-          className={"w-full outline-0"}
+          value={string || defaultValue || ""}
+          type={type}
+          placeholder={placeholder}
+          className={`w-full text-black outline-0 disabled:cursor-not-allowed`}
           {...props}
         />
         {focused && (
-          <button
-            type="button"
-            className="hover:cursor-pointer"
-            onClick={() => {
-              setString("")
-              inputRef.current?.focus()
-            }}
-          >
-            <PiXLight />
-          </button>
+          <>
+            {afterContent && (
+              <button
+                type="button"
+                onClick={() => {
+                  inputRef.current?.focus()
+                }}
+                className="hover:cursor-pointer"
+              >
+                {afterContent}
+              </button>
+            )}
+            <button
+              type="button"
+              className="hover:cursor-pointer"
+              onClick={handleClear}
+            >
+              <PiXLight />
+            </button>
+          </>
         )}
       </div>
       <div className={`absolute bottom-0 left-0 h-[1px] w-full bg-gray-500`} />
