@@ -1,18 +1,4 @@
-import Button from "@/components/done/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/not-done/dropdown-menu"
+import { Dropdown, Option } from "@/components/not-done/dropdown"
 
 export const dropdown_card = {
   header: "Dropdown",
@@ -21,66 +7,71 @@ export const dropdown_card = {
   cards: [
     {
       cardComponent: (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">Open</Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56 bg-white" align="start">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                Profile
-                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                Billing
-                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                Settings
-                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                Keyboard shortcuts
-                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent className="bg-white">
-                    <DropdownMenuItem>Email</DropdownMenuItem>
-                    <DropdownMenuItem>Message</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>More...</DropdownMenuItem>
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
-              <DropdownMenuItem>
-                New Team
-                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>GitHub</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuItem disabled>API</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              Log out
-              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="w-[300px]">
+          <p>Best pet</p>
+          <Dropdown className={"mt-2"} placeholder="Select an animal">
+            <Option>Cat</Option>
+            <Option disabled>Dog</Option>
+            <Option>Fish</Option>
+          </Dropdown>
+        </div>
       ),
     },
     {
       cardHeader: "Appearance",
       cardSubtext: "A Dropdown can have appearance variants.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="flex w-[380px] flex-col gap-4">
+          <div className="px-6 py-3">
+            <p>Outline appearance</p>
+            <Dropdown
+              appearance="outline"
+              className={"mt-2"}
+              placeholder="Select an animal"
+            >
+              <Option>Cat</Option>
+              <Option>Dog</Option>
+              <Option>Bird</Option>
+            </Dropdown>
+          </div>
+          <div className="px-6 py-3">
+            <p>Underline appearance</p>
+            <Dropdown
+              appearance="underline"
+              className={"mt-2"}
+              placeholder="Select an animal"
+            >
+              <Option>Cat</Option>
+              <Option>Dog</Option>
+              <Option>Bird</Option>
+            </Dropdown>
+          </div>
+          <div className="bg-neutral-800 px-6 py-3 text-white">
+            <p>Filled darker appearance</p>
+            <Dropdown
+              appearance="filled-darker"
+              className={"mt-2"}
+              placeholder="Select an animal"
+            >
+              <Option>Cat</Option>
+              <Option>Dog</Option>
+              <Option>Bird</Option>
+            </Dropdown>
+          </div>
+          <div className="bg-neutral-800 px-6 py-3 text-white">
+            <p>Filled lighter appearance</p>
+            <Dropdown
+              appearance="filled-lighter"
+              className={"mt-2"}
+              placeholder="Select an animal"
+            >
+              <Option>Cat</Option>
+              <Option>Dog</Option>
+              <Option>Bird</Option>
+            </Dropdown>
+          </div>
+        </div>
+      ),
     },
     {
       cardHeader: "With Field",
@@ -92,7 +83,23 @@ export const dropdown_card = {
       cardHeader: "Grouped",
       cardSubtext:
         "Dropdown options can be semantically grouped with the OptionGroup element, with an optional group label.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="w-[300px]">
+          <p>Best pet</p>
+          <Dropdown placeholder="Select an animal">
+            <Option>Cat</Option>
+            <Option>Caterpillar</Option>
+            <Option>Corgi</Option>
+            <Option>Chupacabra</Option>
+            <Option>Dog</Option>
+            <Option disabled>Ferret</Option>
+            <Option>Fish</Option>
+            <Option>Fox</Option>
+            <Option>Hamster</Option>
+            <Option>Snake</Option>
+          </Dropdown>
+        </div>
+      ),
     },
     {
       cardHeader: "Clearable",

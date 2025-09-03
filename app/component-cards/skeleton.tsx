@@ -1,4 +1,4 @@
-import Skeleton from "@/components/not-done/skeleton"
+import Skeleton from "@/components/reviewing/skeleton"
 
 export const skeleton_card = {
   header: "Skeleton",

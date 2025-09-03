@@ -1,4 +1,4 @@
-import { List, ListItem } from "@/components/not-done/list"
+import { List, ListItem } from "@/components/reviewing/list"
 
 export const list_card = {
   header: "List",

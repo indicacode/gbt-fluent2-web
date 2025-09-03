@@ -33,7 +33,7 @@ import {
   Option,
 } from "../done/combobox.types"
 import { Input } from "../done/input"
-import { Popover, PopoverContent, PopoverTrigger } from "../reviewing/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "./popover"
 
 function transferToGroupOption(options: Array<Option>, groupBy?: string) {
   if (options.length === 0) {

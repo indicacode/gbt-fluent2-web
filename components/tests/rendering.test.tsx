@@ -11,7 +11,7 @@ import { Link } from "../done/link"
 import { Slider } from "../done/slider"
 import { Switch } from "../done/switch"
 import { Textarea } from "../done/textarea"
-import { Card } from "../not-done/card"
+import { Card } from "../reviewing/card"
 import { renderComponent } from "../tests/renderComponent"
 
 describe("Global Component Rendering", () => {
