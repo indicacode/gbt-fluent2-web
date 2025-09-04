@@ -1,4 +1,4 @@
-import { Dropdown, Option } from "@/components/not-done/dropdown"
+import { Dropdown, Option, OptionGroup } from "@/components/not-done/dropdown"
 
 export const dropdown_card = {
   header: "Dropdown",
@@ -77,7 +77,21 @@ export const dropdown_card = {
       cardHeader: "With Field",
       cardSubtext:
         "Field can be used with Dropdown to provide a label, description, error message, and more.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="w-[300px]">
+          <label>
+            Best Pet <span className="text-red-500">*</span>
+          </label>
+          <Dropdown className={"mt-2 mb-1"} placeholder="Select an animal">
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+            <Option>Bird</Option>
+          </Dropdown>
+          <p className={`text-xs text-gray-500 dark:text-gray-400`}>
+            Try picking 'Cat'
+          </p>
+        </div>
+      ),
     },
     {
       cardHeader: "Grouped",
@@ -86,17 +100,15 @@ export const dropdown_card = {
       cardComponent: (
         <div className="w-[300px]">
           <p>Best pet</p>
-          <Dropdown placeholder="Select an animal">
+          <Dropdown className="mt-2" placeholder="Select an animal">
+            <OptionGroup label="Land">
             <Option>Cat</Option>
-            <Option>Caterpillar</Option>
-            <Option>Corgi</Option>
-            <Option>Chupacabra</Option>
             <Option>Dog</Option>
-            <Option disabled>Ferret</Option>
+            </OptionGroup>
+            <OptionGroup label="Sea">
             <Option>Fish</Option>
-            <Option>Fox</Option>
-            <Option>Hamster</Option>
-            <Option>Snake</Option>
+            <Option>Seal</Option>
+            </OptionGroup>
           </Dropdown>
         </div>
       ),

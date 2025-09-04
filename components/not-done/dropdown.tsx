@@ -1,8 +1,5 @@
 "use client"
 
-import * as React from "react"
-import { PiCaretDown, PiCheck } from "react-icons/pi"
-
 import {
   Command,
   CommandGroup,
@@ -13,6 +10,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@radix-ui/react-popover"
+import * as React from "react"
+import { PiCaretDown, PiCheck, PiX } from "react-icons/pi"
 import { tv } from "tailwind-variants"
 
 const dropdownVariants = tv({
@@ -54,7 +53,7 @@ function Dropdown({
   defaultValue = "",
   className,
   children,
-  placeholder,
+  placeholder = "Select an option",
   appearance = "outline",
   disabled = false,
   size = "medium",
@@ -90,28 +89,41 @@ function Dropdown({
           aria-expanded={open}
           className={
             dropdownVariants({ appearance, disabled, size }) +
-            ` relative flex w-full items-center justify-between gap-2 overflow-hidden rounded-md px-3 py-2 hover:cursor-pointer ${value ? "text-neutral-700" : "text-gray-500"} ` +
+            ` relative z-10 flex w-full items-center justify-between gap-2 overflow-hidden rounded-md px-3 py-2 hover:cursor-pointer ${value ? "text-neutral-700" : "text-gray-500"} ` +
             className
           }
         >
           {value || placeholder}
           <div
-            className={`absolute bottom-0 left-0 h-[1px] w-full bg-gray-500`}
+            className={`absolute bottom-0 left-0 z-30 h-[1px] w-full bg-gray-500`}
           />
           <div
-            className={`bg-brand-primary absolute bottom-0 h-[2px] transition-all ${
+            className={`bg-brand-primary absolute bottom-0 z-30 h-[2px] transition-all ${
               open ? "left-0 w-full" : "left-1/2 w-0"
             }`}
           />
+          {value! && (
+            <button
+              onClick={() => {
+                console.log("alou e vera")
+                setOpen(false)
+                setValue("")
+              }}
+              className="absolute right-2 z-[999] text-black"
+            >
+              <PiX />
+            </button>
+          )}
           <PiCaretDown className="ml-2 h-4 w-4 shrink-0 text-black opacity-50" />
         </button>
       </PopoverTrigger>
+
       <PopoverContent
         align="start"
         sideOffset={4}
         className="w-[var(--radix-popper-anchor-width)] p-0"
       >
-        <Command className="rounded-md bg-white px-1 py-1 shadow-xl">
+        <Command className="z-[99999] rounded-md bg-white px-1 py-1 shadow-xl">
           <CommandGroup>{childrenWithProps}</CommandGroup>
         </Command>
       </PopoverContent>
@@ -161,4 +173,33 @@ function Option({
   )
 }
 
-export { Dropdown, Option }
+type OptionGroupProps = {
+  label?: string
+  children?: React.ReactNode
+  setValue?: (value: string) => void
+  setOpen?: (open: boolean) => void
+  selectedValue?: string
+}
+
+function OptionGroup({
+  label,
+  setValue,
+  setOpen,
+  selectedValue: value,
+  children,
+}: OptionGroupProps) {
+  const heading = label?.toString() || "Options"
+  const childrenWithProps = React.Children.map(children, (child) => {
+    if (React.isValidElement<OptionProps>(child)) {
+      return React.cloneElement(child, {
+        setValue,
+        setOpen,
+        selectedValue: value,
+      })
+    }
+    return child
+  })
+  return <CommandGroup heading={heading}>{childrenWithProps}</CommandGroup>
+}
+
+export { Dropdown, Option, OptionGroup }
