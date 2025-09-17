@@ -1,3 +1,4 @@
+import Persona from "@/components/done/persona"
 import { Dropdown, Option, OptionGroup } from "@/components/not-done/dropdown"
 
 export const dropdown_card = {
@@ -102,12 +103,12 @@ export const dropdown_card = {
           <p>Best pet</p>
           <Dropdown className="mt-2" placeholder="Select an animal">
             <OptionGroup label="Land">
-            <Option>Cat</Option>
-            <Option>Dog</Option>
+              <Option>Cat</Option>
+              <Option>Dog</Option>
             </OptionGroup>
             <OptionGroup label="Sea">
-            <Option>Fish</Option>
-            <Option>Seal</Option>
+              <Option>Fish</Option>
+              <Option>Seal</Option>
             </OptionGroup>
           </Dropdown>
         </div>
@@ -117,47 +118,161 @@ export const dropdown_card = {
       cardHeader: "Clearable",
       cardSubtext:
         "A Dropdown can be clearable and let users remove their selection. Note: this is not supported in multiselect mode yet.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="w-[300px]">
+          <label>Pick a color</label>
+          <Dropdown
+            clearable
+            className={"mt-2 mb-1"}
+            placeholder="Select a color"
+          >
+            <Option>Red</Option>
+            <Option>Green</Option>
+            <Option>Blue</Option>
+          </Dropdown>
+        </div>
+      ),
     },
     {
       cardHeader: "Complex Options",
       cardSubtext:
         "Options are defined as JSX children, and can include nested elements or other components. When this is the case, the Option's text prop should be the plain text version of the option, and is used as the Dropdown button's value when the option is selected. Options should never contain interactive elements, such as buttons or links.",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "Custom Options",
-      cardSubtext:
-        "Options and OptionGroups can be extended and customized.Here OptionGroup is wrapped in CustomOptionGroup,which adds a custom label style and takes an options array prop which is mapped to child Option elements.Option is also wrapped in CustomOption, which adds a custom check icon and animal icon.The text prop is added to <Option>, since the children of <Option> are not a simple string.Carousel can be used in a Dialog to create a first-run experience.",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "Controlled",
-      cardSubtext:
-        "A Dropdown may have controlled or controlled selection and value. When the selection is controlled or a default selection is provided, a controlled value or default value must also be defined. Otherwise, the Dropdown will not be able to display a value before the Options are rendered.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="w-[300px]">
+          <label>Schedule a meeting</label>
+          <Dropdown clearable className={"mt-2 mb-1"} placeholder="">
+            <Option text="Katri Athokas">
+              <Persona
+                name={"Katri Athokas"}
+                secondaryText={"Available"}
+                avatar={{
+                  status: "online",
+                  size: "sm",
+                  src: "https://images.pexels.com/photos/26898037/pexels-photo-26898037/free-photo-of-european-garden-spider-with-web.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load",
+                  name: "Katri Athokas",
+                }}
+              />
+            </Option>
+            <Option value="Elvia Atkins">
+              <Persona
+                name={"Elvia Atkins"}
+                secondaryText={"Busy"}
+                avatar={{
+                  status: "offline",
+                  size: "sm",
+                  src: "https://images.pexels.com/photos/13925674/pexels-photo-13925674.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load",
+                  name: "Elvia Atkins",
+                }}
+              />
+            </Option>
+            <Option value="Cameron Evans">
+              <Persona
+                name={"Cameron Evans"}
+                secondaryText={"Away"}
+                avatar={{
+                  status: "away",
+                  size: "sm",
+                  src: "https://images.pexels.com/photos/27862762/pexels-photo-27862762/free-photo-of-a-man-standing-in-front-of-a-wall-with-a-bag.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load",
+                  name: "Cameron Evans",
+                }}
+              />
+            </Option>
+          </Dropdown>
+        </div>
+      ),
     },
     {
       cardHeader: "Multiselect",
       cardSubtext:
         "Dropdown supports multiselect, and options within a multiselect will display checkbox icons.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="w-[300px]">
+          <label>Best pet</label>
+          <Dropdown
+            multiselect
+            className={"mt-2 mb-1"}
+            placeholder="Select an animal"
+          >
+            <Option>Cat</Option>
+            <Option>Dog</Option>
+            <Option>Fish</Option>
+          </Dropdown>
+        </div>
+      ),
     },
     {
       cardHeader: "Size",
       cardSubtext:
         "A Dropdown's size can be set to small, medium (default), or large.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="flex w-[300px] flex-col gap-4">
+          <label className="text-xl font-bold">Small</label>
+          <div>
+            <label>Best pet</label>
+            <Dropdown
+              size="small"
+              className={"mt-2 mb-1"}
+              placeholder="Select an animal"
+            >
+              <Option>Cat</Option>
+              <Option>Dog</Option>
+              <Option>Fish</Option>
+            </Dropdown>
+          </div>
+          <label className="text-xl font-bold">Medium</label>
+          <div>
+            <label>Best pet</label>
+            <Dropdown
+              size="medium"
+              className={"mt-2 mb-1"}
+              placeholder="Select an animal"
+            >
+              <Option>Cat</Option>
+              <Option>Dog</Option>
+              <Option>Fish</Option>
+            </Dropdown>
+          </div>
+          <label className="text-xl font-bold">Large</label>
+          <div>
+            <label>Best pet</label>
+            <Dropdown
+              size="large"
+              className={"mt-2 mb-1"}
+              placeholder="Select an animal"
+            >
+              <Option>Cat</Option>
+              <Option>Dog</Option>
+              <Option>Fish</Option>
+            </Dropdown>
+          </div>
+        </div>
+      ),
     },
     {
       cardHeader: "Disabled",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="w-[300px]">
+          <p>Best pet</p>
+          <Dropdown className="mt-2" placeholder="Select an animal" disabled />
+        </div>
+      ),
     },
     {
       cardHeader: "Truncated Value",
       cardSubtext:
         "The Dropdown button slot can be customized to render child JSX, which can be used to truncate the selected value text. Dropdown options can also be customized to overflow in various ways, e.g. by allowing long words to break and wrap.",
-      cardComponent: <div></div>,
+      cardComponent: (
+        <div className="w-[300px]">
+          <p>Best pet</p>
+          <Dropdown className="mt-2" placeholder="Select an animal">
+            <Option>Cat</Option>
+            <Option>SuperLongName_123456789_SomeMoreStuffToMakeItLonger</Option>
+            <Option>
+              Screaming hairy armadillo (Chaetophractus vellerosus )
+            </Option>
+          </Dropdown>
+        </div>
+      ),
     },
     {
       cardHeader: "Active Option Change",

@@ -11,13 +11,21 @@ import {
   PopoverTrigger,
 } from "@radix-ui/react-popover"
 import * as React from "react"
+import { FaCheck } from "react-icons/fa"
 import { PiCaretDown, PiCheck, PiX } from "react-icons/pi"
 import { tv } from "tailwind-variants"
 
 const dropdownVariants = tv({
   variants: {
-    size: { small: "text-xs", medium: "text-base", large: "text-xl" },
-    disabled: { true: "cursor-not-allowed opacity-50" },
+    size: {
+      small: "px-2 py-1 text-sm",
+      medium: "px-3 py-2 text-base",
+      large: "px-5 py-3 text-xl",
+    },
+    disabled: {
+      true: "cursor-not-allowed opacity-50",
+      false: "hover:cursor-pointer",
+    },
     appearance: {
       outline: "border border-gray-500",
       underline: "",
@@ -68,13 +76,18 @@ function Dropdown({
   ...props
 }: DropdownProps) {
   const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState<string>(String(defaultValue ?? ""))
+  const [value, setValue] = React.useState<string[]>(
+    defaultValue ? [String(defaultValue)] : []
+  )
+
+  const isMultiselect = multiselect
 
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement<OptionProps>(child)) {
       return React.cloneElement(child, {
         setValue,
         setOpen,
+        isMultiSelect: isMultiselect,
         selectedValue: value,
       })
     }
@@ -83,17 +96,19 @@ function Dropdown({
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild disabled={disabled}>
         <button
           role="combobox"
           aria-expanded={open}
           className={
             dropdownVariants({ appearance, disabled, size }) +
-            ` relative z-10 flex w-full items-center justify-between gap-2 overflow-hidden rounded-md px-3 py-2 hover:cursor-pointer ${value ? "text-neutral-700" : "text-gray-500"} ` +
+            ` relative z-10 flex w-full items-center justify-between gap-2 rounded-md ${value.length > 0 ? "text-neutral-700" : " text-gray-500"} ${!placeholder ? " h-10" : ""}` +
             className
           }
         >
-          {value || placeholder}
+          <span className="max-w-full truncate text-start">
+            {value.length > 0 ? value.join(", ") : placeholder}
+          </span>
           <div
             className={`absolute bottom-0 left-0 z-30 h-[1px] w-full bg-gray-500`}
           />
@@ -102,19 +117,23 @@ function Dropdown({
               open ? "left-0 w-full" : "left-1/2 w-0"
             }`}
           />
-          {value! && (
-            <button
-              onClick={() => {
-                console.log("alou e vera")
+          {clearable && !multiselect && value.length > 0 && (
+            <div
+              onClick={(e) => {
+                e.stopPropagation()
                 setOpen(false)
-                setValue("")
+                setValue([])
               }}
-              className="absolute right-2 z-[999] text-black"
+              className="absolute right-3 z-[999] text-black"
             >
               <PiX />
-            </button>
+            </div>
           )}
-          <PiCaretDown className="ml-2 h-4 w-4 shrink-0 text-black opacity-50" />
+          {(!clearable || value.length === 0 || multiselect) && (
+            <PiCaretDown
+              className={`z-[999] ml-2 shrink-0 ${disabled ? "text-gray-400" : "text-black"}`}
+            />
+          )}
         </button>
       </PopoverTrigger>
 
@@ -135,9 +154,10 @@ type OptionProps = {
   disabled?: boolean
   value?: string
   text?: string
-  setValue?: (value: string) => void
+  setValue?: (value: string[]) => void
   setOpen?: (open: boolean) => void
-  selectedValue?: string
+  selectedValue?: string[]
+  isMultiSelect?: boolean
   children?: React.ReactNode
 }
 
@@ -148,11 +168,12 @@ function Option({
   children,
   setValue,
   setOpen,
-  selectedValue,
+  selectedValue = [],
+  isMultiSelect,
 }: OptionProps) {
-  const string = value || children?.toString() || ""
+  const string = value || text || children?.toString() || ""
 
-  const isSelected = selectedValue === string
+  const isSelected = selectedValue.includes(string)
 
   return (
     <CommandItem
@@ -160,15 +181,36 @@ function Option({
       value={string}
       onSelect={() => {
         if (disabled) return
-        setValue?.(string)
-        setOpen?.(false)
+        if (isMultiSelect) {
+          if (isSelected) {
+            setValue?.(selectedValue.filter((v) => v !== string))
+          } else {
+            setValue?.([...selectedValue, string])
+          }
+        } else {
+          setValue?.([string])
+          setOpen?.(false)
+        }
       }}
-      className={`relative flex items-center gap-2 px-8 py-2 hover:cursor-pointer ${
+      className={`relative flex items-center justify-start gap-2 px-8 py-2 hover:cursor-pointer ${
         disabled ? "text-gray-400" : "text-black hover:bg-gray-100"
       }`}
     >
-      {isSelected && <PiCheck className="absolute left-2 h-4 w-4 text-black" />}
-      {children || text || string}
+      {isMultiSelect ? (
+        <div
+          className={`absolute left-2 flex max-h-4 min-h-4 max-w-4 min-w-4 items-center justify-center rounded-xs border border-gray-500 p-1 text-sm text-slate-50 shadow-sm dark:border-slate-200 ${
+            isSelected ? "bg-[#115EA3]" : ""
+          }`}
+        >
+          {isSelected && <FaCheck className="max-h-2 max-w-2" />}
+        </div>
+      ) : (
+        isSelected &&
+        !isMultiSelect && (
+          <PiCheck className="absolute left-2 h-4 w-4 text-wrap text-black" />
+        )
+      )}
+      <span className="text-wrap">{children || text || string}</span>
     </CommandItem>
   )
 }
@@ -176,9 +218,9 @@ function Option({
 type OptionGroupProps = {
   label?: string
   children?: React.ReactNode
-  setValue?: (value: string) => void
+  setValue?: (value: string[]) => void
   setOpen?: (open: boolean) => void
-  selectedValue?: string
+  selectedValue?: string[]
 }
 
 function OptionGroup({
