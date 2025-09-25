@@ -274,17 +274,5 @@ export const dropdown_card = {
         </div>
       ),
     },
-    {
-      cardHeader: "Active Option Change",
-      cardSubtext:
-        "OnActiveOptionChange notifies the user when the active option in the Dropdown was changed by keyboard. To react on mouse hover events, use onMouseEnter on the invididual options.",
-      cardComponent: <div></div>,
-    },
-    {
-      cardHeader: "Controlling Open And Close",
-      cardSubtext:
-        "The opening and close of the Dropdown can be controlled with your own state. The onOpenChange callback will provide the hints for the state and triggers based on the appropriate event.",
-      cardComponent: <div></div>,
-    },
   ],
 }

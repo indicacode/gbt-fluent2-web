@@ -42,7 +42,7 @@ type DropdownVariantProps = Parameters<typeof dropdownVariants>[0]
 
 type DropdownProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> &
   DropdownVariantProps & {
-    onOptionSelect?: (option: string) => void
+    onOptionSelect?: (option: string[]) => void
     onOpenChange?: (open: boolean) => void
     multiselect?: boolean
     defaultSelectedOptions?: string[]
@@ -93,6 +93,18 @@ function Dropdown({
     }
     return child
   })
+
+  React.useEffect(() => {
+    if (onOpenChange) {
+      onOpenChange(open)
+    }
+  }, [open, onOpenChange])
+
+  React.useEffect(() => {
+    if (onOptionSelect) {
+      onOptionSelect(value)
+    }
+  }, [value, onOptionSelect])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
