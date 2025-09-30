@@ -1,10 +1,11 @@
+import { Toolbar } from "@/components/reviewing/toolbar"
 export const toolbar_card = {
   header: "Toolbar",
   subText:
     "A toolbar is a container for grouping a set of controls, such as buttons, menu buttons, or checkboxes.",
   cards: [
     {
-      cardComponent: <div></div>,
+      cardComponent: <Toolbar></Toolbar>,
     },
     {
       cardHeader: "Small",

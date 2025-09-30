@@ -101,6 +101,7 @@ export const components = [
   toast_card,
   messagebar_card,
   persona_card,
+  toolbar_card
 ] as ComponentsType
 
 export const sideBar = {
