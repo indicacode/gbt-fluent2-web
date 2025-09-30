@@ -7,11 +7,11 @@ import { tv, VariantProps } from "tailwind-variants"
 const sliderVariants = tv({
   slots: {
     root: "relative flex w-full touch-none items-center select-none",
-    range: "bg-brand-primary dark:bg-brand-primary absolute h-full",
+    range: "absolute h-full bg-[#115EA3] dark:bg-[#115EA3]",
     track:
       "relative w-full grow overflow-hidden rounded-full bg-gray-200 dark:bg-slate-50/20",
     thumb:
-      "before:bg-brand-primary relative block rounded-full border-[1.5px] border-slate-900/50 bg-white shadow-sm transition-colors before:absolute before:top-1/2 before:left-1/2 before:aspect-square before:translate-x-[-50%] before:translate-y-[-50%] before:rounded-full before:content-[''] focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 dark:border-slate-400 dark:bg-white dark:focus-visible:ring-transparent",
+      "relative block rounded-full border-[1.5px] border-slate-900/50 bg-white shadow-sm transition-colors before:absolute before:top-1/2 before:left-1/2 before:aspect-square before:translate-x-[-50%] before:translate-y-[-50%] before:rounded-full before:bg-[#115EA3] before:content-[''] focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 dark:border-slate-400 dark:bg-white dark:focus-visible:ring-transparent",
   },
   variants: {
     size: {

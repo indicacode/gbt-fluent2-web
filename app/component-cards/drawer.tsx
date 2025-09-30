@@ -43,7 +43,7 @@ export const drawer_card = {
       cardSubtext: "",
       cardComponent: (
         <Drawer defaultOpen={true} position="bottom">
-          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
             Open drawer
           </DrawerTrigger>
 
@@ -65,7 +65,7 @@ export const drawer_card = {
         "OverlayDrawer contains supplementary content and is used for complex creation, edit, or management experiences. For example, viewing details about an item in a list or editing settings. By default, drawer is blocking and signifies that the user's full attention is required when making configurations.",
       cardComponent: (
         <Drawer defaultOpen={false} position="bottom">
-          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
             Open drawer
           </DrawerTrigger>
 
@@ -87,7 +87,7 @@ export const drawer_card = {
         "An overlay is optional depending on whether or not interacting with the background content is beneficial to the user's context/scenario. By setting the modalType prop to non-modal, the Drawer will not be blocking and the user can interact with the background content.",
       cardComponent: (
         <Drawer defaultOpen={false} position="bottom">
-          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
             Open drawer
           </DrawerTrigger>
 
@@ -109,7 +109,7 @@ export const drawer_card = {
         "InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as the main surface, users can still interact with other UI elements. This could be useful for swapping between different items in the main surface.",
       cardComponent: (
         <Drawer defaultOpen={false} inline={true} position="left">
-          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+          <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
             Open drawer
           </DrawerTrigger>
 
@@ -132,7 +132,7 @@ export const drawer_card = {
       cardComponent: (
         <div>
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer from the bottom
             </DrawerTrigger>
 
@@ -147,7 +147,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer from the right
             </DrawerTrigger>
 
@@ -162,7 +162,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} position="left">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary mt-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary mt-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open drawer from the left
             </DrawerTrigger>
 
@@ -186,7 +186,7 @@ export const drawer_card = {
       cardComponent: (
         <div>
           <Drawer defaultOpen={false} size="sm" position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open small drawer
             </DrawerTrigger>
 
@@ -201,7 +201,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open medium drawer
             </DrawerTrigger>
 
@@ -216,7 +216,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} size={"lg"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open large drawer
             </DrawerTrigger>
 
@@ -240,7 +240,7 @@ export const drawer_card = {
       cardComponent: (
         <div className={""}>
           <Drawer defaultOpen={false} size={"sm"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open small drawer
             </DrawerTrigger>
 
@@ -255,7 +255,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open medium drawer
             </DrawerTrigger>
 
@@ -270,7 +270,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} size={"lg"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open large drawer
             </DrawerTrigger>
 
@@ -294,7 +294,7 @@ export const drawer_card = {
       cardComponent: (
         <div>
           <Drawer defaultOpen={false} size={"sm"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open small drawer
             </DrawerTrigger>
 
@@ -309,7 +309,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open medium drawer
             </DrawerTrigger>
 
@@ -324,7 +324,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} size={"lg"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open large drawer
             </DrawerTrigger>
 
@@ -349,7 +349,7 @@ export const drawer_card = {
       cardComponent: (
         <div>
           <Drawer defaultOpen={false} size={"sm"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open small drawer
             </DrawerTrigger>
 
@@ -364,7 +364,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open medium drawer
             </DrawerTrigger>
 
@@ -379,7 +379,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} size={"lg"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open large drawer
             </DrawerTrigger>
 
@@ -405,7 +405,7 @@ export const drawer_card = {
       cardComponent: (
         <div className={""}>
           <Drawer defaultOpen={false} size={"sm"} position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open small drawer
             </DrawerTrigger>
 
@@ -420,7 +420,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} position="bottom">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open medium drawer
             </DrawerTrigger>
 
@@ -435,7 +435,7 @@ export const drawer_card = {
             </DrawerContent>
           </Drawer>
           <Drawer defaultOpen={false} size="lg" position="right">
-            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 bg-brand-primary active:border-brand-secondary ml-2 rounded-md px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
+            <DrawerTrigger className="dark:text-whitesmoke active:gray-200 active:border-brand-secondary ml-2 rounded-md bg-[#115EA3] px-4 py-1 text-white duration-400 hover:bg-[#115EA3] active:bg-[#0C3B5E] disabled:bg-[#F0F0F0] disabled:text-black data-[selected=true]:before:bg-white">
               Open large drawer
             </DrawerTrigger>
 

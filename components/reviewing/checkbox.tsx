@@ -1,16 +1,17 @@
 "use client"
 
 import { CheckedState, Indicator, Root } from "@radix-ui/react-checkbox"
-import { FaCheck } from "@react-icons/all-files/fa/FaCheck"
 import { ComponentPropsWithoutRef, useEffect, useState } from "react"
+import { FaCheck } from "react-icons/fa"
 import { tv, VariantProps } from "tailwind-variants"
 
 const checkboxSlots = tv({
   slots: {
-    checkbox: `peer data-[state=checked]:border-brand-primary data-[state=indeterminate]:border-brand-primary data-[state=checked]:bg-brand-primary flex aspect-square shrink-0 overflow-hidden rounded-xs border border-gray-500 text-slate-50 shadow-sm transition-colors hover:border-neutral-700 focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-200 dark:focus-visible:ring-slate-300 dark:data-[state=checked]:bg-slate-50 dark:data-[state=checked]:text-slate-900`,
-    indicator: "flex h-full w-full items-center justify-center text-current",
+    checkbox: `peer data-[state=checked]:border-brand-primary data-[state=indeterminate]:border-brand-primary flex aspect-square shrink-0 overflow-hidden rounded-xs border border-gray-500 p-1 text-slate-50 shadow-sm transition-colors hover:cursor-pointer hover:border-neutral-700 focus-visible:ring-1 focus-visible:ring-slate-950 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-[#115EA3] dark:border-slate-200 dark:focus-visible:ring-slate-300 dark:data-[state=checked]:bg-slate-50 dark:data-[state=checked]:text-slate-900 justify-center items-center`,
+    indicator:
+      "flex h-full max-h-2 w-full max-w-2 items-center justify-center text-white [&_svg]:h-3 [&_svg]:w-3",
     indeterminate:
-      "bg-brand-primary aspect-square min-h-[50%] min-w-[50%] rounded-xs",
+      "aspect-square min-h-[50%] min-w-[50%] rounded-xs bg-[#115EA3]",
     indeterminateContainer: "flex items-center justify-center",
   },
   variants: {
@@ -85,7 +86,7 @@ export function Checkbox({
             <span className={styles.indeterminate()} />
           </div>
         ) : (
-          internalState && <FaCheck size="8" />
+          internalState && <FaCheck />
         )}
       </Indicator>
     </Root>

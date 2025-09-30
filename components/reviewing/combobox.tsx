@@ -15,8 +15,8 @@ import {
 } from "react"
 import { tv } from "tailwind-variants"
 
-import { CommandEmpty } from "@/components/done/customCommandEmpty"
-import { Badge } from "@/components/not-done/badge"
+import { CommandEmpty } from "@/components/not-done/customCommandEmpty"
+import { Badge } from "@/components/reviewing/badge"
 import { cn } from "@/lib/utils"
 
 import { Checkbox } from "@/components/reviewing/checkbox"
@@ -26,14 +26,14 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/reviewing/command"
-import { Popover, PopoverContent, PopoverTrigger } from "../reviewing/popover"
 import {
   GroupOption,
   MultipleSelectorProps,
   MultipleSelectorRef,
   Option,
-} from "./combobox.types"
-import { Input } from "./input"
+} from "../done/combobox.types"
+import { Input } from "../done/input"
+import { Popover, PopoverContent, PopoverTrigger } from "./popover"
 
 function transferToGroupOption(options: Array<Option>, groupBy?: string) {
   if (options.length === 0) {
@@ -61,7 +61,7 @@ function transferToGroupOption(options: Array<Option>, groupBy?: string) {
 const combobox = tv({
   slots: {
     badge:
-      "data-disabled:bg-muted-foreground data-disabled:text-muted data-disabled:hover:bg-muted-foreground data-fixed:bg-muted-foreground data-fixed:text-muted data-fixed:hover:bg-muted-foreground bg-brand-primary flex cursor-pointer items-center justify-center gap-1 rounded-full py-1",
+      "data-disabled:bg-muted-foreground data-disabled:text-muted data-disabled:hover:bg-muted-foreground data-fixed:bg-muted-foreground data-fixed:text-muted data-fixed:hover:bg-muted-foreground flex cursor-pointer items-center justify-center gap-1 rounded-full bg-[#115EA3] py-1",
     badgeIcon: "text-muted-foreground hover:text-foreground h-3 w-3",
     commandList:
       "animate-in flex w-56 justify-start rounded-md border p-0.5 shadow-md outline-hidden",

@@ -1,4 +1,4 @@
-import { Button } from "@/components/done/button"
+import Button from "@/components/done/button"
 import { Progress } from "@/components/not-done/progress"
 import {
   Popover,

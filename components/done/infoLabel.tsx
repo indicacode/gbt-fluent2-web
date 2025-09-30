@@ -17,35 +17,35 @@ import {
 const labelInfo = tv({
   slots: {
     container:
-      "relative flex h-fit max-h-fit w-fit max-w-fit justify-center gap-0.5 align-middle",
+      "relative flex h-fit max-h-fit w-fit max-w-fit justify-center gap-1 align-middle",
   },
   variants: {
     size: {
-      sm: { container: "text-xs" },
-      md: { container: "text-sm" },
-      lg: { container: "text-base" },
+      small: { container: "text-xs" },
+      medium: { container: "text-sm" },
+      large: { container: "text-base" },
     },
   },
 })
 
 const { container } = labelInfo()
 
-function SizedIcons({ size = "md" }: { size: "sm" | "md" | "lg" }) {
+function SizedIcons({ size = "medium" }: { size: "small" | "medium" | "large" }) {
   return (
     <>
-      {size === "sm" && <Info12Regular />}
-      {size === "md" && <Info16Regular />}
-      {size === "lg" && <Info24Regular />}
+      {size === "small" && <Info12Regular />}
+      {size === "medium" && <Info16Regular />}
+      {size === "large" && <Info24Regular />}
     </>
   )
 }
 
 export default function InfoLabel({
   children,
-  size = "md",
+  size = "medium",
 }: {
   children: ReactNode
-  size?: "sm" | "md" | "lg"
+  size?: "small" | "medium" | "large"
 }) {
   return (
     <div className={container({})}>

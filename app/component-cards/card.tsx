@@ -1,4 +1,4 @@
-import { Button } from "@/components/done/button"
+import Button from "@/components/done/button"
 import {
   Card,
   CardContent,
@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
   FloatingAction,
-} from "@/components/done/card"
+} from "@/components/reviewing/card"
 import { BsThreeDots } from "@react-icons/all-files/bs/BsThreeDots"
 
 export const card_card = {

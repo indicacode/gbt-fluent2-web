@@ -1,4 +1,4 @@
-import { Button } from "@/components/done/button"
+import Button from "@/components/done/button"
 import { ToastAction } from "@/components/reviewing/toast"
 import { toast } from "@/components/reviewing/use-toast"
 

@@ -1,4 +1,4 @@
-import Combobox from "@/components/done/combobox"
+import Combobox from "@/components/reviewing/combobox"
 
 export const frameworks = [
   {

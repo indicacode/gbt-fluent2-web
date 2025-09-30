@@ -6,7 +6,7 @@ import { tv, type VariantProps } from "tailwind-variants"
 
 const inputVariants = tv({
   slots: {
-    root: "flex flex-col",
+    root: "flex",
     label: "py-1 text-black dark:text-gray-400",
     inputContainer:
       "relative flex w-full items-center gap-1 overflow-hidden rounded-[4px] px-2 text-[#707070] shadow-xs outline-0 transition-all select-none",
@@ -27,6 +27,10 @@ const inputVariants = tv({
       filledDark: {
         inputContainer: "bg-gray-800",
       },
+    },
+    orientation: {
+      horizontal: { root: "flex-row gap-2" },
+      vertical: { root: "flex-col" },
     },
     size: {
       sm: {
@@ -80,6 +84,7 @@ const inputVariants = tv({
     variant: "outline",
     size: "md",
     state: "neutral",
+    orientation: "vertical",
   },
 })
 
@@ -89,8 +94,10 @@ type InputProps = Omit<ComponentProps<"input">, "size"> &
     helperText?: ReactNode
     labelText?: ReactNode
     iconOnly?: boolean
+    required?: boolean
     error?: boolean
     children?: ReactNode
+    orientation?: "horizontal" | "vertical"
   }
 
 const { input, root, inputContainer, inputDecoration, label } = inputVariants()
@@ -107,12 +114,14 @@ function Input({
   variant = "outline",
   containerClassName,
   state = "neutral",
+  orientation = "vertical",
   iconOnly = false,
   size = "md",
   helperText,
   labelText,
   className,
   disabled,
+  required = false,
   error,
   children,
   onFocus,
@@ -162,55 +171,57 @@ function Input({
   const inputState = error ? "fail" : state
 
   return (
-    <div className={root()}>
+    <div className={root({ orientation })}>
       {labelText && (
         <label
           htmlFor={`input-${inputId}`}
           className={label({ state: inputState })}
         >
-          {labelText}
+          {labelText} {required && <span className="text-red-500">*</span>}
         </label>
       )}
-      <div
-        className={inputContainer({
-          className: containerClassName,
-          state: inputState,
-          variant,
-          disabled,
-          active,
-          focus,
-          size,
-        })}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-      >
-        {LeftAddon?.[0]}
-        <div className={inputDecoration({ focus, active })} />
-        <input
-          data-slot="input"
-          id={`input-${inputId}`}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          disabled={disabled}
-          className={input({
-            className,
+      <div>
+        <div
+          className={inputContainer({
+            className: containerClassName,
+            state: inputState,
             variant,
             disabled,
+            active,
+            focus,
             size,
           })}
-          {...props}
-        />
-        {RightAddon?.[0]}
-      </div>
-      {helperText && (
-        <p
-          className={`text-xs text-gray-500 dark:text-gray-400 ${
-            inputState === "fail" ? "text-red-500 dark:text-red-500" : ""
-          }`}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
         >
-          {helperText}
-        </p>
-      )}
+          {LeftAddon?.[0]}
+          <div className={inputDecoration({ focus, active })} />
+          <input
+            data-slot="input"
+            id={`input-${inputId}`}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            disabled={disabled}
+            className={input({
+              className,
+              variant,
+              disabled,
+              size,
+            })}
+            {...props}
+          />
+          {RightAddon?.[0]}
+        </div>
+        {helperText && (
+          <p
+            className={`text-xs text-gray-500 dark:text-gray-400 ${
+              inputState === "fail" ? "text-red-500 dark:text-red-500" : ""
+            }`}
+          >
+            {helperText}
+          </p>
+        )}
+      </div>
     </div>
   )
 }

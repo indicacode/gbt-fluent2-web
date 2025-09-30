@@ -10,7 +10,7 @@ export const infolabel_card = {
       cardSubtext: "",
       cardComponent: (
         <div className="flex gap-2">
-          <InfoLabel size={"lg"}>This is an example of a InfoLabel </InfoLabel>
+          <InfoLabel size={"large"}>This is an example of a InfoLabel </InfoLabel>
         </div>
       ),
     },
@@ -20,7 +20,7 @@ export const infolabel_card = {
         "When marked required, the indicator asterisk is placed before the InfoButton.",
       cardComponent: (
         <div className="flex gap-2">
-          <InfoLabel size={"lg"}>
+          <InfoLabel size={"large"}>
             This is an example of a Required InfoLabel{" "}
             <h2 className={"text-red-500"}>*</h2>{" "}
           </InfoLabel>
@@ -33,7 +33,7 @@ export const infolabel_card = {
         "InfoLabel's size prop affects the size of the Label and InfoButton. The default size is medium.",
       cardComponent: (
         <div className="flex gap-2">
-          <InfoLabel size={"lg"}>
+          <InfoLabel size={"large"}>
             This is an example of a Required InfoLabel{" "}
             <h2 className={"text-red-500"}>*</h2>{" "}
           </InfoLabel>
@@ -46,7 +46,7 @@ export const infolabel_card = {
         "An InfoLabel can be used in a Field by rendering the label prop as an InfoLabel. This uses the slot render function support. See the code from this story for an example.",
       cardComponent: (
         <div className="flex flex-col gap-2">
-          <InfoLabel size={"lg"}>
+          <InfoLabel size={"large"}>
             This is an example of a Field With an Info Label
           </InfoLabel>
           <Input placeholder={"Input email here!"}></Input>

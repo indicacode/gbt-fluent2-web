@@ -12,12 +12,10 @@ export const switch_card = {
   ),
   cards: [
     {
-      cardHeader: "",
-      cardSubtext: " ",
       cardComponent: (
         <div className={"flex flex-row items-center"}>
           <Switch className={""} />
-          <h2 className={""}>This is a switch.</h2>
+          <h2 className={"ml-2"}>This is a switch.</h2>
         </div>
       ),
     },
@@ -61,17 +59,17 @@ export const switch_card = {
       cardSubtext:
         "A label can be provided to the Switch and is positioned above, before or after the component.\n",
       cardComponent: (
-        <div className={"flex flex-row"}>
+        <div className={"flex flex-row gap-3"}>
           <div className={"flex flex-row items-center"}>
-            <h2>With label before and unchecked</h2>
-            <Switch />
+            <h2 className="mr-2">With label before and unchecked</h2>
+            <Switch/>
           </div>
           <div className={"ml-2 flex flex-col items-center"}>
             <h2>With label above and checked</h2>
             <Switch checked={true} />
           </div>
           <div className={"ml-2 flex flex-row items-center"}>
-            <Switch />
+            <Switch  className="mr-2"/>
             <h2>With label after and unchecked</h2>
           </div>
         </div>

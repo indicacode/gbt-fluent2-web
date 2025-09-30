@@ -268,7 +268,7 @@ export const accordion_card = {
     {
       cardHeader: "Expand Icon",
       cardSubtext:
-        " The expand icon can be placed at the start or end of the accordian header.",
+        "An accordion item can have a custom expand icon.",
       cardComponent: (
         <div>
           <Accordion type="single" className="w-full">

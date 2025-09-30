@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
   FloatingAction,
-} from "../done/Card"
+} from "../reviewing/card"
 
 describe("Card Component", () => {
   it("should render the Card with default props", () => {
