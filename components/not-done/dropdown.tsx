@@ -152,9 +152,9 @@ function Dropdown({
       <PopoverContent
         align="start"
         sideOffset={4}
-        className="w-[var(--radix-popper-anchor-width)] p-0"
+        className="z-50 w-[var(--radix-popper-anchor-width)]  p-0"
       >
-        <Command className="z-[99999] rounded-md bg-white px-1 py-1 shadow-xl">
+        <Command className="rounded-md bg-white px-1 py-1 shadow-xl">
           <CommandGroup>{childrenWithProps}</CommandGroup>
         </Command>
       </PopoverContent>
