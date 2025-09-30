@@ -1,5 +1,5 @@
 import Button from "@/components/done/button"
-import { ToastAction } from "@/components/reviewing/toast"
+import { ToastAction } from "@/components/done/toast"
 import { toast } from "@/components/reviewing/use-toast"
 
 export const toast_card = {

@@ -100,6 +100,7 @@ export const components = [
   menu_card,
   toast_card,
   messagebar_card,
+  tooltip_card,
   persona_card,
   toolbar_card
 ] as ComponentsType

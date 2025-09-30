@@ -4,9 +4,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/reviewing/carousel"
+} from "@/components/done/carousel"
 import Autoplay from "embla-carousel-autoplay"
-import React from "react"
 
 const plugin = Autoplay({ delay: 2000, stopOnInteraction: true })
 
