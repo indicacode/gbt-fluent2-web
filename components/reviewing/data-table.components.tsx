@@ -2,6 +2,7 @@ import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { ColumnDef, Row } from "@tanstack/react-table"
 
 import Button from "@/components/done/button"
+import { Checkbox } from "@/components/done/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/not-done/dropdown-menu"
-import { Checkbox } from "@/components/reviewing/checkbox"
 import { User } from "@/components/reviewing/data-table.input"
 import { DataTableColumnHeader } from "./data-table.columnHeader"
 

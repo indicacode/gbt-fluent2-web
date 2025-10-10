@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
   FloatingAction,
-} from "@/components/reviewing/card"
+} from "@/components/done/card"
 import { BsThreeDots } from "@react-icons/all-files/bs/BsThreeDots"
 
 export const card_card = {

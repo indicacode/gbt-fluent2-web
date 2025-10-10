@@ -1,4 +1,4 @@
-import { List, ListItem } from "@/components/reviewing/list"
+import { List, ListItem } from "@/components/done/list"
 
 export const list_card = {
   header: "List",
@@ -18,5 +18,5 @@ export const list_card = {
         </List>
       ),
     },
-  ]
+  ],
 }

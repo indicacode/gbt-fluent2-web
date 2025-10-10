@@ -15,11 +15,11 @@ import {
 } from "react"
 import { tv } from "tailwind-variants"
 
+import { Badge } from "@/components/done/badge"
 import { CommandEmpty } from "@/components/not-done/customCommandEmpty"
-import { Badge } from "@/components/reviewing/badge"
 import { cn } from "@/lib/utils"
 
-import { Checkbox } from "@/components/reviewing/checkbox"
+import { Checkbox } from "@/components/done/checkbox"
 import {
   Command,
   CommandGroup,
@@ -33,7 +33,7 @@ import {
   Option,
 } from "../done/combobox.types"
 import { Input } from "../done/input"
-import { Popover, PopoverContent, PopoverTrigger } from "./popover"
+import { Popover, PopoverContent, PopoverTrigger } from "../done/popover"
 
 function transferToGroupOption(options: Array<Option>, groupBy?: string) {
   if (options.length === 0) {

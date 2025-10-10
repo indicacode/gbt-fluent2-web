@@ -1,4 +1,4 @@
-import { Checkbox } from "@/components/reviewing/checkbox"
+import { Checkbox } from "@/components/done/checkbox"
 
 export const checkbox_card = {
   header: "Checkbox",

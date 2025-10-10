@@ -1,10 +1,10 @@
 import Button from "@/components/done/button"
-import { Progress } from "@/components/not-done/progress"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/reviewing/popover"
+} from "@/components/done/popover"
+import { Progress } from "@/components/not-done/progress"
 
 export const popover_card = {
   header: "Popover",

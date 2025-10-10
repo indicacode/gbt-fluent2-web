@@ -26,7 +26,7 @@ type ToolbarProps = {
   onCheckedValueChange: (option: string[]) => void
 } & React.HTMLAttributes<HTMLDivElement>
 
-function Toolbar({size, ...props }: ToolbarProps) {
+function Toolbar({ size, ...props }: ToolbarProps) {
   return <ToolbarPrimitive.Root></ToolbarPrimitive.Root>
 }
 

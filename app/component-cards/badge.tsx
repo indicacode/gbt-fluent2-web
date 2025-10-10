@@ -1,4 +1,4 @@
-import { Badge } from "@/components/reviewing/badge"
+import { Badge } from "@/components/done/badge"
 import { AiFillCalendar } from "react-icons/ai"
 
 export const badge_card = {
