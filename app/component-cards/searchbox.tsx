@@ -1,6 +1,6 @@
 "use client"
 
-import { SearchBox } from "@/components/reviewing/searchbox"
+import { SearchBox } from "@/components/done/searchbox"
 import { useState } from "react"
 import { PiMicrophone, PiUserLight } from "react-icons/pi"
 
@@ -149,14 +149,15 @@ export const searchbox_card = {
                 maxLength={20}
                 onChange={(e) => {
                   const length = e.target.value.length
-                  setText(length >= 20 ? "⚠️ Input is limited to 20 characters." : "")
+                  setText(
+                    length >= 20 ? "⚠️ Input is limited to 20 characters." : ""
+                  )
                 }}
                 size="medium"
                 className="mt-2 mb-1"
               />
               <p className="text-sm text-gray-600">{text}</p>
             </div>
-
           )
         }
         return <ControlledExample />

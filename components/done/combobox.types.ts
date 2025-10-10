@@ -48,7 +48,7 @@ export interface MultipleSelectorProps {
   /** Where the portal children are mounted on DOM
    * @remarks
    * The default value is `{@link portalRoot} or undefined */
-  mountNode?: ReactNode
+  mountNode?: HTMLElement | null
   /** Whether the combobox allows multiple selections. */
   multiselect?: boolean
   placeholder?: string

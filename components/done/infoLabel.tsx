@@ -12,7 +12,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/reviewing/popover"
+} from "@/components/done/popover"
 
 const labelInfo = tv({
   slots: {
@@ -30,7 +30,11 @@ const labelInfo = tv({
 
 const { container } = labelInfo()
 
-function SizedIcons({ size = "medium" }: { size: "small" | "medium" | "large" }) {
+function SizedIcons({
+  size = "medium",
+}: {
+  size: "small" | "medium" | "large"
+}) {
   return (
     <>
       {size === "small" && <Info12Regular />}

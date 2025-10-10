@@ -6,7 +6,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/reviewing/select"
+} from "@/components/done/select"
 
 export const select_card = {
   header: "Select",

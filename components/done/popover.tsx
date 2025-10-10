@@ -21,10 +21,11 @@ export function PopoverContent({
   className,
   align = "center",
   sideOffset = 4,
+  container,
   ...props
-}: ComponentProps<typeof Content>) {
+}: ComponentProps<typeof Content> & { container?: HTMLElement }) {
   return (
-    <Portal>
+    <Portal container={container}>
       <Content
         data-slot="popover-content"
         align={align}

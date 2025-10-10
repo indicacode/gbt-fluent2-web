@@ -1,5 +1,5 @@
+import { Dropdown, Option, OptionGroup } from "@/components/done/dropdown"
 import Persona from "@/components/done/persona"
-import { Dropdown, Option, OptionGroup } from "@/components/not-done/dropdown"
 
 export const dropdown_card = {
   header: "Dropdown",

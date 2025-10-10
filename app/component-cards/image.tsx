@@ -1,4 +1,4 @@
-import Image from "@/components/reviewing/image"
+import Image from "@/components/done/image"
 
 export const image_card = {
   header: "Image",
@@ -209,12 +209,12 @@ export const image_card = {
       cardSubtext:
         "The shadow prop will apply box shadow styling to the image.",
       cardComponent: (
-          <Image
-            shadow
-            src={
-              "https://fabricweb.azureedge.net/fabric-website/placeholders/400x250.png"
-            }
-          ></Image>
+        <Image
+          shadow
+          src={
+            "https://fabricweb.azureedge.net/fabric-website/placeholders/400x250.png"
+          }
+        ></Image>
       ),
     },
   ],
