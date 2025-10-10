@@ -198,7 +198,7 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
     function CreatableItem() {
       if (!creatable) return undefined
 
-      if (selected[0]?.label.includes(inputValue)) return undefined
+      if (selected.some((item) => item.label === inputValue)) return undefined
 
       function Item() {
         return (
@@ -250,7 +250,7 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
         )
       }
 
-      return <CommandEmpty>{emptyIndicator}</CommandEmpty>
+      return <CommandEmpty className="">{emptyIndicator}</CommandEmpty>
     }, [creatable, emptyIndicator, onSearch, options])
 
     //---Avoid Creatable Selector freezing or lagging when paste a long string.---//
@@ -277,7 +277,6 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
         onOpenChange={onOpenChange}
       >
         <div className="flex min-h-fit flex-col gap-1">
-          Label
           {multiselect && tags && (
             <div className="flex h-fit gap-1">
               {selected.map((option) => (
@@ -314,7 +313,6 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
                 setSelected([])
                 setInputValue("")
               }
-              console.log(e.key)
             }}
             {...commandProps}
             className={cn(
@@ -339,7 +337,6 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
                 ref={inputRef}
                 onChange={(e) => {
                   if (!multiselect && selected.length > 0) {
-                    console.log(selected.length)
                     return
                   }
                   setInputValue(e.target.value)
@@ -375,6 +372,8 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
               hidden
             />
             <PopoverContent
+              side="bottom"
+              align="start"
               className="w-radix-popover-trigger"
               onOpenAutoFocus={(e) => e.preventDefault()}
               container={mountNode}
@@ -434,8 +433,8 @@ const Combobox = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
                           >
                             {multiselect && (
                               <Checkbox
-                                checked={selected.some((item) =>
-                                  item.value.includes(option.value)
+                                checked={selected.some(
+                                  (item) => item.value === option.value
                                 )}
                               />
                             )}

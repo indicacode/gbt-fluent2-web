@@ -38,6 +38,7 @@ import { textarea_card } from "./component-cards/textarea"
 import { toast_card } from "./component-cards/toast"
 import { toolbar_card } from "./component-cards/toolbar"
 import { ArticleIcon } from "@phosphor-icons/react"
+import { tooltip_card } from "@/app/component-cards/tooltip"
 
 type ComponentsType = Array<{
   header: string
