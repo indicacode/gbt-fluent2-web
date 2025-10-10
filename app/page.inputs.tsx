@@ -1,57 +1,43 @@
-import { badge_card } from "@/app/component-cards/badge"
-import { button_card } from "@/app/component-cards/button"
-import { dialog_card } from "@/app/component-cards/dialog"
-import { dropdown_card } from "@/app/component-cards/dropdown"
 import { ReactNode } from "react"
-import { FaListUl } from "react-icons/fa6"
 import { accordion_card } from "./component-cards/accordion"
 import { avatar_card } from "./component-cards/avatar"
+import { badge_card } from "./component-cards/badge"
 import { breadcrumb_card } from "./component-cards/breadcrumb"
+import { button_card } from "./component-cards/button"
 import { card_card } from "./component-cards/card"
 import { carousel_card } from "./component-cards/carousel"
 import { checkbox_card } from "./component-cards/checkbox"
 import { combobox_card } from "./component-cards/combobox"
 import { datagrid_card } from "./component-cards/datagrid"
+import { dialog_card } from "./component-cards/dialog"
 import { divider_card } from "./component-cards/divider"
 import { drawer_card } from "./component-cards/drawer"
+import { dropdown_card } from "./component-cards/dropdown"
 import { field_card } from "./component-cards/field"
-import { fluentprovider_card } from "./component-cards/fluentprovider"
 import { image_card } from "./component-cards/image"
 import { infolabel_card } from "./component-cards/infolabel"
 import { input_card } from "./component-cards/input"
 import { label_card } from "./component-cards/label"
 import { link_card } from "./component-cards/link"
+import { list_card } from "./component-cards/list"
 import { menu_card } from "./component-cards/menu"
 import { messagebar_card } from "./component-cards/messagebar"
 import { persona_card } from "./component-cards/persona"
 import { popover_card } from "./component-cards/popover"
+import { portal_card } from "./component-cards/portal"
 import { radiogroup_card } from "./component-cards/radiogroup"
+import { searchbox_card } from "./component-cards/searchbox"
 import { select_card } from "./component-cards/select"
 import { skeleton_card } from "./component-cards/skeleton"
 import { slider_card } from "./component-cards/slider"
 import { switch_card } from "./component-cards/switch"
 import { table_card } from "./component-cards/table"
 import { tablist_card } from "./component-cards/tablist"
+import { text_card } from "./component-cards/text"
 import { textarea_card } from "./component-cards/textarea"
 import { toast_card } from "./component-cards/toast"
-import { list_card } from "./component-cards/list"
-import { overflow_card } from "./component-cards/overflow"
-import { portal_card } from "./component-cards/portal"
-import { progressbar_card } from "./component-cards/progressbar"
-import { rating_card } from "./component-cards/rating"
-import { ratingdisplay_card } from "./component-cards/ratingdisplay"
-import { searchbox_card } from "./component-cards/searchbox"
-import { spinbutton_card } from "./component-cards/spinbutton"
-import { spinner_card } from "./component-cards/spinner"
-import { swatchpicker_card } from "./component-cards/swatchpicker"
-import { tag_card } from "./component-cards/tag"
-import { tagpicker_card } from "./component-cards/tagpicker"
-import { teachingpopover_card } from "./component-cards/teachingpopover"
-import { text_card } from "./component-cards/text"
 import { toolbar_card } from "./component-cards/toolbar"
-import { tooltip_card } from "./component-cards/tooltip"
-import { tree_card } from "./component-cards/tree"
-import { colorpicker_card } from "./component-cards/colorpicker"
+import { ArticleIcon } from "@phosphor-icons/react"
 
 type ComponentsType = Array<{
   header: string
@@ -101,12 +87,12 @@ export const components = [
   toast_card,
   messagebar_card,
   persona_card,
-  toolbar_card
+  toolbar_card,
 ] as ComponentsType
 
 export const sideBar = {
   Components: {
-    icon: <FaListUl />,
+    icon: ArticleIcon,
     items: components.map((component) => component.header).sort(),
   },
 } as const

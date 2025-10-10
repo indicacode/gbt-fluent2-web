@@ -26,7 +26,7 @@ export const dialog_card = {
         "An alert Dialog is a modal dialog that interrupts the user's workflow to communicate an important message and acquire a response. Examples include action confirmation prompts and error message confirmations. The alert Dialog role enables assistive technologies and browsers to distinguish alert dialogs from other dialogs so they have the option of giving alert dialogs special treatment, such as playing a system alert sound. By default clicking on backdrop will not dismiss an alert Dialog.",
       cardComponent: (
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button>Open Dialog</Button>
           </DialogTrigger>
           <DialogContent>
@@ -40,10 +40,10 @@ export const dialog_card = {
               voluptates in natus iure cumque eaque?
             </h2>
             <div className="flex flex-row justify-end">
-              <DialogTrigger className="mr-2" asChild>
+              <DialogTrigger asChild className="mr-2">
                 <Button variant={"secondary"}>Deny</Button>
               </DialogTrigger>
-              <DialogTrigger className="" asChild>
+              <DialogTrigger asChild className="">
                 <Button variant={"primary"}>Agree</Button>
               </DialogTrigger>
             </div>
@@ -57,7 +57,7 @@ export const dialog_card = {
         "By default DialogContent should grow until it fits viewport size, overflowed content will be scrollable",
       cardComponent: (
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button>Open Dialog</Button>
           </DialogTrigger>
           <DialogContent>
@@ -78,11 +78,11 @@ export const dialog_card = {
               impedit voluptates in natus iure cumque eaque?
             </h2>
             <div className="flex flex-row justify-end">
-              <DialogTrigger className="mr-2">
+              <DialogTrigger asChild className="mr-2">
                 <Button variant={"secondary"}>Deny</Button>
               </DialogTrigger>
-              <DialogTrigger className="">
-                {" "}
+
+              <DialogTrigger asChild className="">
                 <Button variant={"primary"}>Agree</Button>
               </DialogTrigger>
             </div>
