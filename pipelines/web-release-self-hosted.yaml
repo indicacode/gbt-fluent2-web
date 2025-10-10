@@ -1,0 +1,88 @@
+trigger: none
+pr: none
+resources:
+  pipelines:
+    - pipeline: Artifacts
+      source: "Web CI (self-hosted)"
+      trigger:
+        branches:
+          include:
+            - main
+            - development
+
+pool:
+  name: rai-self-hosted
+
+jobs:
+  - job: DockerCICD
+    steps:
+      - checkout: none
+
+      - script: |
+          echo "Cleaning up..."
+          rm -rf *
+          rm -rf .[!.]*
+          rm -rf $(Pipeline.Workspace)/Artifacts
+          rm -rf $(Pipeline.Workspace)/release
+        displayName: Clean up
+
+      - download: Artifacts
+        artifact: pack
+
+      - bash: |
+          APP_VERSION=$(ls $(System.Workspace)/Artifacts/pack | grep .zip | sed -E "s|.+-v||" | sed -E "s|.zip||")
+          echo "##vso[task.setvariable variable=appVersion;]$APP_VERSION"
+        displayName: appVersion
+
+      # - task: ExtractFiles@1
+      #   inputs:
+      #     archiveFilePatterns: $(System.Workspace)/Artifacts/pack/functions.zip
+      #     destinationFolder: $(System.Workspace)/release
+      #     cleanDestinationFolder: true
+      #     overwriteExistingFiles: false
+
+      # - task: ExtractFiles@1
+      #   inputs:
+      #     archiveFilePatterns: $(System.Workspace)/Artifacts/pack/web-*.zip
+      #     destinationFolder: $(System.Workspace)/release/server
+      #     cleanDestinationFolder: false
+      #     overwriteExistingFiles: false
+
+      # - script: npm ci
+      #   displayName: "Install Functions dependencies"
+      #   workingDirectory: $(System.Workspace)/release
+
+      # - script: func azure functionapp publish func-indica-os-web
+      #   workingDirectory: $(System.Workspace)/release
+
+      - script: az webapp deployment source config-zip --resource-group rg-erp --name app-indica-os --src $(Pipeline.Workspace)/Artifacts/pack/web-*.zip
+        displayName: "Deploy Web App via Azure CLI"
+
+    # - task: PythonScript@0
+    #   displayName: 'Write Dockerfile'
+    #   inputs:
+    #     scriptSource: inline
+    #     script: |
+    #       dockerfile_path = '$(System.Workspace)/Artifacts/pack/Dockerfile'
+    #       with open(dockerfile_path, 'w') as dockerfile:
+    #           dockerfile.write(f"""
+    #       FROM busybox as unzip
+    #       WORKDIR /app
+    #       COPY ./web-v$(appVersion).zip ./
+    #       RUN unzip web-v$(appVersion).zip
+    #       RUN rm web-v$(appVersion).zip
+
+    #       FROM grbtec.azurecr.io/node:20.11
+    #       WORKDIR /app
+    #       COPY --from=unzip /app ./
+    #       """)
+    # - task: Docker@2
+    #   displayName: buildAndPush
+    #   inputs:
+    #     containerRegistry: 'Azure Container Registry'
+    #     repository: 'app-indica-caldas-novas-web'
+    #     Dockerfile: '$(System.Workspace)/Artifacts/pack/Dockerfile'
+    #     buildContext: '$(System.Workspace)/Artifacts/pack'
+    #     tags: |
+    #       $(appVersion)
+    #       latest
