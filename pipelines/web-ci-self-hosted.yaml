@@ -1,0 +1,109 @@
+pr:
+  branches:
+    include:
+      - main
+      - development
+  paths:
+    include:
+      - src/Frontends/erp/*
+trigger:
+  branches:
+    include:
+      - main
+      - development
+  paths:
+    include:
+      - src/Frontends/erp/*
+
+variables:
+  - name: workingDirectory
+    value: src/Frontends/erp
+
+pool:
+  name: rai-self-hosted
+
+jobs:
+  # - job: Main_Branch_Validation
+  #   steps:
+  #     - script: |
+  #         echo "pwd=$(pwd)"
+  #         ORIGIN=$(git config --get remote.origin.url)
+  #         ORIGIN=$(echo $ORIGIN | sed "s|github.com|$(GH_TOKEN)@github.com|")
+  #         git remote set-url origin $ORIGIN
+  #         git fetch
+  #         git config advice.diverging false
+  #         git merge --ff-only --allow-unrelated-histories origin/development
+  #       displayName: Check main branch
+  #       condition: eq(variables['Build.SourceBranchName'], 'main')
+
+  - job: Build_Test_Pack
+    # dependsOn: Main_Branch_Validation
+    steps:
+      - script: corepack enable; yarn install
+        workingDirectory: $(workingDirectory)
+        displayName: "Install dependencies"
+
+      - script: make build
+        workingDirectory: $(workingDirectory)
+        displayName: "Build"
+
+      # - script: make test
+      #   workingDirectory: $(workingDirectory)
+      #   displayName: "Test"
+
+      - script: npm install --legacy-peer-deps -D semantic-release semantic-release-monorepo @semantic-release/exec
+        workingDirectory: $(workingDirectory)
+        condition: and(succeeded(),ne(variables.cancel, 'yes'))
+        displayName: "Install semantic-release dependencies"
+
+      - script: npx semantic-release
+        workingDirectory: $(workingDirectory)
+        displayName: "Execute semantic-release"
+        condition: and(succeeded(),ne(variables.cancel, 'yes'))
+        env:
+          GH_TOKEN: $(GH_TOKEN)
+
+      # - script: make pack-functions
+      #   workingDirectory: $(workingDirectory)
+      #   displayName: "Pack functions"
+
+      - script: |
+          VERSION=$([ -e dist/version.txt ] && make version -s || echo '')
+          echo "version=$VERSION"
+          echo "##vso[task.setvariable variable=appVersion;isOutput=true]$VERSION"
+          echo "##vso[task.setvariable variable=appVersion;]$VERSION"
+        name: appVersionVariable
+        workingDirectory: $(workingDirectory)
+        displayName: "Set 'appVersion' variable"
+
+      - script: |
+          mv $(Build.Repository.LocalPath)/$(workingDirectory)/dist/pack.zip $(Build.ArtifactStagingDirectory)/web-v$(make version -s).zip
+        # mv $(Build.Repository.LocalPath)/$(workingDirectory)/dist/functions.zip $(Build.ArtifactStagingDirectory)/functions.zip
+        workingDirectory: $(workingDirectory)
+        condition: ne(variables.appVersion, '')
+        displayName: "Move artifact to staging directory"
+
+      - publish: $(Build.ArtifactStagingDirectory)
+        condition: ne(variables.appVersion, '')
+        artifact: pack
+
+  - job: Delivery
+    dependsOn: Build_Test_Pack
+    variables:
+      appVersion: $[ dependencies.Build_Test_Pack.outputs['appVersionVariable.appVersion'] ]
+    condition: ne(dependencies.Build_Test_Pack.outputs['appVersionVariable.appVersion'], '')
+    steps:
+      - checkout: none
+
+      - download: current
+        artifact: pack
+      - script: |
+          az storage blob upload-batch \
+            --account-name stindicadevops \
+            --destination indica-os-releases/web/$(appVersion) \
+            --source "$(Pipeline.Workspace)/pack/" \
+            --pattern web-*.zip \
+            --auth-mode key
+        # - script: |
+        #     az storage blob upload-batch --account-name stindicadevops --destination indica-os-releases/web/$(appVersion) --source "$(Pipeline.Workspace)/pack/" --pattern web-*.zip --auth-mode key
+        displayName: "Upload artifact to blob storage"

@@ -1,0 +1,24 @@
+{
+    "extends": "semantic-release-monorepo",
+    "branches": [
+        {
+            "name": "main"
+        },
+        {
+            "name": "development",
+            "prerelease": "prealpha"
+        }
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        "@semantic-release/github",
+        [
+            "@semantic-release/exec",
+            {
+                "prepareCmd": "RELEASE_VERSION=\"${nextRelease.version}\" make prepare",
+                "publishCmd": "make pack"
+            }
+        ]
+    ]
+}
