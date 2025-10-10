@@ -1,3 +1,5 @@
+import { tooltip_card } from "@/app/component-cards/tooltip"
+import { ArticleIcon } from "@phosphor-icons/react"
 import { ReactNode } from "react"
 import { accordion_card } from "./component-cards/accordion"
 import { avatar_card } from "./component-cards/avatar"
@@ -7,7 +9,6 @@ import { button_card } from "./component-cards/button"
 import { card_card } from "./component-cards/card"
 import { carousel_card } from "./component-cards/carousel"
 import { checkbox_card } from "./component-cards/checkbox"
-import { combobox_card } from "./component-cards/combobox"
 import { datagrid_card } from "./component-cards/datagrid"
 import { dialog_card } from "./component-cards/dialog"
 import { divider_card } from "./component-cards/divider"
@@ -37,8 +38,6 @@ import { text_card } from "./component-cards/text"
 import { textarea_card } from "./component-cards/textarea"
 import { toast_card } from "./component-cards/toast"
 import { toolbar_card } from "./component-cards/toolbar"
-import { ArticleIcon } from "@phosphor-icons/react"
-import { tooltip_card } from "@/app/component-cards/tooltip"
 
 type ComponentsType = Array<{
   header: string
@@ -65,7 +64,7 @@ export const components = [
   text_card,
   list_card,
   image_card,
-  combobox_card,
+  // combobox_card,
   divider_card,
   select_card,
   drawer_card,
