@@ -6,18 +6,13 @@ resources:
       source: "Web CI (self-hosted)"
       trigger:
         branches:
-          include:
-            - main
-            - development
-
+          include: [main, development]
 pool:
   name: rai-self-hosted
-
 jobs:
   - job: DockerCICD
     steps:
       - checkout: none
-
       - script: |
           echo "Cleaning up..."
           rm -rf *
@@ -25,63 +20,17 @@ jobs:
           rm -rf $(Pipeline.Workspace)/Artifacts
           rm -rf $(Pipeline.Workspace)/release
         displayName: Clean up
-
       - download: Artifacts
         artifact: pack
-
       - bash: |
           APP_VERSION=$(ls $(System.Workspace)/Artifacts/pack | grep .zip | sed -E "s|.+-v||" | sed -E "s|.zip||")
           echo "##vso[task.setvariable variable=appVersion;]$APP_VERSION"
         displayName: appVersion
-
-      # - task: ExtractFiles@1
-      #   inputs:
-      #     archiveFilePatterns: $(System.Workspace)/Artifacts/pack/functions.zip
-      #     destinationFolder: $(System.Workspace)/release
-      #     cleanDestinationFolder: true
-      #     overwriteExistingFiles: false
-
-      # - task: ExtractFiles@1
-      #   inputs:
-      #     archiveFilePatterns: $(System.Workspace)/Artifacts/pack/web-*.zip
-      #     destinationFolder: $(System.Workspace)/release/server
-      #     cleanDestinationFolder: false
-      #     overwriteExistingFiles: false
-
-      # - script: npm ci
-      #   displayName: "Install Functions dependencies"
-      #   workingDirectory: $(System.Workspace)/release
-
-      # - script: func azure functionapp publish func-indica-os-web
-      #   workingDirectory: $(System.Workspace)/release
-
-      - script: swa deploy ./out --app-name stapp-fluent2-web --env production
+      - task: ExtractFiles@1
+        inputs:
+          archiveFilePatterns: "$(Pipeline.Workspace)/Artifacts/pack/web-*.zip"
+          destinationFolder: "$(Pipeline.Workspace)/out"
+          cleanDestinationFolder: true
+        displayName: "Extract ZIP Artifact"
+      - script: swa deploy $(Pipeline.Workspace)/out --app-name stapp-fluent2-web --env production
         displayName: "Deploy Static Web App"
-    # - task: PythonScript@0
-    #   displayName: 'Write Dockerfile'
-    #   inputs:
-    #     scriptSource: inline
-    #     script: |
-    #       dockerfile_path = '$(System.Workspace)/Artifacts/pack/Dockerfile'
-    #       with open(dockerfile_path, 'w') as dockerfile:
-    #           dockerfile.write(f"""
-    #       FROM busybox as unzip
-    #       WORKDIR /app
-    #       COPY ./web-v$(appVersion).zip ./
-    #       RUN unzip web-v$(appVersion).zip
-    #       RUN rm web-v$(appVersion).zip
-
-    #       FROM grbtec.azurecr.io/node:20.11
-    #       WORKDIR /app
-    #       COPY --from=unzip /app ./
-    #       """)
-    # - task: Docker@2
-    #   displayName: buildAndPush
-    #   inputs:
-    #     containerRegistry: 'Azure Container Registry'
-    #     repository: 'app-indica-caldas-novas-web'
-    #     Dockerfile: '$(System.Workspace)/Artifacts/pack/Dockerfile'
-    #     buildContext: '$(System.Workspace)/Artifacts/pack'
-    #     tags: |
-    #       $(appVersion)
-    #       latest
