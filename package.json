@@ -1,5 +1,6 @@
 {
   "name": "fluent2-tailwind",
+  "repository": "https://github.com/indicacode/gbt-fluent2-web.git",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
