@@ -55,7 +55,7 @@ jobs:
       # - script: func azure functionapp publish func-indica-os-web
       #   workingDirectory: $(System.Workspace)/release
 
-      - script: az webapp deployment source config-zip --resource-group rg-sites --name app-fluent2-web --src $(Pipeline.Workspace)/Artifacts/pack/web-*.zip
+      - script: az webapp deployment source config-zip --resource-group rg-sites --name stapp-fluent2-web --src $(Pipeline.Workspace)/Artifacts/pack/web-*.zip
         displayName: "Deploy Web App via Azure CLI"
 
     # - task: PythonScript@0
