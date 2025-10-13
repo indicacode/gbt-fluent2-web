@@ -55,9 +55,8 @@ jobs:
       # - script: func azure functionapp publish func-indica-os-web
       #   workingDirectory: $(System.Workspace)/release
 
-      - script: az webapp deployment source config-zip --resource-group rg-sites --name stapp-fluent2-web --src $(Pipeline.Workspace)/Artifacts/pack/web-*.zip
-        displayName: "Deploy Web App via Azure CLI"
-
+      - script: swa deploy ./out --app-name stapp-fluent2-web --env production
+        displayName: "Deploy Static Web App"
     # - task: PythonScript@0
     #   displayName: 'Write Dockerfile'
     #   inputs:
