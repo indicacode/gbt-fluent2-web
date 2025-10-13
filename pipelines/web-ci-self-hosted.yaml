@@ -5,7 +5,7 @@ pr:
       - development
   paths:
     include:
-      - src/Frontends/erp/*
+      - ./*
 trigger:
   branches:
     include:
@@ -13,11 +13,11 @@ trigger:
       - development
   paths:
     include:
-      - src/Frontends/erp/*
+      - ./*
 
 variables:
   - name: workingDirectory
-    value: src/Frontends/erp
+    value: ./
 
 pool:
   name: rai-self-hosted
