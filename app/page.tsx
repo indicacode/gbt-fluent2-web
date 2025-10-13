@@ -5,7 +5,6 @@ import {
   NavCategory,
   NavHeader,
   NavSection,
-  NavSectionHeader,
   NavSubItem,
 } from "@/components/nav"
 import { ArticleIcon, UserCircleIcon } from "@phosphor-icons/react"
