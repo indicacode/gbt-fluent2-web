@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-  reactStrictMode: true,
-  transpilePackages: ["@grbtec/components"],
+  experimental: {
+    reactCompiler: true,
+  },
   typescript: {
     ignoreBuildErrors: true,
   },

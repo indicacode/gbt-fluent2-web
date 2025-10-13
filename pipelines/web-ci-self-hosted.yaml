@@ -5,7 +5,7 @@ pr:
       - development
   paths:
     include:
-      - src/Frontends/erp/*
+      - ./*
 trigger:
   branches:
     include:
@@ -13,11 +13,11 @@ trigger:
       - development
   paths:
     include:
-      - src/Frontends/erp/*
+      - ./*
 
 variables:
   - name: workingDirectory
-    value: src/Frontends/erp
+    value: ./
 
 pool:
   name: rai-self-hosted
@@ -100,7 +100,7 @@ jobs:
       - script: |
           az storage blob upload-batch \
             --account-name stindicadevops \
-            --destination indica-os-releases/web/$(appVersion) \
+            --destination fluent2-web-releases/web/$(appVersion) \
             --source "$(Pipeline.Workspace)/pack/" \
             --pattern web-*.zip \
             --auth-mode key
