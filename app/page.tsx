@@ -13,7 +13,7 @@ import { useCallback, useMemo, useState } from "react"
 import { components, sideBar } from "./page.inputs"
 
 type SideBarType = keyof typeof sideBar
-
+// trigger build
 export default function Page() {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const router = useRouter()
@@ -67,9 +67,7 @@ export default function Page() {
                       {item}
                     </NavSubItem>
                   ) : (
-                    <NavSectionHeader key={itemIdx}>
-                      {item.title}
-                    </NavSectionHeader>
+                    <span key={itemIdx}>{item.title}</span>
                   )
                 )}
               </NavCategory>
