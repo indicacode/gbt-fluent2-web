@@ -52,7 +52,7 @@ export default function Page() {
         {sideBarKeys.map((key, idx) => {
           const category = sideBar[key as SideBarType]
           return (
-            <NavSection title={"dasda"} key={idx}>
+            <NavSection title={"title"} key={idx}>
               <NavCategory icon={category.icon} title={key}>
                 {category.items.map((item, itemIdx) =>
                   typeof item === "string" ? (
