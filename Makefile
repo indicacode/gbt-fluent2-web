@@ -1,6 +1,5 @@
 build:
 	npm run build
-	npm run export
 
 test:
 	npm run test
