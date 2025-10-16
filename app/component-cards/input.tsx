@@ -1,4 +1,41 @@
-import { Input, InputLeftAddon, InputRightAddon } from "@/components/done/input"
+import { Input, InputLeftAddon, InputRightAddon } from "@/components/done/input";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import Button from "@/components/done/button";
+
+const FormSchema = z.object({
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+});
+
+function InputValidationExample() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+  });
+
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+      <Input
+        labelText="Email"
+        placeholder="Enter your email"
+        {...register("email")}
+        error={!!errors.email}
+        helperText={errors.email?.message}
+      />
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+}
 
 export const input_card = {
   header: "Input",
@@ -127,5 +164,11 @@ export const input_card = {
         </div>
       ),
     },
+    {
+      cardHeader: "Validation State with React Hook Form and Zod",
+      cardSubtext:
+        "The input can be used with react-hook-form and zod for form validation. The example below shows how to validate an email field.",
+      cardComponent: <InputValidationExample />,
+    },
   ],
-}
+};
