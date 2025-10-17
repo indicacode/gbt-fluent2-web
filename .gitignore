@@ -365,3 +365,4 @@ turbo.json
 
 **/env/*.env
 **/ignored-keys
+dist
